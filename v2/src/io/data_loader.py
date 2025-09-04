@@ -17,7 +17,7 @@ def load_problem_data(file_path, type) -> ProblemData:
     C_depot_h: numpy array of depot travel costs (n,).
     C_dur: numpy array of event durations (m,).
     time_window: numpy array of time windows (m, day, 2).
-    min_nurse: numpy array of minimum nurses required (m, day).
+    min_nurse: numpy array of minimum nurses required (m, 2). First column for RN, second for LVN.
     nr (int): Number of RNs.
     nl (int): Number of LVNs.
     n (int): Total number of nurses (nr + nl).

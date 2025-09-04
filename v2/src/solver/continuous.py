@@ -260,7 +260,6 @@ def continuous_algorithm (data: ProblemData, work_limit, seed_number, multiple_t
         print(f"Best bound: {model.ObjBound}")
         print(f"Gap: {model.MIPGap}")
 
-        # file_path = f'/Users/jinghongmiao/Code/mvt-code/result-250715/ca_{nr}_{nl}_{m}_wl{work_limit}_el{event_limit}_p{pruning}_mh{min_hour}_max25_seed{seed_number}.pkl'
         summary = {}
 
         # 1. Active x[i,j,d,w]

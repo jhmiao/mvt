@@ -23,7 +23,7 @@ class Context:
           - day (int): number of days D
           - dist_matrix[u, v] (int)
           - C_dur[j] or service_times[j] (int)   # service duration at event j (0 for depot/home)
-          - time_windows[j] -> (earliest, latest)
+          - time_window[j] -> (earliest, latest)
           - nurse_type[w] in {"RN","LVN"} (or ints you map to those)
           - req_RN[j], req_LVN[j]  # required per event (optional; default 0 if missing)
         Node IDs:
@@ -37,7 +37,7 @@ class Context:
         self.D = pd.day
         self.dist = pd.C_event
         self.C_dur = getattr(pd, "C_dur", None)
-        self.time_window = pd.time_windows  # shape (m, day, 2)
+        self.time_window = pd.time_window  # shape (m, day, 2)
         self.nurse_type = pd.nurse_type  # list/array length n or dict {w: "RN"/"LVN"}
         # Set req_RN and req_LVN from min_nurse if available and has two columns
         if hasattr(pd, "min_nurse") and pd.min_nurse is not None and len(pd.min_nurse.shape) == 2 and pd.min_nurse.shape[1] == 2:
