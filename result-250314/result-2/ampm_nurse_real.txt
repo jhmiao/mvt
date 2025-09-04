@@ -1,0 +1,1390 @@
+Best feasible solution found within 185 seconds:
+
+Objective value: 17888.0
+The gap is 0.0349955
+
+=====================
+Nurse 1 
+=====================
+
+Day 1:
+Event 1 Morning
+Event 1 Afternoon
+
+Day 2:
+Event 12 Afternoon
+
+Day 3:
+Event 20 Morning
+Event 48 Afternoon
+
+Day 4:
+Home -> Depot
+Event 29 Afternoon (pick-up & drop-off)
+Event 52 Morning (pick-up & drop-off)
+Depot -> Home
+
+Day 5:
+Event 42 Morning
+Event 42 Afternoon
+
+=====================
+Nurse 2 
+=====================
+
+Day 1:
+Home -> Depot
+Event 3 Morning (pick-up & drop-off)
+Event 3 Afternoon (pick-up & drop-off)
+Depot -> Home
+
+Day 2:
+Event 14 Afternoon
+
+Day 3:
+Event 21 Morning
+Event 21 Afternoon
+
+Day 4:
+Event 30 Morning (drop-off)
+Depot -> Home
+
+Day 5:
+Event 38 Afternoon
+Event 58 Morning
+
+=====================
+Nurse 3 
+=====================
+
+Day 1:
+Event 3 Morning
+Event 3 Afternoon
+
+Day 2:
+Event 15 Morning
+Event 15 Afternoon
+
+Day 3:
+Event 24 Morning
+Event 26 Afternoon
+
+Day 4:
+Event 34 Morning
+Event 34 Afternoon
+
+Day 5:
+Event 43 Afternoon
+
+=====================
+Nurse 4 
+=====================
+
+Day 1:
+Event 6 Morning
+Event 6 Afternoon
+
+Day 2:
+Event 16 Morning
+Event 16 Afternoon
+
+Day 3:
+Event 22 Afternoon
+Event 24 Morning
+
+Day 4:
+Home -> Depot
+Event 37 Morning (pick-up & drop-off)
+Event 37 Afternoon (pick-up & drop-off)
+Depot -> Home
+
+Day 5:
+Event 43 Afternoon
+
+=====================
+Nurse 5 
+=====================
+
+Day 1:
+Home -> Depot
+Event 6 Morning (pick-up & drop-off)
+Event 6 Afternoon (pick-up & drop-off)
+Depot -> Home
+
+Day 2:
+Home -> Depot
+Event 10 Morning (pick-up)
+Event 10 Afternoon (pick-up)
+
+Day 3:
+Home -> Depot
+Event 26 Afternoon (pick-up & drop-off)
+Event 47 Morning (pick-up & drop-off)
+Depot -> Home
+
+Day 4:
+Event 33 Morning
+Event 33 Afternoon
+
+Day 5:
+Home -> Depot
+Event 42 Morning (pick-up & drop-off)
+Event 42 Afternoon (pick-up & drop-off)
+Depot -> Home
+
+=====================
+Nurse 6 
+=====================
+
+Day 1:
+Event 6 Morning
+Event 6 Afternoon
+
+Day 2:
+Event 18 Afternoon
+
+Day 3:
+Event 25 Afternoon
+Event 46 Morning
+
+Day 4:
+Event 36 Morning
+
+Day 5:
+Event 41 Morning
+Event 41 Afternoon
+
+=====================
+Nurse 7 
+=====================
+
+Day 1:
+Event 9 Afternoon (drop-off)
+Depot -> Home
+
+Day 2:
+Event 16 Morning
+Event 16 Afternoon
+
+Day 3:
+Home -> Depot
+Event 49 Afternoon (pick-up & drop-off)
+Event 50 Morning (pick-up & drop-off)
+Depot -> Home
+
+Day 4:
+Home -> Depot
+Event 32 Afternoon (pick-up & drop-off)
+Event 54 Morning (pick-up & drop-off)
+Depot -> Home
+
+Day 5:
+Home -> Depot
+Event 40 Morning (pick-up & drop-off)
+Event 40 Afternoon (pick-up & drop-off)
+Depot -> Home
+
+=====================
+Nurse 8 
+=====================
+
+Day 1:
+Event 6 Morning
+Event 6 Afternoon
+
+Day 2:
+Event 18 Afternoon
+
+Day 3:
+Event 25 Afternoon
+Event 47 Morning
+
+Day 4:
+Event 36 Morning
+Event 56 Afternoon
+
+Day 5:
+Event 43 Afternoon
+
+=====================
+Nurse 9 
+=====================
+
+Day 1:
+Event 6 Morning
+Event 6 Afternoon
+
+Day 2:
+Event 18 Afternoon
+
+Day 3:
+Event 25 Afternoon
+Event 46 Morning
+
+Day 4:
+Event 56 Afternoon
+
+Day 5:
+Event 41 Morning
+Event 41 Afternoon
+
+=====================
+Nurse 10 
+=====================
+
+Day 1:
+Event 1 Morning
+Event 1 Afternoon
+
+Day 2:
+Event 13 Morning
+
+Day 3:
+Event 20 Morning
+
+Day 4:
+Event 34 Morning
+Event 34 Afternoon
+
+Day 5:
+Event 39 Morning
+Event 39 Afternoon
+
+=====================
+Nurse 11 
+=====================
+
+Day 1:
+Event 5 Morning
+Event 5 Afternoon
+
+Day 2:
+Home -> Depot
+Event 16 Morning (pick-up & drop-off)
+Event 16 Afternoon (pick-up & drop-off)
+Depot -> Home
+
+Day 3:
+Home -> Depot
+Event 20 Morning (pick-up & drop-off)
+Event 48 Afternoon (pick-up & drop-off)
+Depot -> Home
+
+Day 4:
+Home -> Depot
+Event 33 Morning (pick-up & drop-off)
+Event 33 Afternoon (pick-up & drop-off)
+Depot -> Home
+
+Day 5:
+Home -> Depot
+Event 43 Afternoon (pick-up & drop-off)
+Event 61 Morning (pick-up & drop-off)
+Depot -> Home
+
+=====================
+Nurse 12 
+=====================
+
+Day 1:
+Event 9 Afternoon
+
+Day 2:
+Event 17 Morning
+
+Day 3:
+Event 22 Afternoon
+Event 50 Morning
+
+Day 4:
+Event 34 Morning
+Event 34 Afternoon
+
+Day 5:
+Event 41 Morning
+Event 41 Afternoon
+
+=====================
+Nurse 13 
+=====================
+
+Day 1:
+Event 2 Afternoon
+
+Day 2:
+Event 12 Afternoon
+
+Day 3:
+Event 21 Morning
+Event 21 Afternoon
+
+Day 4:
+Event 30 Morning
+
+Day 5:
+Event 42 Morning
+Event 42 Afternoon
+
+=====================
+Nurse 14 
+=====================
+
+Day 1:
+Event 7 Afternoon
+
+Day 2:
+Event 11 Afternoon
+
+Day 3:
+Event 21 Morning
+Event 21 Afternoon
+
+Day 4:
+Event 31 Morning
+Event 57 Afternoon
+
+Day 5:
+Event 45 Afternoon
+Event 59 Morning
+
+=====================
+Nurse 15 
+=====================
+
+Day 1:
+Home -> Depot
+Event 1 Morning (pick-up & drop-off)
+Event 1 Afternoon (pick-up & drop-off)
+Depot -> Home
+
+Day 2:
+Event 17 Morning
+
+Day 3:
+Event 26 Afternoon
+
+Day 4:
+Event 33 Morning
+Event 33 Afternoon
+
+Day 5:
+Home -> Depot
+Event 44 Morning (pick-up & drop-off)
+Event 44 Afternoon (pick-up & drop-off)
+Depot -> Home
+
+=====================
+Nurse 16 
+=====================
+
+Day 1:
+Event 7 Afternoon
+
+Day 2:
+Home -> Depot
+Event 12 Afternoon (pick-up & drop-off)
+Event 13 Morning (pick-up & drop-off)
+Depot -> Home
+
+Day 3:
+Event 21 Morning
+Event 21 Afternoon
+
+Day 4:
+Event 31 Morning
+Event 57 Afternoon
+
+Day 5:
+Event 40 Morning
+Event 40 Afternoon
+
+=====================
+Nurse 17 
+=====================
+
+Day 1:
+Event 6 Morning
+Event 6 Afternoon
+
+Day 2:
+Event 16 Morning
+Event 16 Afternoon
+
+Day 3:
+Home -> Depot
+Event 23 Afternoon (pick-up & drop-off)
+Event 27 Morning (pick-up & drop-off)
+Depot -> Home
+
+Day 4:
+Event 53 Afternoon
+
+Day 5:
+Event 43 Afternoon
+
+=====================
+Nurse 18 
+=====================
+
+Day 1:
+Event 9 Afternoon
+
+Day 2:
+Event 17 Morning
+
+Day 3:
+Event 22 Afternoon
+Event 24 Morning
+
+Day 4:
+Event 34 Morning
+Event 34 Afternoon
+
+Day 5:
+Event 41 Morning
+Event 41 Afternoon
+
+=====================
+Nurse 19 
+=====================
+
+Day 1:
+Event 5 Morning
+Event 5 Afternoon
+
+Day 2:
+Home -> Depot
+Event 15 Morning (pick-up & drop-off)
+Event 15 Afternoon (pick-up & drop-off)
+Depot -> Home
+
+Day 3:
+Home -> Depot
+Event 21 Morning (pick-up & drop-off)
+Event 21 Afternoon (pick-up & drop-off)
+Depot -> Home
+
+Day 4:
+Home -> Depot
+Event 28 Morning (pick-up & drop-off)
+Event 28 Afternoon (pick-up & drop-off)
+Depot -> Home
+
+Day 5:
+Home -> Depot
+Event 39 Morning (pick-up & drop-off)
+Event 39 Afternoon (pick-up & drop-off)
+Depot -> Home
+
+=====================
+Nurse 20 
+=====================
+
+Day 1:
+Home -> Depot
+Event 4 Morning (pick-up & drop-off)
+Event 4 Afternoon (pick-up & drop-off)
+Depot -> Home
+
+Day 2:
+Event 11 Afternoon
+
+Day 3:
+Event 23 Afternoon
+Event 27 Morning
+
+Day 4:
+Event 37 Morning
+Event 37 Afternoon
+
+Day 5:
+Event 44 Morning
+Event 44 Afternoon
+
+=====================
+Nurse 21 
+=====================
+
+Day 1:
+Home -> Depot
+Event 2 Afternoon (pick-up & drop-off)
+Event 8 Morning (drop-off)
+Depot -> Home
+
+Day 2:
+Home -> Depot
+Event 14 Afternoon (pick-up & drop-off)
+Event 17 Morning (drop-off)
+Depot -> Home
+
+Day 3:
+Event 21 Morning
+Event 21 Afternoon
+
+Day 4:
+Event 37 Morning
+Event 37 Afternoon
+
+Day 5:
+Event 60 Afternoon
+
+=====================
+Nurse 22 
+=====================
+
+Day 1:
+Event 9 Afternoon
+
+Day 2:
+Event 13 Morning
+
+Day 3:
+Home -> Depot
+Event 19 Morning (pick-up & drop-off)
+Event 19 Afternoon (pick-up & drop-off)
+Depot -> Home
+
+Day 4:
+Event 55 Morning
+
+Day 5:
+Event 39 Morning
+Event 39 Afternoon
+
+=====================
+Nurse 23 
+=====================
+
+Day 1:
+Event 1 Morning
+Event 1 Afternoon
+
+Day 2:
+Event 12 Afternoon
+
+Day 3:
+Event 48 Afternoon
+
+Day 4:
+Event 35 Morning
+Event 51 Afternoon
+
+Day 5:
+Event 42 Morning
+Event 42 Afternoon
+
+=====================
+Nurse 24 
+=====================
+
+Day 1:
+Event 1 Morning
+Event 1 Afternoon
+
+Day 2:
+Event 12 Afternoon
+
+Day 3:
+Event 48 Afternoon
+
+Day 4:
+Event 31 Morning
+Event 57 Afternoon
+
+Day 5:
+Event 42 Morning
+Event 42 Afternoon
+
+=====================
+Nurse 25 
+=====================
+
+Day 1:
+Event 6 Morning
+Event 6 Afternoon
+
+Day 2:
+Event 15 Morning
+Event 15 Afternoon
+
+Day 3:
+Event 26 Afternoon
+
+Day 4:
+Event 33 Morning
+Event 33 Afternoon
+
+Day 5:
+Home -> Depot
+Event 38 Afternoon (pick-up & drop-off)
+Event 58 Morning (pick-up & drop-off)
+Depot -> Home
+
+=====================
+Nurse 26 
+=====================
+
+Day 1:
+Event 1 Morning
+Event 1 Afternoon
+
+Day 2:
+Event 13 Morning
+
+Day 3:
+Event 21 Morning
+Event 21 Afternoon
+
+Day 4:
+Event 28 Morning
+Event 28 Afternoon
+
+Day 5:
+Event 42 Morning
+Event 42 Afternoon
+
+=====================
+Nurse 27 
+=====================
+
+Day 1:
+Event 9 Afternoon
+
+Day 2:
+Event 15 Morning
+Event 15 Afternoon
+
+Day 3:
+Event 24 Morning
+Event 49 Afternoon
+
+Day 4:
+Event 34 Morning
+Event 34 Afternoon
+
+Day 5:
+Event 41 Morning
+Event 41 Afternoon
+
+=====================
+Nurse 28 
+=====================
+
+Day 1:
+Event 6 Morning
+Event 6 Afternoon
+
+Day 2:
+Event 18 Afternoon
+
+Day 3:
+Event 25 Afternoon
+Event 47 Morning
+
+Day 4:
+Event 53 Afternoon
+
+Day 5:
+Event 61 Morning
+
+=====================
+Nurse 29 
+=====================
+
+Day 1:
+Event 4 Morning
+Event 4 Afternoon
+
+Day 2:
+Event 14 Afternoon
+
+Day 3:
+Event 21 Morning
+Event 21 Afternoon
+
+Day 4:
+Event 30 Morning
+
+Day 5:
+Event 38 Afternoon
+Event 58 Morning
+
+=====================
+Nurse 30 
+=====================
+
+Day 1:
+Event 6 Morning
+Event 6 Afternoon
+
+Day 2:
+Event 18 Afternoon
+
+Day 3:
+Event 22 Afternoon
+Event 24 Morning
+
+Day 4:
+Event 36 Morning
+Event 56 Afternoon
+
+Day 5:
+Event 41 Morning
+Event 41 Afternoon
+
+=====================
+Nurse 31 
+=====================
+
+Day 1:
+Event 6 Morning
+Event 6 Afternoon
+
+Day 2:
+Event 16 Morning
+Event 16 Afternoon
+
+Day 3:
+Event 25 Afternoon
+Event 46 Morning
+
+Day 4:
+Home -> Depot
+Event 35 Morning (pick-up & drop-off)
+Event 51 Afternoon (drop-off)
+Depot -> Home
+
+Day 5:
+Event 43 Afternoon
+Event 61 Morning
+
+=====================
+Nurse 32 
+=====================
+
+Day 1:
+Event 4 Morning
+Event 4 Afternoon
+
+Day 2:
+Event 17 Morning
+
+Day 3:
+Event 19 Morning
+Event 19 Afternoon
+
+Day 4:
+Event 34 Morning
+Event 34 Afternoon
+
+Day 5:
+Event 41 Morning
+Event 41 Afternoon
+
+=====================
+Nurse 33 
+=====================
+
+Day 1:
+Event 6 Morning
+Event 6 Afternoon
+
+Day 2:
+Event 18 Afternoon
+
+Day 3:
+Home -> Depot
+Event 22 Afternoon (pick-up & drop-off)
+Event 24 Morning (pick-up & drop-off)
+Depot -> Home
+
+Day 4:
+Event 53 Afternoon
+
+Day 5:
+Event 43 Afternoon
+Event 61 Morning
+
+=====================
+Nurse 34 
+=====================
+
+Day 1:
+Event 6 Morning
+Event 6 Afternoon
+
+Day 2:
+Event 16 Morning
+Event 16 Afternoon
+
+Day 3:
+Event 26 Afternoon
+
+Day 4:
+Event 36 Morning
+Event 56 Afternoon
+
+Day 5:
+Event 43 Afternoon
+
+=====================
+Nurse 35 
+=====================
+
+Day 1:
+Event 3 Morning
+Event 3 Afternoon
+
+Day 2:
+Event 17 Morning
+
+Day 3:
+Event 19 Morning
+Event 19 Afternoon
+
+Day 4:
+Event 34 Morning
+Event 34 Afternoon
+
+Day 5:
+Event 41 Morning
+Event 41 Afternoon
+
+=====================
+Nurse 36 
+=====================
+
+Day 1:
+Home -> Depot
+Event 5 Morning (pick-up & drop-off)
+Event 5 Afternoon (pick-up & drop-off)
+Depot -> Home
+
+Day 2:
+Event 10 Morning
+Event 10 Afternoon
+
+Day 3:
+Event 26 Afternoon
+
+Day 4:
+Event 33 Morning
+Event 33 Afternoon
+
+Day 5:
+Home -> Depot
+Event 60 Afternoon (pick-up & drop-off)
+Depot -> Home
+
+=====================
+Nurse 37 
+=====================
+
+Day 1:
+Event 6 Morning
+Event 6 Afternoon
+
+Day 2:
+Event 16 Morning
+Event 16 Afternoon
+
+Day 3:
+Event 25 Afternoon
+Event 47 Morning
+
+Day 4:
+Home -> Depot
+Event 53 Afternoon (pick-up & drop-off)
+Event 55 Morning (pick-up & drop-off)
+Depot -> Home
+
+Day 5:
+Home -> Depot
+Event 41 Morning (pick-up & drop-off)
+Event 41 Afternoon (pick-up & drop-off)
+Depot -> Home
+
+=====================
+Nurse 38 
+=====================
+
+Day 1:
+Event 6 Morning
+Event 6 Afternoon
+
+Day 2:
+Event 16 Morning
+Event 16 Afternoon
+
+Day 3:
+Home -> Depot
+Event 25 Afternoon (pick-up & drop-off)
+Event 46 Morning (pick-up & drop-off)
+Depot -> Home
+
+Day 4:
+Home -> Depot
+Event 31 Morning (pick-up & drop-off)
+Event 57 Afternoon (pick-up & drop-off)
+Depot -> Home
+
+Day 5:
+Home -> Depot
+Event 45 Afternoon (pick-up & drop-off)
+Event 59 Morning (pick-up & drop-off)
+Depot -> Home
+
+=====================
+Nurse 39 
+=====================
+
+Day 1:
+Event 3 Morning
+Event 3 Afternoon
+
+Day 2:
+Event 15 Morning
+Event 15 Afternoon
+
+Day 3:
+Event 22 Afternoon
+Event 24 Morning
+
+Day 4:
+Home -> Depot
+Event 30 Morning (pick-up)
+Event 51 Afternoon (pick-up)
+
+Day 5:
+Event 43 Afternoon
+
+=====================
+Nurse 40 
+=====================
+
+Day 1:
+Event 6 Morning
+Event 6 Afternoon
+
+Day 2:
+Home -> Depot
+Event 17 Morning
+Event 18 Afternoon (pick-up & drop-off)
+Depot -> Home
+
+Day 3:
+Event 20 Morning
+
+Day 4:
+Event 55 Morning
+
+Day 5:
+Event 42 Morning
+Event 42 Afternoon
+
+=====================
+Nurse 41 
+=====================
+
+Day 1:
+Event 4 Morning
+Event 4 Afternoon
+
+Day 2:
+Event 17 Morning
+
+Day 3:
+Event 21 Morning
+Event 21 Afternoon
+
+Day 4:
+Event 35 Morning
+Event 51 Afternoon
+
+Day 5:
+Event 39 Morning
+Event 39 Afternoon
+
+=====================
+Nurse 42 
+=====================
+
+Day 1:
+Event 6 Morning
+Event 6 Afternoon
+
+Day 2:
+Event 12 Afternoon
+
+Day 3:
+Event 20 Morning
+
+Day 4:
+Event 55 Morning
+
+Day 5:
+Event 42 Morning
+Event 42 Afternoon
+
+=====================
+Nurse 43 
+=====================
+
+Day 1:
+Home -> Depot
+Event 8 Morning (pick-up)
+Event 9 Afternoon (pick-up)
+
+Day 2:
+Event 13 Morning
+
+Day 3:
+Event 49 Afternoon
+Event 50 Morning
+
+Day 4:
+Event 34 Morning
+Event 34 Afternoon
+
+Day 5:
+Event 39 Morning
+Event 39 Afternoon
+
+=====================
+Nurse 44 
+=====================
+
+Day 1:
+Event 2 Afternoon
+
+Day 2:
+Event 17 Morning
+
+Day 3:
+Event 21 Morning
+Event 21 Afternoon
+
+Day 4:
+Event 31 Morning
+Event 57 Afternoon
+
+Day 5:
+Event 39 Morning
+Event 39 Afternoon
+
+=====================
+Nurse 45 
+=====================
+
+Day 1:
+Event 7 Afternoon
+
+Day 2:
+Event 11 Afternoon
+
+Day 3:
+Event 21 Morning
+Event 21 Afternoon
+
+Day 4:
+Event 32 Afternoon
+Event 54 Morning
+
+Day 5:
+Event 40 Morning
+Event 40 Afternoon
+
+=====================
+Nurse 46 
+=====================
+
+Day 1:
+Event 7 Afternoon
+
+Day 2:
+Home -> Depot
+Event 11 Afternoon (pick-up)
+Event 17 Morning (pick-up)
+
+Day 3:
+Event 23 Afternoon
+Event 27 Morning
+
+Day 4:
+Event 32 Afternoon
+Event 54 Morning
+
+Day 5:
+Event 40 Morning
+Event 40 Afternoon
+
+=====================
+Nurse 47 
+=====================
+
+Day 1:
+Event 7 Afternoon
+
+Day 2:
+Event 11 Afternoon (drop-off)
+Depot -> Home
+
+Day 3:
+Event 23 Afternoon
+Event 27 Morning
+
+Day 4:
+Event 37 Morning
+Event 37 Afternoon
+
+Day 5:
+Event 60 Afternoon
+
+=====================
+Nurse 48 
+=====================
+
+Day 1:
+Event 6 Morning
+Event 6 Afternoon
+
+Day 2:
+Event 16 Morning
+Event 16 Afternoon
+
+Day 3:
+Event 25 Afternoon
+Event 47 Morning
+
+Day 4:
+Home -> Depot
+Event 36 Morning (pick-up & drop-off)
+Event 56 Afternoon (pick-up & drop-off)
+Depot -> Home
+
+Day 5:
+Event 43 Afternoon
+
+=====================
+Nurse 49 
+=====================
+
+Day 1:
+Event 6 Morning
+Event 6 Afternoon
+
+Day 2:
+Event 16 Morning
+Event 16 Afternoon
+
+Day 3:
+Event 24 Morning
+Event 26 Afternoon
+
+Day 4:
+Event 53 Afternoon
+
+Day 5:
+Event 43 Afternoon
+
+=====================
+Nurse 50 
+=====================
+
+Day 1:
+Event 6 Morning
+Event 6 Afternoon
+
+Day 2:
+Event 18 Afternoon
+
+Day 3:
+Event 25 Afternoon
+
+Day 4:
+Event 36 Morning
+
+Day 5:
+Event 41 Morning
+Event 41 Afternoon
+
+=====================
+Nurse 51 
+=====================
+
+Day 1:
+Event 6 Morning
+Event 6 Afternoon
+
+Day 2:
+Event 13 Morning
+
+Day 3:
+Event 20 Morning
+
+Day 4:
+Event 28 Morning
+Event 28 Afternoon
+
+Day 5:
+Event 42 Morning
+Event 42 Afternoon
+
+=====================
+Nurse 52 
+=====================
+
+Day 1:
+Event 3 Morning
+Event 3 Afternoon
+
+Day 2:
+Event 15 Morning
+Event 15 Afternoon
+
+Day 3:
+Event 48 Afternoon
+
+Day 4:
+Event 34 Morning
+Event 34 Afternoon
+
+Day 5:
+Event 39 Morning
+Event 39 Afternoon
+
+=====================
+Nurse 53 
+=====================
+
+Day 1:
+Event 1 Morning
+Event 1 Afternoon
+
+Day 2:
+Event 13 Morning
+
+Day 3:
+Event 20 Morning
+
+Day 4:
+Event 28 Morning
+Event 28 Afternoon
+
+Day 5:
+Event 42 Morning
+Event 42 Afternoon
+
+=====================
+Nurse 54 
+=====================
+
+Day 1:
+Event 1 Morning
+Event 1 Afternoon
+
+Day 2:
+Event 12 Afternoon
+
+Day 3:
+Event 48 Afternoon
+
+Day 4:
+Home -> Depot
+Event 34 Morning (pick-up & drop-off)
+Event 34 Afternoon (pick-up & drop-off)
+Depot -> Home
+
+Day 5:
+Event 39 Morning
+Event 39 Afternoon
+
+=====================
+Nurse 55 
+=====================
+
+Day 1:
+Event 5 Morning
+Event 5 Afternoon
+
+Day 2:
+Event 10 Morning (drop-off)
+Event 10 Afternoon (drop-off)
+Depot -> Home
+
+Day 3:
+Event 26 Afternoon
+
+Day 4:
+Event 33 Morning
+Event 33 Afternoon
+
+Day 5:
+Event 45 Afternoon
+Event 59 Morning
+
+=====================
+Nurse 56 
+=====================
+
+Day 1:
+Event 7 Afternoon (drop-off)
+Depot -> Home
+
+Day 2:
+Event 11 Afternoon
+
+Day 3:
+Event 23 Afternoon
+Event 27 Morning
+
+Day 4:
+Event 29 Afternoon
+
+Day 5:
+Event 44 Morning
+Event 44 Afternoon
+
+=====================
+Nurse 57 
+=====================
+
+Day 1:
+Event 7 Afternoon
+
+Day 2:
+Event 11 Afternoon
+
+Day 3:
+Event 21 Morning
+Event 21 Afternoon
+
+Day 4:
+Event 52 Morning
+
+Day 5:
+Event 44 Morning
+Event 44 Afternoon
+
+=====================
+Nurse 58 
+=====================
+
+Day 1:
+Home -> Depot
+Event 7 Afternoon (pick-up)
+Event 8 Morning
+
+Day 2:
+Event 11 Afternoon
+
+Day 3:
+Event 23 Afternoon
+Event 27 Morning
+
+Day 4:
+Event 29 Afternoon
+
+Day 5:
+Event 44 Morning
+Event 44 Afternoon

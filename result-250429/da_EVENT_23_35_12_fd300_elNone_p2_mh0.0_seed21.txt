@@ -1,0 +1,83 @@
+Best feasible solution found within 60.01 seconds:
+Objective value: 2643.0
+Best bound: 2587.0
+Gap: 0.021188043889519486
+
+=====================
+Day 1 
+=====================
+
+Event 1: Afternoon [1 RN, 2 LVN] 
+Nurse 2
+Nurse 25 (pick up & drop off)
+Nurse 29
+
+Event 2: Full day [2 RN, 4 LVN] 
+Nurse 13
+Nurse 19 (pick up & drop off)
+Nurse 41
+Nurse 44
+Nurse 52
+Nurse 54
+
+Event 3: Full day [2 RN, 2 LVN] 
+Nurse 15 (pick up & drop off)
+Nurse 16
+Nurse 45
+Nurse 46
+
+Event 4: Full day [2 RN, 3 LVN] 
+Nurse 5 (pick up & drop off)
+Nurse 12
+Nurse 32
+Nurse 35
+Nurse 43
+
+Event 5: Full day [2 RN, 3 LVN] 
+Nurse 1
+Nurse 23
+Nurse 24
+Nurse 26
+Nurse 38 (pick up & drop off)
+
+Event 6: Morning [3 RN, 5 LVN] 
+Nurse 2
+Nurse 11
+Nurse 18
+Nurse 27
+Nurse 29
+Nurse 30 (pick up & drop off)
+Nurse 37
+Nurse 39
+
+Event 7: Full day [2 RN, 3 LVN] 
+Nurse 7 (pick up & drop off)
+Nurse 20
+Nurse 47
+Nurse 57
+Nurse 58
+
+Event 8: Afternoon [1 RN, 2 LVN] 
+Nurse 14
+Nurse 36 (pick up & drop off)
+Nurse 55
+
+Event 9: Afternoon [1 RN, 2 LVN] 
+Nurse 18
+Nurse 30 (pick up & drop off)
+Nurse 39
+
+Event 10: Morning [1 RN, 2 LVN] 
+Nurse 14
+Nurse 36 (pick up & drop off)
+Nurse 55
+
+Event 11: Morning [1 RN, 2 LVN] 
+Nurse 21
+Nurse 25 (pick up & drop off)
+Nurse 56
+
+Event 12: Afternoon [1 RN, 2 LVN] 
+Nurse 11 (pick up & drop off)
+Nurse 27
+Nurse 37

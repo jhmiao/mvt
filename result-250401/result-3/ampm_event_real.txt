@@ -1,0 +1,559 @@
+Best feasible solution found within 348.1 seconds:
+
+Objective value: 11430.0
+the gap is 0.07244094488188976
+
+=====================
+Day 1 
+=====================
+
+Event 1: Full day [2 RN, 2 LVN] 
+Nurse 1 (RN)
+Nurse 23 (RN)
+Nurse 24 (LVN)
+Pick up by Nurse 36 
+Drop off by Nurse 36 
+Nurse 36 (LVN)
+
+Event 2: Morning [2 RN, 1 LVN] 
+Nurse 13 (RN)
+Pick up by Nurse 14 
+Nurse 14 (RN)
+Drop off by Nurse 44 
+Nurse 44 (LVN)
+
+Event 3: Full day [2 RN, 3 LVN] 
+Pick up by Nurse 7 
+Drop off by Nurse 7 
+Nurse 7 (RN)
+Nurse 12 (RN)
+Nurse 27 (LVN)
+Nurse 39 (LVN)
+Nurse 52 (LVN)
+
+Event 4: Full day [1 RN, 3 LVN] 
+Pick up by Nurse 15 
+Drop off by Nurse 15 
+Nurse 15 (RN)
+Nurse 29 (LVN)
+Nurse 35 (LVN)
+Nurse 41 (LVN)
+
+Event 5: Full day [2 RN, 2 LVN] 
+Nurse 2 (RN)
+Pick up by Nurse 5 
+Drop off by Nurse 5 
+Nurse 5 (RN)
+Nurse 54 (LVN)
+Nurse 55 (LVN)
+
+Event 6: Full day [3 RN, 7 LVN] 
+Nurse 4 (RN)
+Nurse 6 (RN)
+Pick up by Nurse 19 
+Drop off by Nurse 19 
+Nurse 19 (RN)
+Nurse 25 (LVN)
+Nurse 30 (LVN)
+Nurse 31 (LVN)
+Nurse 34 (LVN)
+Nurse 37 (LVN)
+Nurse 38 (LVN)
+Nurse 48 (LVN)
+
+Event 7: Afternoon [1 RN, 3 LVN] 
+Pick up by Nurse 14 
+Nurse 14 (RN)
+Drop off by Nurse 44 
+Nurse 44 (LVN)
+Nurse 45 (LVN)
+Nurse 46 (LVN)
+
+Event 8: Afternoon [1 RN, 2 LVN] 
+Pick up by Nurse 11 
+Nurse 11 (RN)
+Drop off by Nurse 32 
+Nurse 32 (LVN)
+Nurse 43 (LVN)
+
+Event 9: Morning [2 RN, 2 LVN] 
+Pick up by Nurse 11 
+Nurse 11 (RN)
+Nurse 18 (RN)
+Nurse 32 (LVN)
+Drop off by Nurse 43 
+Nurse 43 (LVN)
+
+=====================
+Day 2 
+=====================
+
+Event 10: Full day [1 RN, 2 LVN] 
+Pick up by Nurse 19 
+Drop off by Nurse 19 
+Nurse 19 (RN)
+Nurse 29 (LVN)
+Nurse 36 (LVN)
+
+Event 11: Afternoon [1 RN, 3 LVN] 
+Nurse 14 (RN)
+Drop off by Nurse 35 
+Nurse 35 (LVN)
+Nurse 44 (LVN)
+Pick up by Nurse 55 
+Nurse 55 (LVN)
+
+Event 12: Morning [2 RN, 3 LVN] 
+Nurse 1 (RN)
+Nurse 23 (RN)
+Nurse 24 (LVN)
+Pick up by Nurse 25 
+Drop off by Nurse 25 
+Nurse 25 (LVN)
+Nurse 26 (LVN)
+
+Event 13: Afternoon [2 RN, 2 LVN] 
+Pick up by Nurse 5 
+Drop off by Nurse 5 
+Nurse 5 (RN)
+Nurse 13 (RN)
+Nurse 26 (LVN)
+Nurse 43 (LVN)
+
+Event 14: Afternoon [2 RN, 1 LVN] 
+Nurse 2 (RN)
+Pick up by Nurse 11 
+Drop off by Nurse 11 
+Nurse 11 (RN)
+Nurse 41 (LVN)
+
+Event 15: Full day [2 RN, 4 LVN] 
+Nurse 12 (RN)
+Nurse 18 (RN)
+Nurse 27 (LVN)
+Nurse 32 (LVN)
+Nurse 52 (LVN)
+Pick up by Nurse 54 
+Drop off by Nurse 54 
+Nurse 54 (LVN)
+
+Event 16: Full day [2 RN, 3 LVN] 
+Nurse 4 (RN)
+Pick up by Nurse 7 
+Drop off by Nurse 7 
+Nurse 7 (RN)
+Nurse 31 (LVN)
+Nurse 37 (LVN)
+Nurse 38 (LVN)
+
+Event 17: Morning [4 RN, 6 LVN] 
+Nurse 2 (RN)
+Pick up by Nurse 5 
+Nurse 5 (RN)
+Nurse 11 (RN)
+Nurse 13 (RN)
+Drop off by Nurse 35 
+Nurse 35 (LVN)
+Nurse 39 (LVN)
+Nurse 41 (LVN)
+Nurse 43 (LVN)
+Nurse 44 (LVN)
+Nurse 55 (LVN)
+
+Event 18: Afternoon [2 RN, 3 LVN] 
+Nurse 6 (RN)
+Nurse 9 (RN)
+Pick up by Nurse 25 
+Drop off by Nurse 25 
+Nurse 25 (LVN)
+Nurse 30 (LVN)
+Nurse 39 (LVN)
+
+=====================
+Day 3 
+=====================
+
+Event 19: Full day [1 RN, 2 LVN] 
+Nurse 9 (RN)
+Nurse 26 (LVN)
+Pick up by Nurse 38 
+Drop off by Nurse 38 
+Nurse 38 (LVN)
+
+Event 20: Afternoon [3 RN, 4 LVN] 
+Drop off by Nurse 1 
+Nurse 1 (RN)
+Nurse 10 (RN)
+Nurse 22 (RN)
+Nurse 40 (LVN)
+Nurse 42 (LVN)
+Pick up by Nurse 53 
+Nurse 53 (LVN)
+Nurse 54 (LVN)
+
+Event 21: Full day [6 RN, 6 LVN] 
+Nurse 2 (RN)
+Pick up by Nurse 5 
+Nurse 5 (RN)
+Nurse 13 (RN)
+Nurse 15 (RN)
+Drop off by Nurse 19 
+Nurse 19 (RN)
+Nurse 23 (RN)
+Nurse 24 (LVN)
+Nurse 25 (LVN)
+Nurse 29 (LVN)
+Nurse 41 (LVN)
+Nurse 44 (LVN)
+Nurse 45 (LVN)
+
+Event 22: Afternoon [3 RN, 3 LVN] 
+Pick up by Nurse 7 
+Drop off by Nurse 7 
+Nurse 7 (RN)
+Nurse 12 (RN)
+Nurse 18 (RN)
+Nurse 32 (LVN)
+Nurse 35 (LVN)
+Nurse 43 (LVN)
+
+Event 23: Afternoon [2 RN, 4 LVN] 
+Nurse 14 (RN)
+Nurse 16 (RN)
+Pick up by Nurse 30 
+Drop off by Nurse 30 
+Nurse 30 (LVN)
+Nurse 46 (LVN)
+Nurse 47 (LVN)
+Nurse 55 (LVN)
+
+Event 24: Morning [3 RN, 5 LVN] 
+Nurse 3 (RN)
+Nurse 17 (RN)
+Nurse 18 (RN)
+Nurse 27 (LVN)
+Nurse 34 (LVN)
+Pick up by Nurse 36 
+Nurse 36 (LVN)
+Nurse 39 (LVN)
+Drop off by Nurse 52 
+Nurse 52 (LVN)
+
+Event 25: Afternoon [3 RN, 4 LVN] 
+Nurse 6 (RN)
+Nurse 8 (RN)
+Pick up by Nurse 11 
+Drop off by Nurse 11 
+Nurse 11 (RN)
+Nurse 31 (LVN)
+Nurse 37 (LVN)
+Nurse 48 (LVN)
+Nurse 51 (LVN)
+
+Event 26: Afternoon [3 RN, 5 LVN] 
+Nurse 3 (RN)
+Drop off by Nurse 4 
+Nurse 4 (RN)
+Nurse 17 (RN)
+Nurse 27 (LVN)
+Nurse 34 (LVN)
+Pick up by Nurse 36 
+Nurse 36 (LVN)
+Nurse 39 (LVN)
+Nurse 52 (LVN)
+
+Event 27: Morning [2 RN, 4 LVN] 
+Nurse 14 (RN)
+Nurse 16 (RN)
+Pick up by Nurse 30 
+Drop off by Nurse 30 
+Nurse 30 (LVN)
+Nurse 46 (LVN)
+Nurse 47 (LVN)
+Nurse 55 (LVN)
+
+Event 46: Morning [2 RN, 2 LVN] 
+Nurse 6 (RN)
+Nurse 8 (RN)
+Nurse 31 (LVN)
+Pick up by Nurse 51 
+Drop off by Nurse 51 
+Nurse 51 (LVN)
+
+Event 47: Morning [1 RN, 2 LVN] 
+Pick up by Nurse 11 
+Drop off by Nurse 11 
+Nurse 11 (RN)
+Nurse 37 (LVN)
+Nurse 48 (LVN)
+
+Event 48: Morning [3 RN, 3 LVN] 
+Drop off by Nurse 1 
+Nurse 1 (RN)
+Nurse 10 (RN)
+Nurse 22 (RN)
+Nurse 42 (LVN)
+Pick up by Nurse 53 
+Nurse 53 (LVN)
+Nurse 54 (LVN)
+
+Event 49: Morning [1 RN, 2 LVN] 
+Pick up by Nurse 4 
+Drop off by Nurse 4 
+Nurse 4 (RN)
+Nurse 32 (LVN)
+Nurse 43 (LVN)
+
+Event 50: Morning [2 RN, 1 LVN] 
+Pick up by Nurse 7 
+Drop off by Nurse 7 
+Nurse 7 (RN)
+Nurse 12 (RN)
+Nurse 35 (LVN)
+
+=====================
+Day 4 
+=====================
+
+Event 28: Full day [1 RN, 3 LVN] 
+Pick up by Nurse 19 
+Drop off by Nurse 19 
+Nurse 19 (RN)
+Nurse 40 (LVN)
+Nurse 51 (LVN)
+Nurse 53 (LVN)
+
+Event 29: Afternoon [1 RN, 1 LVN] 
+Pick up by Nurse 1 
+Drop off by Nurse 1 
+Nurse 1 (RN)
+Nurse 57 (LVN)
+Nurse 58 (LVN)
+
+Event 30: Afternoon [2 RN, 2 LVN] 
+Nurse 2 (RN)
+Nurse 13 (RN)
+Pick up by Nurse 29 
+Nurse 29 (LVN)
+Drop off by Nurse 42 
+Nurse 42 (LVN)
+
+Event 31: Afternoon [2 RN, 3 LVN] 
+Nurse 14 (RN)
+Nurse 16 (RN)
+Nurse 24 (LVN)
+Pick up by Nurse 31 
+Drop off by Nurse 31 
+Nurse 31 (LVN)
+Nurse 44 (LVN)
+
+Event 32: Afternoon [1 RN, 2 LVN] 
+Pick up by Nurse 7 
+Drop off by Nurse 7 
+Nurse 7 (RN)
+Nurse 45 (LVN)
+Nurse 46 (LVN)
+
+Event 33: Full day [3 RN, 3 LVN] 
+Nurse 5 (RN)
+Nurse 15 (RN)
+Pick up by Nurse 23 
+Drop off by Nurse 23 
+Nurse 23 (RN)
+Nurse 25 (LVN)
+Nurse 36 (LVN)
+Nurse 55 (LVN)
+
+Event 34: Full day [4 RN, 6 LVN] 
+Pick up by Nurse 4 
+Nurse 4 (RN)
+Nurse 8 (RN)
+Nurse 12 (RN)
+Nurse 18 (RN)
+Nurse 27 (LVN)
+Nurse 32 (LVN)
+Nurse 35 (LVN)
+Nurse 39 (LVN)
+Drop off by Nurse 41 
+Nurse 41 (LVN)
+Nurse 43 (LVN)
+
+Event 35: Morning [1 RN, 2 LVN] 
+Nurse 2 (RN)
+Nurse 29 (LVN)
+Pick up by Nurse 54 
+Drop off by Nurse 54 
+Nurse 54 (LVN)
+
+Event 36: Morning [1 RN, 4 LVN] 
+Nurse 6 (RN)
+Nurse 30 (LVN)
+Nurse 34 (LVN)
+Pick up by Nurse 37 
+Drop off by Nurse 37 
+Nurse 37 (LVN)
+Nurse 38 (LVN)
+
+Event 37: Full day [2 RN, 1 LVN] 
+Pick up by Nurse 11 
+Drop off by Nurse 11 
+Nurse 11 (RN)
+Nurse 20 (RN)
+Nurse 21 (RN)
+Nurse 47 (LVN)
+
+Event 51: Afternoon [1 RN, 3 LVN] 
+Nurse 10 (RN)
+Nurse 38 (LVN)
+Nurse 52 (LVN)
+Pick up by Nurse 54 
+Drop off by Nurse 54 
+Nurse 54 (LVN)
+
+Event 52: Morning [1 RN, 1 LVN] 
+Pick up by Nurse 1 
+Drop off by Nurse 1 
+Nurse 1 (RN)
+Nurse 57 (LVN)
+
+Event 53: Afternoon [1 RN, 2 LVN] 
+Nurse 17 (RN)
+Pick up by Nurse 26 
+Drop off by Nurse 26 
+Nurse 26 (LVN)
+Nurse 48 (LVN)
+
+Event 54: Morning [1 RN, 2 LVN] 
+Pick up by Nurse 7 
+Drop off by Nurse 7 
+Nurse 7 (RN)
+Nurse 45 (LVN)
+Nurse 46 (LVN)
+
+Event 55: Morning [1 RN, 3 LVN] 
+Nurse 10 (RN)
+Pick up by Nurse 26 
+Drop off by Nurse 26 
+Nurse 26 (LVN)
+Nurse 42 (LVN)
+Nurse 52 (LVN)
+
+Event 56: Afternoon [1 RN, 3 LVN] 
+Nurse 6 (RN)
+Nurse 30 (LVN)
+Nurse 34 (LVN)
+Pick up by Nurse 37 
+Drop off by Nurse 37 
+Nurse 37 (LVN)
+
+Event 57: Morning [2 RN, 3 LVN] 
+Nurse 14 (RN)
+Nurse 16 (RN)
+Nurse 24 (LVN)
+Pick up by Nurse 31 
+Drop off by Nurse 31 
+Nurse 31 (LVN)
+Nurse 44 (LVN)
+
+=====================
+Day 5 
+=====================
+
+Event 38: Afternoon [1 RN, 2 LVN] 
+Nurse 2 (RN)
+Nurse 27 (LVN)
+Pick up by Nurse 36 
+Drop off by Nurse 36 
+Nurse 36 (LVN)
+
+Event 39: Full day [2 RN, 4 LVN] 
+Pick up by Nurse 11 
+Drop off by Nurse 11 
+Nurse 11 (RN)
+Nurse 13 (RN)
+Nurse 41 (LVN)
+Nurse 43 (LVN)
+Nurse 44 (LVN)
+Nurse 54 (LVN)
+
+Event 40: Full day [2 RN, 2 LVN] 
+Pick up by Nurse 15 
+Drop off by Nurse 15 
+Nurse 15 (RN)
+Nurse 16 (RN)
+Nurse 45 (LVN)
+Nurse 46 (LVN)
+
+Event 41: Full day [2 RN, 3 LVN] 
+Pick up by Nurse 7 
+Drop off by Nurse 7 
+Nurse 7 (RN)
+Nurse 12 (RN)
+Nurse 30 (LVN)
+Nurse 32 (LVN)
+Nurse 35 (LVN)
+
+Event 42: Full day [2 RN, 3 LVN] 
+Nurse 1 (RN)
+Nurse 23 (RN)
+Nurse 24 (LVN)
+Nurse 26 (LVN)
+Pick up by Nurse 31 
+Drop off by Nurse 31 
+Nurse 31 (LVN)
+
+Event 43: Morning [3 RN, 5 LVN] 
+Nurse 2 (RN)
+Nurse 18 (RN)
+Pick up by Nurse 19 
+Drop off by Nurse 19 
+Nurse 19 (RN)
+Nurse 27 (LVN)
+Nurse 29 (LVN)
+Nurse 38 (LVN)
+Nurse 39 (LVN)
+Nurse 52 (LVN)
+
+Event 44: Full day [2 RN, 3 LVN] 
+Pick up by Nurse 5 
+Drop off by Nurse 5 
+Nurse 5 (RN)
+Nurse 21 (RN)
+Nurse 47 (LVN)
+Nurse 57 (LVN)
+Nurse 58 (LVN)
+
+Event 45: Afternoon [1 RN, 2 LVN] 
+Nurse 14 (RN)
+Pick up by Nurse 25 
+Drop off by Nurse 25 
+Nurse 25 (LVN)
+Nurse 55 (LVN)
+
+Event 58: Afternoon [1 RN, 2 LVN] 
+Pick up by Nurse 19 
+Drop off by Nurse 19 
+Nurse 19 (RN)
+Nurse 29 (LVN)
+Nurse 52 (LVN)
+
+Event 59: Morning [1 RN, 2 LVN] 
+Nurse 14 (RN)
+Pick up by Nurse 25 
+Drop off by Nurse 25 
+Nurse 25 (LVN)
+Nurse 55 (LVN)
+
+Event 60: Morning [1 RN, 2 LVN] 
+Nurse 20 (RN)
+Pick up by Nurse 36 
+Drop off by Nurse 36 
+Nurse 36 (LVN)
+Nurse 56 (LVN)
+
+Event 61: Afternoon [1 RN, 2 LVN] 
+Nurse 18 (RN)
+Pick up by Nurse 38 
+Drop off by Nurse 38 
+Nurse 38 (LVN)
+Nurse 39 (LVN)

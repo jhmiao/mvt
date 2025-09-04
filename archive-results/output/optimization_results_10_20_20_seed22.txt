@@ -1,0 +1,164 @@
+Best feasible solution found within 1200 seconds:
+
+=====================
+Day 1 
+=====================
+
+Event 1: 14:30-15:00 [3 RN, 1 LVN] 
+RN 4 (team leader)
+RN 8
+RN 10
+LVN 20
+
+Event 2: 13:19-13:49 [2 RN, 2 LVN] 
+RN 8
+RN 9 (team leader)
+LVN 11
+LVN 23
+
+Event 3: 10:00-10:30 [2 RN, 7 LVN] 
+RN 4 (team leader)
+RN 10
+LVN 13
+LVN 14
+LVN 20
+LVN 23
+LVN 25
+LVN 27
+LVN 29
+
+Event 4: 9:30-11:00 [2 RN, 5 LVN] 
+RN 8
+RN 9 (team leader)
+LVN 15
+LVN 19
+LVN 22
+LVN 26
+LVN 30
+
+Event 5: 10:42-11:12 [1 RN, 2 LVN] 
+RN 4 (team leader)
+LVN 13
+LVN 29
+
+Event 8: 11:30-12:30 [1 RN, 1 LVN] 
+RN 4 (team leader)
+LVN 11
+
+Event 9: 9:30-11:00 [3 RN, 2 LVN] 
+RN 2
+RN 3
+RN 6 (team leader)
+LVN 11
+LVN 16
+
+Event 14: 11:14-13:14 [3 RN, 2 LVN] 
+RN 2
+RN 6 (team leader)
+RN 10
+LVN 14
+LVN 25
+
+Event 15: 13:30-14:30 [2 RN, 7 LVN] 
+RN 2
+RN 6 (team leader)
+LVN 14
+LVN 16
+LVN 22
+LVN 25
+LVN 26
+LVN 29
+LVN 30
+
+Event 18: 14:00-15:00 [2 RN, 3 LVN] 
+RN 3
+RN 9 (team leader)
+LVN 11
+LVN 15
+LVN 23
+
+Event 20: 11:25-12:25 [2 RN, 3 LVN] 
+RN 8
+RN 9 (team leader)
+LVN 19
+LVN 26
+LVN 29
+
+=====================
+Day 2 
+=====================
+
+Event 6: 13:06-15:06 [2 RN, 4 LVN] 
+RN 3
+RN 6 (team leader)
+LVN 12
+LVN 18
+LVN 19
+LVN 21
+
+Event 7: 13:06-15:06 [2 RN, 3 LVN] 
+RN 5
+RN 9 (team leader)
+LVN 22
+LVN 28
+LVN 29
+
+Event 10: 12:15-12:45 [3 RN, 1 LVN] 
+RN 1
+RN 4 (team leader)
+RN 6
+LVN 11
+
+Event 11: 14:00-14:45 [1 RN, 3 LVN] 
+RN 4 (team leader)
+LVN 11
+LVN 16
+LVN 27
+
+Event 12: 11:15-12:45 [3 RN, 2 LVN] 
+RN 5
+RN 7
+RN 9 (team leader)
+LVN 22
+LVN 28
+
+Event 16: 9:30-12:00 [2 RN, 1 LVN] 
+RN 3
+RN 6 (team leader)
+LVN 21
+
+Event 17: 9:30-11:00 [1 RN, 1 LVN] 
+RN 4 (team leader)
+LVN 22
+
+=====================
+Day 3 
+=====================
+
+=====================
+Day 4 
+=====================
+
+=====================
+Day 5 
+=====================
+
+Event 13: 12:36-15:06 [2 RN, 6 LVN] 
+RN 1
+RN 3 (team leader)
+LVN 16
+LVN 17
+LVN 18
+LVN 24
+LVN 25
+LVN 29
+
+Event 19: 9:30-11:00 [1 RN, 5 LVN] 
+RN 3 (team leader)
+LVN 16
+LVN 17
+LVN 18
+LVN 25
+LVN 29
+
+Objective value: 2015.0

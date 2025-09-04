@@ -1,0 +1,2678 @@
+Best feasible solution found within 7200 seconds:
+
+Objective value: 13942.0
+
+=====================
+Nurse 1 
+=====================
+
+Day 1:
+Depot -> Home
+Drop off for Event 21
+Event 21 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Home -> Event 66
+Event 66 -> Event 21
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 2:
+Home -> Event 5
+Event 5 -> Event 30
+Event 30 -> Home
+
+Day 3:
+Event 26 -> Home
+Home -> Event 44
+Event 44 -> Event 26
+
+Day 4:
+Event 2 -> Home
+Home -> Event 16
+Event 16 -> Event 2
+
+Day 5:
+Event 38 -> Home
+Home -> Event 43
+Event 43 -> Event 38
+
+=====================
+Nurse 2 
+=====================
+
+Day 1:
+Event 21 -> Home
+Home -> Event 35
+Event 35 -> Event 21
+
+Day 2:
+Home -> Event 11
+Event 11 -> Event 36
+Event 36 -> Home
+
+Day 3:
+Home -> Depot
+Depot -> Event 59
+Event 59 -> Event 62
+Pick up for Event 62
+Event 62 -> Home
+
+Day 4:
+Home -> Event 14
+Event 14 -> Event 20
+Event 20 -> Home
+
+Day 5:
+Home -> Event 55
+Event 55 -> Event 57
+Event 57 -> Home
+
+=====================
+Nurse 3 
+=====================
+
+Day 1:
+Drop off for Event 7
+Home -> Event 7
+Event 7 -> Event 31
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Event 31 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 2:
+Depot -> Home
+Drop off for Event 8
+Home -> Event 8
+Event 8 -> Event 30
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Event 30 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 3:
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Home -> Event 25
+Event 25 -> Event 34
+Depot -> Home
+Depot -> Home
+Drop off for Event 34
+Event 34 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 4:
+Event 13 -> Home
+Home -> Event 16
+Event 16 -> Event 13
+
+Day 5:
+Home -> Event 52
+Event 52 -> Event 58
+Event 58 -> Home
+
+=====================
+Nurse 4 
+=====================
+
+Day 1:
+Home -> Event 51
+Event 51 -> Event 61
+Event 61 -> Home
+
+Day 2:
+Home -> Event 8
+Event 8 -> Event 46
+Event 46 -> Home
+
+Day 3:
+Event 4 -> Home
+Home -> Event 23
+Event 23 -> Event 4
+
+Day 4:
+Home -> Event 19
+Event 19 -> Event 54
+Event 54 -> Home
+
+Day 5:
+Event 38 -> Home
+Home -> Event 55
+Event 55 -> Event 38
+
+=====================
+Nurse 5 
+=====================
+
+Day 1:
+Event 31 -> Home
+Home -> Event 56
+Event 56 -> Event 31
+
+Day 2:
+Home -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Pick up for Event 17
+Depot -> Event 17
+Event 17 -> Event 73
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 73
+Event 73 -> Depot
+
+Day 3:
+Home -> Depot
+Pick up for Event 3
+Depot -> Event 3
+Event 3 -> Event 65
+Event 65 -> Home
+
+Day 4:
+Home -> Depot
+Depot -> Home
+Depot -> Home
+Pick up for Event 13
+Drop off for Event 13
+Event 13 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Pick up for Event 45
+Depot -> Event 45
+Event 45 -> Event 13
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 5:
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 32
+Home -> Event 32
+Event 32 -> Event 58
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 58
+Event 58 -> Depot
+Depot -> Home
+
+=====================
+Nurse 6 
+=====================
+
+Day 1:
+Home -> Depot
+Pick up for Event 28
+Event 28 -> Home
+Pick up for Event 51
+Depot -> Event 51
+Event 51 -> Event 28
+
+Day 2:
+Home -> Depot
+Depot -> Event 8
+Event 8 -> Event 67
+Pick up for Event 67
+Event 67 -> Home
+
+Day 3:
+Home -> Depot
+Drop off for Event 1
+Event 1 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Pick up for Event 44
+Depot -> Event 44
+Event 44 -> Event 1
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 4:
+Event 2 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 45
+Home -> Event 45
+Event 45 -> Event 2
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 5:
+Home -> Depot
+Event 10 -> Home
+Pick up for Event 27
+Depot -> Event 27
+Event 27 -> Event 10
+
+=====================
+Nurse 7 
+=====================
+
+Day 1:
+Home -> Event 35
+Event 35 -> Event 42
+Event 42 -> Home
+
+Day 2:
+Depot -> Home
+Depot -> Home
+Drop off for Event 9
+Home -> Event 9
+Event 9 -> Event 67
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Event 67 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 3:
+Home -> Event 3
+Event 3 -> Event 26
+Event 26 -> Home
+
+Day 4:
+Event 2 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 19
+Home -> Event 19
+Event 19 -> Event 2
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 5:
+Home -> Event 32
+Event 32 -> Event 41
+Event 41 -> Home
+
+=====================
+Nurse 8 
+=====================
+
+Day 1:
+Home -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 69
+Depot -> Event 69
+Event 69 -> Event 70
+Depot -> Home
+Pick up for Event 70
+Drop off for Event 70
+Event 70 -> Depot
+Depot -> Home
+
+Day 2:
+Event 46 -> Home
+Home -> Event 72
+Event 72 -> Event 46
+
+Day 3:
+Home -> Depot
+Pick up for Event 59
+Depot -> Event 59
+Event 59 -> Event 62
+Event 62 -> Home
+
+Day 4:
+Home -> Depot
+Depot -> Event 19
+Event 19 -> Event 54
+Pick up for Event 54
+Event 54 -> Home
+
+Day 5:
+Home -> Depot
+Depot -> Event 12
+Event 12 -> Event 24
+Pick up for Event 24
+Event 24 -> Home
+
+=====================
+Nurse 9 
+=====================
+
+Day 1:
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Event 50 -> Depot
+Drop off for Event 51
+Home -> Event 51
+Event 51 -> Event 50
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 2:
+Home -> Depot
+Depot -> Event 9
+Event 9 -> Event 73
+Pick up for Event 73
+Event 73 -> Home
+
+Day 3:
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 25
+Home -> Event 25
+Event 25 -> Event 47
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Event 47 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 4:
+Event 6 -> Home
+Home -> Event 15
+Event 15 -> Event 6
+
+Day 5:
+Event 29 -> Home
+Home -> Event 74
+Event 74 -> Event 29
+
+=====================
+Nurse 10 
+=====================
+
+Day 1:
+Home -> Depot
+Pick up for Event 61
+Event 61 -> Home
+Depot -> Event 69
+Event 69 -> Event 61
+
+Day 2:
+Home -> Depot
+Pick up for Event 5
+Depot -> Event 5
+Event 5 -> Event 60
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 60
+Event 60 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 3:
+Home -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Pick up for Event 25
+Depot -> Event 25
+Event 25 -> Event 47
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Pick up for Event 47
+Drop off for Event 47
+Event 47 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 4:
+Home -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Pick up for Event 15
+Depot -> Event 15
+Event 15 -> Event 68
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 68
+Event 68 -> Depot
+
+Day 5:
+Depot -> Home
+Home -> Event 12
+Event 12 -> Event 41
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 41
+Event 41 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+=====================
+Nurse 11 
+=====================
+
+Day 1:
+Event 21 -> Home
+Home -> Event 22
+Event 22 -> Event 21
+
+Day 2:
+Event 37 -> Home
+Home -> Event 67
+Event 67 -> Event 37
+
+Day 3:
+Event 34 -> Home
+Home -> Event 59
+Event 59 -> Event 34
+
+Day 4:
+Event 20 -> Home
+Home -> Event 40
+Event 40 -> Event 20
+
+Day 5:
+Home -> Depot
+Depot -> Event 27
+Event 27 -> Event 49
+Pick up for Event 49
+Event 49 -> Home
+
+=====================
+Nurse 12 
+=====================
+
+Day 1:
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Event 28 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 66
+Home -> Event 66
+Event 66 -> Event 28
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 2:
+Home -> Event 9
+Event 9 -> Event 71
+Event 71 -> Home
+
+Day 3:
+Event 34 -> Home
+Home -> Event 53
+Event 53 -> Event 34
+
+Day 4:
+Home -> Event 18
+Event 18 -> Event 48
+Event 48 -> Home
+
+Day 5:
+Depot -> Home
+Drop off for Event 12
+Home -> Event 12
+Event 12 -> Event 41
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Event 41 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+=====================
+Nurse 13 
+=====================
+
+Day 1:
+Home -> Event 22
+Event 22 -> Event 61
+Event 61 -> Home
+
+Day 2:
+Home -> Event 17
+Event 17 -> Event 67
+Event 67 -> Home
+
+Day 3:
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Home -> Event 23
+Event 23 -> Event 26
+Depot -> Home
+Depot -> Home
+Drop off for Event 26
+Event 26 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 4:
+Home -> Depot
+Pick up for Event 39
+Depot -> Event 39
+Event 39 -> Event 48
+Event 48 -> Home
+
+Day 5:
+Home -> Event 43
+Event 43 -> Event 49
+Event 49 -> Home
+
+=====================
+Nurse 14 
+=====================
+
+Day 1:
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Home -> Event 56
+Event 56 -> Event 75
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 75
+Event 75 -> Depot
+
+Day 2:
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Event 36 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 67
+Home -> Event 67
+Event 67 -> Event 36
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 3:
+Event 34 -> Home
+Home -> Event 64
+Event 64 -> Event 34
+
+Day 4:
+Home -> Event 45
+Event 45 -> Event 63
+Event 63 -> Home
+
+Day 5:
+Home -> Depot
+Depot -> Event 33
+Event 33 -> Event 58
+Pick up for Event 58
+Event 58 -> Home
+
+=====================
+Nurse 15 
+=====================
+
+Day 1:
+Event 31 -> Home
+Home -> Event 56
+Event 56 -> Event 31
+
+Day 2:
+Event 67 -> Home
+Home -> Event 72
+Event 72 -> Event 67
+
+Day 3:
+Home -> Depot
+Depot -> Home
+Depot -> Home
+Pick up for Event 4
+Drop off for Event 4
+Event 4 -> Depot
+Depot -> Event 23
+Event 23 -> Event 4
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 4:
+Event 13 -> Home
+Home -> Event 40
+Event 40 -> Event 13
+
+Day 5:
+Home -> Depot
+Pick up for Event 10
+Event 10 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 55
+Depot -> Event 55
+Event 55 -> Event 10
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+=====================
+Nurse 16 
+=====================
+
+Day 1:
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 35
+Home -> Event 35
+Event 35 -> Event 70
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Event 70 -> Depot
+Depot -> Home
+
+Day 2:
+Home -> Event 11
+Event 11 -> Event 60
+Event 60 -> Home
+
+Day 3:
+Home -> Event 23
+Event 23 -> Event 65
+Event 65 -> Home
+
+Day 4:
+Home -> Event 19
+Event 19 -> Event 54
+Event 54 -> Home
+
+Day 5:
+Event 24 -> Home
+Home -> Event 55
+Event 55 -> Event 24
+
+=====================
+Nurse 17 
+=====================
+
+Day 1:
+Event 50 -> Home
+Home -> Event 56
+Event 56 -> Event 50
+
+Day 2:
+Drop off for Event 5
+Home -> Event 5
+Event 5 -> Event 60
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Event 60 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 3:
+Event 34 -> Home
+Home -> Event 64
+Event 64 -> Event 34
+
+Day 4:
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Home -> Event 14
+Event 14 -> Event 54
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 54
+Event 54 -> Depot
+Depot -> Home
+Depot -> Home
+
+Day 5:
+Home -> Event 27
+Event 27 -> Event 32
+Event 32 -> Home
+
+=====================
+Nurse 18 
+=====================
+
+Day 1:
+Event 42 -> Home
+Home -> Event 56
+Event 56 -> Event 42
+
+Day 2:
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 11
+Home -> Event 11
+Event 11 -> Event 30
+Depot -> Home
+Depot -> Home
+Event 30 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 3:
+Home -> Event 23
+Event 23 -> Event 62
+Event 62 -> Home
+
+Day 4:
+Home -> Event 14
+Event 14 -> Event 39
+Event 39 -> Home
+
+Day 5:
+Event 10 -> Home
+Home -> Event 49
+Event 49 -> Event 10
+
+=====================
+Nurse 19 
+=====================
+
+Day 1:
+Home -> Event 7
+Event 7 -> Event 61
+Event 61 -> Home
+
+Day 2:
+Home -> Event 5
+Event 5 -> Event 46
+Event 46 -> Home
+
+Day 3:
+Home -> Event 25
+Event 25 -> Event 34
+Event 34 -> Home
+
+Day 4:
+Event 13 -> Home
+Home -> Event 14
+Event 14 -> Event 13
+
+Day 5:
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 43
+Home -> Event 43
+Event 43 -> Event 49
+Depot -> Home
+Event 49 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+=====================
+Nurse 20 
+=====================
+
+Day 1:
+Event 31 -> Home
+Home -> Event 56
+Event 56 -> Event 31
+
+Day 2:
+Home -> Event 5
+Event 5 -> Event 60
+Event 60 -> Home
+
+Day 3:
+Home -> Event 23
+Event 23 -> Event 34
+Event 34 -> Home
+
+Day 4:
+Home -> Event 15
+Event 15 -> Event 20
+Event 20 -> Home
+
+Day 5:
+Event 10 -> Home
+Home -> Event 27
+Event 27 -> Event 10
+
+=====================
+Nurse 21 
+=====================
+
+Day 1:
+Event 31 -> Home
+Home -> Event 56
+Event 56 -> Event 31
+
+Day 2:
+Home -> Event 8
+Event 8 -> Event 46
+Event 46 -> Home
+
+Day 3:
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Home -> Event 53
+Event 53 -> Event 62
+Depot -> Home
+Depot -> Home
+Drop off for Event 62
+Event 62 -> Depot
+Depot -> Home
+Depot -> Home
+
+Day 4:
+Home -> Depot
+Pick up for Event 2
+Event 2 -> Home
+Depot -> Event 14
+Event 14 -> Event 2
+
+Day 5:
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Home -> Event 27
+Event 27 -> Event 49
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 49
+Event 49 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+=====================
+Nurse 22 
+=====================
+
+Day 1:
+Home -> Event 35
+Event 35 -> Event 61
+Event 61 -> Home
+
+Day 2:
+Home -> Event 11
+Event 11 -> Event 60
+Event 60 -> Home
+
+Day 3:
+Depot -> Home
+Drop off for Event 3
+Home -> Event 3
+Event 3 -> Event 34
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Event 34 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 4:
+Home -> Depot
+Depot -> Event 19
+Event 19 -> Event 63
+Pick up for Event 63
+Event 63 -> Home
+
+Day 5:
+Event 49 -> Home
+Home -> Event 52
+Event 52 -> Event 49
+
+=====================
+Nurse 23 
+=====================
+
+Day 1:
+Home -> Event 7
+Event 7 -> Event 21
+Event 21 -> Home
+
+Day 2:
+Home -> Event 5
+Event 5 -> Event 60
+Event 60 -> Home
+
+Day 3:
+Home -> Event 3
+Event 3 -> Event 65
+Event 65 -> Home
+
+Day 4:
+Home -> Depot
+Pick up for Event 6
+Event 6 -> Home
+Depot -> Event 14
+Event 14 -> Event 6
+
+Day 5:
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Event 49 -> Depot
+Drop off for Event 52
+Home -> Event 52
+Event 52 -> Event 49
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+=====================
+Nurse 24 
+=====================
+
+Day 1:
+Home -> Event 7
+Event 7 -> Event 21
+Event 21 -> Home
+
+Day 2:
+Home -> Event 11
+Event 11 -> Event 60
+Event 60 -> Home
+
+Day 3:
+Event 1 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 53
+Home -> Event 53
+Event 53 -> Event 1
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 4:
+Home -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Event 14
+Event 14 -> Event 48
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Pick up for Event 48
+Drop off for Event 48
+Event 48 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 5:
+Home -> Event 12
+Event 12 -> Event 38
+Event 38 -> Home
+
+=====================
+Nurse 25 
+=====================
+
+Day 1:
+Home -> Depot
+Pick up for Event 7
+Depot -> Event 7
+Event 7 -> Event 75
+Pick up for Event 75
+Event 75 -> Home
+
+Day 2:
+Home -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Pick up for Event 46
+Drop off for Event 46
+Event 46 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Pick up for Event 72
+Depot -> Event 72
+Event 72 -> Event 46
+Depot -> Home
+Depot -> Home
+
+Day 3:
+Home -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Pick up for Event 53
+Depot -> Event 53
+Event 53 -> Event 65
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 65
+Event 65 -> Depot
+
+Day 4:
+Home -> Depot
+Drop off for Event 2
+Event 2 -> Depot
+Depot -> Home
+Depot -> Home
+Pick up for Event 14
+Drop off for Event 14
+Depot -> Event 14
+Event 14 -> Event 2
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 5:
+Home -> Depot
+Drop off for Event 10
+Event 10 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Pick up for Event 74
+Depot -> Event 74
+Event 74 -> Event 10
+Depot -> Home
+
+=====================
+Nurse 26 
+=====================
+
+Day 1:
+Home -> Event 35
+Event 35 -> Event 61
+Event 61 -> Home
+
+Day 2:
+Home -> Depot
+Depot -> Event 8
+Event 8 -> Event 30
+Pick up for Event 30
+Event 30 -> Home
+
+Day 3:
+Home -> Depot
+Pick up for Event 1
+Event 1 -> Home
+Pick up for Event 23
+Depot -> Event 23
+Event 23 -> Event 1
+
+Day 4:
+Depot -> Home
+Drop off for Event 6
+Event 6 -> Depot
+Depot -> Home
+Home -> Event 14
+Event 14 -> Event 6
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 5:
+Depot -> Home
+Depot -> Home
+Drop off for Event 24
+Event 24 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Home -> Event 74
+Event 74 -> Event 24
+Depot -> Home
+
+=====================
+Nurse 27 
+=====================
+
+Day 1:
+Home -> Event 7
+Event 7 -> Event 75
+Event 75 -> Home
+
+Day 2:
+Depot -> Home
+Home -> Event 8
+Event 8 -> Event 30
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 30
+Event 30 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 3:
+Home -> Event 53
+Event 53 -> Event 65
+Event 65 -> Home
+
+Day 4:
+Home -> Event 14
+Event 14 -> Event 18
+Event 18 -> Home
+
+Day 5:
+Event 10 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 74
+Home -> Event 74
+Event 74 -> Event 10
+Depot -> Home
+
+=====================
+Nurse 28 
+=====================
+
+Day 1:
+Home -> Event 7
+Event 7 -> Event 42
+Event 42 -> Home
+
+Day 2:
+Home -> Event 8
+Event 8 -> Event 46
+Event 46 -> Home
+
+Day 3:
+Event 4 -> Home
+Home -> Event 44
+Event 44 -> Event 4
+
+Day 4:
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Home -> Event 14
+Event 14 -> Event 18
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 18
+Event 18 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 5:
+Home -> Depot
+Depot -> Event 33
+Event 33 -> Event 41
+Pick up for Event 41
+Event 41 -> Home
+
+=====================
+Nurse 29 
+=====================
+
+Day 1:
+Home -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Pick up for Event 31
+Drop off for Event 31
+Event 31 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Event 56
+Event 56 -> Event 31
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 2:
+Home -> Event 8
+Event 8 -> Event 60
+Event 60 -> Home
+
+Day 3:
+Home -> Event 4
+Event 4 -> Event 47
+Event 47 -> Home
+
+Day 4:
+Home -> Event 14
+Event 14 -> Event 18
+Event 18 -> Home
+
+Day 5:
+Home -> Event 33
+Event 33 -> Event 38
+Event 38 -> Home
+
+=====================
+Nurse 30 
+=====================
+
+Day 1:
+Home -> Event 7
+Event 7 -> Event 28
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 28
+Event 28 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 2:
+Home -> Event 9
+Event 9 -> Event 67
+Event 67 -> Home
+
+Day 3:
+Home -> Event 23
+Event 23 -> Event 26
+Event 26 -> Home
+
+Day 4:
+Event 2 -> Home
+Home -> Event 16
+Event 16 -> Event 2
+
+Day 5:
+Event 38 -> Home
+Home -> Event 74
+Event 74 -> Event 38
+
+=====================
+Nurse 31 
+=====================
+
+Day 1:
+Home -> Depot
+Pick up for Event 21
+Event 21 -> Home
+Pick up for Event 69
+Depot -> Event 69
+Event 69 -> Event 21
+
+Day 2:
+Home -> Depot
+Pick up for Event 8
+Depot -> Event 8
+Event 8 -> Event 46
+Event 46 -> Home
+
+Day 3:
+Home -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 23
+Depot -> Event 23
+Event 23 -> Event 34
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Pick up for Event 34
+Event 34 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 4:
+Home -> Depot
+Pick up for Event 16
+Depot -> Event 16
+Event 16 -> Event 68
+Event 68 -> Home
+
+Day 5:
+Home -> Depot
+Pick up for Event 12
+Depot -> Event 12
+Event 12 -> Event 24
+Event 24 -> Home
+
+=====================
+Nurse 32 
+=====================
+
+Day 1:
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 42
+Event 42 -> Depot
+Depot -> Home
+Depot -> Home
+Home -> Event 56
+Event 56 -> Event 42
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 2:
+Home -> Event 8
+Event 8 -> Event 73
+Event 73 -> Home
+
+Day 3:
+Home -> Event 25
+Event 25 -> Event 34
+Event 34 -> Home
+
+Day 4:
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 39
+Event 39 -> Depot
+Home -> Event 40
+Event 40 -> Event 39
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 5:
+Home -> Event 57
+Event 57 -> Event 58
+Event 58 -> Home
+
+=====================
+Nurse 33 
+=====================
+
+Day 1:
+Event 31 -> Home
+Home -> Event 51
+Event 51 -> Event 31
+
+Day 2:
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Event 30 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 72
+Home -> Event 72
+Event 72 -> Event 30
+Depot -> Home
+Depot -> Home
+
+Day 3:
+Home -> Event 25
+Event 25 -> Event 65
+Event 65 -> Home
+
+Day 4:
+Home -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 16
+Depot -> Event 16
+Event 16 -> Event 68
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Pick up for Event 68
+Event 68 -> Depot
+
+Day 5:
+Home -> Event 55
+Event 55 -> Event 58
+Event 58 -> Home
+
+=====================
+Nurse 34 
+=====================
+
+Day 1:
+Home -> Depot
+Pick up for Event 35
+Depot -> Event 35
+Event 35 -> Event 61
+Event 61 -> Home
+
+Day 2:
+Depot -> Home
+Home -> Event 8
+Event 8 -> Event 37
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 37
+Event 37 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 3:
+Home -> Event 23
+Event 23 -> Event 26
+Event 26 -> Home
+
+Day 4:
+Home -> Event 14
+Event 14 -> Event 20
+Event 20 -> Home
+
+Day 5:
+Event 38 -> Home
+Home -> Event 52
+Event 52 -> Event 38
+
+=====================
+Nurse 35 
+=====================
+
+Day 1:
+Home -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Pick up for Event 50
+Drop off for Event 50
+Event 50 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Event 66
+Event 66 -> Event 50
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 2:
+Home -> Event 8
+Event 8 -> Event 67
+Event 67 -> Home
+
+Day 3:
+Event 34 -> Home
+Home -> Event 59
+Event 59 -> Event 34
+
+Day 4:
+Event 20 -> Home
+Home -> Event 45
+Event 45 -> Event 20
+
+Day 5:
+Home -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Event 43
+Event 43 -> Event 57
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Pick up for Event 57
+Drop off for Event 57
+Event 57 -> Depot
+Depot -> Home
+Depot -> Home
+
+=====================
+Nurse 36 
+=====================
+
+Day 1:
+Home -> Event 35
+Event 35 -> Event 42
+Event 42 -> Home
+
+Day 2:
+Home -> Event 5
+Event 5 -> Event 60
+Event 60 -> Home
+
+Day 3:
+Home -> Event 3
+Event 3 -> Event 65
+Event 65 -> Home
+
+Day 4:
+Home -> Depot
+Depot -> Event 16
+Event 16 -> Event 18
+Pick up for Event 18
+Event 18 -> Home
+
+Day 5:
+Home -> Depot
+Event 24 -> Home
+Pick up for Event 52
+Depot -> Event 52
+Event 52 -> Event 24
+
+=====================
+Nurse 37 
+=====================
+
+Day 1:
+Home -> Event 51
+Event 51 -> Event 75
+Event 75 -> Home
+
+Day 2:
+Home -> Event 8
+Event 8 -> Event 30
+Event 30 -> Home
+
+Day 3:
+Event 34 -> Home
+Home -> Event 44
+Event 44 -> Event 34
+
+Day 4:
+Event 13 -> Home
+Home -> Event 45
+Event 45 -> Event 13
+
+Day 5:
+Home -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Pick up for Event 33
+Drop off for Event 33
+Depot -> Event 33
+Event 33 -> Event 38
+Depot -> Home
+Event 38 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+=====================
+Nurse 38 
+=====================
+
+Day 1:
+Event 28 -> Home
+Home -> Event 35
+Event 35 -> Event 28
+
+Day 2:
+Home -> Event 5
+Event 5 -> Event 67
+Event 67 -> Home
+
+Day 3:
+Home -> Event 25
+Event 25 -> Event 65
+Event 65 -> Home
+
+Day 4:
+Event 20 -> Home
+Home -> Event 40
+Event 40 -> Event 20
+
+Day 5:
+Event 29 -> Home
+Home -> Event 52
+Event 52 -> Event 29
+
+=====================
+Nurse 39 
+=====================
+
+Day 1:
+Event 21 -> Home
+Home -> Event 56
+Event 56 -> Event 21
+
+Day 2:
+Home -> Depot
+Pick up for Event 9
+Depot -> Event 9
+Event 9 -> Event 37
+Event 37 -> Home
+
+Day 3:
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Event 34 -> Depot
+Drop off for Event 44
+Home -> Event 44
+Event 44 -> Event 34
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 4:
+Home -> Event 19
+Event 19 -> Event 63
+Event 63 -> Home
+
+Day 5:
+Event 24 -> Home
+Home -> Event 57
+Event 57 -> Event 24
+
+=====================
+Nurse 40 
+=====================
+
+Day 1:
+Event 61 -> Home
+Home -> Event 69
+Event 69 -> Event 61
+
+Day 2:
+Home -> Event 30
+Event 30 -> Event 36
+Event 36 -> Home
+
+Day 3:
+Home -> Event 3
+Event 3 -> Event 26
+Event 26 -> Home
+
+Day 4:
+Event 6 -> Home
+Home -> Event 45
+Event 45 -> Event 6
+
+Day 5:
+Event 38 -> Home
+Home -> Event 43
+Event 43 -> Event 38
+
+=====================
+Nurse 41 
+=====================
+
+Day 1:
+Event 42 -> Home
+Home -> Event 56
+Event 56 -> Event 42
+
+Day 2:
+Home -> Event 17
+Event 17 -> Event 67
+Event 67 -> Home
+
+Day 3:
+Home -> Event 59
+Event 59 -> Event 62
+Event 62 -> Home
+
+Day 4:
+Home -> Event 14
+Event 14 -> Event 20
+Event 20 -> Home
+
+Day 5:
+Event 24 -> Home
+Home -> Event 57
+Event 57 -> Event 24
+
+=====================
+Nurse 42 
+=====================
+
+Day 1:
+Home -> Depot
+Depot -> Home
+Depot -> Home
+Pick up for Event 22
+Drop off for Event 22
+Depot -> Event 22
+Event 22 -> Event 75
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Event 75 -> Depot
+
+Day 2:
+Home -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Pick up for Event 11
+Depot -> Event 11
+Event 11 -> Event 36
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Pick up for Event 36
+Drop off for Event 36
+Event 36 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 3:
+Home -> Depot
+Pick up for Event 26
+Event 26 -> Home
+Pick up for Event 64
+Depot -> Event 64
+Event 64 -> Event 26
+
+Day 4:
+Home -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Pick up for Event 20
+Drop off for Event 20
+Event 20 -> Depot
+Depot -> Home
+Depot -> Event 40
+Event 40 -> Event 20
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 5:
+Home -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Pick up for Event 29
+Drop off for Event 29
+Event 29 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Pick up for Event 43
+Depot -> Event 43
+Event 43 -> Event 29
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+=====================
+Nurse 43 
+=====================
+
+Day 1:
+Home -> Depot
+Depot -> Event 7
+Event 7 -> Event 42
+Pick up for Event 42
+Event 42 -> Home
+
+Day 2:
+Home -> Depot
+Depot -> Event 8
+Event 8 -> Event 60
+Pick up for Event 60
+Event 60 -> Home
+
+Day 3:
+Home -> Depot
+Depot -> Event 23
+Event 23 -> Event 65
+Pick up for Event 65
+Event 65 -> Home
+
+Day 4:
+Home -> Depot
+Event 13 -> Home
+Pick up for Event 40
+Depot -> Event 40
+Event 40 -> Event 13
+
+Day 5:
+Home -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 38
+Event 38 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Pick up for Event 55
+Depot -> Event 55
+Event 55 -> Event 38
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+=====================
+Nurse 44 
+=====================
+
+Day 1:
+Home -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 61
+Event 61 -> Depot
+Pick up for Event 66
+Depot -> Event 66
+Event 66 -> Event 61
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 2:
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 17
+Home -> Event 17
+Event 17 -> Event 37
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Event 37 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 3:
+Depot -> Home
+Depot -> Home
+Event 4 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 59
+Home -> Event 59
+Event 59 -> Event 4
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 4:
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 15
+Home -> Event 15
+Event 15 -> Event 39
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Event 39 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 5:
+Event 41 -> Home
+Home -> Event 57
+Event 57 -> Event 41
+
+=====================
+Nurse 45 
+=====================
+
+Day 1:
+Home -> Event 7
+Event 7 -> Event 75
+Event 75 -> Home
+
+Day 2:
+Home -> Depot
+Depot -> Event 17
+Event 17 -> Event 37
+Pick up for Event 37
+Event 37 -> Home
+
+Day 3:
+Event 34 -> Home
+Home -> Event 44
+Event 44 -> Event 34
+
+Day 4:
+Home -> Event 15
+Event 15 -> Event 20
+Event 20 -> Home
+
+Day 5:
+Home -> Event 27
+Event 27 -> Event 49
+Event 49 -> Home
+
+=====================
+Nurse 46 
+=====================
+
+Day 1:
+Event 50 -> Home
+Home -> Event 51
+Event 51 -> Event 50
+
+Day 2:
+Home -> Event 17
+Event 17 -> Event 37
+Event 37 -> Home
+
+Day 3:
+Depot -> Home
+Depot -> Home
+Event 4 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 64
+Home -> Event 64
+Event 64 -> Event 4
+Depot -> Home
+Depot -> Home
+
+Day 4:
+Event 2 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 40
+Home -> Event 40
+Event 40 -> Event 2
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+Day 5:
+Home -> Event 27
+Event 27 -> Event 49
+Event 49 -> Home
+
+=====================
+Nurse 47 
+=====================
+
+Day 1:
+Home -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Pick up for Event 56
+Drop off for Event 56
+Depot -> Event 56
+Event 56 -> Event 75
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Event 75 -> Depot
+
+Day 2:
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 71
+Event 71 -> Depot
+Home -> Event 72
+Event 72 -> Event 71
+Depot -> Home
+Depot -> Home
+
+Day 3:
+Event 1 -> Home
+Home -> Event 53
+Event 53 -> Event 1
+
+Day 4:
+Home -> Depot
+Event 2 -> Home
+Pick up for Event 19
+Depot -> Event 19
+Event 19 -> Event 2
+
+Day 5:
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 27
+Home -> Event 27
+Event 27 -> Event 49
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Event 49 -> Depot
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+
+=====================
+Nurse 48 
+=====================
+
+Day 1:
+Home -> Event 35
+Event 35 -> Event 50
+Event 50 -> Home
+
+Day 2:
+Home -> Event 11
+Event 11 -> Event 37
+Event 37 -> Home
+
+Day 3:
+Event 4 -> Home
+Home -> Event 44
+Event 44 -> Event 4
+
+Day 4:
+Event 13 -> Home
+Home -> Event 40
+Event 40 -> Event 13
+
+Day 5:
+Event 49 -> Home
+Home -> Event 52
+Event 52 -> Event 49
+
+=====================
+Nurse 49 
+=====================
+
+Day 1:
+Home -> Event 7
+Event 7 -> Event 21
+Event 21 -> Home
+
+Day 2:
+Home -> Depot
+Depot -> Event 46
+Event 46 -> Event 71
+Pick up for Event 71
+Event 71 -> Home
+
+Day 3:
+Home -> Event 64
+Event 64 -> Event 65
+Event 65 -> Home
+
+Day 4:
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Home -> Event 16
+Event 16 -> Event 63
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Depot -> Home
+Drop off for Event 63
+Event 63 -> Depot
+Depot -> Home
+
+Day 5:
+Home -> Depot
+Pick up for Event 32
+Event 32 -> Home
+Depot -> Event 55
+Event 55 -> Event 32
+
+=====================
+Nurse 50 
+=====================
+
+Day 1:
+Home -> Event 56
+Event 56 -> Event 70
+Event 70 -> Home
+
+Day 2:
+Home -> Event 17
+Event 17 -> Event 37
+Event 37 -> Home
+
+Day 3:
+Event 1 -> Home
+Home -> Event 59
+Event 59 -> Event 1
+
+Day 4:
+Home -> Event 45
+Event 45 -> Event 48
+Event 48 -> Home
+
+Day 5:
+Home -> Depot
+Depot -> Event 33
+Event 33 -> Event 38
+Pick up for Event 38
+Event 38 -> Home

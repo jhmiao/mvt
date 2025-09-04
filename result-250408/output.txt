@@ -1,0 +1,64 @@
+Nurse 1
+Nurse 2
+Nurse 4
+Nurse 5
+Nurse 6
+Nurse 7
+Nurse 11
+Nurse 12
+Nurse 13
+Nurse 14
+Nurse 15
+Nurse 16
+Nurse 17
+Nurse 18
+Nurse 19
+Nurse 23
+Nurse 1 to Event 1
+Nurse 2 to Event 4
+Nurse 4 to Event 6
+Nurse 5 to Event 5
+Nurse 6 to Event 6
+Nurse 7 to Event 3
+Nurse 11 to Event 5
+Nurse 12 to Event 9
+Nurse 13 to Event 2
+Nurse 14 to Event 7
+Nurse 15 to Event 9
+Nurse 16 to Event 2
+Nurse 17 to Event 6
+Nurse 18 to Event 3
+Nurse 19 to Event 8
+Nurse 23 to Event 1
+Nurse 1 from Event 1
+Nurse 23 from Event 1
+Nurse 13 from Event 2
+Nurse 16 from Event 2
+Nurse 7 from Event 3
+Nurse 18 from Event 3
+Nurse 2 from Event 4
+Nurse 5 from Event 5
+Nurse 11 from Event 5
+Nurse 4 from Event 6
+Nurse 6 from Event 6
+Nurse 17 from Event 6
+Nurse 14 from Event 7
+Nurse 15 from Event 8
+Nurse 12 from Event 9
+Nurse 19 from Event 9
+Repeat: Nurse 1
+Repeat: Nurse 2
+Repeat: Nurse 4
+Repeat: Nurse 5
+Repeat: Nurse 6
+Repeat: Nurse 7
+Repeat: Nurse 11
+Repeat: Nurse 12
+Repeat: Nurse 13
+Repeat: Nurse 14
+Repeat: Nurse 15
+Repeat: Nurse 16
+Repeat: Nurse 17
+Repeat: Nurse 18
+Repeat: Nurse 19
+Repeat: Nurse 23

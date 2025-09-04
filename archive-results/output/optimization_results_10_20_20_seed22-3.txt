@@ -1,0 +1,184 @@
+More pruning, min working hrs == 3
+
+Best feasible solution found within 18000 seconds:
+
+=====================
+Day 1 
+=====================
+
+Event 3: 14:00-15:00 [2 RN, 3 LVN] 
+RN 1 (team leader)
+RN 6
+LVN 15
+LVN 27
+LVN 30
+
+Event 4: 9:30-10:00 [2 RN, 1 LVN] 
+RN 1 (team leader)
+RN 6
+LVN 27
+
+Event 18: 10:13-10:43 [2 RN, 3 LVN] 
+RN 1 (team leader)
+RN 6
+LVN 15
+LVN 21
+LVN 27
+
+Event 19: 10:53-11:53 [3 RN, 7 LVN] 
+RN 1 (team leader)
+RN 6
+RN 8
+LVN 15
+LVN 17
+LVN 21
+LVN 27
+LVN 28
+LVN 29
+LVN 30
+
+=====================
+Day 2 
+=====================
+
+Event 5: 13:04-13:49 [3 RN, 7 LVN] 
+RN 2
+RN 7 (team leader)
+RN 10
+LVN 12
+LVN 14
+LVN 17
+LVN 18
+LVN 20
+LVN 22
+LVN 26
+
+Event 7: 14:22-15:07 [2 RN, 3 LVN] 
+RN 9 (team leader)
+RN 10
+LVN 14
+LVN 20
+LVN 22
+
+Event 9: 12:09-14:09 [1 RN, 4 LVN] 
+RN 9 (team leader)
+LVN 11
+LVN 19
+LVN 23
+LVN 28
+
+Event 10: 9:50-11:50 [2 RN, 2 LVN] 
+RN 9 (team leader)
+RN 10
+LVN 14
+LVN 20
+
+Event 11: 9:30-11:00 [2 RN, 6 LVN] 
+RN 2
+RN 7 (team leader)
+LVN 11
+LVN 12
+LVN 17
+LVN 18
+LVN 22
+LVN 26
+
+Event 12: 14:05-15:05 [1 RN, 3 LVN] 
+RN 7 (team leader)
+LVN 17
+LVN 18
+LVN 26
+
+Event 13: 12:05-12:50 [2 RN, 2 LVN] 
+RN 2
+RN 7 (team leader)
+LVN 12
+LVN 22
+
+=====================
+Day 3 
+=====================
+
+Event 15: 14:05-15:05 [2 RN, 6 LVN] 
+RN 4
+RN 5 (team leader)
+LVN 13
+LVN 16
+LVN 19
+LVN 24
+LVN 25
+LVN 30
+
+Event 16: 11:14-12:44 [1 RN, 5 LVN] 
+RN 5 (team leader)
+LVN 13
+LVN 16
+LVN 19
+LVN 24
+LVN 25
+
+Event 20: 12:54-13:54 [1 RN, 5 LVN] 
+RN 5 (team leader)
+LVN 13
+LVN 16
+LVN 19
+LVN 24
+LVN 25
+
+=====================
+Day 4 
+=====================
+
+Event 2: 9:30-10:30 [1 RN, 4 LVN] 
+RN 3 (team leader)
+LVN 15
+LVN 21
+LVN 22
+LVN 25
+
+Event 6: 14:00-15:00 [1 RN, 1 LVN] 
+RN 3 (team leader)
+LVN 15
+
+Event 8: 11:20-12:20 [2 RN, 4 LVN] 
+RN 3 (team leader)
+RN 8
+LVN 15
+LVN 21
+LVN 22
+LVN 25
+
+Event 14: 10:40-11:10 [1 RN, 4 LVN] 
+RN 3 (team leader)
+LVN 15
+LVN 21
+LVN 22
+LVN 25
+
+=====================
+Day 5 
+=====================
+
+Event 1: 14:00-15:00 [3 RN, 3 LVN] 
+RN 4 (team leader)
+RN 5
+RN 8
+LVN 16
+LVN 23
+LVN 29
+
+Event 17: 10:00-11:00 [1 RN, 2 LVN] 
+RN 4 (team leader)
+LVN 23
+LVN 29
+
+Objective value: 1990.0
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+H    0     0                    4868.0000000 1237.79463  74.6%     -   21s
+H    0     0                    3913.0000000 1237.79463  68.4%     -   28s
+H    0     0                    3641.0000000 1237.79463  66.0%     -   29s
+H    0     0                    2055.0000000 1237.79463  39.8%     -   77s
+H  296   282                    1990.0000000 1238.15437  37.8%  1470 11476s

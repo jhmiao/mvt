@@ -1,0 +1,1496 @@
+Best feasible solution found within 7200 seconds:
+
+Objective value: 11258.0
+H 3863  3947                    11261.000000 9416.30452  16.4%  1387 2021s
+
+=====================
+Nurse 1 
+=====================
+
+Day 1:
+Home -> Depot
+Pick up for Event 5
+Pick up for Event 7
+Depot -> Event 5
+Event 5 -> Event 7
+Event 7 -> Home
+
+Day 2:
+Home -> Event 12
+Event 12 -> Home
+
+Day 3:
+
+Day 4:
+
+Day 5:
+Home -> Depot
+Depot -> Home
+Pick up for Event 44
+Drop off for Event 44
+Pick up for Event 60
+Drop off for Event 60
+Event 44 -> Depot
+Depot -> Event 60
+Event 60 -> Event 44
+
+=====================
+Nurse 2 
+=====================
+
+Day 1:
+
+Day 2:
+Event 14 -> Home
+Home -> Event 17
+Event 17 -> Event 14
+
+Day 3:
+Home -> Event 21
+Event 21 -> Event 24
+Event 24 -> Home
+
+Day 4:
+
+Day 5:
+Event 39 -> Home
+Home -> Event 43
+Event 43 -> Event 39
+
+=====================
+Nurse 3 
+=====================
+
+Day 1:
+Event 3 -> Home
+Home -> Event 9
+Event 9 -> Event 3
+
+Day 2:
+
+Day 3:
+Home -> Event 20
+Event 20 -> Home
+
+Day 4:
+Home -> Depot
+Pick up for Event 34
+Pick up for Event 35
+Event 34 -> Home
+Depot -> Event 35
+Event 35 -> Event 34
+
+Day 5:
+
+=====================
+Nurse 4 
+=====================
+
+Day 1:
+Home -> Event 6
+Event 6 -> Home
+
+Day 2:
+
+Day 3:
+Home -> Event 21
+Event 21 -> Event 24
+Event 24 -> Home
+
+Day 4:
+
+Day 5:
+Event 41 -> Home
+Home -> Event 43
+Event 43 -> Event 41
+
+=====================
+Nurse 5 
+=====================
+
+Day 1:
+
+Day 2:
+Home -> Event 11
+Event 11 -> Home
+
+Day 3:
+Depot -> Home
+Drop off for Event 21
+Drop off for Event 26
+Event 21 -> Depot
+Home -> Event 26
+Event 26 -> Event 21
+
+Day 4:
+Home -> Event 30
+Event 30 -> Event 33
+Event 33 -> Home
+
+Day 5:
+
+=====================
+Nurse 6 
+=====================
+
+Day 1:
+
+Day 2:
+Home -> Event 18
+Event 18 -> Home
+
+Day 3:
+Home -> Event 25
+Event 25 -> Event 46
+Event 46 -> Home
+
+Day 4:
+Event 36 -> Home
+Home -> Event 56
+Event 56 -> Event 36
+
+Day 5:
+
+=====================
+Nurse 7 
+=====================
+
+Day 1:
+
+Day 2:
+Home -> Event 16
+Event 16 -> Home
+
+Day 3:
+Home -> Depot
+Depot -> Home
+Pick up for Event 19
+Drop off for Event 19
+Pick up for Event 47
+Drop off for Event 47
+Depot -> Event 19
+Event 19 -> Event 47
+Event 47 -> Depot
+
+Day 4:
+Home -> Depot
+Depot -> Home
+Drop off for Event 34
+Pick up for Event 51
+Drop off for Event 51
+Event 34 -> Depot
+Depot -> Event 51
+Event 51 -> Event 34
+
+Day 5:
+
+=====================
+Nurse 8 
+=====================
+
+Day 1:
+
+Day 2:
+Home -> Event 16
+Event 16 -> Home
+
+Day 3:
+Home -> Event 25
+Event 25 -> Event 46
+Event 46 -> Home
+
+Day 4:
+Event 36 -> Home
+Home -> Event 56
+Event 56 -> Event 36
+
+Day 5:
+
+=====================
+Nurse 9 
+=====================
+
+Day 1:
+
+Day 2:
+Home -> Event 18
+Event 18 -> Home
+
+Day 3:
+Home -> Event 25
+Event 25 -> Event 46
+Event 46 -> Home
+
+Day 4:
+Home -> Depot
+Depot -> Home
+Pick up for Event 29
+Drop off for Event 29
+Pick up for Event 52
+Drop off for Event 52
+Depot -> Event 29
+Event 29 -> Event 52
+Event 52 -> Depot
+
+Day 5:
+
+=====================
+Nurse 10 
+=====================
+
+Day 1:
+
+Day 2:
+Home -> Event 13
+Event 13 -> Home
+
+Day 3:
+Event 20 -> Home
+Home -> Event 48
+Event 48 -> Event 20
+
+Day 4:
+
+Day 5:
+Home -> Event 39
+Event 39 -> Event 41
+Event 41 -> Home
+
+=====================
+Nurse 11 
+=====================
+
+Day 1:
+Home -> Depot
+Depot -> Home
+Pick up for Event 3
+Drop off for Event 3
+Pick up for Event 9
+Drop off for Event 9
+Depot -> Event 3
+Event 3 -> Event 9
+Event 9 -> Depot
+
+Day 2:
+Home -> Depot
+Depot -> Home
+Pick up for Event 15
+Drop off for Event 15
+Drop off for Event 17
+Event 15 -> Depot
+Depot -> Event 17
+Event 17 -> Event 15
+
+Day 3:
+Home -> Depot
+Depot -> Home
+Pick up for Event 22
+Drop off for Event 22
+Pick up for Event 50
+Drop off for Event 50
+Depot -> Event 22
+Event 22 -> Event 50
+Event 50 -> Depot
+
+Day 4:
+Home -> Depot
+Depot -> Home
+Pick up for Event 30
+Drop off for Event 30
+Pick up for Event 33
+Drop off for Event 33
+Depot -> Event 30
+Event 30 -> Event 33
+Event 33 -> Depot
+
+Day 5:
+Home -> Depot
+Depot -> Home
+Pick up for Event 43
+Drop off for Event 43
+Pick up for Event 61
+Drop off for Event 61
+Depot -> Event 43
+Event 43 -> Event 61
+Event 61 -> Depot
+
+=====================
+Nurse 12 
+=====================
+
+Day 1:
+
+Day 2:
+Event 15 -> Home
+Home -> Event 17
+Event 17 -> Event 15
+
+Day 3:
+Home -> Event 22
+Event 22 -> Event 50
+Event 50 -> Home
+
+Day 4:
+Home -> Event 34
+Event 34 -> Home
+
+Day 5:
+
+=====================
+Nurse 13 
+=====================
+
+Day 1:
+Home -> Event 1
+Event 1 -> Event 2
+Event 2 -> Home
+
+Day 2:
+
+Day 3:
+Home -> Event 21
+Event 21 -> Event 24
+Event 24 -> Home
+
+Day 4:
+
+Day 5:
+Home -> Event 42
+Event 42 -> Home
+
+=====================
+Nurse 14 
+=====================
+
+Day 1:
+
+Day 2:
+
+Day 3:
+Event 21 -> Home
+Home -> Event 26
+Event 26 -> Event 21
+
+Day 4:
+Home -> Event 31
+Event 31 -> Event 57
+Event 57 -> Home
+
+Day 5:
+Home -> Event 40
+Event 40 -> Home
+
+=====================
+Nurse 15 
+=====================
+
+Day 1:
+Home -> Depot
+Pick up for Event 6
+Depot -> Event 5
+Event 5 -> Event 6
+Event 6 -> Home
+
+Day 2:
+
+Day 3:
+
+Day 4:
+Home -> Depot
+Depot -> Home
+Pick up for Event 32
+Drop off for Event 32
+Pick up for Event 54
+Drop off for Event 54
+Event 32 -> Depot
+Depot -> Event 54
+Event 54 -> Event 32
+
+Day 5:
+Home -> Depot
+Depot -> Home
+Pick up for Event 45
+Drop off for Event 45
+Pick up for Event 59
+Drop off for Event 59
+Event 45 -> Depot
+Depot -> Event 59
+Event 59 -> Event 45
+
+=====================
+Nurse 16 
+=====================
+
+Day 1:
+
+Day 2:
+
+Day 3:
+Event 23 -> Home
+Home -> Event 27
+Event 27 -> Event 23
+
+Day 4:
+Home -> Event 31
+Event 31 -> Event 57
+Event 57 -> Home
+
+Day 5:
+Home -> Event 40
+Event 40 -> Home
+
+=====================
+Nurse 17 
+=====================
+
+Day 1:
+Home -> Event 6
+Event 6 -> Home
+
+Day 2:
+
+Day 3:
+Home -> Event 25
+Event 25 -> Event 46
+Event 46 -> Home
+
+Day 4:
+Home -> Depot
+Pick up for Event 53
+Depot -> Event 33
+Event 33 -> Event 53
+Event 53 -> Home
+
+Day 5:
+
+=====================
+Nurse 18 
+=====================
+
+Day 1:
+Home -> Depot
+Pick up for Event 4
+Event 4 -> Home
+Depot -> Event 8
+Event 8 -> Event 4
+
+Day 2:
+
+Day 3:
+Home -> Event 22
+Event 22 -> Event 49
+Event 49 -> Home
+
+Day 4:
+Home -> Event 34
+Event 34 -> Home
+
+Day 5:
+
+=====================
+Nurse 19 
+=====================
+
+Day 1:
+
+Day 2:
+Home -> Depot
+Depot -> Home
+Pick up for Event 10
+Drop off for Event 10
+Pick up for Event 14
+Drop off for Event 14
+Event 10 -> Depot
+Depot -> Event 14
+Event 14 -> Event 10
+
+Day 3:
+Event 21 -> Home
+Home -> Event 26
+Event 26 -> Event 21
+
+Day 4:
+
+Day 5:
+Home -> Depot
+Depot -> Home
+Pick up for Event 38
+Drop off for Event 38
+Pick up for Event 58
+Drop off for Event 58
+Event 38 -> Depot
+Depot -> Event 58
+Event 58 -> Event 38
+
+=====================
+Nurse 20 
+=====================
+
+Day 1:
+
+Day 2:
+
+Day 3:
+Event 23 -> Home
+Home -> Event 27
+Event 27 -> Event 23
+
+Day 4:
+Home -> Event 37
+Event 37 -> Home
+
+Day 5:
+Event 45 -> Home
+Home -> Event 59
+Event 59 -> Event 45
+
+=====================
+Nurse 21 
+=====================
+
+Day 1:
+
+Day 2:
+
+Day 3:
+Home -> Depot
+Depot -> Home
+Pick up for Event 20
+Drop off for Event 20
+Pick up for Event 48
+Drop off for Event 48
+Event 20 -> Depot
+Depot -> Event 48
+Event 48 -> Event 20
+
+Day 4:
+Home -> Event 37
+Event 37 -> Home
+
+Day 5:
+Home -> Event 44
+Event 44 -> Event 60
+Event 60 -> Home
+
+=====================
+Nurse 22 
+=====================
+
+Day 1:
+
+Day 2:
+Home -> Depot
+Pick up for Event 13
+Event 13 -> Home
+Depot -> Event 17
+Event 17 -> Event 13
+
+Day 3:
+Home -> Event 20
+Event 20 -> Home
+
+Day 4:
+Home -> Event 28
+Event 28 -> Event 55
+Event 55 -> Home
+
+Day 5:
+
+=====================
+Nurse 23 
+=====================
+
+Day 1:
+Home -> Event 1
+Event 1 -> Event 2
+Event 2 -> Home
+
+Day 2:
+Home -> Event 12
+Event 12 -> Home
+
+Day 3:
+Home -> Event 48
+Event 48 -> Home
+
+Day 4:
+
+Day 5:
+Home -> Event 42
+Event 42 -> Home
+
+=====================
+Nurse 24 
+=====================
+
+Day 1:
+Home -> Event 1
+Event 1 -> Home
+
+Day 2:
+Home -> Event 12
+Event 12 -> Home
+
+Day 3:
+
+Day 4:
+Home -> Event 31
+Event 31 -> Event 57
+Event 57 -> Home
+
+Day 5:
+Home -> Event 42
+Event 42 -> Home
+
+=====================
+Nurse 25 
+=====================
+
+Day 1:
+
+Day 2:
+Depot -> Home
+Drop off for Event 11
+Home -> Event 11
+Event 11 -> Event 17
+Event 17 -> Depot
+
+Day 3:
+Home -> Event 21
+Event 21 -> Event 26
+Event 26 -> Home
+
+Day 4:
+Home -> Depot
+Depot -> Home
+Pick up for Event 28
+Drop off for Event 28
+Pick up for Event 55
+Drop off for Event 55
+Depot -> Event 28
+Event 28 -> Event 55
+Event 55 -> Depot
+
+Day 5:
+
+=====================
+Nurse 26 
+=====================
+
+Day 1:
+
+Day 2:
+Home -> Event 13
+Event 13 -> Home
+
+Day 3:
+Home -> Depot
+Depot -> Home
+Pick up for Event 24
+Drop off for Event 24
+Pick up for Event 49
+Drop off for Event 49
+Depot -> Event 24
+Event 24 -> Event 49
+Event 49 -> Depot
+
+Day 4:
+
+Day 5:
+Event 39 -> Home
+Home -> Event 43
+Event 43 -> Event 39
+
+=====================
+Nurse 27 
+=====================
+
+Day 1:
+
+Day 2:
+Event 15 -> Home
+Home -> Event 17
+Event 17 -> Event 15
+
+Day 3:
+Home -> Event 24
+Event 24 -> Home
+
+Day 4:
+
+Day 5:
+Home -> Depot
+Depot -> Home
+Pick up for Event 40
+Drop off for Event 40
+Pick up for Event 42
+Drop off for Event 42
+Depot -> Event 40
+Event 40 -> Event 42
+Event 42 -> Depot
+
+=====================
+Nurse 28 
+=====================
+
+Day 1:
+Home -> Event 6
+Event 6 -> Home
+
+Day 2:
+
+Day 3:
+Home -> Event 25
+Event 25 -> Event 46
+Event 46 -> Home
+
+Day 4:
+Home -> Depot
+Pick up for Event 36
+Pick up for Event 56
+Event 36 -> Home
+Depot -> Event 56
+Event 56 -> Event 36
+
+Day 5:
+
+=====================
+Nurse 29 
+=====================
+
+Day 1:
+
+Day 2:
+Home -> Event 10
+Event 10 -> Event 14
+Event 14 -> Home
+
+Day 3:
+Home -> Event 21
+Event 21 -> Home
+
+Day 4:
+Home -> Event 30
+Event 30 -> Home
+
+Day 5:
+Event 38 -> Home
+Home -> Event 58
+Event 58 -> Event 38
+
+=====================
+Nurse 30 
+=====================
+
+Day 1:
+Home -> Event 3
+Event 3 -> Event 9
+Event 9 -> Home
+
+Day 2:
+Home -> Event 18
+Event 18 -> Home
+
+Day 3:
+Home -> Event 19
+Event 19 -> Event 24
+Event 24 -> Home
+
+Day 4:
+
+Day 5:
+
+=====================
+Nurse 31 
+=====================
+
+Day 1:
+Home -> Event 6
+Event 6 -> Home
+
+Day 2:
+
+Day 3:
+Home -> Event 25
+Event 25 -> Event 47
+Event 47 -> Home
+
+Day 4:
+Home -> Depot
+Depot -> Home
+Pick up for Event 31
+Drop off for Event 31
+Pick up for Event 57
+Drop off for Event 57
+Depot -> Event 31
+Event 31 -> Event 57
+Event 57 -> Depot
+
+Day 5:
+
+=====================
+Nurse 32 
+=====================
+
+Day 1:
+Event 3 -> Home
+Home -> Event 4
+Event 4 -> Event 3
+
+Day 2:
+
+Day 3:
+Home -> Event 22
+Event 22 -> Event 49
+Event 49 -> Home
+
+Day 4:
+Home -> Event 34
+Event 34 -> Event 51
+Event 51 -> Home
+
+Day 5:
+
+=====================
+Nurse 33 
+=====================
+
+Day 1:
+Depot -> Home
+Drop off for Event 6
+Event 4 -> Depot
+Home -> Event 6
+Event 6 -> Event 4
+
+Day 2:
+
+Day 3:
+Home -> Event 25
+Event 25 -> Event 47
+Event 47 -> Home
+
+Day 4:
+Home -> Event 53
+Event 53 -> Home
+
+Day 5:
+
+=====================
+Nurse 34 
+=====================
+
+Day 1:
+Home -> Event 6
+Event 6 -> Home
+
+Day 2:
+
+Day 3:
+Home -> Event 19
+Event 19 -> Event 24
+Event 24 -> Home
+
+Day 4:
+Depot -> Home
+Drop off for Event 56
+Event 34 -> Depot
+Home -> Event 56
+Event 56 -> Event 34
+
+Day 5:
+
+=====================
+Nurse 35 
+=====================
+
+Day 1:
+
+Day 2:
+Event 15 -> Home
+Home -> Event 17
+Event 17 -> Event 15
+
+Day 3:
+Home -> Event 22
+Event 22 -> Event 50
+Event 50 -> Home
+
+Day 4:
+Home -> Event 34
+Event 34 -> Event 51
+Event 51 -> Home
+
+Day 5:
+
+=====================
+Nurse 36 
+=====================
+
+Day 1:
+Home -> Depot
+Depot -> Home
+Drop off for Event 5
+Pick up for Event 8
+Drop off for Event 8
+Depot -> Event 5
+Event 5 -> Event 8
+Event 8 -> Depot
+
+Day 2:
+Home -> Depot
+Pick up for Event 11
+Depot -> Event 10
+Event 10 -> Event 11
+Event 11 -> Home
+
+Day 3:
+Home -> Event 26
+Event 26 -> Home
+
+Day 4:
+Home -> Event 33
+Event 33 -> Home
+
+Day 5:
+Home -> Event 43
+Event 43 -> Event 61
+Event 61 -> Home
+
+=====================
+Nurse 37 
+=====================
+
+Day 1:
+Home -> Event 6
+Event 6 -> Home
+
+Day 2:
+
+Day 3:
+Home -> Event 25
+Event 25 -> Event 46
+Event 46 -> Home
+
+Day 4:
+
+Day 5:
+Event 41 -> Home
+Home -> Event 43
+Event 43 -> Event 41
+
+=====================
+Nurse 38 
+=====================
+
+Day 1:
+
+Day 2:
+Home -> Event 16
+Event 16 -> Home
+
+Day 3:
+Home -> Depot
+Depot -> Home
+Pick up for Event 25
+Drop off for Event 25
+Pick up for Event 46
+Drop off for Event 46
+Depot -> Event 25
+Event 25 -> Event 46
+Event 46 -> Depot
+
+Day 4:
+Depot -> Home
+Drop off for Event 35
+Home -> Event 34
+Event 34 -> Event 35
+Event 35 -> Depot
+
+Day 5:
+
+=====================
+Nurse 39 
+=====================
+
+Day 1:
+Depot -> Home
+Drop off for Event 4
+Home -> Event 4
+Event 4 -> Event 8
+Event 8 -> Depot
+
+Day 2:
+Home -> Event 16
+Event 16 -> Home
+
+Day 3:
+Home -> Event 21
+Event 21 -> Event 24
+Event 24 -> Home
+
+Day 4:
+
+Day 5:
+
+=====================
+Nurse 40 
+=====================
+
+Day 1:
+
+Day 2:
+
+Day 3:
+Event 20 -> Home
+Home -> Event 48
+Event 48 -> Event 20
+
+Day 4:
+Event 28 -> Home
+Home -> Event 55
+Event 55 -> Event 28
+
+Day 5:
+Home -> Event 42
+Event 42 -> Home
+
+=====================
+Nurse 41 
+=====================
+
+Day 1:
+Home -> Depot
+Depot -> Home
+Pick up for Event 1
+Drop off for Event 1
+Pick up for Event 2
+Drop off for Event 2
+Depot -> Event 1
+Event 1 -> Event 2
+Event 2 -> Depot
+
+Day 2:
+
+Day 3:
+Home -> Depot
+Depot -> Home
+Pick up for Event 23
+Drop off for Event 23
+Pick up for Event 27
+Drop off for Event 27
+Event 23 -> Depot
+Depot -> Event 27
+Event 27 -> Event 23
+
+Day 4:
+
+Day 5:
+Event 38 -> Home
+Home -> Event 58
+Event 58 -> Event 38
+
+=====================
+Nurse 42 
+=====================
+
+Day 1:
+
+Day 2:
+
+Day 3:
+Home -> Event 20
+Event 20 -> Home
+
+Day 4:
+Event 34 -> Home
+Home -> Event 35
+Event 35 -> Event 34
+
+Day 5:
+Event 39 -> Home
+Home -> Event 43
+Event 43 -> Event 39
+
+=====================
+Nurse 43 
+=====================
+
+Day 1:
+
+Day 2:
+
+Day 3:
+Home -> Event 22
+Event 22 -> Event 49
+Event 49 -> Home
+
+Day 4:
+Home -> Event 34
+Event 34 -> Event 51
+Event 51 -> Home
+
+Day 5:
+Home -> Event 39
+Event 39 -> Event 41
+Event 41 -> Home
+
+=====================
+Nurse 44 
+=====================
+
+Day 1:
+Depot -> Home
+Drop off for Event 7
+Event 5 -> Depot
+Home -> Event 7
+Event 7 -> Event 5
+
+Day 2:
+
+Day 3:
+
+Day 4:
+Home -> Event 31
+Event 31 -> Event 57
+Event 57 -> Home
+
+Day 5:
+Home -> Event 40
+Event 40 -> Home
+
+=====================
+Nurse 45 
+=====================
+
+Day 1:
+Home -> Event 7
+Event 7 -> Home
+
+Day 2:
+
+Day 3:
+Event 21 -> Home
+Home -> Event 26
+Event 26 -> Event 21
+
+Day 4:
+Event 32 -> Home
+Home -> Event 54
+Event 54 -> Event 32
+
+Day 5:
+
+=====================
+Nurse 46 
+=====================
+
+Day 1:
+Home -> Event 7
+Event 7 -> Home
+
+Day 2:
+
+Day 3:
+
+Day 4:
+Event 32 -> Home
+Home -> Event 54
+Event 54 -> Event 32
+
+Day 5:
+Event 45 -> Home
+Home -> Event 59
+Event 59 -> Event 45
+
+=====================
+Nurse 47 
+=====================
+
+Day 1:
+
+Day 2:
+
+Day 3:
+Event 23 -> Home
+Home -> Event 27
+Event 27 -> Event 23
+
+Day 4:
+Home -> Event 37
+Event 37 -> Home
+
+Day 5:
+Event 45 -> Home
+Home -> Event 59
+Event 59 -> Event 45
+
+=====================
+Nurse 48 
+=====================
+
+Day 1:
+Home -> Event 6
+Event 6 -> Home
+
+Day 2:
+Home -> Depot
+Depot -> Home
+Pick up for Event 16
+Drop off for Event 16
+Pick up for Event 18
+Drop off for Event 18
+Event 16 -> Depot
+Depot -> Event 18
+Event 18 -> Event 16
+
+Day 3:
+
+Day 4:
+Event 36 -> Home
+Home -> Event 56
+Event 56 -> Event 36
+
+Day 5:
+
+=====================
+Nurse 49 
+=====================
+
+Day 1:
+Home -> Event 6
+Event 6 -> Home
+
+Day 2:
+
+Day 3:
+Event 21 -> Home
+Home -> Event 26
+Event 26 -> Event 21
+
+Day 4:
+Depot -> Home
+Drop off for Event 36
+Drop off for Event 53
+Event 36 -> Depot
+Home -> Event 53
+Event 53 -> Event 36
+
+Day 5:
+
+=====================
+Nurse 50 
+=====================
+
+Day 1:
+
+Day 2:
+Home -> Event 18
+Event 18 -> Home
+
+Day 3:
+Home -> Event 25
+Event 25 -> Event 47
+Event 47 -> Home
+
+Day 4:
+Event 36 -> Home
+Home -> Event 56
+Event 56 -> Event 36
+
+Day 5:
+
+=====================
+Nurse 51 
+=====================
+
+Day 1:
+
+Day 2:
+Event 15 -> Home
+Home -> Event 17
+Event 17 -> Event 15
+
+Day 3:
+Home -> Event 20
+Event 20 -> Home
+
+Day 4:
+Home -> Event 28
+Event 28 -> Event 55
+Event 55 -> Home
+
+Day 5:
+
+=====================
+Nurse 52 
+=====================
+
+Day 1:
+Home -> Event 3
+Event 3 -> Event 9
+Event 9 -> Home
+
+Day 2:
+Event 15 -> Home
+Home -> Event 17
+Event 17 -> Event 15
+
+Day 3:
+Home -> Event 48
+Event 48 -> Home
+
+Day 4:
+
+Day 5:
+
+=====================
+Nurse 53 
+=====================
+
+Day 1:
+
+Day 2:
+Depot -> Home
+Drop off for Event 12
+Drop off for Event 13
+Event 12 -> Depot
+Home -> Event 13
+Event 13 -> Event 12
+
+Day 3:
+Home -> Event 20
+Event 20 -> Home
+
+Day 4:
+
+Day 5:
+Home -> Event 43
+Event 43 -> Event 61
+Event 61 -> Home
+
+=====================
+Nurse 54 
+=====================
+
+Day 1:
+
+Day 2:
+Home -> Depot
+Pick up for Event 12
+Pick up for Event 17
+Event 12 -> Home
+Depot -> Event 17
+Event 17 -> Event 12
+
+Day 3:
+Home -> Event 48
+Event 48 -> Home
+
+Day 4:
+Home -> Depot
+Depot -> Home
+Pick up for Event 37
+Drop off for Event 37
+Event 33 -> Depot
+Depot -> Event 37
+Event 37 -> Event 33
+
+Day 5:
+
+=====================
+Nurse 55 
+=====================
+
+Day 1:
+
+Day 2:
+
+Day 3:
+Home -> Depot
+Pick up for Event 21
+Pick up for Event 26
+Depot -> Event 21
+Event 21 -> Event 26
+Event 26 -> Home
+
+Day 4:
+Home -> Event 30
+Event 30 -> Event 33
+Event 33 -> Home
+
+Day 5:
+Home -> Depot
+Depot -> Home
+Pick up for Event 39
+Drop off for Event 39
+Pick up for Event 41
+Drop off for Event 41
+Depot -> Event 39
+Event 39 -> Event 41
+Event 41 -> Depot
+
+=====================
+Nurse 56 
+=====================
+
+Day 1:
+
+Day 2:
+
+Day 3:
+Event 23 -> Home
+Home -> Event 27
+Event 27 -> Event 23
+
+Day 4:
+Home -> Event 52
+Event 52 -> Home
+
+Day 5:
+Home -> Event 44
+Event 44 -> Event 60
+Event 60 -> Home
+
+=====================
+Nurse 57 
+=====================
+
+Day 1:
+
+Day 2:
+
+Day 3:
+Event 23 -> Home
+Home -> Event 27
+Event 27 -> Event 23
+
+Day 4:
+Home -> Event 29
+Event 29 -> Home
+
+Day 5:
+Event 44 -> Home
+Home -> Event 60
+Event 60 -> Event 44
+
+=====================
+Nurse 58 
+=====================
+
+Day 1:
+
+Day 2:
+Home -> Event 11
+Event 11 -> Home
+
+Day 3:
+
+Day 4:
+Home -> Event 29
+Event 29 -> Event 52
+Event 52 -> Home
+
+Day 5:
+Event 44 -> Home
+Home -> Event 60
+Event 60 -> Event 44

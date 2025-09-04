@@ -1,0 +1,86 @@
+
+
+Best feasible solution found within 60.01 seconds:
+Objective value: 1820.0
+Best bound: 1573.0
+Gap: 0.1357142857142857
+
+=====================
+Day 1 
+=====================
+
+Event 1: 9:30-12:30 [1 RN, 2 LVN] 
+Nurse 11 (pick up leader, drop off leader)
+Nurse 29
+Nurse 41
+
+Event 2: 12:53-18:53 [2 RN, 4 LVN] 
+Nurse 2
+Nurse 5 (pick up leader, drop off leader)
+Nurse 27
+Nurse 43
+Nurse 44
+Nurse 54
+
+Event 3: 12:55-18:55 [2 RN, 2 LVN] 
+Nurse 13
+Nurse 16
+Nurse 45
+Nurse 55 (pick up leader, drop off leader)
+
+Event 4: 12:53-18:53 [2 RN, 3 LVN] 
+Nurse 12
+Nurse 18
+Nurse 32
+Nurse 35
+Nurse 38 (pick up leader, drop off leader)
+
+Event 5: 13:00-19:00 [2 RN, 3 LVN] 
+Nurse 1
+Nurse 23
+Nurse 24
+Nurse 26
+Nurse 36 (pick up leader, drop off leader)
+
+Event 6: 9:31-12:31 [3 RN, 5 LVN] 
+Nurse 2
+Nurse 5 (pick up leader)
+Nurse 12
+Nurse 27
+Nurse 38 (drop off leader)
+Nurse 43
+Nurse 44
+Nurse 54
+
+Event 7: 12:17-17:47 [2 RN, 3 LVN] 
+Nurse 7 (pick up leader, drop off leader)
+Nurse 21
+Nurse 56
+Nurse 57
+Nurse 58
+
+Event 8: 9:40-12:40 [1 RN, 2 LVN] 
+Nurse 14
+Nurse 39 (pick up leader, drop off leader)
+Nurse 46
+
+Event 9: 13:30-16:00 [1 RN, 2 LVN] 
+Nurse 11 (pick up leader, drop off leader)
+Nurse 29
+Nurse 41
+
+Event 10: 13:30-15:00 [1 RN, 2 LVN] 
+Nurse 14
+Nurse 39 (pick up leader, drop off leader)
+Nurse 46
+
+Event 11: 10:47-11:47 [1 RN, 2 LVN] 
+Nurse 7 (pick up leader, drop off leader)
+Nurse 21
+Nurse 57
+Nurse 58
+
+Event 12: 9:37-12:07 [1 RN, 2 LVN] 
+Nurse 18
+Nurse 36 (drop off leader)
+Nurse 55 (pick up leader)

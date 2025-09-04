@@ -1,0 +1,518 @@
+Best feasible solution found within 7200 seconds:
+
+Objective value: 16900.0
+
+=====================
+Day 1 
+=====================
+
+Event 1: 12:30-17:30 [2 RN, 2 LVN] 
+Nurse 18 (drop off leader)
+Nurse 23
+Nurse 39 (pick up leader)
+Nurse 39
+Nurse 42
+
+Event 2: 8:30-11:30 [2 RN, 1 LVN] 
+Nurse 7 (drop off leader)
+Nurse 15
+Nurse 40 (pick up leader)
+Nurse 40
+
+Event 3: 12:30-19:00 [2 RN, 3 LVN] 
+Nurse 2
+Nurse 4
+Nurse 15 (pick up leader)
+Nurse 15
+Nurse 30
+Nurse 45
+Nurse 47
+Nurse 54 (drop off leader)
+
+Event 4: 12:30-18:30 [1 RN, 3 LVN] 
+Nurse 1
+Nurse 36 (drop off leader)
+Nurse 40 (pick up leader)
+Nurse 40
+Nurse 44
+
+Event 5: 12:30-18:30 [2 RN, 2 LVN] 
+Nurse 7
+Nurse 11 (pick up leader)
+Nurse 11 (drop off leader)
+Nurse 22
+Nurse 31
+Nurse 44
+
+Event 6: 12:30-17:30 [3 RN, 7 LVN] 
+Nurse 6
+Nurse 17
+Nurse 18
+Nurse 25
+Nurse 30
+Nurse 31 (pick up leader)
+Nurse 31
+Nurse 35
+Nurse 37
+Nurse 39
+Nurse 53
+Nurse 54 (drop off leader)
+
+Event 7: 8:30-11:30 [1 RN, 3 LVN] 
+Nurse 16
+Nurse 41 (pick up leader)
+Nurse 41
+Nurse 47 (drop off leader)
+Nurse 53
+
+Event 8: 8:30-11:30 [1 RN, 2 LVN] 
+Nurse 1
+Nurse 11 (pick up leader)
+Nurse 11 (drop off leader)
+Nurse 32
+Nurse 43
+
+Event 9: 8:30-11:00 [2 RN, 2 LVN] 
+Nurse 2 (pick up leader)
+Nurse 2
+Nurse 4
+Nurse 35
+Nurse 45 (drop off leader)
+
+=====================
+Day 2 
+=====================
+
+Event 10: 12:30-17:00 [1 RN, 2 LVN] 
+Nurse 15 (pick up leader)
+Nurse 15
+Nurse 18
+Nurse 33 (drop off leader)
+Nurse 52
+
+Event 11: 8:30-11:30 [1 RN, 3 LVN] 
+Nurse 14
+Nurse 26
+Nurse 36 (pick up leader)
+Nurse 36 (drop off leader)
+Nurse 47
+
+Event 12: 12:30-15:30 [2 RN, 3 LVN] 
+Nurse 1
+Nurse 23
+Nurse 24
+Nurse 27 (pick up leader)
+Nurse 27
+Nurse 34 (drop off leader)
+
+Event 13: 8:30-11:30 [2 RN, 2 LVN] 
+Nurse 10
+Nurse 11 (pick up leader)
+Nurse 11 (drop off leader)
+Nurse 27
+Nurse 34
+
+Event 14: 8:30-11:00 [2 RN, 1 LVN] 
+Nurse 9 (pick up leader)
+Nurse 9
+Nurse 18 (drop off leader)
+Nurse 29
+
+Event 15: 12:30-19:00 [2 RN, 4 LVN] 
+Nurse 9 (pick up leader)
+Nurse 9
+Nurse 21
+Nurse 28
+Nurse 47
+Nurse 48
+Nurse 52 (drop off leader)
+
+Event 16: 12:30-18:00 [2 RN, 3 LVN] 
+Nurse 6
+Nurse 8
+Nurse 12 (pick up leader)
+Nurse 12 (drop off leader)
+Nurse 30
+Nurse 38
+Nurse 55
+
+Event 17: 12:30-16:30 [4 RN, 6 LVN] 
+Nurse 6
+Nurse 10
+Nurse 11 (pick up leader)
+Nurse 11
+Nurse 21
+Nurse 26 (drop off leader)
+Nurse 28
+Nurse 33
+Nurse 35
+Nurse 43
+Nurse 55
+
+Event 18: 8:30-11:30 [2 RN, 3 LVN] 
+Nurse 8
+Nurse 12 (pick up leader)
+Nurse 12 (drop off leader)
+Nurse 30
+Nurse 48
+Nurse 50
+
+=====================
+Day 3 
+=====================
+
+Event 19: 12:30-17:00 [1 RN, 2 LVN] 
+Nurse 4
+Nurse 13 (pick up leader)
+Nurse 13
+Nurse 36
+Nurse 39
+Nurse 44
+Nurse 50 (drop off leader)
+
+Event 20: 12:30-15:30 [3 RN, 4 LVN] 
+Nurse 10
+Nurse 17
+Nurse 19 (pick up leader)
+Nurse 19 (drop off leader)
+Nurse 26
+Nurse 35
+Nurse 40
+Nurse 42
+
+Event 21: 12:30-17:00 [6 RN, 6 LVN] 
+Nurse 1
+Nurse 8
+Nurse 11 (pick up leader)
+Nurse 11 (drop off leader)
+Nurse 16
+Nurse 17
+Nurse 22
+Nurse 29
+Nurse 46
+Nurse 49
+Nurse 52
+Nurse 56
+Nurse 57
+Nurse 58
+
+Event 22: 8:30-11:30 [3 RN, 3 LVN] 
+Nurse 2
+Nurse 7 (pick up leader)
+Nurse 7
+Nurse 14
+Nurse 30
+Nurse 41 (drop off leader)
+Nurse 50
+
+Event 23: 8:30-11:30 [2 RN, 4 LVN] 
+Nurse 1 (pick up leader)
+Nurse 1 (drop off leader)
+Nurse 5
+Nurse 25
+Nurse 46
+Nurse 49
+Nurse 53
+
+Event 24: 12:30-15:00 [3 RN, 5 LVN] 
+Nurse 4
+Nurse 8
+Nurse 13
+Nurse 36
+Nurse 41
+Nurse 44
+Nurse 52
+Nurse 55 (pick up leader)
+Nurse 55 (drop off leader)
+
+Event 25: 10:30-12:30 [3 RN, 4 LVN] 
+Nurse 3
+Nurse 9
+Nurse 15 (pick up leader)
+Nurse 15 (drop off leader)
+Nurse 27
+Nurse 28
+Nurse 31
+Nurse 37
+
+Event 26: 9:16-12:16 [3 RN, 5 LVN] 
+Nurse 11 (pick up leader)
+Nurse 11 (drop off leader)
+Nurse 16
+Nurse 22
+Nurse 24
+Nurse 29
+Nurse 56
+Nurse 57
+Nurse 58
+
+Event 27: 12:30-14:30 [2 RN, 4 LVN] 
+Nurse 5
+Nurse 20
+Nurse 39
+Nurse 43
+Nurse 48
+Nurse 51 (pick up leader)
+Nurse 51 (drop off leader)
+
+Event 46: 12:30-16:00 [2 RN, 2 LVN] 
+Nurse 15 (pick up leader)
+Nurse 15 (drop off leader)
+Nurse 20
+Nurse 25
+Nurse 38
+
+Event 47: 8:30-10:30 [1 RN, 2 LVN] 
+Nurse 3
+Nurse 9
+Nurse 27
+Nurse 33 (drop off leader)
+Nurse 37
+Nurse 38 (pick up leader)
+Nurse 38
+
+Event 48: 8:30-11:00 [3 RN, 3 LVN] 
+Nurse 6
+Nurse 19 (pick up leader)
+Nurse 19 (drop off leader)
+Nurse 23
+Nurse 35
+Nurse 42
+Nurse 54
+
+Event 49: 8:30-11:00 [1 RN, 2 LVN] 
+Nurse 12 (drop off leader)
+Nurse 32
+Nurse 55 (pick up leader)
+Nurse 55
+
+Event 50: 12:30-15:00 [2 RN, 1 LVN] 
+Nurse 7 (pick up leader)
+Nurse 7
+Nurse 12 (drop off leader)
+Nurse 14
+Nurse 32
+
+=====================
+Day 4 
+=====================
+
+Event 28: 12:30-17:00 [1 RN, 3 LVN] 
+Nurse 18 (pick up leader)
+Nurse 18
+Nurse 33 (drop off leader)
+Nurse 50
+Nurse 54
+
+Event 29: 8:30-12:30 [1 RN, 1 LVN] 
+Nurse 19 (pick up leader)
+Nurse 19 (drop off leader)
+Nurse 57
+Nurse 58
+
+Event 30: 8:30-11:30 [2 RN, 2 LVN] 
+Nurse 13
+Nurse 23 (pick up leader)
+Nurse 23
+Nurse 28
+Nurse 29
+Nurse 55 (drop off leader)
+
+Event 31: 12:30-16:30 [2 RN, 3 LVN] 
+Nurse 12
+Nurse 16
+Nurse 37
+Nurse 41 (pick up leader)
+Nurse 41 (drop off leader)
+Nurse 56
+
+Event 32: 10:43-13:43 [1 RN, 2 LVN] 
+Nurse 3
+Nurse 33 (drop off leader)
+Nurse 46 (pick up leader)
+Nurse 46
+
+Event 33: 12:30-18:00 [3 RN, 3 LVN] 
+Nurse 5
+Nurse 11 (pick up leader)
+Nurse 11
+Nurse 13
+Nurse 19 (drop off leader)
+Nurse 28
+Nurse 29
+Nurse 51
+
+Event 34: 12:30-17:30 [4 RN, 6 LVN] 
+Nurse 6
+Nurse 10
+Nurse 14
+Nurse 17
+Nurse 24
+Nurse 25
+Nurse 26
+Nurse 35
+Nurse 36 (pick up leader)
+Nurse 36 (drop off leader)
+Nurse 49
+
+Event 35: 8:30-11:30 [1 RN, 2 LVN] 
+Nurse 10
+Nurse 25
+Nurse 36 (pick up leader)
+Nurse 36 (drop off leader)
+
+Event 36: 9:04-12:04 [1 RN, 4 LVN] 
+Nurse 11 (pick up leader)
+Nurse 11 (drop off leader)
+Nurse 27
+Nurse 38
+Nurse 39
+Nurse 44
+
+Event 37: 12:30-19:30 [2 RN, 1 LVN] 
+Nurse 16 (pick up leader)
+Nurse 16 (drop off leader)
+Nurse 20
+Nurse 21
+Nurse 47
+
+Event 51: 11:22-12:22 [1 RN, 3 LVN] 
+Nurse 6
+Nurse 24
+Nurse 35
+Nurse 53 (pick up leader)
+Nurse 53 (drop off leader)
+
+Event 52: 12:30-14:00 [1 RN, 1 LVN] 
+Nurse 23 (pick up leader)
+Nurse 23
+Nurse 41 (drop off leader)
+
+Event 53: 8:30-10:30 [1 RN, 2 LVN] 
+Nurse 8
+Nurse 34
+Nurse 42 (pick up leader)
+Nurse 42 (drop off leader)
+
+Event 54: 8:30-10:30 [1 RN, 2 LVN] 
+Nurse 14
+Nurse 46
+Nurse 53 (pick up leader)
+Nurse 53 (drop off leader)
+
+Event 55: 8:30-12:30 [1 RN, 3 LVN] 
+Nurse 18 (pick up leader)
+Nurse 18
+Nurse 22
+Nurse 42 (drop off leader)
+Nurse 50
+Nurse 54
+
+Event 56: 8:30-10:30 [1 RN, 3 LVN] 
+Nurse 17 (pick up leader)
+Nurse 17 (drop off leader)
+Nurse 26
+Nurse 49
+Nurse 51
+
+Event 57: 8:30-9:00 [2 RN, 3 LVN] 
+Nurse 9 (pick up leader)
+Nurse 9 (drop off leader)
+Nurse 12
+Nurse 37
+Nurse 45
+Nurse 56
+
+=====================
+Day 5 
+=====================
+
+Event 38: 8:30-11:30 [1 RN, 2 LVN] 
+Nurse 2 (pick up leader)
+Nurse 2 (drop off leader)
+Nurse 33
+Nurse 48
+
+Event 39: 12:30-18:30 [2 RN, 4 LVN] 
+Nurse 3
+Nurse 21
+Nurse 40
+Nurse 45
+Nurse 48
+Nurse 57 (pick up leader)
+Nurse 57 (drop off leader)
+
+Event 40: 12:30-18:30 [2 RN, 2 LVN] 
+Nurse 7
+Nurse 20
+Nurse 38 (pick up leader)
+Nurse 38 (drop off leader)
+Nurse 51
+
+Event 41: 12:30-18:30 [2 RN, 3 LVN] 
+Nurse 3
+Nurse 5 (pick up leader)
+Nurse 5 (drop off leader)
+Nurse 21
+Nurse 36
+Nurse 40
+Nurse 45
+
+Event 42: 12:30-18:30 [2 RN, 3 LVN] 
+Nurse 13
+Nurse 23
+Nurse 24
+Nurse 38 (pick up leader)
+Nurse 38 (drop off leader)
+Nurse 43
+
+Event 43: 12:30-15:30 [3 RN, 5 LVN] 
+Nurse 19
+Nurse 20
+Nurse 22
+Nurse 29
+Nurse 31
+Nurse 32 (pick up leader)
+Nurse 32
+Nurse 41 (drop off leader)
+Nurse 52
+
+Event 44: 12:30-18:00 [2 RN, 3 LVN] 
+Nurse 4
+Nurse 11 (pick up leader)
+Nurse 11 (drop off leader)
+Nurse 49
+Nurse 56
+Nurse 58
+
+Event 45: 8:30-11:30 [1 RN, 2 LVN] 
+Nurse 7 (drop off leader)
+Nurse 46 (pick up leader)
+Nurse 46
+Nurse 51
+
+Event 58: 12:30-15:00 [1 RN, 2 LVN] 
+Nurse 2 (pick up leader)
+Nurse 2 (drop off leader)
+Nurse 34
+Nurse 49
+
+Event 59: 8:30-10:00 [1 RN, 2 LVN] 
+Nurse 4
+Nurse 5
+Nurse 55
+Nurse 57 (pick up leader)
+Nurse 57 (drop off leader)
+
+Event 60: 8:30-9:30 [1 RN, 2 LVN] 
+Nurse 11 (pick up leader)
+Nurse 11 (drop off leader)
+Nurse 34
+Nurse 58
+
+Event 61: 8:30-11:00 [1 RN, 2 LVN] 
+Nurse 19 (pick up leader)
+Nurse 19 (drop off leader)
+Nurse 31
+Nurse 32
+Nurse 43

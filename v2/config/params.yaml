@@ -1,0 +1,17 @@
+# config/params.yaml
+
+solver:
+  work_limit: 1000        # in work units
+  time_limit: 3600      # in seconds
+  mip_gap: 0.01          # acceptable optimality gap
+  threads: 8             # number of parallel threads for Gurobi
+
+heuristics:
+  max_iterations: 1000
+  neighborhood_size: 5   # number of events to swap in local search
+  perturbation_strength: 2
+  acceptance_threshold: 0.95
+
+wiggle_room:
+  min_buffer: 5   # minutes
+  max_buffer: 20  # minutes

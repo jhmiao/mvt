@@ -1,0 +1,168 @@
+More pruning
+
+Best feasible solution found within 1200 seconds:
+
+=====================
+Day 1 
+=====================
+
+=====================
+Day 2 
+=====================
+
+Event 3: 10:41-12:11 [2 RN, 5 LVN] 
+RN 1
+RN 5 (team leader)
+LVN 12
+LVN 13
+LVN 17
+LVN 19
+LVN 26
+
+Event 4: 10:00-10:45 [1 RN, 2 LVN] 
+RN 9 (team leader)
+LVN 21
+LVN 28
+
+Event 7: 11:17-13:47 [1 RN, 2 LVN] 
+RN 9 (team leader)
+LVN 21
+LVN 28
+
+Event 8: 10:41-12:11 [2 RN, 3 LVN] 
+RN 4 (team leader)
+RN 6
+LVN 14
+LVN 15
+LVN 23
+
+Event 13: 14:00-14:30 [1 RN, 1 LVN] 
+RN 9 (team leader)
+LVN 15
+
+Event 14: 12:25-13:55 [1 RN, 2 LVN] 
+RN 4 (team leader)
+LVN 14
+LVN 23
+
+Event 18: 10:00-10:30 [1 RN, 3 LVN] 
+RN 4 (team leader)
+LVN 14
+LVN 15
+LVN 26
+
+Event 19: 14:21-15:06 [1 RN, 2 LVN] 
+RN 4 (team leader)
+LVN 14
+LVN 23
+
+=====================
+Day 3 
+=====================
+
+Event 1: 10:17-12:47 [1 RN, 1 LVN] 
+RN 4 (team leader)
+LVN 17
+
+Event 5: 9:30-10:00 [3 RN, 3 LVN] 
+RN 7 (team leader)
+RN 8
+RN 10
+LVN 19
+LVN 21
+LVN 29
+
+Event 6: 14:00-14:45 [1 RN, 2 LVN] 
+RN 4 (team leader)
+LVN 19
+LVN 20
+
+Event 10: 13:37-15:07 [2 RN, 3 LVN] 
+RN 7 (team leader)
+RN 8
+LVN 11
+LVN 16
+LVN 27
+
+Event 11: 12:27-13:27 [1 RN, 3 LVN] 
+RN 5 (team leader)
+LVN 21
+LVN 22
+LVN 24
+
+Event 12: 10:00-12:00 [3 RN, 6 LVN] 
+RN 1
+RN 2
+RN 5 (team leader)
+LVN 13
+LVN 18
+LVN 22
+LVN 25
+LVN 27
+LVN 30
+
+Event 15: 13:37-15:07 [1 RN, 2 LVN] 
+RN 5 (team leader)
+LVN 21
+LVN 22
+
+Event 16: 10:20-11:20 [2 RN, 4 LVN] 
+RN 7 (team leader)
+RN 10
+LVN 16
+LVN 20
+LVN 24
+LVN 29
+
+Event 20: 11:30-12:15 [3 RN, 7 LVN] 
+RN 7 (team leader)
+RN 8
+RN 10
+LVN 11
+LVN 16
+LVN 19
+LVN 20
+LVN 21
+LVN 24
+LVN 29
+
+=====================
+Day 4 
+=====================
+
+Event 2: 10:00-11:00 [2 RN, 2 LVN] 
+RN 3
+RN 4 (team leader)
+LVN 22
+LVN 23
+
+Event 9: 14:00-15:00 [2 RN, 3 LVN] 
+RN 3
+RN 4 (team leader)
+LVN 12
+LVN 22
+LVN 23
+
+Event 17: 11:10-11:40 [3 RN, 2 LVN] 
+RN 3
+RN 4 (team leader)
+RN 6
+LVN 22
+LVN 23
+
+=====================
+Day 5 
+=====================
+
+Objective value: 1687.0
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+H    0     0                    2323.0000000 1104.73189  52.4%     -  152s
+H    0     0                    2000.0000000 1104.73189  44.8%     -  161s
+H    0     0                    1988.0000000 1104.73189  44.4%     -  178s
+H    0     0                    1855.0000000 1104.73189  40.4%     -  211s
+H   27    32                    1730.0000000 1104.73920  36.1%  2941  469s
+H   28    32                    1688.0000000 1104.73920  34.6%  2937  469s
+H   30    32                    1687.0000000 1104.73920  34.5%  2798  469s

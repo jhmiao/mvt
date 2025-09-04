@@ -1,0 +1,157 @@
+Best feasible solution found within 1200 seconds:
+
+=====================
+Day 1 
+=====================
+
+Event 3: 10:00-11:00 [1 RN, 2 LVN] 
+RN 5 (team leader)
+LVN 22
+LVN 23
+
+Event 5: 12:42-13:42 [1 RN, 2 LVN] 
+RN 5 (team leader)
+LVN 14
+LVN 29
+
+Event 6: 12:17-13:17 [2 RN, 2 LVN] 
+RN 3 (team leader)
+RN 4
+LVN 11
+LVN 22
+
+Event 8: 11:02-12:02 [1 RN, 2 LVN] 
+RN 3 (team leader)
+LVN 11
+LVN 14
+
+Event 11: 9:30-10:00 [2 RN, 2 LVN] 
+RN 3 (team leader)
+RN 4
+LVN 11
+LVN 29
+
+Event 14: 12:02-12:32 [2 RN, 1 LVN] 
+RN 5 (team leader)
+RN 7
+LVN 23
+
+Event 18: 13:30-15:00 [3 RN, 2 LVN] 
+RN 3 (team leader)
+RN 4
+RN 7
+LVN 11
+LVN 22
+
+Event 20: 14:30-15:00 [2 RN, 3 LVN] 
+RN 5 (team leader)
+RN 6
+LVN 14
+LVN 23
+LVN 29
+
+=====================
+Day 2 
+=====================
+
+Event 4: 11:21-12:51 [1 RN, 3 LVN] 
+RN 2 (team leader)
+LVN 16
+LVN 18
+LVN 21
+
+Event 10: 13:38-15:08 [1 RN, 3 LVN] 
+RN 3 (team leader)
+LVN 11
+LVN 13
+LVN 20
+
+Event 12: 11:27-12:57 [2 RN, 5 LVN] 
+RN 1
+RN 5 (team leader)
+LVN 11
+LVN 13
+LVN 26
+LVN 27
+LVN 30
+
+Event 15: 10:00-11:30 [1 RN, 1 LVN] 
+RN 3 (team leader)
+LVN 20
+
+Event 16: 10:00-10:45 [2 RN, 3 LVN] 
+RN 1
+RN 2 (team leader)
+LVN 16
+LVN 18
+LVN 21
+
+Event 17: 9:30-10:30 [1 RN, 2 LVN] 
+RN 5 (team leader)
+LVN 13
+LVN 27
+
+Event 19: 13:07-15:07 [1 RN, 6 LVN] 
+RN 5 (team leader)
+LVN 12
+LVN 16
+LVN 18
+LVN 26
+LVN 27
+LVN 30
+
+=====================
+Day 3 
+=====================
+
+Event 2: 10:00-12:30 [2 RN, 2 LVN] 
+RN 3 (team leader)
+RN 10
+LVN 24
+LVN 25
+
+=====================
+Day 4 
+=====================
+
+Event 7: 12:35-15:05 [2 RN, 3 LVN] 
+RN 3 (team leader)
+RN 9
+LVN 17
+LVN 26
+LVN 28
+
+=====================
+Day 5 
+=====================
+
+Event 1: 11:12-12:42 [2 RN, 2 LVN] 
+RN 3 (team leader)
+RN 8
+LVN 11
+LVN 15
+
+Event 9: 13:05-15:05 [1 RN, 3 LVN] 
+RN 3 (team leader)
+LVN 11
+LVN 15
+LVN 19
+
+Event 13: 9:30-11:00 [3 RN, 2 LVN] 
+RN 3 (team leader)
+RN 6
+RN 8
+LVN 11
+LVN 19
+Objective value: 1671.0
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+H    0     0                    4324.0000000  964.00148  77.7%     -   22s
+H    0     0                    3277.0000000  964.00148  70.6%     -   34s
+H    0     0                    3093.0000000  964.00148  68.8%     -   34s
+H    0     0                    1837.0000000  964.00148  47.5%     -   80s
+H   27    32                    1765.0000000  966.13063  45.3%  2912  458s
+H   28    32                    1677.0000000  966.13063  42.4%  2833  458s
+H   83   101                    1671.0000000  966.13063  42.2%  3053  766s

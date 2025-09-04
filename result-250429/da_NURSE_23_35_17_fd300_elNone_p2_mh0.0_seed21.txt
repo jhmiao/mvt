@@ -1,0 +1,455 @@
+Best feasible solution found within 60.02 seconds:
+Objective value: 2421.0
+Best bound: 2103.0
+Gap: 0.13135068153655513
+
+=====================
+Nurse 1 
+=====================
+
+Day 1:
+Home -> Depot
+Event 1 Morning
+Event 15 Afternoon
+Depot -> Home
+
+=====================
+Nurse 2 
+=====================
+
+Day 1:
+Home -> Depot
+Event 2 Morning
+Event 12 Afternoon
+Depot -> Home
+
+=====================
+Nurse 3 
+=====================
+
+Day 1:
+
+=====================
+Nurse 4 
+=====================
+
+Day 1:
+Home -> Depot
+Event 6 Morning
+Event 6 Afternoon
+Depot -> Home
+
+=====================
+Nurse 5 
+=====================
+
+Day 1:
+Home -> Depot
+Event 10 Morning
+Event 10 Afternoon
+Depot -> Home
+
+=====================
+Nurse 6 
+=====================
+
+Day 1:
+Event 9 Morning
+Event 16 Afternoon
+
+=====================
+Nurse 7 
+=====================
+
+Day 1:
+Home -> Depot
+Event 5 Afternoon
+Event 14 Morning
+Depot -> Home
+
+=====================
+Nurse 8 
+=====================
+
+Day 1:
+
+=====================
+Nurse 9 
+=====================
+
+Day 1:
+
+=====================
+Nurse 10 
+=====================
+
+Day 1:
+
+=====================
+Nurse 11 
+=====================
+
+Day 1:
+Home -> Depot
+Event 7 Afternoon
+Event 8 Morning
+Depot -> Home
+
+=====================
+Nurse 12 
+=====================
+
+Day 1:
+Home -> Depot
+Event 3 Morning
+Event 7 Afternoon
+
+=====================
+Nurse 13 
+=====================
+
+Day 1:
+Event 3 Morning
+Event 7 Afternoon
+
+=====================
+Nurse 14 
+=====================
+
+Day 1:
+Event 4 Morning
+Event 17 Afternoon
+
+=====================
+Nurse 15 
+=====================
+
+Day 1:
+Event 6 Morning
+Event 6 Afternoon
+
+=====================
+Nurse 16 
+=====================
+
+Day 1:
+Event 4 Morning
+Event 17 Afternoon
+
+=====================
+Nurse 17 
+=====================
+
+Day 1:
+Event 13 Afternoon
+
+=====================
+Nurse 18 
+=====================
+
+Day 1:
+Event 7 Afternoon
+Event 11 Morning
+
+=====================
+Nurse 19 
+=====================
+
+Day 1:
+Event 6 Morning
+Event 6 Afternoon
+
+=====================
+Nurse 20 
+=====================
+
+Day 1:
+Event 10 Morning
+Event 10 Afternoon
+
+=====================
+Nurse 21 
+=====================
+
+Day 1:
+Event 10 Morning
+Event 10 Afternoon
+
+=====================
+Nurse 22 
+=====================
+
+Day 1:
+
+=====================
+Nurse 23 
+=====================
+
+Day 1:
+
+=====================
+Nurse 24 
+=====================
+
+Day 1:
+Event 4 Morning
+Event 17 Afternoon
+
+=====================
+Nurse 25 
+=====================
+
+Day 1:
+Event 6 Morning
+Event 6 Afternoon
+
+=====================
+Nurse 26 
+=====================
+
+Day 1:
+Event 1 Morning
+Event 15 Afternoon
+
+=====================
+Nurse 27 
+=====================
+
+Day 1:
+Event 7 Afternoon
+Event 8 Morning
+
+=====================
+Nurse 28 
+=====================
+
+Day 1:
+
+=====================
+Nurse 29 
+=====================
+
+Day 1:
+Event 3 Morning
+
+=====================
+Nurse 30 
+=====================
+
+Day 1:
+Event 9 Morning
+Event 16 Afternoon
+
+=====================
+Nurse 31 
+=====================
+
+Day 1:
+Home -> Depot
+Event 9 Morning
+Event 16 Afternoon
+Depot -> Home
+
+=====================
+Nurse 32 
+=====================
+
+Day 1:
+Event 7 Afternoon
+Event 11 Morning
+
+=====================
+Nurse 33 
+=====================
+
+Day 1:
+
+=====================
+Nurse 34 
+=====================
+
+Day 1:
+
+=====================
+Nurse 35 
+=====================
+
+Day 1:
+Event 7 Afternoon
+Event 11 Morning
+
+=====================
+Nurse 36 
+=====================
+
+Day 1:
+Event 6 Morning
+Event 6 Afternoon
+
+=====================
+Nurse 37 
+=====================
+
+Day 1:
+Home -> Depot
+Event 9 Morning
+Event 13 Afternoon
+Depot -> Home
+
+=====================
+Nurse 38 
+=====================
+
+Day 1:
+Home -> Depot
+Event 4 Morning
+Event 17 Afternoon
+Depot -> Home
+
+=====================
+Nurse 39 
+=====================
+
+Day 1:
+Event 9 Morning
+Event 16 Afternoon
+
+=====================
+Nurse 40 
+=====================
+
+Day 1:
+Event 1 Morning
+Event 15 Afternoon
+
+=====================
+Nurse 41 
+=====================
+
+Day 1:
+Event 3 Morning
+Event 7 Afternoon
+Depot -> Home
+
+=====================
+Nurse 42 
+=====================
+
+Day 1:
+
+=====================
+Nurse 43 
+=====================
+
+Day 1:
+Event 7 Afternoon
+Event 8 Morning
+
+=====================
+Nurse 44 
+=====================
+
+Day 1:
+Event 4 Morning
+Event 17 Afternoon
+
+=====================
+Nurse 45 
+=====================
+
+Day 1:
+Event 5 Afternoon
+Event 14 Morning
+
+=====================
+Nurse 46 
+=====================
+
+Day 1:
+Event 5 Afternoon
+Event 14 Morning
+
+=====================
+Nurse 47 
+=====================
+
+Day 1:
+Event 10 Morning
+Event 10 Afternoon
+
+=====================
+Nurse 48 
+=====================
+
+Day 1:
+Event 13 Afternoon
+
+=====================
+Nurse 49 
+=====================
+
+Day 1:
+
+=====================
+Nurse 50 
+=====================
+
+Day 1:
+
+=====================
+Nurse 51 
+=====================
+
+Day 1:
+
+=====================
+Nurse 52 
+=====================
+
+Day 1:
+Event 1 Morning
+Event 15 Afternoon
+
+=====================
+Nurse 53 
+=====================
+
+Day 1:
+
+=====================
+Nurse 54 
+=====================
+
+Day 1:
+Home -> Depot
+Event 7 Afternoon
+Event 11 Morning
+Depot -> Home
+
+=====================
+Nurse 55 
+=====================
+
+Day 1:
+Event 6 Morning
+Event 6 Afternoon
+
+=====================
+Nurse 56 
+=====================
+
+Day 1:
+
+=====================
+Nurse 57 
+=====================
+
+Day 1:
+Event 12 Afternoon
+
+=====================
+Nurse 58 
+=====================
+
+Day 1:
+Event 2 Morning

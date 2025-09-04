@@ -1,0 +1,16 @@
+# config/paths.yaml
+
+# Input files
+c101_original: "data/raw/c101_data.xlsx"
+c201_original: "data/raw/c201_data.xlsx"
+r101_original: "data/raw/r101_data.xlsx"
+rc101_original: "data/raw/rc101_data.xlsx"
+
+event_data: "data/raw/events.csv"
+nurse_data: "data/raw/nurses.csv"
+travel_matrix: "data/raw/travel_times.csv"
+
+# Output files
+solver_output: "results/solver/solution.json"
+heuristic_output: "results/heuristics/improved_solution.json"
+logs: "results/logs/run.log"

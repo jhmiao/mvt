@@ -1,0 +1,86 @@
+Best feasible solution found within 60 seconds:
+
+=====================
+Day 1 
+=====================
+
+Event 2: 10:00-10:30 [1 RN, 2 LVN] 
+RN 7 (team leader)
+LVN 18
+LVN 21
+
+Event 6: 13:08-14:38 [1 RN, 1 LVN] 
+RN 7 (team leader)
+LVN 24
+
+Event 8: 10:44-11:44 [2 RN, 3 LVN] 
+RN 2
+RN 7 (team leader)
+LVN 17
+LVN 18
+LVN 21
+
+Event 10: 11:56-12:56 [2 RN, 2 LVN] 
+RN 7 (team leader)
+RN 8
+LVN 13
+LVN 29
+
+=====================
+Day 2 
+=====================
+
+=====================
+Day 3 
+=====================
+
+=====================
+Day 4 
+=====================
+
+Event 1: 10:00-11:30 [1 RN, 3 LVN] 
+RN 5 (team leader)
+RN 9
+RN 10
+LVN 11
+LVN 16
+LVN 19
+LVN 20
+LVN 26
+
+Event 3: 11:45-12:45 [1 RN, 3 LVN] 
+RN 5 (team leader)
+LVN 15
+LVN 27
+LVN 28
+
+Event 4: 13:37-14:07 [2 RN, 3 LVN] 
+RN 1 (team leader)
+RN 3
+LVN 14
+LVN 16
+LVN 20
+
+Event 5: 11:57-13:27 [1 RN, 1 LVN] 
+RN 1 (team leader)
+RN 4
+LVN 22
+
+Event 7: 14:24-15:09 [3 RN, 1 LVN] 
+RN 3
+RN 5 (team leader)
+RN 10
+LVN 14
+
+Event 9: 13:14-14:14 [2 RN, 2 LVN] 
+RN 5 (team leader)
+RN 6
+LVN 12
+LVN 23
+LVN 25
+LVN 30
+
+=====================
+Day 5 
+=====================
+Objective value: 917.0

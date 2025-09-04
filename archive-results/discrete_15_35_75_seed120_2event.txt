@@ -1,0 +1,1560 @@
+Best feasible solution found within 600 seconds:
+Seed number: 120
+Number of RNs: 15
+Number of LVNs: 35
+Objective value: 2134.0
+Schedule: 
+
+
+Event 1: day 3 at 12:30
+Duaration: 180 minutes 
+Minimum number of nurses required: [1 RN, 4 LVN] 
+RN 6
+LVN 24
+LVN 26
+LVN 47
+LVN 50
+Pick up: LVN 26
+Drop off: RN 6
+
+Event 2: day 4 at 13:30
+Duaration: 120 minutes 
+Minimum number of nurses required: [3 RN, 5 LVN] 
+RN 1
+RN 6
+RN 7
+LVN 21
+LVN 25
+LVN 30
+LVN 46
+LVN 47
+Pick up: LVN 21
+Drop off: LVN 25
+
+Event 3: day 3 at 10:00
+Duaration: 90 minutes 
+Minimum number of nurses required: [2 RN, 2 LVN] 
+RN 5
+RN 7
+LVN 22
+LVN 23
+LVN 36
+LVN 40
+Pick up: RN 5
+Drop off: LVN 22
+
+Event 4: day 3 at 11:30
+Duaration: 90 minutes 
+Minimum number of nurses required: [1 RN, 3 LVN] 
+RN 4
+RN 15
+LVN 28
+LVN 29
+LVN 44
+LVN 46
+LVN 48
+Pick up: RN 15
+Drop off: RN 15
+
+Event 5: day 2 at 10:00
+Duaration: 60 minutes 
+Minimum number of nurses required: [1 RN, 5 LVN] 
+RN 1
+RN 10
+LVN 17
+LVN 19
+LVN 20
+LVN 23
+LVN 36
+LVN 38
+Pick up: RN 10
+Drop off: LVN 17
+
+Event 6: day 4 at 13:00
+Duaration: 60 minutes 
+Minimum number of nurses required: [1 RN, 2 LVN] 
+RN 9
+LVN 23
+LVN 26
+LVN 40
+Pick up: LVN 23
+Drop off: LVN 26
+
+Event 7: day 1 at 9:30
+Duaration: 90 minutes 
+Minimum number of nurses required: [1 RN, 5 LVN] 
+RN 3
+LVN 19
+LVN 23
+LVN 24
+LVN 25
+LVN 27
+LVN 28
+LVN 30
+LVN 43
+LVN 45
+LVN 49
+Pick up: LVN 25
+Drop off: RN 3
+
+Event 8: day 2 at 9:30
+Duaration: 90 minutes 
+Minimum number of nurses required: [2 RN, 6 LVN] 
+RN 3
+RN 4
+RN 6
+LVN 21
+LVN 26
+LVN 27
+LVN 28
+LVN 29
+LVN 31
+LVN 32
+LVN 34
+LVN 35
+LVN 37
+LVN 43
+Pick up: LVN 31
+Drop off: RN 3
+
+Event 9: day 2 at 10:00
+Duaration: 90 minutes 
+Minimum number of nurses required: [3 RN, 2 LVN] 
+RN 7
+RN 9
+RN 12
+LVN 30
+LVN 39
+Pick up: LVN 39
+Drop off: RN 7
+
+Event 10: day 5 at 14:00
+Duaration: 180 minutes 
+Minimum number of nurses required: [2 RN, 2 LVN] 
+RN 6
+RN 15
+LVN 18
+LVN 20
+LVN 25
+LVN 27
+Pick up: RN 15
+Drop off: LVN 25
+
+Event 11: day 2 at 9:30
+Duaration: 60 minutes 
+Minimum number of nurses required: [1 RN, 3 LVN] 
+RN 2
+LVN 16
+LVN 18
+LVN 22
+LVN 24
+LVN 42
+LVN 48
+Pick up: LVN 42
+Drop off: LVN 18
+
+Event 12: day 5 at 11:00
+Duaration: 150 minutes 
+Minimum number of nurses required: [2 RN, 1 LVN] 
+RN 8
+RN 10
+RN 12
+LVN 24
+LVN 31
+Pick up: LVN 31
+Drop off: RN 12
+
+Event 13: day 4 at 11:30
+Duaration: 150 minutes 
+Minimum number of nurses required: [3 RN, 2 LVN] 
+RN 3
+RN 5
+RN 15
+LVN 19
+LVN 37
+LVN 43
+LVN 48
+Pick up: RN 5
+Drop off: RN 5
+
+Event 14: day 4 at 10:00
+Duaration: 90 minutes 
+Minimum number of nurses required: [1 RN, 7 LVN] 
+RN 2
+LVN 17
+LVN 18
+LVN 19
+LVN 21
+LVN 23
+LVN 24
+LVN 25
+LVN 26
+LVN 27
+LVN 28
+LVN 29
+LVN 34
+LVN 41
+Pick up: LVN 25
+Drop off: LVN 25
+
+Event 15: day 4 at 9:30
+Duaration: 60 minutes 
+Minimum number of nurses required: [2 RN, 2 LVN] 
+RN 9
+RN 10
+LVN 20
+LVN 44
+LVN 45
+Pick up: RN 10
+Drop off: LVN 44
+
+Event 16: day 4 at 9:30
+Duaration: 120 minutes 
+Minimum number of nurses required: [2 RN, 4 LVN] 
+RN 1
+RN 3
+LVN 30
+LVN 31
+LVN 33
+LVN 36
+LVN 49
+Pick up: LVN 31
+Drop off: LVN 33
+
+Event 17: day 2 at 9:30
+Duaration: 120 minutes 
+Minimum number of nurses required: [1 RN, 3 LVN] 
+RN 5
+RN 13
+LVN 41
+LVN 44
+LVN 45
+LVN 46
+LVN 50
+Pick up: RN 5
+Drop off: LVN 44
+
+Event 18: day 4 at 11:30
+Duaration: 120 minutes 
+Minimum number of nurses required: [1 RN, 2 LVN] 
+RN 12
+LVN 27
+LVN 28
+LVN 29
+LVN 36
+Pick up: LVN 36
+Drop off: LVN 28
+
+Event 19: day 4 at 9:30
+Duaration: 90 minutes 
+Minimum number of nurses required: [2 RN, 2 LVN] 
+RN 4
+RN 7
+RN 8
+LVN 16
+LVN 22
+LVN 39
+LVN 47
+Pick up: LVN 47
+Drop off: RN 7
+
+Event 20: day 4 at 11:30
+Duaration: 150 minutes 
+Minimum number of nurses required: [2 RN, 5 LVN] 
+RN 2
+RN 11
+LVN 20
+LVN 34
+LVN 35
+LVN 38
+LVN 41
+LVN 42
+LVN 45
+Pick up: LVN 42
+Drop off: LVN 42
+
+Event 21: day 1 at 11:30
+Duaration: 150 minutes 
+Minimum number of nurses required: [3 RN, 3 LVN] 
+RN 1
+RN 2
+RN 11
+LVN 23
+LVN 24
+LVN 31
+LVN 39
+LVN 49
+Pick up: LVN 31
+Drop off: RN 1
+
+Event 22: day 1 at 9:30
+Duaration: 90 minutes 
+Minimum number of nurses required: [2 RN, 1 LVN] 
+RN 11
+RN 13
+LVN 42
+Pick up: LVN 42
+Drop off: LVN 42
+
+Event 23: day 3 at 10:00
+Duaration: 90 minutes 
+Minimum number of nurses required: [2 RN, 4 LVN] 
+RN 4
+RN 13
+RN 15
+LVN 16
+LVN 18
+LVN 20
+LVN 26
+LVN 30
+LVN 31
+LVN 34
+LVN 43
+Pick up: LVN 26
+Drop off: LVN 31
+
+Event 24: day 5 at 13:30
+Duaration: 180 minutes 
+Minimum number of nurses required: [1 RN, 3 LVN] 
+RN 8
+LVN 16
+LVN 26
+LVN 31
+LVN 36
+LVN 39
+LVN 41
+Pick up: RN 8
+Drop off: LVN 26
+
+Event 25: day 3 at 10:00
+Duaration: 60 minutes 
+Minimum number of nurses required: [2 RN, 2 LVN] 
+RN 3
+RN 9
+RN 10
+LVN 19
+LVN 32
+LVN 33
+LVN 38
+Pick up: RN 10
+Drop off: RN 9
+
+Event 26: day 3 at 11:30
+Duaration: 90 minutes 
+Minimum number of nurses required: [3 RN, 2 LVN] 
+RN 1
+RN 7
+RN 13
+LVN 30
+LVN 34
+LVN 40
+LVN 42
+Pick up: LVN 42
+Drop off: RN 13
+
+Event 27: day 5 at 9:30
+Duaration: 150 minutes 
+Minimum number of nurses required: [2 RN, 3 LVN] 
+RN 6
+RN 11
+LVN 17
+LVN 20
+LVN 21
+LVN 45
+LVN 46
+LVN 47
+Pick up: RN 6
+Drop off: LVN 47
+
+Event 28: day 1 at 11:30
+Duaration: 90 minutes 
+Minimum number of nurses required: [2 RN, 1 LVN] 
+RN 6
+RN 12
+LVN 30
+LVN 38
+Pick up: RN 6
+Drop off: LVN 30
+
+Event 29: day 5 at 13:30
+Duaration: 150 minutes 
+Minimum number of nurses required: [1 RN, 2 LVN] 
+RN 9
+LVN 38
+LVN 42
+Pick up: LVN 42
+Drop off: LVN 42
+
+Event 30: day 2 at 11:00
+Duaration: 60 minutes 
+Minimum number of nurses required: [1 RN, 3 LVN] 
+RN 1
+RN 3
+LVN 18
+LVN 26
+LVN 27
+LVN 33
+LVN 37
+LVN 40
+Pick up: LVN 26
+Drop off: LVN 27
+
+Event 31: day 1 at 11:00
+Duaration: 180 minutes 
+Minimum number of nurses required: [3 RN, 2 LVN] 
+RN 3
+RN 5
+RN 15
+LVN 20
+LVN 21
+LVN 29
+LVN 33
+Pick up: LVN 29
+Drop off: LVN 29
+
+Event 32: day 5 at 12:30
+Duaration: 60 minutes 
+Minimum number of nurses required: [2 RN, 1 LVN] 
+RN 5
+RN 7
+LVN 17
+LVN 49
+Pick up: LVN 49
+Drop off: RN 5
+
+Event 33: day 5 at 10:00
+Duaration: 180 minutes 
+Minimum number of nurses required: [1 RN, 3 LVN] 
+RN 14
+LVN 28
+LVN 29
+LVN 37
+LVN 50
+Pick up: LVN 37
+Drop off: LVN 37
+
+Event 34: day 3 at 11:30
+Duaration: 90 minutes 
+Minimum number of nurses required: [3 RN, 6 LVN] 
+RN 3
+RN 11
+RN 12
+RN 14
+LVN 17
+LVN 19
+LVN 20
+LVN 22
+LVN 31
+LVN 32
+LVN 35
+LVN 37
+LVN 39
+LVN 45
+Pick up: LVN 31
+Drop off: RN 3
+
+Event 35: day 1 at 9:30
+Duaration: 120 minutes 
+Minimum number of nurses required: [2 RN, 4 LVN] 
+RN 2
+RN 7
+LVN 16
+LVN 22
+LVN 26
+LVN 34
+LVN 36
+LVN 38
+LVN 48
+Pick up: LVN 34
+Drop off: LVN 16
+
+Event 36: day 2 at 13:00
+Duaration: 120 minutes 
+Minimum number of nurses required: [2 RN, 2 LVN] 
+RN 2
+RN 14
+LVN 40
+LVN 42
+Pick up: LVN 42
+Drop off: LVN 42
+
+Event 37: day 2 at 13:30
+Duaration: 60 minutes 
+Minimum number of nurses required: [1 RN, 5 LVN] 
+RN 11
+LVN 34
+LVN 39
+LVN 44
+LVN 45
+LVN 46
+LVN 48
+LVN 50
+Pick up: LVN 45
+Drop off: LVN 34
+
+Event 38: day 5 at 13:30
+Duaration: 180 minutes 
+Minimum number of nurses required: [2 RN, 4 LVN] 
+RN 1
+RN 4
+LVN 24
+LVN 29
+LVN 30
+LVN 34
+LVN 37
+LVN 40
+LVN 43
+LVN 50
+Pick up: LVN 50
+Drop off: LVN 43
+
+Event 39: day 4 at 11:30
+Duaration: 120 minutes 
+Minimum number of nurses required: [1 RN, 2 LVN] 
+RN 13
+LVN 18
+LVN 32
+LVN 44
+Pick up: RN 13
+Drop off: LVN 32
+
+Event 40: day 4 at 9:30
+Duaration: 120 minutes 
+Minimum number of nurses required: [2 RN, 3 LVN] 
+RN 11
+RN 15
+LVN 32
+LVN 38
+LVN 42
+LVN 43
+LVN 46
+LVN 48
+Pick up: LVN 43
+Drop off: LVN 46
+
+Event 41: day 5 at 13:30
+Duaration: 180 minutes 
+Minimum number of nurses required: [3 RN, 2 LVN] 
+RN 7
+RN 10
+RN 12
+LVN 28
+LVN 44
+Pick up: LVN 28
+Drop off: RN 10
+
+Event 42: day 1 at 11:30
+Duaration: 90 minutes 
+Minimum number of nurses required: [1 RN, 3 LVN] 
+RN 7
+LVN 18
+LVN 28
+LVN 32
+LVN 36
+LVN 41
+LVN 43
+Pick up: LVN 43
+Drop off: LVN 32
+
+Event 43: day 5 at 10:00
+Duaration: 90 minutes 
+Minimum number of nurses required: [1 RN, 2 LVN] 
+RN 1
+RN 13
+LVN 19
+LVN 35
+LVN 40
+LVN 42
+Pick up: LVN 42
+Drop off: LVN 19
+
+Event 44: day 3 at 10:00
+Duaration: 90 minutes 
+Minimum number of nurses required: [1 RN, 3 LVN] 
+RN 1
+RN 6
+LVN 28
+LVN 37
+LVN 39
+LVN 45
+LVN 48
+Pick up: RN 6
+Drop off: LVN 39
+
+Event 45: day 4 at 9:30
+Duaration: 90 minutes 
+Minimum number of nurses required: [3 RN, 2 LVN] 
+RN 5
+RN 6
+RN 14
+LVN 35
+LVN 37
+LVN 40
+LVN 50
+Pick up: RN 5
+Drop off: RN 6
+
+Event 46: day 2 at 11:00
+Duaration: 90 minutes 
+Minimum number of nurses required: [2 RN, 3 LVN] 
+RN 4
+RN 8
+LVN 19
+LVN 21
+LVN 25
+LVN 28
+LVN 31
+LVN 49
+Pick up: LVN 25
+Drop off: LVN 25
+
+Event 47: day 3 at 13:00
+Duaration: 120 minutes 
+Minimum number of nurses required: [2 RN, 1 LVN] 
+RN 9
+RN 10
+LVN 29
+Pick up: RN 10
+Drop off: RN 10
+
+Event 48: day 4 at 13:30
+Duaration: 150 minutes 
+Minimum number of nurses required: [2 RN, 2 LVN] 
+RN 12
+RN 13
+LVN 24
+LVN 50
+Pick up: LVN 24
+Drop off: LVN 24
+
+Event 49: day 5 at 12:00
+Duaration: 120 minutes 
+Minimum number of nurses required: [2 RN, 5 LVN] 
+RN 11
+RN 13
+LVN 18
+LVN 19
+LVN 21
+LVN 22
+LVN 23
+LVN 45
+LVN 46
+LVN 47
+LVN 48
+Pick up: RN 11
+Drop off: LVN 21
+
+Event 50: day 1 at 11:30
+Duaration: 90 minutes 
+Minimum number of nurses required: [1 RN, 2 LVN] 
+RN 9
+LVN 17
+LVN 35
+LVN 46
+LVN 48
+Pick up: LVN 35
+Drop off: LVN 35
+
+Event 51: day 1 at 9:30
+Duaration: 90 minutes 
+Minimum number of nurses required: [3 RN, 2 LVN] 
+RN 4
+RN 6
+RN 9
+LVN 33
+LVN 37
+LVN 46
+Pick up: RN 6
+Drop off: RN 9
+
+Event 52: day 5 at 9:30
+Duaration: 150 minutes 
+Minimum number of nurses required: [1 RN, 5 LVN] 
+RN 3
+LVN 22
+LVN 23
+LVN 34
+LVN 36
+LVN 38
+LVN 48
+Pick up: LVN 36
+Drop off: LVN 23
+
+Event 53: day 3 at 9:30
+Duaration: 90 minutes 
+Minimum number of nurses required: [1 RN, 3 LVN] 
+RN 12
+LVN 21
+LVN 24
+LVN 25
+LVN 27
+LVN 47
+Pick up: LVN 25
+Drop off: LVN 24
+
+Event 54: day 4 at 11:30
+Duaration: 120 minutes 
+Minimum number of nurses required: [2 RN, 1 LVN] 
+RN 4
+RN 8
+LVN 16
+LVN 17
+Pick up: RN 8
+Drop off: LVN 17
+
+Event 55: day 5 at 10:30
+Duaration: 120 minutes 
+Minimum number of nurses required: [2 RN, 2 LVN] 
+RN 2
+RN 4
+RN 15
+LVN 16
+LVN 33
+LVN 43
+LVN 49
+Pick up: LVN 43
+Drop off: RN 15
+
+Event 56: day 1 at 9:30
+Duaration: 90 minutes 
+Minimum number of nurses required: [3 RN, 5 LVN] 
+RN 5
+RN 14
+RN 15
+LVN 17
+LVN 18
+LVN 20
+LVN 21
+LVN 29
+LVN 32
+LVN 39
+LVN 41
+LVN 47
+LVN 50
+Pick up: LVN 47
+Drop off: LVN 47
+
+Event 57: day 5 at 12:30
+Duaration: 60 minutes 
+Minimum number of nurses required: [1 RN, 3 LVN] 
+RN 2
+LVN 32
+LVN 35
+LVN 39
+LVN 41
+LVN 44
+Pick up: LVN 35
+Drop off: LVN 35
+
+Event 58: day 5 at 13:30
+Duaration: 180 minutes 
+Minimum number of nurses required: [3 RN, 2 LVN] 
+RN 3
+RN 5
+RN 14
+LVN 32
+LVN 33
+Pick up: RN 14
+Drop off: RN 5
+
+Event 59: day 3 at 10:00
+Duaration: 90 minutes 
+Minimum number of nurses required: [2 RN, 2 LVN] 
+RN 2
+RN 8
+RN 11
+LVN 35
+LVN 41
+LVN 44
+LVN 50
+Pick up: RN 8
+Drop off: LVN 44
+
+Event 60: day 2 at 11:00
+Duaration: 90 minutes 
+Minimum number of nurses required: [1 RN, 6 LVN] 
+RN 10
+LVN 16
+LVN 17
+LVN 20
+LVN 22
+LVN 23
+LVN 24
+LVN 29
+LVN 36
+LVN 43
+Pick up: LVN 43
+Drop off: RN 10
+
+Event 61: day 1 at 11:30
+Duaration: 120 minutes 
+Minimum number of nurses required: [3 RN, 3 LVN] 
+RN 4
+RN 10
+RN 13
+LVN 19
+LVN 22
+LVN 26
+LVN 34
+LVN 40
+LVN 44
+Pick up: RN 10
+Drop off: LVN 44
+
+Event 62: day 3 at 11:30
+Duaration: 90 minutes 
+Minimum number of nurses required: [2 RN, 3 LVN] 
+RN 2
+RN 8
+LVN 18
+LVN 21
+LVN 41
+Pick up: RN 2
+Drop off: LVN 21
+
+Event 63: day 4 at 12:00
+Duaration: 90 minutes 
+Minimum number of nurses required: [1 RN, 2 LVN] 
+RN 14
+LVN 22
+LVN 39
+LVN 49
+Pick up: LVN 22
+Drop off: LVN 49
+
+Event 64: day 3 at 10:00
+Duaration: 90 minutes 
+Minimum number of nurses required: [1 RN, 2 LVN] 
+RN 14
+LVN 17
+LVN 42
+LVN 46
+LVN 49
+Pick up: LVN 42
+Drop off: LVN 46
+
+Event 65: day 3 at 11:30
+Duaration: 180 minutes 
+Minimum number of nurses required: [1 RN, 6 LVN] 
+RN 5
+LVN 16
+LVN 23
+LVN 25
+LVN 27
+LVN 33
+LVN 36
+LVN 38
+LVN 43
+LVN 49
+Pick up: LVN 43
+Drop off: LVN 25
+
+Event 66: day 1 at 10:00
+Duaration: 60 minutes 
+Minimum number of nurses required: [2 RN, 2 LVN] 
+RN 1
+RN 12
+LVN 35
+LVN 44
+Pick up: LVN 44
+Drop off: RN 12
+
+Event 67: day 2 at 11:30
+Duaration: 90 minutes 
+Minimum number of nurses required: [3 RN, 2 LVN] 
+RN 6
+RN 7
+RN 11
+RN 13
+RN 14
+RN 15
+LVN 30
+LVN 35
+LVN 38
+LVN 41
+Pick up: RN 6
+Drop off: RN 14
+
+Event 68: day 4 at 12:00
+Duaration: 150 minutes 
+Minimum number of nurses required: [1 RN, 2 LVN] 
+RN 10
+LVN 31
+LVN 33
+Pick up: LVN 33
+Drop off: RN 10
+
+Event 69: day 1 at 10:00
+Duaration: 90 minutes 
+Minimum number of nurses required: [2 RN, 2 LVN] 
+RN 8
+RN 10
+LVN 31
+LVN 40
+Pick up: LVN 31
+Drop off: RN 8
+
+Event 70: day 1 at 14:00
+Duaration: 60 minutes 
+Minimum number of nurses required: [1 RN, 2 LVN] 
+RN 8
+LVN 16
+LVN 50
+Pick up: RN 8
+Drop off: RN 8
+
+Event 71: day 2 at 14:00
+Duaration: 90 minutes 
+Minimum number of nurses required: [1 RN, 1 LVN] 
+RN 12
+LVN 47
+LVN 49
+Pick up: LVN 49
+Drop off: LVN 47
+
+Event 72: day 2 at 9:30
+Duaration: 90 minutes 
+Minimum number of nurses required: [2 RN, 2 LVN] 
+RN 8
+RN 15
+LVN 25
+LVN 33
+LVN 47
+Pick up: LVN 25
+Drop off: LVN 33
+
+Event 73: day 2 at 13:00
+Duaration: 180 minutes 
+Minimum number of nurses required: [1 RN, 1 LVN] 
+RN 5
+RN 9
+LVN 32
+Pick up: RN 9
+Drop off: RN 5
+
+Event 74: day 5 at 9:30
+Duaration: 180 minutes 
+Minimum number of nurses required: [1 RN, 2 LVN] 
+RN 9
+LVN 25
+LVN 26
+LVN 27
+LVN 30
+Pick up: LVN 25
+Drop off: LVN 27
+
+Event 75: day 1 at 11:00
+Duaration: 60 minutes 
+Minimum number of nurses required: [1 RN, 4 LVN] 
+RN 14
+LVN 25
+LVN 27
+LVN 37
+LVN 42
+LVN 45
+LVN 47
+Pick up: LVN 25
+Drop off: RN 14
+
+
+Nurse schedule:
+
+Nurse 1:
+Event 66: day 1 at 10:00, 60 minutes 
+Event 21: day 1 at 11:30, 150 minutes 
+Event 5: day 2 at 10:00, 60 minutes 
+Event 30: day 2 at 11:00, 60 minutes 
+Event 44: day 3 at 10:00, 90 minutes 
+Event 26: day 3 at 11:30, 90 minutes 
+Event 16: day 4 at 9:30, 120 minutes 
+Event 2: day 4 at 13:30, 120 minutes 
+Event 43: day 5 at 10:00, 90 minutes 
+Event 38: day 5 at 13:30, 180 minutes 
+
+Nurse 2:
+Event 35: day 1 at 9:30, 120 minutes 
+Event 21: day 1 at 11:30, 150 minutes 
+Event 11: day 2 at 9:30, 60 minutes 
+Event 36: day 2 at 13:00, 120 minutes 
+Event 59: day 3 at 10:00, 90 minutes 
+Event 62: day 3 at 11:30, 90 minutes 
+Event 14: day 4 at 10:00, 90 minutes 
+Event 20: day 4 at 11:30, 150 minutes 
+Event 55: day 5 at 10:30, 120 minutes 
+Event 57: day 5 at 12:30, 60 minutes 
+
+Nurse 3:
+Event 7: day 1 at 9:30, 90 minutes 
+Event 31: day 1 at 11:00, 180 minutes 
+Event 8: day 2 at 9:30, 90 minutes 
+Event 30: day 2 at 11:00, 60 minutes 
+Event 25: day 3 at 10:00, 60 minutes 
+Event 34: day 3 at 11:30, 90 minutes 
+Event 16: day 4 at 9:30, 120 minutes 
+Event 13: day 4 at 11:30, 150 minutes 
+Event 52: day 5 at 9:30, 150 minutes 
+Event 58: day 5 at 13:30, 180 minutes 
+
+Nurse 4:
+Event 51: day 1 at 9:30, 90 minutes 
+Event 61: day 1 at 11:30, 120 minutes 
+Event 8: day 2 at 9:30, 90 minutes 
+Event 46: day 2 at 11:00, 90 minutes 
+Event 23: day 3 at 10:00, 90 minutes 
+Event 4: day 3 at 11:30, 90 minutes 
+Event 19: day 4 at 9:30, 90 minutes 
+Event 54: day 4 at 11:30, 120 minutes 
+Event 55: day 5 at 10:30, 120 minutes 
+Event 38: day 5 at 13:30, 180 minutes 
+
+Nurse 5:
+Event 56: day 1 at 9:30, 90 minutes 
+Event 31: day 1 at 11:00, 180 minutes 
+Event 17: day 2 at 9:30, 120 minutes 
+Event 73: day 2 at 13:00, 180 minutes 
+Event 3: day 3 at 10:00, 90 minutes 
+Event 65: day 3 at 11:30, 180 minutes 
+Event 45: day 4 at 9:30, 90 minutes 
+Event 13: day 4 at 11:30, 150 minutes 
+Event 32: day 5 at 12:30, 60 minutes 
+Event 58: day 5 at 13:30, 180 minutes 
+
+Nurse 6:
+Event 51: day 1 at 9:30, 90 minutes 
+Event 28: day 1 at 11:30, 90 minutes 
+Event 8: day 2 at 9:30, 90 minutes 
+Event 67: day 2 at 11:30, 90 minutes 
+Event 44: day 3 at 10:00, 90 minutes 
+Event 1: day 3 at 12:30, 180 minutes 
+Event 45: day 4 at 9:30, 90 minutes 
+Event 2: day 4 at 13:30, 120 minutes 
+Event 27: day 5 at 9:30, 150 minutes 
+Event 10: day 5 at 14:00, 180 minutes 
+
+Nurse 7:
+Event 35: day 1 at 9:30, 120 minutes 
+Event 42: day 1 at 11:30, 90 minutes 
+Event 9: day 2 at 10:00, 90 minutes 
+Event 67: day 2 at 11:30, 90 minutes 
+Event 3: day 3 at 10:00, 90 minutes 
+Event 26: day 3 at 11:30, 90 minutes 
+Event 19: day 4 at 9:30, 90 minutes 
+Event 2: day 4 at 13:30, 120 minutes 
+Event 32: day 5 at 12:30, 60 minutes 
+Event 41: day 5 at 13:30, 180 minutes 
+
+Nurse 8:
+Event 69: day 1 at 10:00, 90 minutes 
+Event 70: day 1 at 14:00, 60 minutes 
+Event 72: day 2 at 9:30, 90 minutes 
+Event 46: day 2 at 11:00, 90 minutes 
+Event 59: day 3 at 10:00, 90 minutes 
+Event 62: day 3 at 11:30, 90 minutes 
+Event 19: day 4 at 9:30, 90 minutes 
+Event 54: day 4 at 11:30, 120 minutes 
+Event 12: day 5 at 11:00, 150 minutes 
+Event 24: day 5 at 13:30, 180 minutes 
+
+Nurse 9:
+Event 51: day 1 at 9:30, 90 minutes 
+Event 50: day 1 at 11:30, 90 minutes 
+Event 9: day 2 at 10:00, 90 minutes 
+Event 73: day 2 at 13:00, 180 minutes 
+Event 25: day 3 at 10:00, 60 minutes 
+Event 47: day 3 at 13:00, 120 minutes 
+Event 15: day 4 at 9:30, 60 minutes 
+Event 6: day 4 at 13:00, 60 minutes 
+Event 74: day 5 at 9:30, 180 minutes 
+Event 29: day 5 at 13:30, 150 minutes 
+
+Nurse 10:
+Event 69: day 1 at 10:00, 90 minutes 
+Event 61: day 1 at 11:30, 120 minutes 
+Event 5: day 2 at 10:00, 60 minutes 
+Event 60: day 2 at 11:00, 90 minutes 
+Event 25: day 3 at 10:00, 60 minutes 
+Event 47: day 3 at 13:00, 120 minutes 
+Event 15: day 4 at 9:30, 60 minutes 
+Event 68: day 4 at 12:00, 150 minutes 
+Event 12: day 5 at 11:00, 150 minutes 
+Event 41: day 5 at 13:30, 180 minutes 
+
+Nurse 11:
+Event 22: day 1 at 9:30, 90 minutes 
+Event 21: day 1 at 11:30, 150 minutes 
+Event 67: day 2 at 11:30, 90 minutes 
+Event 37: day 2 at 13:30, 60 minutes 
+Event 59: day 3 at 10:00, 90 minutes 
+Event 34: day 3 at 11:30, 90 minutes 
+Event 40: day 4 at 9:30, 120 minutes 
+Event 20: day 4 at 11:30, 150 minutes 
+Event 27: day 5 at 9:30, 150 minutes 
+Event 49: day 5 at 12:00, 120 minutes 
+
+Nurse 12:
+Event 66: day 1 at 10:00, 60 minutes 
+Event 28: day 1 at 11:30, 90 minutes 
+Event 9: day 2 at 10:00, 90 minutes 
+Event 71: day 2 at 14:00, 90 minutes 
+Event 53: day 3 at 9:30, 90 minutes 
+Event 34: day 3 at 11:30, 90 minutes 
+Event 18: day 4 at 11:30, 120 minutes 
+Event 48: day 4 at 13:30, 150 minutes 
+Event 12: day 5 at 11:00, 150 minutes 
+Event 41: day 5 at 13:30, 180 minutes 
+
+Nurse 13:
+Event 22: day 1 at 9:30, 90 minutes 
+Event 61: day 1 at 11:30, 120 minutes 
+Event 17: day 2 at 9:30, 120 minutes 
+Event 67: day 2 at 11:30, 90 minutes 
+Event 23: day 3 at 10:00, 90 minutes 
+Event 26: day 3 at 11:30, 90 minutes 
+Event 39: day 4 at 11:30, 120 minutes 
+Event 48: day 4 at 13:30, 150 minutes 
+Event 43: day 5 at 10:00, 90 minutes 
+Event 49: day 5 at 12:00, 120 minutes 
+
+Nurse 14:
+Event 56: day 1 at 9:30, 90 minutes 
+Event 75: day 1 at 11:00, 60 minutes 
+Event 67: day 2 at 11:30, 90 minutes 
+Event 36: day 2 at 13:00, 120 minutes 
+Event 64: day 3 at 10:00, 90 minutes 
+Event 34: day 3 at 11:30, 90 minutes 
+Event 45: day 4 at 9:30, 90 minutes 
+Event 63: day 4 at 12:00, 90 minutes 
+Event 33: day 5 at 10:00, 180 minutes 
+Event 58: day 5 at 13:30, 180 minutes 
+
+Nurse 15:
+Event 56: day 1 at 9:30, 90 minutes 
+Event 31: day 1 at 11:00, 180 minutes 
+Event 72: day 2 at 9:30, 90 minutes 
+Event 67: day 2 at 11:30, 90 minutes 
+Event 23: day 3 at 10:00, 90 minutes 
+Event 4: day 3 at 11:30, 90 minutes 
+Event 40: day 4 at 9:30, 120 minutes 
+Event 13: day 4 at 11:30, 150 minutes 
+Event 55: day 5 at 10:30, 120 minutes 
+Event 10: day 5 at 14:00, 180 minutes 
+
+Nurse 16:
+Event 35: day 1 at 9:30, 120 minutes 
+Event 70: day 1 at 14:00, 60 minutes 
+Event 11: day 2 at 9:30, 60 minutes 
+Event 60: day 2 at 11:00, 90 minutes 
+Event 23: day 3 at 10:00, 90 minutes 
+Event 65: day 3 at 11:30, 180 minutes 
+Event 19: day 4 at 9:30, 90 minutes 
+Event 54: day 4 at 11:30, 120 minutes 
+Event 55: day 5 at 10:30, 120 minutes 
+Event 24: day 5 at 13:30, 180 minutes 
+
+Nurse 17:
+Event 56: day 1 at 9:30, 90 minutes 
+Event 50: day 1 at 11:30, 90 minutes 
+Event 5: day 2 at 10:00, 60 minutes 
+Event 60: day 2 at 11:00, 90 minutes 
+Event 64: day 3 at 10:00, 90 minutes 
+Event 34: day 3 at 11:30, 90 minutes 
+Event 14: day 4 at 10:00, 90 minutes 
+Event 54: day 4 at 11:30, 120 minutes 
+Event 27: day 5 at 9:30, 150 minutes 
+Event 32: day 5 at 12:30, 60 minutes 
+
+Nurse 18:
+Event 56: day 1 at 9:30, 90 minutes 
+Event 42: day 1 at 11:30, 90 minutes 
+Event 11: day 2 at 9:30, 60 minutes 
+Event 30: day 2 at 11:00, 60 minutes 
+Event 23: day 3 at 10:00, 90 minutes 
+Event 62: day 3 at 11:30, 90 minutes 
+Event 14: day 4 at 10:00, 90 minutes 
+Event 39: day 4 at 11:30, 120 minutes 
+Event 49: day 5 at 12:00, 120 minutes 
+Event 10: day 5 at 14:00, 180 minutes 
+
+Nurse 19:
+Event 7: day 1 at 9:30, 90 minutes 
+Event 61: day 1 at 11:30, 120 minutes 
+Event 5: day 2 at 10:00, 60 minutes 
+Event 46: day 2 at 11:00, 90 minutes 
+Event 25: day 3 at 10:00, 60 minutes 
+Event 34: day 3 at 11:30, 90 minutes 
+Event 14: day 4 at 10:00, 90 minutes 
+Event 13: day 4 at 11:30, 150 minutes 
+Event 43: day 5 at 10:00, 90 minutes 
+Event 49: day 5 at 12:00, 120 minutes 
+
+Nurse 20:
+Event 56: day 1 at 9:30, 90 minutes 
+Event 31: day 1 at 11:00, 180 minutes 
+Event 5: day 2 at 10:00, 60 minutes 
+Event 60: day 2 at 11:00, 90 minutes 
+Event 23: day 3 at 10:00, 90 minutes 
+Event 34: day 3 at 11:30, 90 minutes 
+Event 15: day 4 at 9:30, 60 minutes 
+Event 20: day 4 at 11:30, 150 minutes 
+Event 27: day 5 at 9:30, 150 minutes 
+Event 10: day 5 at 14:00, 180 minutes 
+
+Nurse 21:
+Event 56: day 1 at 9:30, 90 minutes 
+Event 31: day 1 at 11:00, 180 minutes 
+Event 8: day 2 at 9:30, 90 minutes 
+Event 46: day 2 at 11:00, 90 minutes 
+Event 53: day 3 at 9:30, 90 minutes 
+Event 62: day 3 at 11:30, 90 minutes 
+Event 14: day 4 at 10:00, 90 minutes 
+Event 2: day 4 at 13:30, 120 minutes 
+Event 27: day 5 at 9:30, 150 minutes 
+Event 49: day 5 at 12:00, 120 minutes 
+
+Nurse 22:
+Event 35: day 1 at 9:30, 120 minutes 
+Event 61: day 1 at 11:30, 120 minutes 
+Event 11: day 2 at 9:30, 60 minutes 
+Event 60: day 2 at 11:00, 90 minutes 
+Event 3: day 3 at 10:00, 90 minutes 
+Event 34: day 3 at 11:30, 90 minutes 
+Event 19: day 4 at 9:30, 90 minutes 
+Event 63: day 4 at 12:00, 90 minutes 
+Event 52: day 5 at 9:30, 150 minutes 
+Event 49: day 5 at 12:00, 120 minutes 
+
+Nurse 23:
+Event 7: day 1 at 9:30, 90 minutes 
+Event 21: day 1 at 11:30, 150 minutes 
+Event 5: day 2 at 10:00, 60 minutes 
+Event 60: day 2 at 11:00, 90 minutes 
+Event 3: day 3 at 10:00, 90 minutes 
+Event 65: day 3 at 11:30, 180 minutes 
+Event 14: day 4 at 10:00, 90 minutes 
+Event 6: day 4 at 13:00, 60 minutes 
+Event 52: day 5 at 9:30, 150 minutes 
+Event 49: day 5 at 12:00, 120 minutes 
+
+Nurse 24:
+Event 7: day 1 at 9:30, 90 minutes 
+Event 21: day 1 at 11:30, 150 minutes 
+Event 11: day 2 at 9:30, 60 minutes 
+Event 60: day 2 at 11:00, 90 minutes 
+Event 53: day 3 at 9:30, 90 minutes 
+Event 1: day 3 at 12:30, 180 minutes 
+Event 14: day 4 at 10:00, 90 minutes 
+Event 48: day 4 at 13:30, 150 minutes 
+Event 12: day 5 at 11:00, 150 minutes 
+Event 38: day 5 at 13:30, 180 minutes 
+
+Nurse 25:
+Event 7: day 1 at 9:30, 90 minutes 
+Event 75: day 1 at 11:00, 60 minutes 
+Event 72: day 2 at 9:30, 90 minutes 
+Event 46: day 2 at 11:00, 90 minutes 
+Event 53: day 3 at 9:30, 90 minutes 
+Event 65: day 3 at 11:30, 180 minutes 
+Event 14: day 4 at 10:00, 90 minutes 
+Event 2: day 4 at 13:30, 120 minutes 
+Event 74: day 5 at 9:30, 180 minutes 
+Event 10: day 5 at 14:00, 180 minutes 
+
+Nurse 26:
+Event 35: day 1 at 9:30, 120 minutes 
+Event 61: day 1 at 11:30, 120 minutes 
+Event 8: day 2 at 9:30, 90 minutes 
+Event 30: day 2 at 11:00, 60 minutes 
+Event 23: day 3 at 10:00, 90 minutes 
+Event 1: day 3 at 12:30, 180 minutes 
+Event 14: day 4 at 10:00, 90 minutes 
+Event 6: day 4 at 13:00, 60 minutes 
+Event 74: day 5 at 9:30, 180 minutes 
+Event 24: day 5 at 13:30, 180 minutes 
+
+Nurse 27:
+Event 7: day 1 at 9:30, 90 minutes 
+Event 75: day 1 at 11:00, 60 minutes 
+Event 8: day 2 at 9:30, 90 minutes 
+Event 30: day 2 at 11:00, 60 minutes 
+Event 53: day 3 at 9:30, 90 minutes 
+Event 65: day 3 at 11:30, 180 minutes 
+Event 14: day 4 at 10:00, 90 minutes 
+Event 18: day 4 at 11:30, 120 minutes 
+Event 74: day 5 at 9:30, 180 minutes 
+Event 10: day 5 at 14:00, 180 minutes 
+
+Nurse 28:
+Event 7: day 1 at 9:30, 90 minutes 
+Event 42: day 1 at 11:30, 90 minutes 
+Event 8: day 2 at 9:30, 90 minutes 
+Event 46: day 2 at 11:00, 90 minutes 
+Event 44: day 3 at 10:00, 90 minutes 
+Event 4: day 3 at 11:30, 90 minutes 
+Event 14: day 4 at 10:00, 90 minutes 
+Event 18: day 4 at 11:30, 120 minutes 
+Event 33: day 5 at 10:00, 180 minutes 
+Event 41: day 5 at 13:30, 180 minutes 
+
+Nurse 29:
+Event 56: day 1 at 9:30, 90 minutes 
+Event 31: day 1 at 11:00, 180 minutes 
+Event 8: day 2 at 9:30, 90 minutes 
+Event 60: day 2 at 11:00, 90 minutes 
+Event 4: day 3 at 11:30, 90 minutes 
+Event 47: day 3 at 13:00, 120 minutes 
+Event 14: day 4 at 10:00, 90 minutes 
+Event 18: day 4 at 11:30, 120 minutes 
+Event 33: day 5 at 10:00, 180 minutes 
+Event 38: day 5 at 13:30, 180 minutes 
+
+Nurse 30:
+Event 7: day 1 at 9:30, 90 minutes 
+Event 28: day 1 at 11:30, 90 minutes 
+Event 9: day 2 at 10:00, 90 minutes 
+Event 67: day 2 at 11:30, 90 minutes 
+Event 23: day 3 at 10:00, 90 minutes 
+Event 26: day 3 at 11:30, 90 minutes 
+Event 16: day 4 at 9:30, 120 minutes 
+Event 2: day 4 at 13:30, 120 minutes 
+Event 74: day 5 at 9:30, 180 minutes 
+Event 38: day 5 at 13:30, 180 minutes 
+
+Nurse 31:
+Event 69: day 1 at 10:00, 90 minutes 
+Event 21: day 1 at 11:30, 150 minutes 
+Event 8: day 2 at 9:30, 90 minutes 
+Event 46: day 2 at 11:00, 90 minutes 
+Event 23: day 3 at 10:00, 90 minutes 
+Event 34: day 3 at 11:30, 90 minutes 
+Event 16: day 4 at 9:30, 120 minutes 
+Event 68: day 4 at 12:00, 150 minutes 
+Event 12: day 5 at 11:00, 150 minutes 
+Event 24: day 5 at 13:30, 180 minutes 
+
+Nurse 32:
+Event 56: day 1 at 9:30, 90 minutes 
+Event 42: day 1 at 11:30, 90 minutes 
+Event 8: day 2 at 9:30, 90 minutes 
+Event 73: day 2 at 13:00, 180 minutes 
+Event 25: day 3 at 10:00, 60 minutes 
+Event 34: day 3 at 11:30, 90 minutes 
+Event 40: day 4 at 9:30, 120 minutes 
+Event 39: day 4 at 11:30, 120 minutes 
+Event 57: day 5 at 12:30, 60 minutes 
+Event 58: day 5 at 13:30, 180 minutes 
+
+Nurse 33:
+Event 51: day 1 at 9:30, 90 minutes 
+Event 31: day 1 at 11:00, 180 minutes 
+Event 72: day 2 at 9:30, 90 minutes 
+Event 30: day 2 at 11:00, 60 minutes 
+Event 25: day 3 at 10:00, 60 minutes 
+Event 65: day 3 at 11:30, 180 minutes 
+Event 16: day 4 at 9:30, 120 minutes 
+Event 68: day 4 at 12:00, 150 minutes 
+Event 55: day 5 at 10:30, 120 minutes 
+Event 58: day 5 at 13:30, 180 minutes 
+
+Nurse 34:
+Event 35: day 1 at 9:30, 120 minutes 
+Event 61: day 1 at 11:30, 120 minutes 
+Event 8: day 2 at 9:30, 90 minutes 
+Event 37: day 2 at 13:30, 60 minutes 
+Event 23: day 3 at 10:00, 90 minutes 
+Event 26: day 3 at 11:30, 90 minutes 
+Event 14: day 4 at 10:00, 90 minutes 
+Event 20: day 4 at 11:30, 150 minutes 
+Event 52: day 5 at 9:30, 150 minutes 
+Event 38: day 5 at 13:30, 180 minutes 
+
+Nurse 35:
+Event 66: day 1 at 10:00, 60 minutes 
+Event 50: day 1 at 11:30, 90 minutes 
+Event 8: day 2 at 9:30, 90 minutes 
+Event 67: day 2 at 11:30, 90 minutes 
+Event 59: day 3 at 10:00, 90 minutes 
+Event 34: day 3 at 11:30, 90 minutes 
+Event 45: day 4 at 9:30, 90 minutes 
+Event 20: day 4 at 11:30, 150 minutes 
+Event 43: day 5 at 10:00, 90 minutes 
+Event 57: day 5 at 12:30, 60 minutes 
+
+Nurse 36:
+Event 35: day 1 at 9:30, 120 minutes 
+Event 42: day 1 at 11:30, 90 minutes 
+Event 5: day 2 at 10:00, 60 minutes 
+Event 60: day 2 at 11:00, 90 minutes 
+Event 3: day 3 at 10:00, 90 minutes 
+Event 65: day 3 at 11:30, 180 minutes 
+Event 16: day 4 at 9:30, 120 minutes 
+Event 18: day 4 at 11:30, 120 minutes 
+Event 52: day 5 at 9:30, 150 minutes 
+Event 24: day 5 at 13:30, 180 minutes 
+
+Nurse 37:
+Event 51: day 1 at 9:30, 90 minutes 
+Event 75: day 1 at 11:00, 60 minutes 
+Event 8: day 2 at 9:30, 90 minutes 
+Event 30: day 2 at 11:00, 60 minutes 
+Event 44: day 3 at 10:00, 90 minutes 
+Event 34: day 3 at 11:30, 90 minutes 
+Event 45: day 4 at 9:30, 90 minutes 
+Event 13: day 4 at 11:30, 150 minutes 
+Event 33: day 5 at 10:00, 180 minutes 
+Event 38: day 5 at 13:30, 180 minutes 
+
+Nurse 38:
+Event 35: day 1 at 9:30, 120 minutes 
+Event 28: day 1 at 11:30, 90 minutes 
+Event 5: day 2 at 10:00, 60 minutes 
+Event 67: day 2 at 11:30, 90 minutes 
+Event 25: day 3 at 10:00, 60 minutes 
+Event 65: day 3 at 11:30, 180 minutes 
+Event 40: day 4 at 9:30, 120 minutes 
+Event 20: day 4 at 11:30, 150 minutes 
+Event 52: day 5 at 9:30, 150 minutes 
+Event 29: day 5 at 13:30, 150 minutes 
+
+Nurse 39:
+Event 56: day 1 at 9:30, 90 minutes 
+Event 21: day 1 at 11:30, 150 minutes 
+Event 9: day 2 at 10:00, 90 minutes 
+Event 37: day 2 at 13:30, 60 minutes 
+Event 44: day 3 at 10:00, 90 minutes 
+Event 34: day 3 at 11:30, 90 minutes 
+Event 19: day 4 at 9:30, 90 minutes 
+Event 63: day 4 at 12:00, 90 minutes 
+Event 57: day 5 at 12:30, 60 minutes 
+Event 24: day 5 at 13:30, 180 minutes 
+
+Nurse 40:
+Event 69: day 1 at 10:00, 90 minutes 
+Event 61: day 1 at 11:30, 120 minutes 
+Event 30: day 2 at 11:00, 60 minutes 
+Event 36: day 2 at 13:00, 120 minutes 
+Event 3: day 3 at 10:00, 90 minutes 
+Event 26: day 3 at 11:30, 90 minutes 
+Event 45: day 4 at 9:30, 90 minutes 
+Event 6: day 4 at 13:00, 60 minutes 
+Event 43: day 5 at 10:00, 90 minutes 
+Event 38: day 5 at 13:30, 180 minutes 
+
+Nurse 41:
+Event 56: day 1 at 9:30, 90 minutes 
+Event 42: day 1 at 11:30, 90 minutes 
+Event 17: day 2 at 9:30, 120 minutes 
+Event 67: day 2 at 11:30, 90 minutes 
+Event 59: day 3 at 10:00, 90 minutes 
+Event 62: day 3 at 11:30, 90 minutes 
+Event 14: day 4 at 10:00, 90 minutes 
+Event 20: day 4 at 11:30, 150 minutes 
+Event 57: day 5 at 12:30, 60 minutes 
+Event 24: day 5 at 13:30, 180 minutes 
+
+Nurse 42:
+Event 22: day 1 at 9:30, 90 minutes 
+Event 75: day 1 at 11:00, 60 minutes 
+Event 11: day 2 at 9:30, 60 minutes 
+Event 36: day 2 at 13:00, 120 minutes 
+Event 64: day 3 at 10:00, 90 minutes 
+Event 26: day 3 at 11:30, 90 minutes 
+Event 40: day 4 at 9:30, 120 minutes 
+Event 20: day 4 at 11:30, 150 minutes 
+Event 43: day 5 at 10:00, 90 minutes 
+Event 29: day 5 at 13:30, 150 minutes 
+
+Nurse 43:
+Event 7: day 1 at 9:30, 90 minutes 
+Event 42: day 1 at 11:30, 90 minutes 
+Event 8: day 2 at 9:30, 90 minutes 
+Event 60: day 2 at 11:00, 90 minutes 
+Event 23: day 3 at 10:00, 90 minutes 
+Event 65: day 3 at 11:30, 180 minutes 
+Event 40: day 4 at 9:30, 120 minutes 
+Event 13: day 4 at 11:30, 150 minutes 
+Event 55: day 5 at 10:30, 120 minutes 
+Event 38: day 5 at 13:30, 180 minutes 
+
+Nurse 44:
+Event 66: day 1 at 10:00, 60 minutes 
+Event 61: day 1 at 11:30, 120 minutes 
+Event 17: day 2 at 9:30, 120 minutes 
+Event 37: day 2 at 13:30, 60 minutes 
+Event 59: day 3 at 10:00, 90 minutes 
+Event 4: day 3 at 11:30, 90 minutes 
+Event 15: day 4 at 9:30, 60 minutes 
+Event 39: day 4 at 11:30, 120 minutes 
+Event 57: day 5 at 12:30, 60 minutes 
+Event 41: day 5 at 13:30, 180 minutes 
+
+Nurse 45:
+Event 7: day 1 at 9:30, 90 minutes 
+Event 75: day 1 at 11:00, 60 minutes 
+Event 17: day 2 at 9:30, 120 minutes 
+Event 37: day 2 at 13:30, 60 minutes 
+Event 44: day 3 at 10:00, 90 minutes 
+Event 34: day 3 at 11:30, 90 minutes 
+Event 15: day 4 at 9:30, 60 minutes 
+Event 20: day 4 at 11:30, 150 minutes 
+Event 27: day 5 at 9:30, 150 minutes 
+Event 49: day 5 at 12:00, 120 minutes 
+
+Nurse 46:
+Event 51: day 1 at 9:30, 90 minutes 
+Event 50: day 1 at 11:30, 90 minutes 
+Event 17: day 2 at 9:30, 120 minutes 
+Event 37: day 2 at 13:30, 60 minutes 
+Event 64: day 3 at 10:00, 90 minutes 
+Event 4: day 3 at 11:30, 90 minutes 
+Event 40: day 4 at 9:30, 120 minutes 
+Event 2: day 4 at 13:30, 120 minutes 
+Event 27: day 5 at 9:30, 150 minutes 
+Event 49: day 5 at 12:00, 120 minutes 
+
+Nurse 47:
+Event 56: day 1 at 9:30, 90 minutes 
+Event 75: day 1 at 11:00, 60 minutes 
+Event 72: day 2 at 9:30, 90 minutes 
+Event 71: day 2 at 14:00, 90 minutes 
+Event 53: day 3 at 9:30, 90 minutes 
+Event 1: day 3 at 12:30, 180 minutes 
+Event 19: day 4 at 9:30, 90 minutes 
+Event 2: day 4 at 13:30, 120 minutes 
+Event 27: day 5 at 9:30, 150 minutes 
+Event 49: day 5 at 12:00, 120 minutes 
+
+Nurse 48:
+Event 35: day 1 at 9:30, 120 minutes 
+Event 50: day 1 at 11:30, 90 minutes 
+Event 11: day 2 at 9:30, 60 minutes 
+Event 37: day 2 at 13:30, 60 minutes 
+Event 44: day 3 at 10:00, 90 minutes 
+Event 4: day 3 at 11:30, 90 minutes 
+Event 40: day 4 at 9:30, 120 minutes 
+Event 13: day 4 at 11:30, 150 minutes 
+Event 52: day 5 at 9:30, 150 minutes 
+Event 49: day 5 at 12:00, 120 minutes 
+
+Nurse 49:
+Event 7: day 1 at 9:30, 90 minutes 
+Event 21: day 1 at 11:30, 150 minutes 
+Event 46: day 2 at 11:00, 90 minutes 
+Event 71: day 2 at 14:00, 90 minutes 
+Event 64: day 3 at 10:00, 90 minutes 
+Event 65: day 3 at 11:30, 180 minutes 
+Event 16: day 4 at 9:30, 120 minutes 
+Event 63: day 4 at 12:00, 90 minutes 
+Event 55: day 5 at 10:30, 120 minutes 
+Event 32: day 5 at 12:30, 60 minutes 
+
+Nurse 50:
+Event 56: day 1 at 9:30, 90 minutes 
+Event 70: day 1 at 14:00, 60 minutes 
+Event 17: day 2 at 9:30, 120 minutes 
+Event 37: day 2 at 13:30, 60 minutes 
+Event 59: day 3 at 10:00, 90 minutes 
+Event 1: day 3 at 12:30, 180 minutes 
+Event 45: day 4 at 9:30, 90 minutes 
+Event 48: day 4 at 13:30, 150 minutes 
+Event 33: day 5 at 10:00, 180 minutes 
+Event 38: day 5 at 13:30, 180 minutes 

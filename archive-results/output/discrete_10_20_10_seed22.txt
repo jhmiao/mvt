@@ -1,0 +1,117 @@
+Best feasible solution found within 600 seconds:
+Seed number: 22
+Number of RNs: 10
+Number of LVNs: 20
+Objective value: 1.0
+Iterations: []
+Schedule: 
+
+
+Event 1: day 5 at 9:30
+Duaration: 120 minutes 
+Minimum number of nurses required: [2 RN, 4 LVN] 
+RN 9
+RN 10
+LVN 27
+LVN 28
+LVN 29
+LVN 30
+
+Event 2: day 4 at 9:00
+Duaration: 240 minutes 
+Minimum number of nurses required: [1 RN, 2 LVN] 
+RN 1
+LVN 11
+LVN 12
+
+Event 3: day 1 at 9:00
+Duaration: 120 minutes 
+Minimum number of nurses required: [1 RN, 3 LVN] 
+RN 10
+LVN 28
+LVN 29
+LVN 30
+
+Event 4: day 5 at 13:00
+Duaration: 120 minutes 
+Minimum number of nurses required: [1 RN, 3 LVN] 
+RN 10
+LVN 28
+LVN 29
+LVN 30
+
+Event 5: day 3 at 12:00
+Duaration: 180 minutes 
+Minimum number of nurses required: [3 RN, 3 LVN] 
+RN 1
+RN 2
+RN 3
+RN 4
+RN 5
+RN 6
+RN 7
+RN 8
+LVN 11
+LVN 12
+LVN 13
+LVN 14
+LVN 15
+LVN 16
+LVN 17
+LVN 18
+LVN 19
+LVN 20
+LVN 21
+LVN 22
+LVN 23
+LVN 24
+LVN 25
+LVN 26
+LVN 27
+
+Event 6: day 4 at 14:00
+Duaration: 60 minutes 
+Minimum number of nurses required: [1 RN, 7 LVN] 
+RN 1
+LVN 11
+LVN 12
+LVN 13
+LVN 14
+LVN 15
+LVN 16
+LVN 17
+
+Event 7: day 1 at 9:00
+Duaration: 60 minutes 
+Minimum number of nurses required: [2 RN, 4 LVN] 
+RN 1
+RN 2
+LVN 11
+LVN 12
+LVN 13
+LVN 14
+
+Event 8: day 1 at 9:30
+Duaration: 30 minutes 
+Minimum number of nurses required: [1 RN, 4 LVN] 
+RN 3
+LVN 15
+LVN 16
+LVN 17
+LVN 18
+
+Event 9: day 1 at 11:00
+Duaration: 60 minutes 
+Minimum number of nurses required: [2 RN, 1 LVN] 
+RN 1
+RN 2
+LVN 11
+
+Event 10: day 3 at 12:00
+Duaration: 180 minutes 
+Minimum number of nurses required: [2 RN, 3 LVN] 
+RN 9
+RN 10
+LVN 28
+LVN 29
+LVN 30

@@ -1,0 +1,78 @@
+Best feasible solution found within 600 seconds:
+Seed number: 22
+Number of RNs: 15
+Number of LVNs: 35
+Objective value: 1.0
+Iterations: []
+Schedule: 
+
+Event 1: day 0 at 9:30
+Event 2: day 0 at 13:30
+Event 3: day 4 at 10:00
+Event 4: day 0 at 10:30
+Event 5: day 4 at 11:30
+Event 6: day 0 at 12:00
+Event 7: day 0 at 11:00
+Event 8: day 0 at 10:00
+Event 9: day 0 at 10:00
+Event 10: day 2 at 9:00
+Event 11: day 0 at 9:00
+Event 12: day 1 at 14:00
+Event 13: day 4 at 10:00
+Event 14: day 0 at 12:00
+Event 15: day 4 at 14:00
+Event 16: day 0 at 12:00
+Event 17: day 0 at 13:30
+Event 18: day 1 at 10:30
+Event 19: day 4 at 9:00
+Event 20: day 4 at 13:30
+Event 21: day 4 at 12:00
+Event 22: day 3 at 10:00
+Event 23: day 4 at 12:30
+Event 24: day 3 at 12:30
+Event 25: day 4 at 11:00
+Event 26: day 1 at 9:00
+Event 27: day 4 at 13:30
+Event 28: day 4 at 10:30
+Event 29: day 0 at 9:00
+Event 30: day 2 at 11:00
+Event 31: day 4 at 14:30
+Event 32: day 4 at 14:00
+Event 33: day 1 at 10:30
+Event 34: day 4 at 13:30
+Event 35: day 2 at 10:00
+Event 36: day 4 at 12:00
+Event 37: day 4 at 13:00
+Event 38: day 0 at 10:30
+Event 39: day 3 at 10:00
+Event 40: day 3 at 12:00
+Event 41: day 4 at 10:30
+Event 42: day 3 at 10:30
+Event 43: day 2 at 11:30
+Event 44: day 1 at 11:30
+Event 45: day 4 at 9:30
+Event 46: day 1 at 10:00
+Event 47: day 4 at 14:30
+Event 48: day 3 at 10:00
+Event 49: day 0 at 12:00
+Event 50: day 1 at 9:30
+Event 51: day 4 at 14:30
+Event 52: day 4 at 10:00
+Event 53: day 4 at 9:00
+Event 54: day 1 at 11:30
+Event 55: day 4 at 11:00
+Event 56: day 3 at 12:00
+Event 57: day 0 at 10:00
+Event 58: day 2 at 11:30
+Event 59: day 4 at 12:00
+Event 60: day 3 at 9:30
+Event 61: day 0 at 10:00
+Event 62: day 3 at 9:00
+Event 63: day 2 at 13:00
+Event 64: day 0 at 13:00
+Event 65: day 3 at 12:00
+Event 66: day 0 at 11:00
+Event 67: day 4 at 11:30
+Event 68: day 3 at 10:30
+Event 69: day 4 at 9:00
+Event 70: day 4 at 13:00

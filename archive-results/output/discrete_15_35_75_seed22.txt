@@ -1,0 +1,233 @@
+Best feasible solution found within 600 seconds:
+Seed number: 22
+Number of RNs: 15
+Number of LVNs: 35
+Objective value: 1.0
+Iterations: []
+Schedule: 
+
+Event 1: day 3 at 9:00
+Duaration: 60 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(2)) 
+Event 2: day 4 at 9:30
+Duaration: 90 minutes 
+Minimum number of nurses required: (np.int64(3), np.int64(5)) 
+Event 3: day 3 at 11:00
+Duaration: 60 minutes 
+Minimum number of nurses required: (np.int64(3), np.int64(2)) 
+Event 4: day 3 at 12:30
+Duaration: 90 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(2)) 
+Event 5: day 4 at 10:00
+Duaration: 120 minutes 
+Minimum number of nurses required: (np.int64(3), np.int64(2)) 
+Event 6: day 3 at 12:00
+Duaration: 90 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(4)) 
+Event 7: day 2 at 11:00
+Duaration: 60 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(4)) 
+Event 8: day 4 at 11:00
+Duaration: 120 minutes 
+Minimum number of nurses required: (np.int64(1), np.int64(3)) 
+Event 9: day 3 at 9:30
+Duaration: 60 minutes 
+Minimum number of nurses required: (np.int64(3), np.int64(5)) 
+Event 10: day 1 at 10:30
+Duaration: 30 minutes 
+Minimum number of nurses required: (np.int64(1), np.int64(3)) 
+Event 11: day 2 at 14:00
+Duaration: 60 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(2)) 
+Event 12: day 3 at 9:30
+Duaration: 60 minutes 
+Minimum number of nurses required: (np.int64(3), np.int64(3)) 
+Event 13: day 2 at 10:30
+Duaration: 90 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(1)) 
+Event 14: day 3 at 13:00
+Duaration: 90 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(3)) 
+Event 15: day 3 at 10:00
+Duaration: 240 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(3)) 
+Event 16: day 3 at 10:30
+Duaration: 60 minutes 
+Minimum number of nurses required: (np.int64(3), np.int64(3)) 
+Event 17: day 3 at 9:00
+Duaration: 90 minutes 
+Minimum number of nurses required: (np.int64(3), np.int64(5)) 
+Event 18: day 2 at 14:00
+Duaration: 60 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(7)) 
+Event 19: day 5 at 9:00
+Duaration: 180 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(3)) 
+Event 20: day 1 at 14:00
+Duaration: 60 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(7)) 
+Event 21: day 2 at 9:00
+Duaration: 90 minutes 
+Minimum number of nurses required: (np.int64(1), np.int64(5)) 
+Event 22: day 2 at 10:00
+Duaration: 90 minutes 
+Minimum number of nurses required: (np.int64(1), np.int64(1)) 
+Event 23: day 3 at 11:00
+Duaration: 120 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(7)) 
+Event 24: day 1 at 9:30
+Duaration: 30 minutes 
+Minimum number of nurses required: (np.int64(1), np.int64(2)) 
+Event 25: day 4 at 12:00
+Duaration: 90 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(2)) 
+Event 26: day 3 at 9:30
+Duaration: 60 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(2)) 
+Event 27: day 2 at 9:00
+Duaration: 120 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(5)) 
+Event 28: day 1 at 14:00
+Duaration: 60 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(1)) 
+Event 29: day 3 at 10:00
+Duaration: 120 minutes 
+Minimum number of nurses required: (np.int64(1), np.int64(5)) 
+Event 30: day 1 at 11:30
+Duaration: 30 minutes 
+Minimum number of nurses required: (np.int64(1), np.int64(2)) 
+Event 31: day 2 at 9:30
+Duaration: 60 minutes 
+Minimum number of nurses required: (np.int64(3), np.int64(5)) 
+Event 32: day 2 at 10:00
+Duaration: 240 minutes 
+Minimum number of nurses required: (np.int64(3), np.int64(2)) 
+Event 33: day 2 at 9:00
+Duaration: 60 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(3)) 
+Event 34: day 2 at 11:00
+Duaration: 60 minutes 
+Minimum number of nurses required: (np.int64(1), np.int64(5)) 
+Event 35: day 1 at 10:00
+Duaration: 30 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(4)) 
+Event 36: day 2 at 9:00
+Duaration: 120 minutes 
+Minimum number of nurses required: (np.int64(1), np.int64(2)) 
+Event 37: day 2 at 12:00
+Duaration: 60 minutes 
+Minimum number of nurses required: (np.int64(1), np.int64(3)) 
+Event 38: day 2 at 9:30
+Duaration: 30 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(3)) 
+Event 39: day 1 at 9:00
+Duaration: 60 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(2)) 
+Event 40: day 2 at 9:00
+Duaration: 60 minutes 
+Minimum number of nurses required: (np.int64(3), np.int64(5)) 
+Event 41: day 2 at 9:30
+Duaration: 60 minutes 
+Minimum number of nurses required: (np.int64(1), np.int64(2)) 
+Event 42: day 5 at 14:30
+Duaration: 30 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(3)) 
+Event 43: day 1 at 12:00
+Duaration: 90 minutes 
+Minimum number of nurses required: (np.int64(3), np.int64(1)) 
+Event 44: day 1 at 13:00
+Duaration: 60 minutes 
+Minimum number of nurses required: (np.int64(1), np.int64(5)) 
+Event 45: day 1 at 9:00
+Duaration: 60 minutes 
+Minimum number of nurses required: (np.int64(1), np.int64(3)) 
+Event 46: day 1 at 13:30
+Duaration: 60 minutes 
+Minimum number of nurses required: (np.int64(3), np.int64(3)) 
+Event 47: day 2 at 10:00
+Duaration: 240 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(3)) 
+Event 48: day 1 at 12:00
+Duaration: 90 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(5)) 
+Event 49: day 1 at 11:00
+Duaration: 60 minutes 
+Minimum number of nurses required: (np.int64(1), np.int64(7)) 
+Event 50: day 1 at 11:30
+Duaration: 60 minutes 
+Minimum number of nurses required: (np.int64(1), np.int64(3)) 
+Event 51: day 1 at 13:00
+Duaration: 90 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(3)) 
+Event 52: day 1 at 9:00
+Duaration: 60 minutes 
+Minimum number of nurses required: (np.int64(1), np.int64(3)) 
+Event 53: day 1 at 10:00
+Duaration: 30 minutes 
+Minimum number of nurses required: (np.int64(1), np.int64(4)) 
+Event 54: day 2 at 10:30
+Duaration: 240 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(2)) 
+Event 55: day 1 at 9:00
+Duaration: 120 minutes 
+Minimum number of nurses required: (np.int64(3), np.int64(2)) 
+Event 56: day 2 at 12:00
+Duaration: 120 minutes 
+Minimum number of nurses required: (np.int64(3), np.int64(1)) 
+Event 57: day 2 at 10:30
+Duaration: 240 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(4)) 
+Event 58: day 1 at 10:30
+Duaration: 60 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(3)) 
+Event 59: day 1 at 11:00
+Duaration: 180 minutes 
+Minimum number of nurses required: (np.int64(3), np.int64(6)) 
+Event 60: day 1 at 9:00
+Duaration: 120 minutes 
+Minimum number of nurses required: (np.int64(3), np.int64(4)) 
+Event 61: day 1 at 13:30
+Duaration: 60 minutes 
+Minimum number of nurses required: (np.int64(3), np.int64(3)) 
+Event 62: day 1 at 9:00
+Duaration: 30 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(2)) 
+Event 63: day 1 at 11:00
+Duaration: 240 minutes 
+Minimum number of nurses required: (np.int64(3), np.int64(3)) 
+Event 64: day 1 at 9:30
+Duaration: 60 minutes 
+Minimum number of nurses required: (np.int64(1), np.int64(2)) 
+Event 65: day 1 at 12:00
+Duaration: 60 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(7)) 
+Event 66: day 1 at 11:00
+Duaration: 120 minutes 
+Minimum number of nurses required: (np.int64(1), np.int64(4)) 
+Event 67: day 1 at 9:00
+Duaration: 30 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(1)) 
+Event 68: day 2 at 12:00
+Duaration: 120 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(4)) 
+Event 69: day 1 at 11:00
+Duaration: 30 minutes 
+Minimum number of nurses required: (np.int64(1), np.int64(2)) 
+Event 70: day 1 at 10:00
+Duaration: 120 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(4)) 
+Event 71: day 1 at 11:30
+Duaration: 30 minutes 
+Minimum number of nurses required: (np.int64(1), np.int64(2)) 
+Event 72: day 1 at 11:00
+Duaration: 60 minutes 
+Minimum number of nurses required: (np.int64(2), np.int64(2)) 
+Event 73: day 1 at 9:00
+Duaration: 120 minutes 
+Minimum number of nurses required: (np.int64(1), np.int64(5)) 
+Event 74: day 1 at 10:00
+Duaration: 60 minutes 
+Minimum number of nurses required: (np.int64(1), np.int64(4)) 
+Event 75: day 1 at 9:30
+Duaration: 60 minutes 
+Minimum number of nurses required: (np.int64(1), np.int64(2)) 

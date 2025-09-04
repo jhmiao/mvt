@@ -1,0 +1,819 @@
+Best feasible solution found within 600 seconds:
+Seed number: 20
+Number of RNs: 15
+Number of LVNs: 35
+Objective value: 1.0
+Iterations: []
+Schedule: 
+
+
+Event 1: day 1 at 12:00
+Duaration: 90 minutes 
+Minimum number of nurses required: [1 RN, 5 LVN] 
+RN 4
+LVN 28
+LVN 34
+LVN 38
+LVN 43
+LVN 46
+
+Event 2: day 1 at 12:00
+Duaration: 60 minutes 
+Minimum number of nurses required: [1 RN, 3 LVN] 
+RN 3
+LVN 23
+LVN 41
+LVN 45
+
+Event 3: day 4 at 9:30
+Duaration: 240 minutes 
+Minimum number of nurses required: [3 RN, 3 LVN] 
+RN 4
+RN 5
+RN 11
+LVN 20
+LVN 29
+LVN 36
+
+Event 4: day 1 at 10:00
+Duaration: 180 minutes 
+Minimum number of nurses required: [1 RN, 2 LVN] 
+RN 9
+LVN 19
+LVN 29
+
+Event 5: day 2 at 12:00
+Duaration: 90 minutes 
+Minimum number of nurses required: [1 RN, 3 LVN] 
+RN 9
+LVN 16
+LVN 20
+LVN 31
+LVN 37
+LVN 41
+LVN 43
+
+Event 6: day 3 at 11:30
+Duaration: 90 minutes 
+Minimum number of nurses required: [2 RN, 1 LVN] 
+RN 6
+RN 9
+LVN 23
+
+Event 7: day 1 at 9:30
+Duaration: 120 minutes 
+Minimum number of nurses required: [1 RN, 2 LVN] 
+RN 12
+LVN 36
+LVN 50
+
+Event 8: day 3 at 12:00
+Duaration: 90 minutes 
+Minimum number of nurses required: [2 RN, 4 LVN] 
+RN 4
+RN 8
+LVN 17
+LVN 18
+LVN 24
+LVN 42
+
+Event 9: day 5 at 9:30
+Duaration: 120 minutes 
+Minimum number of nurses required: [1 RN, 5 LVN] 
+RN 4
+LVN 19
+LVN 23
+LVN 24
+LVN 25
+LVN 26
+LVN 29
+LVN 32
+LVN 34
+LVN 36
+LVN 41
+LVN 44
+LVN 46
+LVN 48
+LVN 49
+LVN 50
+
+Event 10: day 3 at 10:00
+Duaration: 180 minutes 
+Minimum number of nurses required: [3 RN, 3 LVN] 
+RN 1
+RN 2
+RN 5
+RN 7
+RN 10
+RN 11
+RN 13
+RN 15
+LVN 22
+LVN 41
+LVN 50
+
+Event 11: day 3 at 9:30
+Duaration: 240 minutes 
+Minimum number of nurses required: [1 RN, 5 LVN] 
+RN 3
+LVN 26
+LVN 29
+LVN 33
+LVN 40
+LVN 48
+
+Event 12: day 1 at 10:00
+Duaration: 60 minutes 
+Minimum number of nurses required: [1 RN, 4 LVN] 
+RN 8
+LVN 31
+LVN 32
+LVN 38
+LVN 46
+
+Event 13: day 1 at 9:30
+Duaration: 60 minutes 
+Minimum number of nurses required: [1 RN, 1 LVN] 
+RN 7
+LVN 16
+
+Event 14: day 1 at 9:00
+Duaration: 30 minutes 
+Minimum number of nurses required: [1 RN, 3 LVN] 
+RN 11
+LVN 24
+LVN 31
+LVN 40
+
+Event 15: day 4 at 13:00
+Duaration: 120 minutes 
+Minimum number of nurses required: [1 RN, 2 LVN] 
+RN 7
+LVN 27
+LVN 38
+
+Event 16: day 1 at 9:30
+Duaration: 240 minutes 
+Minimum number of nurses required: [1 RN, 3 LVN] 
+RN 5
+LVN 20
+LVN 21
+LVN 37
+
+Event 17: day 1 at 11:30
+Duaration: 180 minutes 
+Minimum number of nurses required: [2 RN, 3 LVN] 
+RN 2
+RN 10
+LVN 26
+LVN 48
+LVN 49
+
+Event 18: day 1 at 9:30
+Duaration: 120 minutes 
+Minimum number of nurses required: [1 RN, 3 LVN] 
+RN 6
+LVN 42
+LVN 48
+LVN 49
+
+Event 19: day 1 at 9:00
+Duaration: 60 minutes 
+Minimum number of nurses required: [2 RN, 1 LVN] 
+RN 8
+RN 9
+LVN 17
+
+Event 20: day 1 at 9:00
+Duaration: 30 minutes 
+Minimum number of nurses required: [1 RN, 3 LVN] 
+RN 10
+LVN 30
+LVN 35
+LVN 49
+
+Event 21: day 3 at 11:30
+Duaration: 30 minutes 
+Minimum number of nurses required: [2 RN, 2 LVN] 
+RN 4
+RN 8
+LVN 24
+LVN 42
+
+Event 22: day 3 at 9:30
+Duaration: 240 minutes 
+Minimum number of nurses required: [1 RN, 5 LVN] 
+RN 14
+LVN 20
+LVN 27
+LVN 31
+LVN 38
+LVN 49
+
+Event 23: day 4 at 11:00
+Duaration: 60 minutes 
+Minimum number of nurses required: [2 RN, 5 LVN] 
+RN 2
+RN 7
+RN 9
+RN 15
+LVN 16
+LVN 17
+LVN 18
+LVN 19
+LVN 21
+LVN 22
+LVN 23
+LVN 24
+LVN 25
+LVN 26
+LVN 27
+LVN 28
+LVN 30
+LVN 31
+LVN 33
+LVN 34
+LVN 35
+LVN 38
+LVN 39
+LVN 40
+LVN 41
+LVN 42
+LVN 43
+LVN 45
+LVN 47
+LVN 48
+LVN 49
+LVN 50
+
+Event 24: day 2 at 11:00
+Duaration: 60 minutes 
+Minimum number of nurses required: [3 RN, 3 LVN] 
+RN 2
+RN 6
+RN 8
+LVN 31
+LVN 37
+LVN 41
+
+Event 25: day 1 at 11:00
+Duaration: 240 minutes 
+Minimum number of nurses required: [2 RN, 1 LVN] 
+RN 7
+RN 14
+LVN 24
+
+Event 26: day 1 at 9:00
+Duaration: 30 minutes 
+Minimum number of nurses required: [2 RN, 4 LVN] 
+RN 2
+RN 6
+LVN 16
+LVN 22
+LVN 29
+LVN 37
+
+Event 27: day 2 at 13:00
+Duaration: 90 minutes 
+Minimum number of nurses required: [2 RN, 3 LVN] 
+RN 4
+RN 12
+LVN 29
+LVN 49
+LVN 50
+
+Event 28: day 1 at 9:30
+Duaration: 60 minutes 
+Minimum number of nurses required: [1 RN, 2 LVN] 
+RN 10
+LVN 27
+LVN 40
+
+Event 29: day 1 at 9:00
+Duaration: 30 minutes 
+Minimum number of nurses required: [1 RN, 2 LVN] 
+RN 7
+LVN 26
+LVN 42
+
+Event 30: day 5 at 11:30
+Duaration: 120 minutes 
+Minimum number of nurses required: [2 RN, 2 LVN] 
+RN 9
+RN 11
+LVN 26
+LVN 39
+
+Event 31: day 1 at 9:00
+Duaration: 30 minutes 
+Minimum number of nurses required: [2 RN, 5 LVN] 
+RN 5
+RN 12
+LVN 20
+LVN 27
+LVN 32
+LVN 36
+LVN 38
+
+Event 32: day 2 at 10:00
+Duaration: 90 minutes 
+Minimum number of nurses required: [1 RN, 2 LVN] 
+RN 13
+LVN 34
+LVN 45
+
+Event 33: day 4 at 9:30
+Duaration: 180 minutes 
+Minimum number of nurses required: [2 RN, 2 LVN] 
+RN 8
+RN 10
+RN 14
+LVN 32
+LVN 46
+
+Event 34: day 2 at 10:30
+Duaration: 120 minutes 
+Minimum number of nurses required: [1 RN, 2 LVN] 
+RN 4
+LVN 40
+LVN 49
+
+Event 35: day 4 at 12:00
+Duaration: 60 minutes 
+Minimum number of nurses required: [3 RN, 4 LVN] 
+RN 2
+RN 7
+RN 9
+LVN 27
+LVN 35
+LVN 38
+LVN 50
+
+Event 36: day 1 at 13:00
+Duaration: 30 minutes 
+Minimum number of nurses required: [2 RN, 6 LVN] 
+RN 11
+RN 12
+LVN 25
+LVN 30
+LVN 35
+LVN 36
+LVN 40
+LVN 41
+LVN 50
+
+Event 37: day 5 at 9:00
+Duaration: 180 minutes 
+Minimum number of nurses required: [2 RN, 2 LVN] 
+RN 6
+RN 10
+LVN 28
+LVN 40
+
+Event 38: day 5 at 10:30
+Duaration: 30 minutes 
+Minimum number of nurses required: [2 RN, 7 LVN] 
+RN 2
+RN 9
+LVN 16
+LVN 17
+LVN 18
+LVN 27
+LVN 30
+LVN 39
+LVN 42
+
+Event 39: day 2 at 11:00
+Duaration: 180 minutes 
+Minimum number of nurses required: [1 RN, 3 LVN] 
+RN 3
+LVN 23
+LVN 42
+LVN 44
+
+Event 40: day 2 at 9:30
+Duaration: 240 minutes 
+Minimum number of nurses required: [1 RN, 3 LVN] 
+RN 7
+LVN 30
+LVN 38
+LVN 39
+
+Event 41: day 2 at 10:00
+Duaration: 240 minutes 
+Minimum number of nurses required: [3 RN, 7 LVN] 
+RN 5
+RN 14
+RN 15
+LVN 17
+LVN 19
+LVN 22
+LVN 24
+LVN 26
+LVN 27
+LVN 28
+LVN 47
+
+Event 42: day 3 at 11:00
+Duaration: 240 minutes 
+Minimum number of nurses required: [1 RN, 6 LVN] 
+RN 12
+LVN 16
+LVN 19
+LVN 21
+LVN 25
+LVN 28
+LVN 30
+LVN 32
+LVN 34
+LVN 35
+LVN 36
+LVN 37
+LVN 39
+LVN 43
+LVN 44
+LVN 45
+LVN 46
+LVN 47
+
+Event 43: day 1 at 9:00
+Duaration: 240 minutes 
+Minimum number of nurses required: [1 RN, 3 LVN] 
+RN 15
+LVN 18
+LVN 33
+LVN 39
+
+Event 44: day 1 at 14:00
+Duaration: 30 minutes 
+Minimum number of nurses required: [2 RN, 7 LVN] 
+RN 5
+RN 15
+LVN 16
+LVN 17
+LVN 21
+LVN 31
+LVN 36
+LVN 41
+LVN 46
+
+Event 45: day 2 at 11:30
+Duaration: 120 minutes 
+Minimum number of nurses required: [2 RN, 2 LVN] 
+RN 1
+RN 13
+LVN 34
+LVN 45
+
+Event 46: day 1 at 11:30
+Duaration: 90 minutes 
+Minimum number of nurses required: [1 RN, 2 LVN] 
+RN 11
+RN 12
+LVN 30
+LVN 42
+
+Event 47: day 1 at 9:30
+Duaration: 120 minutes 
+Minimum number of nurses required: [2 RN, 4 LVN] 
+RN 2
+RN 11
+LVN 26
+LVN 30
+LVN 34
+LVN 35
+
+Event 48: day 1 at 9:00
+Duaration: 120 minutes 
+Minimum number of nurses required: [2 RN, 3 LVN] 
+RN 4
+RN 13
+LVN 23
+LVN 41
+LVN 45
+
+Event 49: day 1 at 13:30
+Duaration: 60 minutes 
+Minimum number of nurses required: [3 RN, 3 LVN] 
+RN 3
+RN 4
+RN 6
+RN 8
+RN 9
+RN 11
+RN 12
+RN 13
+LVN 18
+LVN 28
+LVN 40
+
+Event 50: day 5 at 13:30
+Duaration: 90 minutes 
+Minimum number of nurses required: [2 RN, 2 LVN] 
+RN 2
+RN 6
+RN 11
+LVN 27
+LVN 38
+
+Event 51: day 2 at 10:00
+Duaration: 120 minutes 
+Minimum number of nurses required: [1 RN, 3 LVN] 
+RN 9
+LVN 16
+LVN 20
+LVN 43
+
+Event 52: day 5 at 11:30
+Duaration: 180 minutes 
+Minimum number of nurses required: [3 RN, 2 LVN] 
+RN 4
+RN 8
+RN 14
+LVN 18
+LVN 50
+
+Event 53: day 2 at 12:30
+Duaration: 30 minutes 
+Minimum number of nurses required: [2 RN, 3 LVN] 
+RN 4
+RN 12
+LVN 29
+LVN 49
+LVN 50
+
+Event 54: day 5 at 13:00
+Duaration: 90 minutes 
+Minimum number of nurses required: [2 RN, 3 LVN] 
+RN 1
+RN 10
+LVN 16
+LVN 25
+LVN 36
+
+Event 55: day 4 at 9:00
+Duaration: 120 minutes 
+Minimum number of nurses required: [2 RN, 2 LVN] 
+RN 9
+RN 15
+LVN 24
+LVN 45
+
+Event 56: day 5 at 10:00
+Duaration: 120 minutes 
+Minimum number of nurses required: [1 RN, 3 LVN] 
+RN 7
+LVN 20
+LVN 35
+LVN 45
+
+Event 57: day 4 at 10:30
+Duaration: 180 minutes 
+Minimum number of nurses required: [2 RN, 2 LVN] 
+RN 1
+RN 3
+RN 6
+RN 12
+RN 13
+LVN 37
+LVN 44
+
+Event 58: day 4 at 12:30
+Duaration: 120 minutes 
+Minimum number of nurses required: [2 RN, 5 LVN] 
+RN 14
+RN 15
+LVN 17
+LVN 18
+LVN 19
+LVN 21
+LVN 22
+LVN 24
+LVN 25
+LVN 26
+LVN 28
+LVN 30
+LVN 31
+LVN 32
+LVN 33
+LVN 34
+LVN 39
+LVN 40
+LVN 41
+LVN 42
+LVN 45
+LVN 46
+LVN 47
+LVN 48
+LVN 49
+
+Event 59: day 2 at 11:00
+Duaration: 180 minutes 
+Minimum number of nurses required: [1 RN, 3 LVN] 
+RN 11
+LVN 18
+LVN 32
+LVN 36
+
+Event 60: day 5 at 9:00
+Duaration: 240 minutes 
+Minimum number of nurses required: [2 RN, 3 LVN] 
+RN 1
+RN 12
+LVN 21
+LVN 31
+LVN 38
+LVN 47
+
+Event 61: day 4 at 12:30
+Duaration: 120 minutes 
+Minimum number of nurses required: [2 RN, 3 LVN] 
+RN 8
+RN 10
+LVN 16
+LVN 23
+LVN 43
+
+Event 62: day 1 at 11:00
+Duaration: 60 minutes 
+Minimum number of nurses required: [3 RN, 4 LVN] 
+RN 3
+RN 8
+RN 13
+LVN 23
+LVN 28
+LVN 31
+LVN 32
+LVN 38
+LVN 41
+LVN 43
+LVN 45
+LVN 46
+LVN 47
+
+Event 63: day 5 at 12:30
+Duaration: 90 minutes 
+Minimum number of nurses required: [1 RN, 6 LVN] 
+RN 3
+RN 5
+LVN 17
+LVN 19
+LVN 20
+LVN 22
+LVN 23
+LVN 24
+LVN 28
+LVN 29
+LVN 30
+LVN 32
+LVN 33
+LVN 34
+LVN 35
+LVN 37
+LVN 40
+LVN 41
+LVN 42
+LVN 44
+LVN 45
+LVN 46
+LVN 48
+LVN 49
+
+Event 64: day 2 at 12:30
+Duaration: 120 minutes 
+Minimum number of nurses required: [2 RN, 6 LVN] 
+RN 2
+RN 8
+LVN 21
+LVN 25
+LVN 33
+LVN 35
+LVN 40
+LVN 46
+LVN 48
+
+Event 65: day 2 at 14:00
+Duaration: 60 minutes 
+Minimum number of nurses required: [1 RN, 4 LVN] 
+RN 14
+LVN 39
+LVN 44
+LVN 45
+LVN 47
+
+Event 66: day 5 at 14:30
+Duaration: 30 minutes 
+Minimum number of nurses required: [3 RN, 1 LVN] 
+RN 1
+RN 5
+RN 10
+RN 15
+LVN 49
+
+Event 67: day 1 at 9:00
+Duaration: 120 minutes 
+Minimum number of nurses required: [1 RN, 2 LVN] 
+RN 14
+LVN 43
+LVN 47
+
+Event 68: day 5 at 10:30
+Duaration: 60 minutes 
+Minimum number of nurses required: [2 RN, 3 LVN] 
+RN 3
+RN 5
+RN 8
+RN 14
+LVN 22
+LVN 33
+LVN 37
+
+Event 69: day 1 at 10:30
+Duaration: 120 minutes 
+Minimum number of nurses required: [1 RN, 7 LVN] 
+RN 1
+LVN 16
+LVN 17
+LVN 22
+LVN 25
+LVN 27
+LVN 40
+LVN 44
+
+Event 70: day 2 at 10:30
+Duaration: 120 minutes 
+Minimum number of nurses required: [1 RN, 3 LVN] 
+RN 12
+LVN 21
+LVN 25
+LVN 29
+LVN 33
+LVN 35
+LVN 46
+LVN 48
+LVN 50
+
+Event 71: day 2 at 13:30
+Duaration: 90 minutes 
+Minimum number of nurses required: [2 RN, 1 LVN] 
+RN 1
+RN 6
+LVN 38
+
+Event 72: day 3 at 9:00
+Duaration: 90 minutes 
+Minimum number of nurses required: [3 RN, 3 LVN] 
+RN 8
+RN 9
+RN 12
+LVN 16
+LVN 24
+LVN 32
+
+Event 73: day 1 at 9:00
+Duaration: 90 minutes 
+Minimum number of nurses required: [2 RN, 2 LVN] 
+RN 1
+RN 3
+LVN 25
+LVN 44
+
+Event 74: day 1 at 12:00
+Duaration: 90 minutes 
+Minimum number of nurses required: [2 RN, 3 LVN] 
+RN 8
+RN 13
+LVN 31
+LVN 32
+LVN 47
+
+Event 75: day 4 at 9:30
+Duaration: 90 minutes 
+Minimum number of nurses required: [2 RN, 4 LVN] 
+RN 2
+RN 7
+LVN 16
+LVN 17
+LVN 18
+LVN 19
+LVN 21
+LVN 22
+LVN 25
+LVN 26
+LVN 27
+LVN 28
+LVN 30
+LVN 31
+LVN 33
+LVN 34
+LVN 35
+LVN 38
+LVN 39
+LVN 40
+LVN 41
+LVN 42
+LVN 43
+LVN 47
+LVN 48
+LVN 49
+LVN 50
