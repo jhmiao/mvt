@@ -39,6 +39,9 @@ class Context:
         self.C_dur = getattr(pd, "C_dur", None)
         self.time_window = pd.time_window  # shape (m, day, 2)
         self.nurse_type = pd.nurse_type  # list/array length n or dict {w: "RN"/"LVN"}
+        self.MAX_WEEK_MIN = 25 * 60  # 1500 minutes
+
+
         # Set req_RN and req_LVN from min_nurse if available and has two columns
         if hasattr(pd, "min_nurse") and pd.min_nurse is not None and len(pd.min_nurse.shape) == 2 and pd.min_nurse.shape[1] == 2:
             self.req_RN = pd.min_nurse[:, 0]
@@ -69,6 +72,9 @@ class Context:
         # per day: which nurses’ routes contain AM/PM depots
         routes_have_AM: Dict[int, Set[int]] = {d: set() for d in range(self.D)}
         routes_have_PM: Dict[int, Set[int]] = {d: set() for d in range(self.D)}
+
+        # accumulate weekly minutes per nurse
+        work_time_by_nurse: Dict[int, int] = {}
 
         # Pass 1: per-route local checks, collect global info
         for r in sol.iter_routes():
@@ -175,6 +181,15 @@ class Context:
                         msg=f"Event {event} appears on multiple days: {sorted(set(days))}"
                     ))
 
+            # 1.5 Accumulate weekly minutes per nurse
+            route_service = 0
+            # service: sum C_dur at event nodes only
+            for node in nodes:
+                if 0 <= node < self.m and self.C_dur is not None:
+                    route_service += int(self.C_dur[node])
+            work_time_by_nurse[w] = work_time_by_nurse.get(w, 0) + route_service
+
+
         # Pass 2: staffing counts and AM/PM coverage per event
         for (d, j), nurses in attendees_by_event.items():
             # (4) staffing requirements
@@ -206,5 +221,13 @@ class Context:
                     kind="depot_cover", day=d, event=j,
                     msg=f"Event {j}: requires attendees to include AM and PM depot visitors; has_AM={has_AM}, has_PM={has_PM}"
                 ))
+        
+        # Pass 3: weekly work time per nurse
+        # ---- (6) weekly cap per nurse ----
+        for w, minutes in work_time_by_nurse.items():
+            if minutes > self.MAX_WEEK_MIN:
+                vios.append(Violation(kind="weekly_time", day=-1, nurse=w,
+                                    msg=f"Weekly working time {minutes} > {self.MAX_WEEK_MIN} minutes"))
+
 
         return FeasReport(ok=(len(vios) == 0), violations=vios)

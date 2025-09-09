@@ -9,12 +9,14 @@ import gurobipy as gp
 from gurobipy import GRB
 import numpy as np
 
+from src.solver.extract import routes_from_active_x_t
+
 # Only for type checkers; no runtime import (prevents cycles)
 if TYPE_CHECKING:
     from src.models.solution import Solution, Route
     from src.models.problem_data import ProblemData
     from src.models.context import Context
-    from src.solver.extract import routes_from_active_x_t
+
 
 # Types you already have:
 # - Solution with: day_routes: Dict[(int day, int nurse), Route]
@@ -545,7 +547,7 @@ class LNSCfg:
     destroy_frac: float = 0.2            # 20% of scheduled events per iter
     iters: int = 100
     rng_seed: int = 0
-    timelimit_s: float = 3.0             # time budget for the sub-MIP per iter
+    work_limit: float = 3.0             # time budget for the sub-MIP per iter
     threads: int = 8                     # 0=let Gurobi decide; else pin to cpus-per-task
     restrict_to_original_route: bool = False  # True = only reorder within same (d,w)
 
@@ -564,7 +566,7 @@ def lns_with_gurobi(initial_sol, initial_active_t, pd, ctx, cfg):
         if not U:
             continue
 
-        model, x, t, s, alpha, beta = build_full_model(pd)
+        model, x, t, s, alpha, beta = build_full_model(pd, min_hour=None, max_hour=25 * np.ones(pd.n))
         cand_in, cand_out = _cand_sets(pd, x)
 
         _hard_fix_minimal(
@@ -595,7 +597,7 @@ def lns_with_gurobi(initial_sol, initial_active_t, pd, ctx, cfg):
 
         model.Params.MIPFocus = 1
         if cfg.threads: model.Params.Threads = cfg.threads
-        model.Params.TimeLimit = cfg.timelimit_s
+        model.Params.WorkLimit = cfg.work_limit
         model.optimize()
 
         if model.SolCount == 0:
