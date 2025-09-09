@@ -4,7 +4,7 @@ from typing import Dict, Tuple, List, Optional, Iterable, Set
 
 @dataclass
 class Violation:
-    kind: str              # "start_unique", "time_window", "travel", "staffing", "depot_cover"
+    kind: str              # "start_unique", "end_unique", "start_home", "end_home", "time_window", "travel", "staffing", "depot_cover"
     day: int
     event: Optional[int] = None
     nurse: Optional[int] = None
@@ -28,7 +28,7 @@ class Context:
           - req_RN[j], req_LVN[j]  # required per event (optional; default 0 if missing)
         Node IDs:
           - events: 0..m-1
-          - HOME:   m   (raw; you map to 100+w in routes)
+          - HOME:   100+w (unique per nurse w, mapping done in routes_from_active_x_to_t; originally m in PD)
           - DEPOT_AM: m+1
           - DEPOT_PM: m+2
         """
@@ -64,6 +64,8 @@ class Context:
         start_time_by_event: Dict[Tuple[int, int], int] = {}
         # (d, j) -> set of nurses attending
         attendees_by_event: Dict[Tuple[int, int], Set[int]] = {}
+        # event -> list of days it appears on
+        event_days: Dict[int, List[int]] = {}
         # per day: which nurses’ routes contain AM/PM depots
         routes_have_AM: Dict[int, Set[int]] = {d: set() for d in range(self.D)}
         routes_have_PM: Dict[int, Set[int]] = {d: set() for d in range(self.D)}
@@ -74,6 +76,7 @@ class Context:
             starts = getattr(r, "start", None)
             departs = getattr(r, "depart", None)
 
+            # 1.1 Data integrity
             if starts is None or departs is None or len(starts) != len(nodes) or len(departs) != len(nodes):
                 vios.append(Violation(
                     kind="data",
@@ -92,7 +95,7 @@ class Context:
             if self.DEPOT_PM in nodes:
                 routes_have_PM[d].add(w)
 
-            # check time windows & travel feasibility along this route
+            # 1.2 Check time windows & travel feasibility along this route
             for k in range(len(nodes)):
                 node = nodes[k]
                 st = starts[k]
@@ -119,13 +122,37 @@ class Context:
                                 kind="travel", day=d, nurse=w,
                                 msg=f"Dep({u})={dep_u} + dist={travel} > Start({v})={st_v} at edge ({u}->{v})"
                             ))
+                
+                # 3) Starts from home, ends at home
+                if k == 0:  # starting from home
+                    if node != 100 + w:  # not starting at unique home
+                        vios.append(Violation(
+                            kind="start_home", day=d, nurse=w,
+                            msg=f"Route starts at node {node} instead of unique home {100 + w}"
+                        ))
+                        if st != 0:
+                            vios.append(Violation(
+                                kind="start_unique", day=d, nurse=w,
+                                msg=f"Route starts from home but start time is {st} instead of 0"
+                            ))
+                if k == len(nodes) - 1:
+                    if node != 100 + w:  # ending at home
+                        vios.append(Violation(
+                            kind="end_home", day=d, nurse=w,
+                            msg=f"Route ends at node {node} instead of unique home {100 + w}"
+                        ))
+                        if st != 1440:
+                            vios.append(Violation(
+                                kind="end_unique", day=d, nurse=w,
+                                msg=f"Route ends at home but start time is {st} instead of 1440"
+                            ))
 
-            # Collect start times and staffing from this route
+            # 1.3 Collect start times and staffing from this route
             for k, node in enumerate(nodes):
                 if 0 <= node < self.m:
-                    key = (d, node)
-                    st = starts[k]
-                    # (1) unique/consistent start time across all attendees
+                    key = (d, node)  # (day, event)
+                    st = starts[k]   # start time (for this nurse) at this event
+                    # 1) unique/consistent start time across all attendees
                     if key in start_time_by_event and start_time_by_event[key] != st:
                         vios.append(Violation(
                             kind="start_unique", day=d, event=node, nurse=w,
@@ -136,6 +163,17 @@ class Context:
 
                     # track attendees
                     attendees_by_event.setdefault(key, set()).add(w)
+
+            # 1.4 Check for events scheduled on multiple days
+            # After collecting all (d, event) keys, check for events appearing on >1 day
+            for (d, event) in start_time_by_event.keys():
+                event_days.setdefault(event, []).append(d)
+            for event, days in event_days.items():
+                if len(set(days)) > 1:
+                    vios.append(Violation(
+                        kind="multi_day_event", day=None, event=event, nurse=None,
+                        msg=f"Event {event} appears on multiple days: {sorted(set(days))}"
+                    ))
 
         # Pass 2: staffing counts and AM/PM coverage per event
         for (d, j), nurses in attendees_by_event.items():

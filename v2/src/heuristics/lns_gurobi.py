@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from src.models.solution import Solution, Route
     from src.models.problem_data import ProblemData
     from src.models.context import Context
+    from src.solver.extract import routes_from_active_x_t
 
 # Types you already have:
 # - Solution with: day_routes: Dict[(int day, int nurse), Route]
@@ -21,7 +22,7 @@ if TYPE_CHECKING:
 # - Context(pd).check_solution(sol) -> report
 # - routes_from_active_x_t(active_x, active_t, pd) -> Solution
 
-from src.solver.extract import routes_from_active_x_t
+
 
 # 1) Build the full model
 def build_full_model(data, *, min_hour=None, max_hour=None):
@@ -37,8 +38,8 @@ def build_full_model(data, *, min_hour=None, max_hour=None):
     x = model.addVars(m+3, m+3, day, n, vtype=GRB.BINARY, name="x")   # x[i,j,d,w]
     s = model.addVars(m, day, vtype=GRB.BINARY, name="s")             # s[i,d]
     t = model.addVars(m, day, vtype=GRB.INTEGER, name="t")            # t[i,d]
-    alpha = model.addVars(m, day, n, vtype=GRB.BINARY, name="alpha")
-    beta  = model.addVars(m, day, n, vtype=GRB.BINARY, name="beta")
+    alpha = model.addVars(m, day, n, vtype=GRB.BINARY, name="alpha")  # alpha[i,d,w]
+    beta  = model.addVars(m, day, n, vtype=GRB.BINARY, name="beta")   # beta[i,d,w]
 
     # --- objective & constraints ---
     event_cost = gp.quicksum(
@@ -161,15 +162,29 @@ def build_full_model(data, *, min_hour=None, max_hour=None):
 
     # pick up leader goes from home to depot to their first event
     # drop off leader goes from their last event to depot to home
-    model.addConstrs(
-        (gp.quicksum(alpha[j, d, w] for j in range(m)) <= 5 * x[m, m+1, d, w] for d in range(day) for w in range(n)),
-        name="pick_up_leader_home_depot"
-    )
+    # model.addConstrs(
+    #     (gp.quicksum(alpha[j, d, w] for j in range(m)) <= 5 * x[m, m+1, d, w] for d in range(day) for w in range(n)),
+    #     name="pick_up_leader_home_depot"
+    # )
+    # model.addConstrs(
+    #     (gp.quicksum(beta[j, d, w] for j in range(m)) <= 5 * x[m+2, m, d, w] for d in range(day) for w in range(n)),
+    #     name="drop_off_leader_depot_home"
+    # )
 
-    model.addConstrs(
-        (gp.quicksum(beta[j, d, w] for j in range(m)) <= 5 * x[m+2, m, d, w] for d in range(day) for w in range(n)),
-        name="drop_off_leader_depot_home"
-    )
+    for d in range(day):
+        for w in range(n):
+            model.addGenConstrIndicator(
+                x[m, m+1, d, w],
+                True,
+                gp.quicksum(alpha[j, d, w] for j in range(m)) >= 1,
+                name=f"pick_up_leader_home_depot_ind_d{d}_w{w}"
+            )
+            model.addGenConstrIndicator(
+                x[m+2, m, d, w],
+                True,
+                gp.quicksum(beta[j, d, w] for j in range(m)) >= 1,
+                name=f"drop_off_leader_depot_home_ind_d{d}_w{w}"
+            )
 
     model.update()
     return model, x, t, s, alpha, beta
@@ -204,8 +219,8 @@ def _choose_destroy_eventdays(inc_sol, pd, frac, rng):
     k = max(1, round(frac * len(eventdays)))
     return set(rng.sample(list(eventdays), k))
 
-# hard-fix outside the destroyed (i,d) set
-def _hard_fix_multinurse(model, x, s, t, inc_sol, active_t, U, pd, cand_in, cand_out, keep_route_anchor=True):
+# hard-fix decision variables outside the destroyed (i,d) set
+def _hard_fix(model, x, s, t, inc_sol, active_t, U, pd, cand_in, cand_out, keep_route_anchor=True):
     m, n, D = pd.m, pd.n, pd.day
 
     # for each event t(i,d), get team membership
@@ -235,7 +250,8 @@ def _hard_fix_multinurse(model, x, s, t, inc_sol, active_t, U, pd, cand_in, cand
             vi = _to_mip_node(v, w, m)
             if 0 <= v < m:        # event node
                 if (v,d) in U:
-                    continue      # leave free
+                    continue      # destroy: leave free
+
                 # lock membership: if this nurse attends v on day d in incumbent, keep it;
                 # if not, forbid any incidence at (v,d) for this nurse.
                 if w in team.get((v,d), set()):
@@ -256,20 +272,24 @@ def _hard_fix_multinurse(model, x, s, t, inc_sol, active_t, U, pd, cand_in, cand
                 if keep_route_anchor:
                     ip = pred.get(v)
                     js = succ.get(v)
-                    if ip is not None:
+                    if ip is not None and (ip, d) not in U:
                         ii = _to_mip_node(ip, w, m); vv = _to_mip_node(v, w, m)
                         x[ii, vv, d, w].LB = x[ii, vv, d, w].UB = 1.0
-                    if js is not None:
+                    if js is not None and (js, d) not in U:
                         vv = _to_mip_node(v, w, m); jj = _to_mip_node(js, w, m)
                         x[vv, jj, d, w].LB = x[vv, jj, d, w].UB = 1.0
+    try:
+        model.update()
+    except Exception as e:
+        print(f"Error updating model: {e}")
 
-def _hard_fix_multinurse_compress(
+def _hard_fix_compress(
     model, x, s, t, inc_sol, active_t, U, pd, cand_in, cand_out,
     time_band=0, fix_s=True
 ):
     m, D = pd.m, pd.day
 
-    # Fix times (and s) for NON-destroyed (i,d)
+    # Fix times (t and s) for NON-destroyed (i,d)
     for (i,d), tau in active_t.items():
         if (i,d) in U: 
             continue
@@ -284,21 +304,21 @@ def _hard_fix_multinurse_compress(
                 if dd != d:
                     s[i,dd].LB = 0; s[i,dd].UB = 0
 
-    # Compress each (d,w) route and fix skeleton arcs (skip self-arcs)
+    # for each (d,w) route, fix skeleton arcs (skip self-arcs)
     for (d,w), r in inc_sol.day_routes.items():
         kept = []
         for v in r.nodes:
-            vi = _to_mip_node(v, w, m)
-            if 0 <= vi < m and (vi,d) in U:
+            if 0 <= v < m and (v,d) in U:
                 continue
-            kept.append(vi)
+            kept.append(v)
 
         for a, b in zip(kept[:-1], kept[1:]):
-            # ia, jb = _to_mip_node(a, w, m), _to_mip_node(b, w, m)
+            ia, jb = _to_mip_node(a, w, m), _to_mip_node(b, w, m)
             ia, jb = a, b
             if ia == jb:  # skip self-arc like HOME->HOME
                 continue
-            # fix a->b
+            
+            # compression: fix a->b
             x[ia,jb,d,w].LB = 1.0; x[ia,jb,d,w].UB = 1.0
             # prune other choices at endpoints
             for k in cand_out.get((d,w,ia), []):
@@ -306,11 +326,100 @@ def _hard_fix_multinurse_compress(
             for k in cand_in.get((d,w,jb), []):
                 if k != ia: x[k,jb,d,w].UB = 0.0
 
+    try:
+        model.update()
+    except Exception as e:
+        print(f"Error updating model: {e}")
 
-    # 3) IMPORTANT: we do NOT touch arcs incident to destroyed nodes (i,d)∈U.
-    #     Gurobi is free to reinsert them anywhere (and choose attending nurses)
-    #     consistent with your RN/LVN minima and other constraints.
+def _hard_fix_minimal(
+    model, x, s, t,
+    inc_sol,            # incumbent Solution with routes
+    active_t,           # {(i,d): start_time} of incumbent
+    U,                  # set of destroyed event-days {(v,d)}
+    pd,
+    cand_in, cand_out,  # candidate neighbor maps: (d,w,node) -> [nodes]
+    *,
+    time_band=0,        # 0=frozen t; else allow +/- minutes
+    fix_s=True,         # keep day choice for non-destroyed (i,d)
+    keep_route_anchor=True
+):
+    """
+    'Destroy' = leave free (no bound change). 'Keep' = hard-fix.
+    - Any var touching a destroyed (v,d) is left as-is.
+    - Everything else gets fixed (times, day flags, skeleton arcs).
+    """
+    m, D = pd.m, pd.day
 
+    def is_destroyed_mip_node(k, d):
+        # k in MIP space; destroyed if it's an event and (event,d) in U
+        return (0 <= k < m) and ((k, d) in U)
+
+    # ---- 1) Fix times (and day flags) ONLY for non-destroyed (i,d)
+    for (i, d), tau in active_t.items():
+        if (i, d) in U:
+            continue  # 'destroy': leave t[i,d] & s[i,d] untouched
+        if time_band == 0:
+            t[i, d].LB = tau
+            t[i, d].UB = tau
+        else:
+            t[i, d].LB = max(t[i, d].LB, tau - time_band)
+            t[i, d].UB = min(t[i, d].UB, tau + time_band)
+        if fix_s:
+            s[i, d].LB = 1
+            s[i, d].UB = 1
+            # lock other days off for this event (only for non-destroyed)
+            for dd in range(D):
+                if dd != d:
+                    s[i, dd].LB = 0
+                    s[i, dd].UB = 0
+
+    # ---- 2) Compress each (d,w) route by removing all destroyed (v,d), then fix skeleton arcs
+    for (d, w), r in inc_sol.day_routes.items():
+        # kept nodes: sentinels + events whose (v,d) ∉ U
+        kept = [v for v in r.nodes if not (0 <= v < m and (v, d) in U)]
+
+        for a, b in zip(kept[:-1], kept[1:]):
+            ia = _to_mip_node(a, w, m)
+            jb = _to_mip_node(b, w, m)
+            if ia == jb:
+                continue  # skip self-arcs (e.g., HOME->HOME)
+
+            # Optionally skip boundary anchoring
+            if not keep_route_anchor:
+                if ia in (m, m+1, m+2) or jb in (m, m+1, m+2):
+                    continue
+
+            # Only fix if arc exists and wasn't globally forbidden
+            var = x.get((ia, jb, d, w))
+            if var is None or var.UB <= 0:
+                # Can't enforce this skeleton edge (arc pruned in master model).
+                # Leave endpoint freedoms; do NOT prune here.
+                continue
+
+            # Fix the kept→kept arc (does not involve U by construction)
+            var.LB = 1.0
+            var.UB = 1.0
+
+            # Prune alternatives at endpoints EXCEPT those that touch destroyed nodes
+            # Outgoing from ia
+            for k in cand_out.get((d, w, ia), []):
+                if k == jb:
+                    continue
+                if is_destroyed_mip_node(k, d):
+                    continue  # don't touch arcs to destroyed nodes
+                x[ia, k, d, w].UB = 0.0
+            # Incoming to jb
+            for k in cand_in.get((d, w, jb), []):
+                if k == ia:
+                    continue
+                if is_destroyed_mip_node(k, d):
+                    continue  # don't touch arcs from destroyed nodes
+                x[k, jb, d, w].UB = 0.0
+
+    try:
+        model.update()
+    except Exception as e:
+        print(f"Error updating model: {e}")
 
 def _warm_start_from_solution(x, inc_sol, pd):
     m = pd.m
@@ -458,30 +567,31 @@ def lns_with_gurobi(initial_sol, initial_active_t, pd, ctx, cfg):
         model, x, t, s, alpha, beta = build_full_model(pd)
         cand_in, cand_out = _cand_sets(pd, x)
 
-        # _hard_fix_multinurse(
-        #     model, x, s, t,
-        #     inc_sol=best_sol,
-        #     active_t=best_active_t,   # <- use the incumbent’s times
-        #     U=U, pd=pd,
-        #     cand_in=cand_in, cand_out=cand_out,
-        #     keep_route_anchor=True
-        # )
-        _hard_fix_multinurse_compress(
+        _hard_fix_minimal(
             model, x, s, t,
             inc_sol=best_sol,
             active_t=best_active_t,
-            U=U,
-            pd=pd,
-            cand_in=cand_in,
-            cand_out=cand_out,
-            time_band=15,          # start with 15; set 0 to freeze
-            fix_s=True
+            U=U, pd=pd,
+            cand_in=cand_in, cand_out=cand_out,
+            time_band=120,
+            fix_s=True,
+            keep_route_anchor=False
         )
+        # _hard_fix_compress(
+        #     model, x, s, t,
+        #     inc_sol=best_sol,
+        #     active_t=best_active_t,
+        #     U=U,
+        #     pd=pd,
+        #     cand_in=cand_in,
+        #     cand_out=cand_out,
+        #     time_band=15,          # start with 15; set 0 to freeze
+        #     fix_s=True
+        # )
         # _warm_start_from_solution(x, best_sol, pd)
         # Only set starts for t and s; avoid x/alpha/beta starts
         # apply_safe_warm_start(model, x, s, t, alpha, beta, inc_sol=best_sol, active_t=best_active_t, U=U, pd=pd, start_x_skeleton=False)
-        num_started = warm_start_fixed_only(model, tol=1e-9, use_add_mipstart=True)
-        print(f"Warm-started {num_started} fixed vars")
+
 
         model.Params.MIPFocus = 1
         if cfg.threads: model.Params.Threads = cfg.threads

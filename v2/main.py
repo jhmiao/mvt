@@ -26,15 +26,17 @@ def main():
     initial_sol = routes_from_active_x_t(active_x0, active_t0, pd)
     # --- feasibility check
     ctx = Context(pd)
+    rep0 = ctx.check_solution(initial_sol)
+    print("Initial feasible?", getattr(rep0, "feasible", True))
 
     # --- run LNS with sub-MIP repair
 
-    cfg = LNSCfg(destroy_frac=0.25, iters=200, rng_seed=42, timelimit_s=5.0, threads=8)
+    cfg = LNSCfg(destroy_frac=0.5, iters=100, rng_seed=42, timelimit_s=10, threads=8)
     best_sol = lns_with_gurobi(initial_sol, active_t0, pd, ctx, cfg)
 
-    # --- final check
-    repF = ctx.check_solution(best_sol)
-    print("Final feasible?", getattr(repF, "feasible", True))
+    # # --- final check
+    # repF = ctx.check_solution(best_sol)
+    # print("Final feasible?", getattr(repF, "feasible", True))
     # summary = continuous_algorithm(
     #     pd, work_limit=1000, seed_number=1,
     #     multiple_tw=None, event_limit=None, pruning=2,
