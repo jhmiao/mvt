@@ -18,14 +18,6 @@ if TYPE_CHECKING:
     from src.models.context import Context
 
 
-# Types you already have:
-# - Solution with: day_routes: Dict[(int day, int nurse), Route]
-# - Route with fields: day_idx, nurse, nodes (e.g., [100+w, ..., 100+w])
-# - Context(pd).check_solution(sol) -> report
-# - routes_from_active_x_t(active_x, active_t, pd) -> Solution
-
-
-
 # 1) Build the full model
 def build_full_model(data, *, min_hour=None, max_hour=None):
     m, n, day = data.m, data.n, data.day
@@ -173,18 +165,33 @@ def build_full_model(data, *, min_hour=None, max_hour=None):
     #     name="drop_off_leader_depot_home"
     # )
 
+    # for d in range(day):
+    #     for w in range(n):
+    #         model.addGenConstrIndicator(
+    #             x[m, m+1, d, w],
+    #             True,
+    #             gp.quicksum(alpha[j, d, w] for j in range(m)) >= 1,
+    #             name=f"pick_up_leader_home_depot_ind_d{d}_w{w}"
+    #         )
+    #         model.addGenConstrIndicator(
+    #             x[m+2, m, d, w],
+    #             True,
+    #             gp.quicksum(beta[j, d, w] for j in range(m)) >= 1,
+    #             name=f"drop_off_leader_depot_home_ind_d{d}_w{w}"
+    #         )
+    
     for d in range(day):
         for w in range(n):
             model.addGenConstrIndicator(
                 x[m, m+1, d, w],
-                True,
-                gp.quicksum(alpha[j, d, w] for j in range(m)) >= 1,
+                False,
+                gp.quicksum(alpha[j, d, w] for j in range(m)) <= 0,
                 name=f"pick_up_leader_home_depot_ind_d{d}_w{w}"
             )
             model.addGenConstrIndicator(
                 x[m+2, m, d, w],
-                True,
-                gp.quicksum(beta[j, d, w] for j in range(m)) >= 1,
+                False,
+                gp.quicksum(beta[j, d, w] for j in range(m)) <= 0,
                 name=f"drop_off_leader_depot_home_ind_d{d}_w{w}"
             )
 
@@ -534,12 +541,18 @@ def warm_start_fixed_only(model, tol=1e-9, use_add_mipstart=True, name="fixonly"
 
 
 
-def _extract_active_x_t(model, x, t):
+def _extract_active_var(model, x, s, t, alpha, beta):
     # active arcs (i,j,d,w)
     active_x = [(i,j,d,w) for (i,j,d,w), var in x.items() if var.X > 0.5]
+    # active start flags s[i,d]
+    active_s = [(i,d) for (i,d), var in s.items() if var.X > 0.5]
     # start times t[i,d] (you model a single start time per event-day)
     active_t = {(i,d): t[i,d].X for (i,d) in t.keys() if t[i,d].X > 0}
-    return active_x, active_t
+    # active leaders alpha[i,d,w], beta[i,d,w]
+    active_alpha = [(i,d,w) for (i,d,w), var in alpha.items() if var.X > 0.5]
+    active_beta  = [(i,d,w) for (i,d,w), var in beta.items() if var.X > 0.5]
+    return active_x, active_t, active_s, active_alpha, active_beta
+
 
 
 @dataclass
@@ -605,7 +618,41 @@ def lns_with_gurobi(initial_sol, initial_active_t, pd, ctx, cfg):
 
         EPS = 1e-6
         if model.SolCount > 0 and model.Status in (GRB.OPTIMAL, GRB.TIME_LIMIT, GRB.WORK_LIMIT, GRB.INTERRUPTED):
-            active_x, active_t = _extract_active_x_t(model, x, t)
+            active_x, active_t, active_s, active_alpha, active_beta = _extract_active_var(model, x, s, t, alpha, beta)
+            # save active_x and active_t
+            summary = {}
+
+            # 1. Active x[i,j,d,w]
+            summary["active_x"] = [
+                (i, j, d, w)
+                for (i, j, d, w) in x.keys()
+                if x[i, j, d, w].x > 0
+            ]
+            # 2. Active s[i,d]
+            summary["active_s"] = [
+                (i, d)
+                for (i, d) in s.keys()
+                if s[i, d].x > 0
+            ]
+            # 3. Active alpha[i,d,w]
+            summary["active_alpha"] = [
+                (i, d, w)
+                for (i, d, w) in alpha.keys()
+                if alpha[i, d, w].x > 0
+            ]
+            # 4. Active beta[i,d,w]
+            summary["active_beta"] = [
+                (i, d, w)
+                for (i, d, w) in beta.keys()
+                if beta[i, d, w].x > 0
+            ]
+            # 5. Active t[i,d]
+            summary["active_t"] = {
+            (i, d): t[i, d].x
+            for (i, d) in t.keys()
+            if t[i, d].x > 0
+            }
+
             cand_sol = routes_from_active_x_t(active_x, active_t, pd)
             if getattr(ctx.check_solution(cand_sol), "feasible", True):
                 cand_obj = float(model.ObjVal)  # best feasible found
@@ -614,7 +661,7 @@ def lns_with_gurobi(initial_sol, initial_active_t, pd, ctx, cfg):
                     best_sol = cand_sol
                     best_obj = cand_obj
 
-    return best_sol, best_obj
+    return best_sol, best_obj, summary
 
 
 def list_all_events(sol, m: int) -> List[Tuple[Tuple[int,int], int, int]]:

@@ -4,7 +4,7 @@ from typing import Dict, Tuple, List, Optional, Iterable, Set
 
 @dataclass
 class Violation:
-    kind: str              # "start_unique", "end_unique", "start_home", "end_home", "time_window", "travel", "staffing", "depot_cover"
+    kind: str              # "start_unique", "end_unique", "start_home", "end_home", "time_window", "travel", "staffing", "depot_cover", "weekly_time"
     day: int
     event: Optional[int] = None
     nurse: Optional[int] = None
@@ -47,8 +47,8 @@ class Context:
             self.req_RN = pd.min_nurse[:, 0]
             self.req_LVN = pd.min_nurse[:, 1]
         else:
-            self.req_RN = getattr(pd, "req_RN", None)
-            self.req_LVN = getattr(pd, "req_LVN", None)
+            # raise an error 
+            raise ValueError("ProblemData must have min_nurse with two columns for RN and LVN requirements.")
         self.DEPOT_AM = pd.m + 1
         self.DEPOT_PM = pd.m + 2
 
@@ -76,6 +76,8 @@ class Context:
         # accumulate weekly minutes per nurse
         work_time_by_nurse: Dict[int, int] = {}
 
+        # print("Context depots:", self.DEPOT_AM, self.DEPOT_PM)
+
         # Pass 1: per-route local checks, collect global info
         for r in sol.iter_routes():
             nodes = r.nodes
@@ -98,8 +100,35 @@ class Context:
             # Mark depot presence for this route
             if self.DEPOT_AM in nodes:
                 routes_have_AM[d].add(w)
+                # check DEPOT_AM is the second visited node in the route
+                am_index = nodes.index(self.DEPOT_AM)
+                if am_index != 1:
+                    vios.append(Violation(
+                        kind="depot_am_position", day=d, nurse=w,
+                        msg=f"DEPOT_AM at invalid position {am_index} in route -- should be 1"
+                    ))
+                # check DEPOT_AM is between home and an event
+                if not (nodes[0] == 100 + w and 0 <= nodes[2] < self.m):
+                    vios.append(Violation(
+                        kind="depot_am_position", day=d, nurse=w,
+                        msg=f"DEPOT_AM at invalid position {am_index} in route -- should be between home and an event"
+                    ))
+
             if self.DEPOT_PM in nodes:
                 routes_have_PM[d].add(w)
+                # check DEPOT_PM is the second to last visited node in the route
+                pm_index = nodes.index(self.DEPOT_PM)
+                if pm_index != len(nodes) - 2:
+                    vios.append(Violation(
+                        kind="depot_pm_position", day=d, nurse=w,
+                        msg=f"DEPOT_PM at invalid position {pm_index} in route -- should be {len(nodes) - 2}"
+                    ))
+                # check DEPOT_PM is between event and home
+                if not (0 <= nodes[-3] < self.m and nodes[-1] == 100 + w):
+                    vios.append(Violation(
+                        kind="depot_pm_position", day=d, nurse=w,
+                        msg=f"DEPOT_PM at invalid position {pm_index} in route -- should be between event and home"
+                    ))
 
             # 1.2 Check time windows & travel feasibility along this route
             for k in range(len(nodes)):
@@ -192,7 +221,8 @@ class Context:
 
         # Pass 2: staffing counts and AM/PM coverage per event
         for (d, j), nurses in attendees_by_event.items():
-            # (4) staffing requirements
+            # print (f"Event {j} on day {d} has nurses {nurses}")
+            # (1) staffing requirements
             if self.req_RN is not None:
                 need_RN = self.req_RN[j]
             else:
@@ -211,15 +241,26 @@ class Context:
                     msg=f"Need RN>= {need_RN}, LVN>= {need_LVN}; have RN={have_RN}, LVN={have_LVN}"
                 ))
 
-            # AM/PM depot coverage among attendees of this event (same day)
+            # (2) AM/PM depot coverage among attendees of this event (same day)
             # among nurses going to event j on day d,
             # at least one has DEPOT_AM in their route and at least one has DEPOT_PM.
-            has_AM = any(w in routes_have_AM[d] for w in nurses)
-            has_PM = any(w in routes_have_PM[d] for w in nurses)
-            if not has_AM or not has_PM:
+            attendees = set(nurses)
+            am_set = routes_have_AM.get(d, set())
+            pm_set = routes_have_PM.get(d, set())
+
+            am_attendees = attendees & am_set
+            pm_attendees = attendees & pm_set
+
+            count_AM = len(am_attendees)
+            count_PM = len(pm_attendees)
+
+            # print(f"Event {j} on day {d} AM attendees: {sorted(am_attendees)}, count: {count_AM}")
+            # print(f"Event {j} on day {d} PM attendees: {sorted(pm_attendees)}, count: {count_PM}")
+
+            if count_AM < 1 or count_PM < 1:
                 vios.append(Violation(
                     kind="depot_cover", day=d, event=j,
-                    msg=f"Event {j}: requires attendees to include AM and PM depot visitors; has_AM={has_AM}, has_PM={has_PM}"
+                    msg=f"Event {j}: requires AM and PM among attendees; AM={count_AM}, PM={count_PM}"
                 ))
         
         # Pass 3: weekly work time per nurse
@@ -229,5 +270,26 @@ class Context:
                 vios.append(Violation(kind="weekly_time", day=-1, nurse=w,
                                     msg=f"Weekly working time {minutes} > {self.MAX_WEEK_MIN} minutes"))
 
+        # check the total number of events with AM/PM coverage matches the total number of events
+        # for all nurses in routes_have_AM[d], get the routes they cover on day d
+        # ensure that across all days number of events == self.m
+        AM_covered_events = set()
+        PM_covered_events = set()
+        for d in range(self.D):
+            for w in routes_have_AM[d]:
+                for (day, event), nurses in attendees_by_event.items():
+                    if day == d and w in nurses:
+                        AM_covered_events.add(event)
+            for w in routes_have_PM[d]:
+                for (day, event), nurses in attendees_by_event.items():
+                    if day == d and w in nurses:
+                        PM_covered_events.add(event)
+
+        if len(AM_covered_events) != self.m:
+            vios.append(Violation(kind="depot_cover", day=-1,
+                                msg=f"Day {d}: only {len(AM_covered_events)} events covered with AM depot coverage; expected {self.m}"))
+        if len(PM_covered_events) != self.m:
+            vios.append(Violation(kind="depot_cover", day=-1,
+                                msg=f"Day {d}: only {len(PM_covered_events)} events covered with PM depot coverage; expected {self.m}"))
 
         return FeasReport(ok=(len(vios) == 0), violations=vios)
