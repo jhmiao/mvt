@@ -30,54 +30,6 @@ def continuous_algorithm (data: ProblemData, work_limit, seed_number, multiple_t
     
     model = gp.Model("MVT_scheduling_continuous")
 
-    # --- CARC / Gurobi parameter setup ---
-    import os
-    try:
-        # Treat work_limit as a solver wallclock limit (seconds)
-        if 'work_limit' in locals() and locals().get('work_limit') is not None:
-            model.Params.TimeLimit = float(locals().get('work_limit'))
-        # Solve to optimal unless the time limit is hit
-        model.Params.MIPGap = 0.0
-        # Use as many CPUs as allocated by Slurm (fallback to all cores)
-        threads_env = os.getenv('SLURM_CPUS_PER_TASK')
-        if threads_env and threads_env.isdigit():
-            model.Params.Threads = int(threads_env)
-        else:
-            import multiprocessing
-            model.Params.Threads = max(1, multiprocessing.cpu_count())
-        # Send Gurobi logs to a file if provided via env or local variable
-        log_file = locals().get('log_file', None) or os.getenv('CARC_GRB_LOGFILE', None)
-        if log_file:
-            model.Params.LogFile = str(log_file)
-    except Exception as _param_ex:
-        # Non-fatal if params can't be set in some code paths
-        pass
-    # --- end param setup ---
-
-    # --- CARC / Gurobi parameter setup ---
-    import os
-    try:
-        # Use work_limit as a wallclock time limit (seconds).
-        if work_limit is not None:
-            model.Params.TimeLimit = float(work_limit)
-        # Force solve-to-optimal unless time limit is hit.
-        model.Params.MIPGap = 0.0
-        # Use as many CPUs as Slurm grants or all local cores.
-        threads_env = os.getenv("SLURM_CPUS_PER_TASK")
-        if threads_env and threads_env.isdigit():
-            model.Params.Threads = int(threads_env)
-        else:
-            import multiprocessing
-            model.Params.Threads = max(1, multiprocessing.cpu_count())
-        # Set Gurobi log file if specified via env var.
-        log_file = os.getenv("CARC_GRB_LOGFILE", None)
-        if log_file:
-            model.Params.LogFile = str(log_file)
-    except Exception as _param_ex:
-        pass
-    # --- end CARC param setup ---
-    M = 600 # A large constant
-
     np.random.seed(seed_number)
 
     if multiple_tw is not None:
@@ -92,8 +44,8 @@ def continuous_algorithm (data: ProblemData, work_limit, seed_number, multiple_t
     # Decision variables
 
     # x_ijdw = 1 if nurse w goes from event i to j on day d, 0 otherwise
-    # i, j == -1 for depot, i, j == -2 for home
-    x = model.addVars(m+2, m+2, day, n, vtype=GRB.BINARY, name="x") 
+    # i, j == m for home, i, j == m+1 for depot_am, i, j == m+2 for depot_pm
+    x = model.addVars(m+3, m+3, day, n, vtype=GRB.BINARY, name="x") 
 
     # s_id = 1 if event i is scheduled on day d, 0 otherwise
     s = model.addVars(m, day, vtype=GRB.BINARY, name="s")
@@ -117,11 +69,11 @@ def continuous_algorithm (data: ProblemData, work_limit, seed_number, multiple_t
     )
     
     depot_event_cost = gp.quicksum(
-        C_depot[i] * gp.quicksum((x[m+1, i, d, w] + x[i, m+1, d, w] )for d in range(day) for w in range(n)) for i in range(m)
+        C_depot[i] * gp.quicksum((x[m+1, i, d, w] + x[i, m+2, d, w] )for d in range(day) for w in range(n)) for i in range(m)
     )
 
     depot_home_cost = gp.quicksum(
-        C_depot[m+w] * gp.quicksum((x[m+1, m, d, w] + x[m, m+1, d, w]) for d in range(day)) for w in range(n)
+        C_depot[m+w] * gp.quicksum((x[m+2, m, d, w] + x[m, m+1, d, w]) for d in range(day)) for w in range(n)
     )
 
     objective = event_cost + home_cost + depot_event_cost + depot_home_cost
@@ -132,7 +84,15 @@ def continuous_algorithm (data: ProblemData, work_limit, seed_number, multiple_t
     if pruning >= 1:
         # fix all x[i][j][d][w] to 0 if 1) i == j
         model.addConstrs(x[i,i,d,w] == 0 for d in range(day) for w in range(n) for i in range(m+2))
-    
+
+        # infeasible depot travels
+        # event -> depot_am, depot_pm -> event
+        model.addConstrs(x[i,m+1,d,w] == 0 for d in range(day) for w in range(n) for i in range(m))
+        model.addConstrs(x[m+2,i,d,w] == 0 for d in range(day) for w in range(n) for i in range(m))
+        # depot_am -> home, home -> depot_pm
+        model.addConstrs(x[m+1,m,d,w] == 0 for d in range(day) for w in range(n))
+        model.addConstrs(x[m,m+2,d,w] == 0 for d in range(day) for w in range(n))
+
     # elif pruning >= 2:
         # # Each event is scheduled exactly once during its feasible time window
         # # pruning: some events cannot be linked due to time infeaasibility
@@ -154,7 +114,7 @@ def continuous_algorithm (data: ProblemData, work_limit, seed_number, multiple_t
     model.addConstrs(gp.quicksum(t[i,d] for d in range(day)) >= 1 for i in range(m))
     model.addConstrs(t[i,d] >= time_window[i][d][0] * s[i,d] for d in range(day) for i in range(m))
     model.addConstrs(t[i,d] <= time_window[i][d][1] * s[i,d] for d in range(day) for i in range(m))
-    model.addConstrs(sum(x[i,j,d,w] for j in range(m+2)) <= s[i,d] for i in range(m) for d in range(day) for w in range(n))
+    model.addConstrs(sum(x[i,j,d,w] for j in range(m+3)) <= s[i,d] for i in range(m) for d in range(day) for w in range(n))
 
     # Time feasibility for consecutive events
     # for i in range(m):
@@ -179,24 +139,24 @@ def continuous_algorithm (data: ProblemData, work_limit, seed_number, multiple_t
     # Minimum working hours
     if min_hour is not None:
         model.addConstrs(
-            (gp.quicksum(C_dur[j] * gp.quicksum(x[i, j, d, w] for i in range(m+2) for d in range(day)) for j in range(m)) >= min_hour[w] * 60 for w in range(n)),
+            (gp.quicksum(C_dur[j] * gp.quicksum(x[i, j, d, w] for i in range(m+3) for d in range(day)) for j in range(m)) >= min_hour[w] * 60 for w in range(n)),
             name="min_working_hours"
         )
 
     # Maximum working hours
     if max_hour is not None:
         model.addConstrs(
-            (gp.quicksum(C_dur[j] * gp.quicksum(x[i, j, d, w] for i in range(m+2) for d in range(day)) for j in range(m)) <= max_hour[w] * 60 for w in range(n)),
+            (gp.quicksum(C_dur[j] * gp.quicksum(x[i, j, d, w] for i in range(m+3) for d in range(day)) for j in range(m)) <= max_hour[w] * 60 for w in range(n)),
             name="max_working_hours"
         )
     
     # staffing
     model.addConstrs(
-        (gp.quicksum(x[i, j, d, w] for i in range(m+2) for d in range(day) for w in range(nr)) >= min_nurse[j][0] for j in range(m)),
+        (gp.quicksum(x[i, j, d, w] for i in range(m+3) for d in range(day) for w in range(nr)) >= min_nurse[j][0] for j in range(m)),
         name="min_RN"
     )
     model.addConstrs(
-        (gp.quicksum(x[i, j, d, w] for i in range(m+2) for d in range(day) for w in range(nr, nr+nl)) >= min_nurse[j][1] for j in range(m)),
+        (gp.quicksum(x[i, j, d, w] for i in range(m+3) for d in range(day) for w in range(nr, nr+nl)) >= min_nurse[j][1] for j in range(m)),
         name="min_LVN"
     )        
 
@@ -210,13 +170,13 @@ def continuous_algorithm (data: ProblemData, work_limit, seed_number, multiple_t
     # network flow
     # event inflow = outflow
     model.addConstrs(
-        (gp.quicksum(x[i, j, d, w] for i in range(m+2)) == gp.quicksum(x[j, i, d, w] for i in range(m+2)) for j in range(m) for d in range(day) for w in range(n)),
+        (gp.quicksum(x[i, j, d, w] for i in range(m+3)) == gp.quicksum(x[j, i, d, w] for i in range(m+3)) for j in range(m) for d in range(day) for w in range(n)),
         name="event_network_flow"
     )
 
     # outflow from home is at most 1
     model.addConstrs(
-        (gp.quicksum(x[m, i, d, w] for i in range(m+2)) <= 1 for d in range(day) for w in range(n)),
+        (gp.quicksum(x[m, i, d, w] for i in range(m+3)) <= 1 for d in range(day) for w in range(n)),
         name="home_outflow"
     )
 
@@ -227,7 +187,7 @@ def continuous_algorithm (data: ProblemData, work_limit, seed_number, multiple_t
     )
 
     model.addConstrs(
-        (x[m+1, m, d, w] == gp.quicksum(x[j, m+1, d, w] for j in range(m)) for d in range(day) for w in range(n)),
+        (x[m+2, m, d, w] == gp.quicksum(x[j, m+2, d, w] for j in range(m)) for d in range(day) for w in range(n)),
         name="evening_depot_flow"
     )
     
@@ -244,12 +204,12 @@ def continuous_algorithm (data: ProblemData, work_limit, seed_number, multiple_t
 
     # team leader goes to the event
     model.addConstrs(
-        (alpha[j, d, w] <= gp.quicksum(x[i, j, d, w] for i in range(m+2)) for j in range(m) for d in range(day) for w in range(n)),
+        (alpha[j, d, w] <= gp.quicksum(x[i, j, d, w] for i in range(m+3)) for j in range(m) for d in range(day) for w in range(n)),
         name="pick_up_leader_event"
     )
 
     model.addConstrs(
-        (beta[j, d, w] <= gp.quicksum(x[i, j, d, w] for i in range(m+2)) for j in range(m) for d in range(day) for w in range(n)),
+        (beta[j, d, w] <= gp.quicksum(x[i, j, d, w] for i in range(m+3)) for j in range(m) for d in range(day) for w in range(n)),
         name="drop_off_leader_event"
     )
 
@@ -262,17 +222,24 @@ def continuous_algorithm (data: ProblemData, work_limit, seed_number, multiple_t
     )
 
     model.addConstrs(
-        (gp.quicksum(beta[j, d, w] for j in range(m)) <= 5 * x[m+1, m, d, w] for d in range(day) for w in range(n)),
+        (gp.quicksum(beta[j, d, w] for j in range(m)) <= 5 * x[m+2, m, d, w] for d in range(day) for w in range(n)),
         name="drop_off_leader_depot_home"
     )
-
+    # for w in range(n):
+    #     for d in range(day):
+    #         model.addGenConstrIndicator(
+    #             x[m, m+1, d, w], 1, gp.quicksum(alpha[j, d, w] for j in range(m)) >= 1, name=f"pick_up_leader_home_depot_d{d}_w{w}"
+    #         )
+    #         model.addGenConstrIndicator(
+    #             x[m+2, m, d, w], 1, gp.quicksum(beta[j, d, w] for j in range(m)) >= 1, name=f"drop_off_leader_depot_home_d{d}_w{w}"
+    #         )
 
     # Set the time limit to 20 minutes (1200 seconds)
     # model.setParam(GRB.Param.TimeLimit, time_limit)
-    # model.setParam(GRB.Param.WorkLimit, work_limit)
+    model.setParam(GRB.Param.WorkLimit, work_limit)
 
-    # model.Params.Threads = 8
-    # model.setParam('LogFile', 'gurobi_output_cah_sim.txt')
+    model.Params.Threads = 8
+    model.setParam('LogFile', 'gurobi_output_cah_sim.txt')
     # model.Params.PoolSearchMode = 1
     # model.Params.PoolSolutions = 3
 
@@ -292,7 +259,6 @@ def continuous_algorithm (data: ProblemData, work_limit, seed_number, multiple_t
         print(f"Best bound: {model.ObjBound}")
         print(f"Gap: {model.MIPGap}")
 
-        # file_path = f'/Users/jinghongmiao/Code/mvt-code/result-250715/ca_{nr}_{nl}_{m}_wl{work_limit}_el{event_limit}_p{pruning}_mh{min_hour}_max25_seed{seed_number}.pkl'
         summary = {}
 
         # 1. Active x[i,j,d,w]
@@ -341,7 +307,7 @@ def continuous_algorithm (data: ProblemData, work_limit, seed_number, multiple_t
             total_minutes = 0
             for j in range(m):
                 for d in range(day):
-                    for i in range(m + 2):
+                    for i in range(m + 3):
                         if x[i, j, d, w].x > 0:
                             total_minutes += C_dur[j]
                             break
@@ -380,53 +346,6 @@ def continuous_warm_start (data: ProblemData, work_limit, seed_number, multiple_
     day = data.day
     
     model = gp.Model("MVT_scheduling_continuous")
-
-    # --- CARC / Gurobi parameter setup ---
-    import os
-    try:
-        # Treat work_limit as a solver wallclock limit (seconds)
-        if 'work_limit' in locals() and locals().get('work_limit') is not None:
-            model.Params.TimeLimit = float(locals().get('work_limit'))
-        # Solve to optimal unless the time limit is hit
-        model.Params.MIPGap = 0.0
-        # Use as many CPUs as allocated by Slurm (fallback to all cores)
-        threads_env = os.getenv('SLURM_CPUS_PER_TASK')
-        if threads_env and threads_env.isdigit():
-            model.Params.Threads = int(threads_env)
-        else:
-            import multiprocessing
-            model.Params.Threads = max(1, multiprocessing.cpu_count())
-        # Send Gurobi logs to a file if provided via env or local variable
-        log_file = locals().get('log_file', None) or os.getenv('CARC_GRB_LOGFILE', None)
-        if log_file:
-            model.Params.LogFile = str(log_file)
-    except Exception as _param_ex:
-        # Non-fatal if params can't be set in some code paths
-        pass
-    # --- end param setup ---
-
-    # --- CARC / Gurobi parameter setup ---
-    import os
-    try:
-        # Use work_limit as a wallclock time limit (seconds).
-        if work_limit is not None:
-            model.Params.TimeLimit = float(work_limit)
-        # Force solve-to-optimal unless time limit is hit.
-        model.Params.MIPGap = 0.0
-        # Use as many CPUs as Slurm grants or all local cores.
-        threads_env = os.getenv("SLURM_CPUS_PER_TASK")
-        if threads_env and threads_env.isdigit():
-            model.Params.Threads = int(threads_env)
-        else:
-            import multiprocessing
-            model.Params.Threads = max(1, multiprocessing.cpu_count())
-        # Set Gurobi log file if specified via env var.
-        log_file = os.getenv("CARC_GRB_LOGFILE", None)
-        if log_file:
-            model.Params.LogFile = str(log_file)
-    except Exception as _param_ex:
-        pass
-    # --- end CARC param setup ---
     M = 600 # A large constant
 
     np.random.seed(seed_number)
@@ -784,53 +703,6 @@ def continuous_fairness_algorithm (data: ProblemData, work_limit, seed_number, m
     day = data.day
     
     model = gp.Model("MVT_scheduling_continuous")
-
-    # --- CARC / Gurobi parameter setup ---
-    import os
-    try:
-        # Treat work_limit as a solver wallclock limit (seconds)
-        if 'work_limit' in locals() and locals().get('work_limit') is not None:
-            model.Params.TimeLimit = float(locals().get('work_limit'))
-        # Solve to optimal unless the time limit is hit
-        model.Params.MIPGap = 0.0
-        # Use as many CPUs as allocated by Slurm (fallback to all cores)
-        threads_env = os.getenv('SLURM_CPUS_PER_TASK')
-        if threads_env and threads_env.isdigit():
-            model.Params.Threads = int(threads_env)
-        else:
-            import multiprocessing
-            model.Params.Threads = max(1, multiprocessing.cpu_count())
-        # Send Gurobi logs to a file if provided via env or local variable
-        log_file = locals().get('log_file', None) or os.getenv('CARC_GRB_LOGFILE', None)
-        if log_file:
-            model.Params.LogFile = str(log_file)
-    except Exception as _param_ex:
-        # Non-fatal if params can't be set in some code paths
-        pass
-    # --- end param setup ---
-
-    # --- CARC / Gurobi parameter setup ---
-    import os
-    try:
-        # Use work_limit as a wallclock time limit (seconds).
-        if work_limit is not None:
-            model.Params.TimeLimit = float(work_limit)
-        # Force solve-to-optimal unless time limit is hit.
-        model.Params.MIPGap = 0.0
-        # Use as many CPUs as Slurm grants or all local cores.
-        threads_env = os.getenv("SLURM_CPUS_PER_TASK")
-        if threads_env and threads_env.isdigit():
-            model.Params.Threads = int(threads_env)
-        else:
-            import multiprocessing
-            model.Params.Threads = max(1, multiprocessing.cpu_count())
-        # Set Gurobi log file if specified via env var.
-        log_file = os.getenv("CARC_GRB_LOGFILE", None)
-        if log_file:
-            model.Params.LogFile = str(log_file)
-    except Exception as _param_ex:
-        pass
-    # --- end CARC param setup ---
     M = 600 # A large constant
 
     np.random.seed(seed_number)

@@ -6,12 +6,12 @@ from dataclasses import dataclass
 class ProblemData:
     C_event: np.ndarray
     C_home: np.ndarray
-    # C_depot_e: np.ndarray       # (m,)      event i -> depot
-    # C_depot_h: np.ndarray       # (n,)      depot -> home(w)  (if used in your model)
-    C_depot: np.ndarray      # (m+n,)    combined depot travel costs
+    C_depot_e: np.ndarray
+    C_depot_h: np.ndarray
     C_dur: np.ndarray
     time_window: np.ndarray
     min_nurse: np.ndarray
+    nurse_type: np.ndarray
     nr: int
     nl: int
     n: int
@@ -32,7 +32,7 @@ def load_problem_data(file_path, type) -> ProblemData:
     C_depot_h: numpy array of depot travel costs (n,).
     C_dur: numpy array of event durations (m,).
     time_window: numpy array of time windows (m, day, 2).
-    min_nurse: numpy array of minimum nurses required (m, day).
+    min_nurse: numpy array of minimum nurses required (m, 2). First column for RN, second for LVN.
     nr (int): Number of RNs.
     nl (int): Number of LVNs.
     n (int): Total number of nurses (nr + nl).
@@ -41,11 +41,14 @@ def load_problem_data(file_path, type) -> ProblemData:
     If an error occurs, returns an empty DataFrame.
     """
     try:
-        # Ensure file_path ends with .xlsx
-        if not file_path.endswith('.xlsx'):
-            file_path = file_path + '.xlsx'
+        # file_path = 'problem_data_1.xlsx'
 
         # Read the settings (nr, nl, m, block)
+        # check if file path ends with xlsx
+        if not file_path.endswith('.xlsx'):
+            # add .xlsx to the end of the file path
+            file_path += '.xlsx'
+
         settings_df = pd.read_excel(file_path, sheet_name='Settings')
         # Convert to a dictionary
         settings = dict(zip(settings_df['Parameter'], settings_df['Value']))
@@ -66,6 +69,8 @@ def load_problem_data(file_path, type) -> ProblemData:
         C_depot_e = pd.read_excel(file_path, sheet_name='C_depot_e', index_col=0).to_numpy().flatten()[:m]
         C_depot_h = pd.read_excel(file_path, sheet_name='C_depot_h', index_col=0).to_numpy().flatten()[:n]
         C_depot = np.concatenate([C_depot_e, C_depot_h])
+
+        nurse_type = pd.read_excel(file_path, sheet_name='Nurse_Type', index_col=0).to_numpy().flatten()[:n]
 
         print(f"shape of C_travel: {C_event.shape}")
         print(f"shape of C_home: {C_home.shape}")
@@ -101,10 +106,10 @@ def load_problem_data(file_path, type) -> ProblemData:
 
         if type == 'continuous':
             # Ensure time_window end time is feasible
-            # for all (m, day, 1) values, replace with min(480-C_dur[m], time_window[m, day, 1])
+            # assuming latest job ends at 7pm
             for i in range(m):
                 for d in range(day):
-                    time_window[i, d, 1] = min(600 - C_dur[i], time_window[i, d, 1])
+                    time_window[i, d, 1] = min(1140 - C_dur[i], time_window[i, d, 1])
                     
         
         elif type == 'discrete':
@@ -114,12 +119,15 @@ def load_problem_data(file_path, type) -> ProblemData:
         print(f"RN average working hours: {avg_RN_hours}")
         print(f"LVN average working hours: {avg_LVN_hours} \n\n")
 
-        return ProblemData(C_event, C_home, C_depot, C_dur, time_window, min_nurse, nr, nl, n, m, day)
+        return ProblemData(C_event, C_home, C_depot_e, C_depot_h, C_dur, time_window, min_nurse, nurse_type, nr, nl, n, m, day)
 
     except Exception as e:
         print(f"Error loading data from {file_path}: {e}")
         raise  # Re-raise the exception instead of returning a DataFrame
 
+
+
+    
 
 
     

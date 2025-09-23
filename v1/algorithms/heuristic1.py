@@ -20,7 +20,9 @@ def continuous_algorithm_heuristic (data: ProblemData, work_limit, seed_number, 
     
     C_event = data.C_event
     C_home = data.C_home
-    C_depot = data.C_depot
+    C_depot_e = data.C_depot_e
+    C_depot_h = data.C_depot_h
+    C_depot = np.concatenate([C_depot_e, C_depot_h])
     C_dur = data.C_dur
     time_window = data.time_window
     min_nurse = data.min_nurse
@@ -81,7 +83,9 @@ def continuous_algorithm_heuristic (data: ProblemData, work_limit, seed_number, 
         # filter C_event, C_home, C_depot, C_dur, time_window, min_nurse by events_today
         C_event_today = C_event[np.ix_(events_today, events_today)]
         C_home_today = C_home[:, events_today]
-        C_depot_today = np.concatenate([C_depot[events_today], C_depot[m:]])
+        C_depot_e_today = C_depot[events_today]
+        C_depot_h_today = C_depot[m:]
+        # C_depot_today = np.concatenate([C_depot[events_today], C_depot[m:]])
         C_dur_today = C_dur[events_today]
         time_window_today = time_window[events_today, run_id, :].reshape((len(events_today), 1, 2))
         min_nurse_today = min_nurse[events_today, :]
@@ -92,7 +96,8 @@ def continuous_algorithm_heuristic (data: ProblemData, work_limit, seed_number, 
         data_today = ProblemData(
             C_event=C_event_today,
             C_home=C_home_today,
-            C_depot=C_depot_today,
+            C_depot_e=C_depot_e_today,
+            C_depot_h=C_depot_h_today,
             C_dur=C_dur_today,
             time_window=time_window_today,
             min_nurse=min_nurse_today,
@@ -113,7 +118,7 @@ def continuous_algorithm_heuristic (data: ProblemData, work_limit, seed_number, 
         avg_LVN_hours = total_LVN_hours / nl if nl > 0 else 0
 
         print(f"\n\nRunning continuous algorithm for day {run_id+1} with {len(events_today)} events, {events_today}...")
-        print(f"shape of C_event_today: {C_event_today.shape}, C_home_today: {C_home_today.shape}, C_depot_today: {C_depot_today.shape}, C_dur_today: {C_dur_today.shape}, time_window_today: {time_window_today.shape}, min_nurse_today: {min_nurse_today.shape}")
+        print(f"shape of C_event_today: {C_event_today.shape}, C_home_today: {C_home_today.shape}, C_depot_e_today: {C_depot_e_today.shape}, C_depot_h_today: {C_depot_h_today.shape}, C_dur_today: {C_dur_today.shape}, time_window_today: {time_window_today.shape}, min_nurse_today: {min_nurse_today.shape}")
         print(f"Average RN hours: {avg_RN_hours}, Average LVN hours: {avg_LVN_hours}")
 
         # Call the continuous_algorithm function with the filtered data

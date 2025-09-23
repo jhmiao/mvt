@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 # from dataclasses import dataclass
-from ..models.problem_data import ProblemData
+from src.models.problem_data import ProblemData
 
 def load_problem_data(file_path, type) -> ProblemData:
     """

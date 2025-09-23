@@ -164,36 +164,22 @@ def build_full_model(data, *, min_hour=None, max_hour=None):
     #     (gp.quicksum(beta[j, d, w] for j in range(m)) <= 5 * x[m+2, m, d, w] for d in range(day) for w in range(n)),
     #     name="drop_off_leader_depot_home"
     # )
-
+    
     # for d in range(day):
     #     for w in range(n):
     #         model.addGenConstrIndicator(
     #             x[m, m+1, d, w],
-    #             True,
-    #             gp.quicksum(alpha[j, d, w] for j in range(m)) >= 1,
+    #             False,
+    #             gp.quicksum(alpha[j, d, w] for j in range(m)) <= 0,
     #             name=f"pick_up_leader_home_depot_ind_d{d}_w{w}"
     #         )
     #         model.addGenConstrIndicator(
     #             x[m+2, m, d, w],
-    #             True,
-    #             gp.quicksum(beta[j, d, w] for j in range(m)) >= 1,
+    #             False,
+    #             gp.quicksum(beta[j, d, w] for j in range(m)) <= 0,
     #             name=f"drop_off_leader_depot_home_ind_d{d}_w{w}"
     #         )
-    
-    for d in range(day):
-        for w in range(n):
-            model.addGenConstrIndicator(
-                x[m, m+1, d, w],
-                False,
-                gp.quicksum(alpha[j, d, w] for j in range(m)) <= 0,
-                name=f"pick_up_leader_home_depot_ind_d{d}_w{w}"
-            )
-            model.addGenConstrIndicator(
-                x[m+2, m, d, w],
-                False,
-                gp.quicksum(beta[j, d, w] for j in range(m)) <= 0,
-                name=f"drop_off_leader_depot_home_ind_d{d}_w{w}"
-            )
+
 
     model.update()
     return model, x, t, s, alpha, beta

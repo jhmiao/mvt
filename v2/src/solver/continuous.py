@@ -90,16 +90,15 @@ def continuous_algorithm (data: ProblemData, work_limit, seed_number, multiple_t
 
     # Pruning
     if pruning >= 1:
-        # fix all x[i][j][d][w] to 0 if 1) i == j
-        model.addConstrs(x[i,i,d,w] == 0 for d in range(day) for w in range(n) for i in range(m+2))
-
-        # infeasible depot travels
-        # event -> depot_am, depot_pm -> event
-        model.addConstrs(x[i,m+1,d,w] == 0 for d in range(day) for w in range(n) for i in range(m))
-        model.addConstrs(x[m+2,i,d,w] == 0 for d in range(day) for w in range(n) for i in range(m))
-        # depot_am -> home, home -> depot_pm
-        model.addConstrs(x[m+1,m,d,w] == 0 for d in range(day) for w in range(n))
-        model.addConstrs(x[m,m+2,d,w] == 0 for d in range(day) for w in range(n))
+        for d in range(day):
+            for w in range(n):
+                for i in range(m+2):
+                    model.addConstr(x[i,i,d,w] == 0, name=f"no_self_loop_i{i}_d{d}_w{w}")
+                for i in range(m):
+                    model.addConstr(x[i,m+1,d,w] == 0, name=f"no_event_to_depotam_i{i}_d{d}_w{w}")
+                    model.addConstr(x[m+2,i,d,w] == 0, name=f"no_depotpm_to_event_i{i}_d{d}_w{w}")
+                model.addConstr(x[m+1,m,d,w] == 0, name=f"no_depotam_to_home_d{d}_w{w}")
+                model.addConstr(x[m,m+2,d,w] == 0, name=f"no_home_to_depotpm_d{d}_w{w}")
 
     # elif pruning >= 2:
         # # Each event is scheduled exactly once during its feasible time window
@@ -116,13 +115,20 @@ def continuous_algorithm (data: ProblemData, work_limit, seed_number, multiple_t
 
     # Constraints
     # Each event happens on one day
-    model.addConstrs(gp.quicksum(s[i,d] for d in range(day)) == 1 for i in range(m))
+    for i in range(m):
+        model.addConstr(gp.quicksum(s[i,d] for d in range(day)) == 1, name=f"event_once_i{i}")
 
     # Each event is scheduled exactly once during its feasible time window
-    model.addConstrs(gp.quicksum(t[i,d] for d in range(day)) >= 1 for i in range(m))
-    model.addConstrs(t[i,d] >= time_window[i][d][0] * s[i,d] for d in range(day) for i in range(m))
-    model.addConstrs(t[i,d] <= time_window[i][d][1] * s[i,d] for d in range(day) for i in range(m))
-    model.addConstrs(sum(x[i,j,d,w] for j in range(m+3)) <= s[i,d] for i in range(m) for d in range(day) for w in range(n))
+    for i in range(m):
+        model.addConstr(gp.quicksum(t[i,d] for d in range(day)) >= 1, name=f"event_time_once_i{i}")
+    for d in range(day):
+        for i in range(m):
+            model.addConstr(t[i,d] >= time_window[i][d][0] * s[i,d], name=f"tw_lb_i{i}_d{d}")
+            model.addConstr(t[i,d] <= time_window[i][d][1] * s[i,d], name=f"tw_ub_i{i}_d{d}")
+    for i in range(m):
+        for d in range(day):
+            for w in range(n):
+                model.addConstr(sum(x[i,j,d,w] for j in range(m+3)) <= s[i,d], name=f"event_flow_i{i}_d{d}_w{w}")
 
     # Time feasibility for consecutive events
     # for i in range(m):
@@ -146,41 +152,49 @@ def continuous_algorithm (data: ProblemData, work_limit, seed_number, multiple_t
  
     # Minimum working hours
     if min_hour is not None:
-        model.addConstrs(
-            (gp.quicksum(C_dur[j] * gp.quicksum(x[i, j, d, w] for i in range(m+3) for d in range(day)) for j in range(m)) >= min_hour[w] * 60 for w in range(n)),
-            name="min_working_hours"
-        )
+        for w in range(n):
+            model.addConstr(
+                gp.quicksum(C_dur[j] * gp.quicksum(x[i, j, d, w] for i in range(m+3) for d in range(day)) for j in range(m)) >= min_hour[w] * 60,
+                name=f"min_working_hours_w{w}"
+            )
 
     # Maximum working hours
     if max_hour is not None:
-        model.addConstrs(
-            (gp.quicksum(C_dur[j] * gp.quicksum(x[i, j, d, w] for i in range(m+3) for d in range(day)) for j in range(m)) <= max_hour[w] * 60 for w in range(n)),
-            name="max_working_hours"
-        )
+        for w in range(n):
+            model.addConstr(
+                gp.quicksum(C_dur[j] * gp.quicksum(x[i, j, d, w] for i in range(m+3) for d in range(day)) for j in range(m)) <= max_hour[w] * 60,
+                name=f"max_working_hours_w{w}"
+            )
     
     # staffing
-    model.addConstrs(
-        (gp.quicksum(x[i, j, d, w] for i in range(m+3) for d in range(day) for w in range(nr)) >= min_nurse[j][0] for j in range(m)),
-        name="min_RN"
-    )
-    model.addConstrs(
-        (gp.quicksum(x[i, j, d, w] for i in range(m+3) for d in range(day) for w in range(nr, nr+nl)) >= min_nurse[j][1] for j in range(m)),
-        name="min_LVN"
-    )        
+    for j in range(m):
+        model.addConstr(
+            gp.quicksum(x[i, j, d, w] for i in range(m+3) for d in range(day) for w in range(nr)) >= min_nurse[j][0],
+            name=f"min_RN_j{j}"
+        )
+        model.addConstr(
+            gp.quicksum(x[i, j, d, w] for i in range(m+3) for d in range(day) for w in range(nr, nr+nl)) >= min_nurse[j][1],
+            name=f"min_LVN_j{j}"
+        )
 
     # maximum number of events per day
     if event_limit is not None:
-        model.addConstrs(
-            (gp.quicksum(x[i, j, d, w] for i in range(m) for j in range(m)) <= event_limit-1 for d in range(day) for w in range(n)),
-            name="max_events_per_day"
-        ) 
+        for d in range(day):
+            for w in range(n):
+                model.addConstr(
+                    gp.quicksum(x[i, j, d, w] for i in range(m) for j in range(m)) <= event_limit-1,
+                    name=f"max_events_per_day_d{d}_w{w}"
+                )
   
     # network flow
     # event inflow = outflow
-    model.addConstrs(
-        (gp.quicksum(x[i, j, d, w] for i in range(m+3)) == gp.quicksum(x[j, i, d, w] for i in range(m+3)) for j in range(m) for d in range(day) for w in range(n)),
-        name="event_network_flow"
-    )
+    for j in range(m):
+        for d in range(day):
+            for w in range(n):
+                model.addConstr(
+                    gp.quicksum(x[i, j, d, w] for i in range(m+3)) == gp.quicksum(x[j, i, d, w] for i in range(m+3)),
+                    name=f"event_network_flow_j{j}_d{d}_w{w}"
+                )
 
     # outflow from home is at most 1
     model.addConstrs(
@@ -224,16 +238,38 @@ def continuous_algorithm (data: ProblemData, work_limit, seed_number, multiple_t
 
     # pick up leader goes from home to depot to their first event
     # drop off leader goes from their last event to depot to home
-    model.addConstrs(
-        (gp.quicksum(alpha[j, d, w] for j in range(m)) <= 5 * x[m, m+1, d, w] for d in range(day) for w in range(n)),
-        name="pick_up_leader_home_depot"
-    )
+    # model.addConstrs(
+    #     (gp.quicksum(alpha[j, d, w] for j in range(m)) <= 5 * x[m, m+1, d, w] for d in range(day) for w in range(n)),
+    #     name="pick_up_leader_home_depot"
+    # )
 
-    model.addConstrs(
-        (gp.quicksum(beta[j, d, w] for j in range(m)) <= 5 * x[m+2, m, d, w] for d in range(day) for w in range(n)),
-        name="drop_off_leader_depot_home"
-    )
+    # model.addConstrs(
+    #     (gp.quicksum(beta[j, d, w] for j in range(m)) <= 5 * x[m+2, m, d, w] for d in range(day) for w in range(n)),
+    #     name="drop_off_leader_depot_home"
+    # )
 
+    for d in range(day):
+        for w in range(n):
+            model.addGenConstrIndicator(
+                x[m, m+1, d, w],
+                False,
+                gp.quicksum(alpha[j, d, w] for j in range(m)) <= 0,
+                name=f"pick_up_leader_home_depot_ind_d{d}_w{w}"
+            )
+            model.addGenConstrIndicator(
+                x[m+2, m, d, w],
+                False,
+                gp.quicksum(beta[j, d, w] for j in range(m)) <= 0,
+                name=f"drop_off_leader_depot_home_ind_d{d}_w{w}"
+            )
+
+    # for d in range(day):
+    #     for w in range(n):
+    #         model.addGenConstrIndicator(x[m, m+1, d, w], 0, gp.quicksum(alpha[j, d, w] for j in range(m)) == 0, name=f"pick_up_leader_indicator_d{d}_w{w}")
+    #         model.addGenConstrIndicator(x[m, m+1, d, w], 1, gp.quicksum(alpha[j, d, w] for j in range(m)) >= 1, name=f"pick_up_leader_indicator2_d{d}_w{w}")
+
+    #         model.addGenConstrIndicator(x[m+2, m, d, w], 0, gp.quicksum(beta[j, d, w] for j in range(m)) == 0, name=f"drop_off_leader_indicator_d{d}_w{w}")
+    #         model.addGenConstrIndicator(x[m+2, m, d, w], 1, gp.quicksum(beta[j, d, w] for j in range(m)) >= 1, name=f"drop_off_leader_indicator2_d{d}_w{w}")
 
     # Set the time limit to 20 minutes (1200 seconds)
     # model.setParam(GRB.Param.TimeLimit, time_limit)
@@ -336,7 +372,9 @@ def continuous_warm_start (data: ProblemData, work_limit, seed_number, multiple_
 
     C_event = data.C_event
     C_home = data.C_home
-    C_depot = data.C_depot
+    C_depot_e = data.C_depot_e
+    C_depot_h = data.C_depot_h
+    C_depot = np.concatenate([C_depot_e, C_depot_h])
     C_dur = data.C_dur
     time_window = data.time_window
     min_nurse = data.min_nurse
@@ -347,7 +385,6 @@ def continuous_warm_start (data: ProblemData, work_limit, seed_number, multiple_
     day = data.day
     
     model = gp.Model("MVT_scheduling_continuous")
-    M = 600 # A large constant
 
     np.random.seed(seed_number)
 
@@ -360,11 +397,11 @@ def continuous_warm_start (data: ProblemData, work_limit, seed_number, multiple_
                 chosen_day = np.random.choice(zero_days)
                 time_window[i, chosen_day] = [30, 600 - C_dur[i]]
     
-    # Decision variables
+        # Decision variables
 
     # x_ijdw = 1 if nurse w goes from event i to j on day d, 0 otherwise
-    # i, j == -1 for depot, i, j == -2 for home
-    x = model.addVars(m+2, m+2, day, n, vtype=GRB.BINARY, name="x") 
+    # i, j == m for home, i, j == m+1 for depot_am, i, j == m+2 for depot_pm
+    x = model.addVars(m+3, m+3, day, n, vtype=GRB.BINARY, name="x") 
 
     # s_id = 1 if event i is scheduled on day d, 0 otherwise
     s = model.addVars(m, day, vtype=GRB.BINARY, name="s")
@@ -388,11 +425,11 @@ def continuous_warm_start (data: ProblemData, work_limit, seed_number, multiple_
     )
     
     depot_event_cost = gp.quicksum(
-        C_depot[i] * gp.quicksum((x[m+1, i, d, w] + x[i, m+1, d, w] )for d in range(day) for w in range(n)) for i in range(m)
+        C_depot[i] * gp.quicksum((x[m+1, i, d, w] + x[i, m+2, d, w] )for d in range(day) for w in range(n)) for i in range(m)
     )
 
     depot_home_cost = gp.quicksum(
-        C_depot[m+w] * gp.quicksum((x[m+1, m, d, w] + x[m, m+1, d, w]) for d in range(day)) for w in range(n)
+        C_depot[m+w] * gp.quicksum((x[m+2, m, d, w] + x[m, m+1, d, w]) for d in range(day)) for w in range(n)
     )
 
     objective = event_cost + home_cost + depot_event_cost + depot_home_cost
@@ -401,28 +438,51 @@ def continuous_warm_start (data: ProblemData, work_limit, seed_number, multiple_
 
     # Pruning
     if pruning >= 1:
-        # fix all x[i][j][d][w] to 0 if 1) i == j
-        model.addConstrs((x[i,i,d,w] == 0 for d in range(day) for w in range(n) for i in range(m+2)), name="prune_x_equal")
+        for d in range(day):
+            for w in range(n):
+                for i in range(m+2):
+                    model.addConstr(x[i,i,d,w] == 0, name=f"no_self_loop_i{i}_d{d}_w{w}")
+                for i in range(m):
+                    model.addConstr(x[i,m+1,d,w] == 0, name=f"no_event_to_depotam_i{i}_d{d}_w{w}")
+                    model.addConstr(x[m+2,i,d,w] == 0, name=f"no_depotpm_to_event_i{i}_d{d}_w{w}")
+                model.addConstr(x[m+1,m,d,w] == 0, name=f"no_depotam_to_home_d{d}_w{w}")
+                model.addConstr(x[m,m+2,d,w] == 0, name=f"no_home_to_depotpm_d{d}_w{w}")
+
+    # elif pruning >= 2:
+        # # Each event is scheduled exactly once during its feasible time window
+        # # pruning: some events cannot be linked due to time infeaasibility
+        # for i in range(m):
+        #     for d in range(day):
+        #         # set s[i][d], t[i][d] = 0 if time window is [0, 0]
+        #         # no flow for events with time window [0, 0]
+        #         if time_window[i][d][1] == 0:
+        #             model.addConstr(s[i,d] == 0)
+        #             model.addConstr(t[i,d] == 0)
+        #             model.addConstrs(x[i,j,d,w] == 0 for j in range(m+2) for w in range(n))
+        #             model.addConstrs(x[j,i,d,w] == 0 for j in range(m+2) for w in range(n))
 
     # Constraints
     # Each event happens on one day
-    model.addConstrs((gp.quicksum(s[i,d] for d in range(day)) == 1 for i in range(m)), name="one_active_s")
+    for i in range(m):
+        model.addConstr(gp.quicksum(s[i,d] for d in range(day)) == 1, name=f"event_once_i{i}")
 
     # Each event is scheduled exactly once during its feasible time window
-    model.addConstrs((gp.quicksum(t[i,d] for d in range(day)) >= 1 for i in range(m)), name="one_active_t")
-    model.addConstrs((t[i,d] >= time_window[i][d][0] * s[i,d] for d in range(day) for i in range(m)), name="tw_start")
-    model.addConstrs((t[i,d] <= time_window[i][d][1] * s[i,d] for d in range(day) for i in range(m)), name="tw_end")
-    model.addConstrs((sum(x[i,j,d,w] for j in range(m+2)) <= s[i,d] for i in range(m) for d in range(day) for w in range(n)), name="link_x_s")
+    for i in range(m):
+        model.addConstr(gp.quicksum(t[i,d] for d in range(day)) >= 1, name=f"event_time_once_i{i}")
+    for d in range(day):
+        for i in range(m):
+            model.addConstr(t[i,d] >= time_window[i][d][0] * s[i,d], name=f"tw_lb_i{i}_d{d}")
+            model.addConstr(t[i,d] <= time_window[i][d][1] * s[i,d], name=f"tw_ub_i{i}_d{d}")
+    for i in range(m):
+        for d in range(day):
+            for w in range(n):
+                model.addConstr(sum(x[i,j,d,w] for j in range(m+3)) <= s[i,d], name=f"event_flow_i{i}_d{d}_w{w}")
 
     # Time feasibility for consecutive events
     # for i in range(m):
     #     for j in range(m):
     #         if i != j:
-    #             model.addConstrs((t[j,d] >= t[i,d] + C_dur[i] + C_event[i,j] - M * (1 - x[i,j,d,w]) for w in range(n) for d in range(day)), name="time_feasibility")
-    # model.addConstrs(
-    #     (t[j, d] >= t[i, d] + C_dur[i] + C_event[i, j] - 600 * (1 - x[i, j, d, w]) for i in range(m) for j in range(m) for d in range(day) for w in range(n)),
-    #     name="time_feasibility"
-    # )
+    #             model.addConstrs(t[j,d] >= t[i,d] + C_dur[i] + C_event[i,j] - M * (1 - x[i,j,d,w]) for w in range(n) for d in range(day))
     for i in range(m):
         for j in range(m):
             for d in range(day):
@@ -434,47 +494,59 @@ def continuous_warm_start (data: ProblemData, work_limit, seed_number, multiple_
                         name=f"time_ind_i{i}_j{j}_d{d}_w{w}"
                     )
 
+    # Each event happens during its feasible time window
+    # model.addConstrs(t[i,d] <= time_window[i][d][1] for i in range(m) for d in range(day))
+    # model.addConstrs(gp.quicksum(t[i,d] for d in range(day)) >= 1 for i in range(m))
+ 
     # Minimum working hours
     if min_hour is not None:
-        model.addConstrs(
-            (gp.quicksum(C_dur[j] * gp.quicksum(x[i, j, d, w] for i in range(m+2) for d in range(day)) for j in range(m)) >= min_hour[w] * 60 for w in range(n)),
-            name="min_working_hours"
-        )
+        for w in range(n):
+            model.addConstr(
+                gp.quicksum(C_dur[j] * gp.quicksum(x[i, j, d, w] for i in range(m+3) for d in range(day)) for j in range(m)) >= min_hour[w] * 60,
+                name=f"min_working_hours_w{w}"
+            )
 
     # Maximum working hours
     if max_hour is not None:
-        model.addConstrs(
-            (gp.quicksum(C_dur[j] * gp.quicksum(x[i, j, d, w] for i in range(m+2) for d in range(day)) for j in range(m)) <= max_hour[w] * 60 for w in range(n)),
-            name="max_working_hours"
-        )
+        for w in range(n):
+            model.addConstr(
+                gp.quicksum(C_dur[j] * gp.quicksum(x[i, j, d, w] for i in range(m+3) for d in range(day)) for j in range(m)) <= max_hour[w] * 60,
+                name=f"max_working_hours_w{w}"
+            )
     
     # staffing
-    model.addConstrs(
-        (gp.quicksum(x[i, j, d, w] for i in range(m+2) for d in range(day) for w in range(nr)) >= min_nurse[j][0] for j in range(m)),
-        name="min_RN"
-    )
-    model.addConstrs(
-        (gp.quicksum(x[i, j, d, w] for i in range(m+2) for d in range(day) for w in range(nr, nr+nl)) >= min_nurse[j][1] for j in range(m)),
-        name="min_LVN"
-    )        
+    for j in range(m):
+        model.addConstr(
+            gp.quicksum(x[i, j, d, w] for i in range(m+3) for d in range(day) for w in range(nr)) >= min_nurse[j][0],
+            name=f"min_RN_j{j}"
+        )
+        model.addConstr(
+            gp.quicksum(x[i, j, d, w] for i in range(m+3) for d in range(day) for w in range(nr, nr+nl)) >= min_nurse[j][1],
+            name=f"min_LVN_j{j}"
+        )
 
     # maximum number of events per day
     if event_limit is not None:
-        model.addConstrs(
-            (gp.quicksum(x[i, j, d, w] for i in range(m) for j in range(m)) <= event_limit-1 for d in range(day) for w in range(n)),
-            name="max_events_per_day"
-        ) 
+        for d in range(day):
+            for w in range(n):
+                model.addConstr(
+                    gp.quicksum(x[i, j, d, w] for i in range(m) for j in range(m)) <= event_limit-1,
+                    name=f"max_events_per_day_d{d}_w{w}"
+                )
   
     # network flow
     # event inflow = outflow
-    model.addConstrs(
-        (gp.quicksum(x[i, j, d, w] for i in range(m+2)) == gp.quicksum(x[j, i, d, w] for i in range(m+2)) for j in range(m) for d in range(day) for w in range(n)),
-        name="event_network_flow"
-    )
+    for j in range(m):
+        for d in range(day):
+            for w in range(n):
+                model.addConstr(
+                    gp.quicksum(x[i, j, d, w] for i in range(m+3)) == gp.quicksum(x[j, i, d, w] for i in range(m+3)),
+                    name=f"event_network_flow_j{j}_d{d}_w{w}"
+                )
 
     # outflow from home is at most 1
     model.addConstrs(
-        (gp.quicksum(x[m, i, d, w] for i in range(m+2)) <= 1 for d in range(day) for w in range(n)),
+        (gp.quicksum(x[m, i, d, w] for i in range(m+3)) <= 1 for d in range(day) for w in range(n)),
         name="home_outflow"
     )
 
@@ -485,7 +557,7 @@ def continuous_warm_start (data: ProblemData, work_limit, seed_number, multiple_
     )
 
     model.addConstrs(
-        (x[m+1, m, d, w] == gp.quicksum(x[j, m+1, d, w] for j in range(m)) for d in range(day) for w in range(n)),
+        (x[m+2, m, d, w] == gp.quicksum(x[j, m+2, d, w] for j in range(m)) for d in range(day) for w in range(n)),
         name="evening_depot_flow"
     )
     
@@ -502,12 +574,12 @@ def continuous_warm_start (data: ProblemData, work_limit, seed_number, multiple_
 
     # team leader goes to the event
     model.addConstrs(
-        (alpha[j, d, w] <= gp.quicksum(x[i, j, d, w] for i in range(m+2)) for j in range(m) for d in range(day) for w in range(n)),
+        (alpha[j, d, w] <= gp.quicksum(x[i, j, d, w] for i in range(m+3)) for j in range(m) for d in range(day) for w in range(n)),
         name="pick_up_leader_event"
     )
 
     model.addConstrs(
-        (beta[j, d, w] <= gp.quicksum(x[i, j, d, w] for i in range(m+2)) for j in range(m) for d in range(day) for w in range(n)),
+        (beta[j, d, w] <= gp.quicksum(x[i, j, d, w] for i in range(m+3)) for j in range(m) for d in range(day) for w in range(n)),
         name="drop_off_leader_event"
     )
 
@@ -520,47 +592,26 @@ def continuous_warm_start (data: ProblemData, work_limit, seed_number, multiple_
     )
 
     model.addConstrs(
-        (gp.quicksum(beta[j, d, w] for j in range(m)) <= 5 * x[m+1, m, d, w] for d in range(day) for w in range(n)),
+        (gp.quicksum(beta[j, d, w] for j in range(m)) <= 5 * x[m+2, m, d, w] for d in range(day) for w in range(n)),
         name="drop_off_leader_depot_home"
     )
 
     model.update()
 
-    # to_remove = [c for c in model.getConstrs()
-    #          if c.ConstrName.startswith("time_feasibility[")]
-    # model.remove(to_remove)
-    # model.update()
-
-    # # 2. Now re‑add with the correct Big‑M=600 baked in
-    # M = 600
-    # time_feas = model.addConstrs(
-    #     (
-    #     t[j, d]
-    #         >= t[i, d] + C_dur[i] + C_event[i, j]
-    #         - M * (1 - x[i, j, d, w])
-    #     for i in range(m)
-    #     for j in range(m)
-    #     for d in range(day)
-    #     for w in range(n)
-    #     ),
-    #     name="time_feasibility"
-    # )
-    # model.update()
-
     # warm start
     # load your list of active indices:
-    filepath2 = '/Users/jinghongmiao/Code/mvt-code/result-250722/h_r10_l10_m10_wl1000_max15_17.pkl'
-    
+    file_path2 = '/Users/jinghongmiao/Code/mvt-code/v2/outputs/c101_lns_summary-1.pkl'
 
-    with open(filepath2,'rb') as f:
+
+    with open(file_path2,'rb') as f:
         warm_start = pickle.load(f)
     
         # turn your saved lists into sets/dicts for fast lookup:
     active_x   = set(warm_start["active_x"])    # e.g. [(i,j,d,w), ...]
-    active_s   = set(warm_start["active_s"])    # if you saved these
+    active_s   = set(warm_start["active_s"]) if "active_s" in warm_start else set()
     active_t = dict(warm_start["active_t"])  # e.g. {(i,d): t0, ...}
-    active_alpha = set(warm_start["active_alpha"])
-    active_beta  = set(warm_start["active_beta"])
+    active_alpha = set(warm_start["active_alpha"]) if "active_alpha" in warm_start else set()
+    active_beta  = set(warm_start["active_beta"]) if "active_beta" in warm_start else set()
 
     model.update()
 

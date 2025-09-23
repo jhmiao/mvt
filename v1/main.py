@@ -11,7 +11,7 @@ import pandas as pd
 import pickle
 
 # time_limit = 5000 # in seconds
-work_limit = 100000
+work_limit = 1000
 
 seed = 19
 
@@ -48,19 +48,19 @@ def main():
     # print(f"Continuous algorithm result saved to {out_path1}")
 
     # heuristic algorithm
-    # summary_heuristic = continuous_algorithm_heuristic(data_continuous, work_limit, seed, event_limit=None, pruning=2, min_hour=None)
+    summary_heuristic = continuous_algorithm_heuristic(data_continuous, work_limit, seed, event_limit=None, pruning=2, min_hour=None)
     # out_path2 = f'/Users/jinghongmiao/Code/mvt-code/result-250812/h_r20_l30_m50_wl{work_limit}_max{cap}_{seed}.pkl'
     # # Save as pickle
     # with open(out_path2, "wb") as f:
     #     pickle.dump(summary_heuristic, f)
     # print(f"Heuristic result saved to {out_path2}")
 
-    summary_warm_start = continuous_warm_start(data_continuous, work_limit, seed, event_limit=None, pruning=1, min_hour=None, max_hour=max_hour_list)
-    out_path3 = f'/Users/jinghongmiao/Code/mvt-code/result-250819/warm_ca_r20_l30_m50_wl{work_limit}_max{cap}_{seed}.pkl'
-    # Save as pickle
-    with open(out_path3, "wb") as f:
-        pickle.dump(summary_warm_start, f)
-    print(f"Continuous algorithm result saved to {out_path3}")
+    # summary_warm_start = continuous_warm_start(data_continuous, work_limit, seed, event_limit=None, pruning=1, min_hour=None, max_hour=max_hour_list)
+    # out_path3 = f'/Users/jinghongmiao/Code/mvt-code/result-250819/warm_ca_r20_l30_m50_wl{work_limit}_max{cap}_{seed}.pkl'
+    # # Save as pickle
+    # with open(out_path3, "wb") as f:
+    #     pickle.dump(summary_warm_start, f)
+    # print(f"Continuous algorithm result saved to {out_path3}")
 
 if __name__ == "__main__":
     main()

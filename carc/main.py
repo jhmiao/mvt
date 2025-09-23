@@ -17,7 +17,7 @@ seed = 19
 def main():
 
     # continuous algorithm
-    data_continuous = load_problem_data('c101_data.xlsx', type='continuous')
+    data_continuous = load_problem_data('c101.xlsx', type='continuous')
     cap = 25
     max_hour_list = np.ones(data_continuous.n) * cap
 
@@ -40,11 +40,12 @@ def main():
 
 
     summary_continuous = continuous_algorithm(data_continuous, work_limit, seed, event_limit=None, pruning=1, min_hour=None, max_hour=max_hour_list)
-    out_path1 = f'/Users/jinghongmiao/Code/mvt-code/result-250819/ca_r20_l30_m50_wl{work_limit}_max{cap}_{seed}.pkl'
+    print(summary_continuous)
+    # out_path1 = f'/Users/jinghongmiao/Code/mvt-code/result-250819/ca_r20_l30_m50_wl{work_limit}_max{cap}_{seed}.pkl'
     # Save as pickle
-    with open(out_path1, "wb") as f:
-        pickle.dump(summary_continuous, f)
-    print(f"Continuous algorithm result saved to {out_path1}")
+    # with open(out_path1, "wb") as f:
+        # pickle.dump(summary_continuous, f)
+    # print(f"Continuous algorithm result saved to {out_path1}")
 
     # heuristic algorithm
     # summary_heuristic = continuous_algorithm_heuristic(data_continuous, work_limit, seed, event_limit=None, pruning=2, min_hour=None)
