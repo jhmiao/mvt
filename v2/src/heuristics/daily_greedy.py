@@ -16,9 +16,37 @@ import pickle
 # if TYPE_CHECKING:
 #     from src.models.solution import Solution, Route
 #     from src.models.context import Context
-    
 
-def continuous_algorithm_heuristic (data: ProblemData, work_limit, seed_number, event_limit=None, pruning=1, min_hour=0):
+def compute_day_complexity(data: ProblemData) -> Dict[int, List[float]]:
+    """
+    Compute the complexity of each day based on the number of events scheduled.
+    Returns a dictionary mapping day index to its complexity, which is a list, consisting of the number of events scheduled on that day, total service demand (sum of durations), total RN requirement, total LVN requirement, and pairwise travel cost among events. 
+    """
+    time_window = data.time_window  # shape (m, day, 2)
+    days = data.day
+    C_event = data.C_event  # shape (m, m), travel cost between events
+    C_dur = data.C_dur  # shape (m,), service duration
+    min_nurse = data.min_nurse  # shape (m, 2), min nurse requirement per event
+    m = data.m
+
+    day_complexities = {}
+    for d in range(days):
+        events_today = np.where(time_window[:, d, 1] > 0)[0]
+        counts = len(events_today)
+        if counts > 0:
+            total_service = np.sum(C_dur[events_today])
+            total_RN = np.sum(min_nurse[events_today, 0])
+            total_LVN = np.sum(min_nurse[events_today, 1])
+            # Compute pairwise travel cost among events_today
+            travel_cost = 0.0
+            for i in range(len(events_today)):
+                for j in range(i + 1, len(events_today)):
+                    travel_cost += C_event[events_today[i], events_today[j]]
+            day_complexities[d] = [counts, total_service, total_RN, total_LVN, travel_cost]
+
+    return day_complexities
+
+def continuous_algorithm_heuristic (data: ProblemData, work_limit, seed_number, event_limit=None, pruning=1, custom_day_order = None, day_weights=None, min_hour=0):
     """
     Continuous algorithm for the MVT scheduling problem broken down by day.
     Parameters: 
@@ -44,8 +72,9 @@ def continuous_algorithm_heuristic (data: ProblemData, work_limit, seed_number, 
         events_today = np.where(time_window[:, run_id, 1] > 0)[0]
         m_today = len(events_today)
         day_event_counts.append(m_today)
-    
-    day_weights = [count / m for count in day_event_counts]
+
+    if day_weights is None:
+        day_weights = [count / m for count in day_event_counts]
 
     current_hours = {w: 0.0 for w in range(n)}  # Initialize for all nurses
     total_objective = 0.0
@@ -64,10 +93,10 @@ def continuous_algorithm_heuristic (data: ProblemData, work_limit, seed_number, 
     }
     
     # custom_day_order = [3, 2, 4, 0, 1]
-
+    if custom_day_order is None:
     # define custom day order by descending number of events
-    custom_day_order = sorted(range(days), key=lambda d: day_event_counts[d], reverse=True)
-    print("Custom day order:", custom_day_order)
+        custom_day_order = sorted(range(days), key=lambda d: day_event_counts[d], reverse=True)
+        print("Custom day order:", custom_day_order)
 
     day_count = 0
 
@@ -136,8 +165,8 @@ def continuous_algorithm_heuristic (data: ProblemData, work_limit, seed_number, 
         # define a subroutine to modify max_hour
         # new_max_hour = modify_max_hour_reserve_future_days(max_hour, day_count)
         # new_max_hour = modify_max_hour_remaining_weights(max_hour, day_count, day_weights)
-        new_max_hour = modify_max_hour_by_nurse(max_hour, C_home, events_today, future_event_indices, scale=5, k=4)
-        # new_max_hour = max_hour
+        # new_max_hour = modify_max_hour_by_nurse(max_hour, C_home, events_today, future_event_indices, scale=5, k=4)
+        new_max_hour = max_hour
 
         summary = continuous_algorithm(
             data_today, 
@@ -148,6 +177,7 @@ def continuous_algorithm_heuristic (data: ProblemData, work_limit, seed_number, 
             pruning=pruning, 
             min_hour=None, 
             max_hour=new_max_hour
+            # max_hour=None
         )
 
         work_time_by_nurse = summary.get("work_time_by_nurse", {}) # new work time

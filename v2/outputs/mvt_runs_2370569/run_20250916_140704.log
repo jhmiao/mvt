@@ -1,7 +1,0 @@
-Workdir: /scratch1/miaojing/mvt_runs_2370569
-Overall seconds: 3000.0
-Per-instance time_limit arg: None
-Buffer seconds: 120.0
-Threads: requested=64 effective=64
-Seed: algo=19 grb=19
-Instances: ['c101', 'c201', 'r101', 'rc101']

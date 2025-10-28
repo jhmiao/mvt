@@ -1,0 +1,6 @@
+[2025-09-22T11:02:19.468990] Starting instance c201
+[2025-09-22T11:02:19.469001] Allocated time_limit=171880.0s from overall budget
+[2025-09-22T11:02:19.469020] Loading file: /scratch1/miaojing/c201.xlsx exists=True
+[2025-09-22T11:02:19.469358] sha256=dda4447039a96ef1
+[2025-09-22T11:02:19.843501] Calling solver with time_limit=171879.99821, seed=20
+[2025-09-24T10:47:41.332401] Finished c201. Saved: /scratch1/miaojing/mvt_runs_2517344/c201/c201_summary.pkl

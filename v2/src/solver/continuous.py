@@ -40,14 +40,14 @@ def continuous_algorithm (data: ProblemData, work_limit, seed_number, multiple_t
 
     np.random.seed(seed_number)
 
-    if multiple_tw is not None:
-        # for each event, randomly select a [0,0] time window and replace it with [30, 600 - C_dur[i]]
-        for i in range(m):
-            zero_days = [d for d in range(day) if np.all(time_window[i, d] == 0)]
+    # if multiple_tw is not None:
+    #     # for each event, randomly select a [0,0] time window and replace it with [30, 600 - C_dur[i]]
+    #     for i in range(m):
+    #         zero_days = [d for d in range(day) if np.all(time_window[i, d] == 0)]
             
-            if zero_days:
-                chosen_day = np.random.choice(zero_days)
-                time_window[i, chosen_day] = [30, 600 - C_dur[i]]
+    #         if zero_days:
+    #             chosen_day = np.random.choice(zero_days)
+    #             time_window[i, chosen_day] = [30, 600 - C_dur[i]]
     
     # Decision variables
 
@@ -92,7 +92,7 @@ def continuous_algorithm (data: ProblemData, work_limit, seed_number, multiple_t
     if pruning >= 1:
         for d in range(day):
             for w in range(n):
-                for i in range(m+2):
+                for i in range(m+3):
                     model.addConstr(x[i,i,d,w] == 0, name=f"no_self_loop_i{i}_d{d}_w{w}")
                 for i in range(m):
                     model.addConstr(x[i,m+1,d,w] == 0, name=f"no_event_to_depotam_i{i}_d{d}_w{w}")
@@ -130,21 +130,22 @@ def continuous_algorithm (data: ProblemData, work_limit, seed_number, multiple_t
             for w in range(n):
                 model.addConstr(sum(x[i,j,d,w] for j in range(m+3)) <= s[i,d], name=f"event_flow_i{i}_d{d}_w{w}")
 
+    M = 1440  # large constant for time constraints
     # Time feasibility for consecutive events
-    # for i in range(m):
-    #     for j in range(m):
-    #         if i != j:
-    #             model.addConstrs(t[j,d] >= t[i,d] + C_dur[i] + C_event[i,j] - M * (1 - x[i,j,d,w]) for w in range(n) for d in range(day))
     for i in range(m):
         for j in range(m):
-            for d in range(day):
-                for w in range(n):
-                    model.addGenConstrIndicator(
-                        x[i, j, d, w],
-                        True,
-                        t[j, d] >= t[i, d] + C_dur[i] + C_event[i, j],
-                        name=f"time_ind_i{i}_j{j}_d{d}_w{w}"
-                    )
+            if i != j:
+                model.addConstrs(t[j,d] >= t[i,d] + C_dur[i] + C_event[i,j] - M * (1 - x[i,j,d,w]) for w in range(n) for d in range(day))
+    # for i in range(m):
+    #     for j in range(m):
+    #         for d in range(day):
+    #             for w in range(n):
+    #                 model.addGenConstrIndicator(
+    #                     x[i, j, d, w],
+    #                     True,
+    #                     t[j, d] >= t[i, d] + C_dur[i] + C_event[i, j],
+    #                     name=f"time_ind_i{i}_j{j}_d{d}_w{w}"
+    #                 )
 
     # Each event happens during its feasible time window
     # model.addConstrs(t[i,d] <= time_window[i][d][1] for i in range(m) for d in range(day))
@@ -238,30 +239,52 @@ def continuous_algorithm (data: ProblemData, work_limit, seed_number, multiple_t
 
     # pick up leader goes from home to depot to their first event
     # drop off leader goes from their last event to depot to home
+    model.addConstrs(
+        (gp.quicksum(alpha[j, d, w] for j in range(m)) <= 5 * x[m, m+1, d, w] for d in range(day) for w in range(n)),
+        name="pick_up_leader_home_depot"
+    )
+
+    model.addConstrs(
+        (gp.quicksum(beta[j, d, w] for j in range(m)) <= 5 * x[m+2, m, d, w] for d in range(day) for w in range(n)),
+        name="drop_off_leader_depot_home"
+    )
+
+    # replace the previous constraints with tighter indicator constraints
     # model.addConstrs(
-    #     (gp.quicksum(alpha[j, d, w] for j in range(m)) <= 5 * x[m, m+1, d, w] for d in range(day) for w in range(n)),
-    #     name="pick_up_leader_home_depot"
+    #     (alpha[j, d, w] <= x[m, m+1, d, w] for j in range(m) for d in range(day) for w in range(n)),
+    #     name="pick_up_leader_home_depot_ind"
     # )
 
     # model.addConstrs(
-    #     (gp.quicksum(beta[j, d, w] for j in range(m)) <= 5 * x[m+2, m, d, w] for d in range(day) for w in range(n)),
-    #     name="drop_off_leader_depot_home"
+    #     (beta[j, d, w] <= x[m+2, m, d, w] for j in range(m) for d in range(day) for w in range(n)),
+    #     name="drop_off_leader_depot_home_ind"
     # )
 
-    for d in range(day):
-        for w in range(n):
-            model.addGenConstrIndicator(
-                x[m, m+1, d, w],
-                False,
-                gp.quicksum(alpha[j, d, w] for j in range(m)) <= 0,
-                name=f"pick_up_leader_home_depot_ind_d{d}_w{w}"
-            )
-            model.addGenConstrIndicator(
-                x[m+2, m, d, w],
-                False,
-                gp.quicksum(beta[j, d, w] for j in range(m)) <= 0,
-                name=f"drop_off_leader_depot_home_ind_d{d}_w{w}"
-            )
+    # # leader only exists when event is scheduled
+    # model.addConstrs(
+    #     (alpha[j, d, w] <= s[j, d] for j in range(m) for d in range(day) for w in range(n)),
+    #     name="pick_up_leader_event_scheduled"
+    # )
+
+    # model.addConstrs(
+    #     (beta[j, d, w] <= s[j, d] for j in range(m) for d in range(day) for w in range(n)),
+    #     name="drop_off_leader_event_scheduled"
+    # )
+
+    # for d in range(day):
+    #     for w in range(n):
+    #         model.addGenConstrIndicator(
+    #             x[m, m+1, d, w],
+    #             False,
+    #             gp.quicksum(alpha[j, d, w] for j in range(m)) <= 0,
+    #             name=f"pick_up_leader_home_depot_ind_d{d}_w{w}"
+    #         )
+    #         model.addGenConstrIndicator(
+    #             x[m+2, m, d, w],
+    #             False,
+    #             gp.quicksum(beta[j, d, w] for j in range(m)) <= 0,
+    #             name=f"drop_off_leader_depot_home_ind_d{d}_w{w}"
+    #         )
 
     # for d in range(day):
     #     for w in range(n):
@@ -335,8 +358,10 @@ def continuous_algorithm (data: ProblemData, work_limit, seed_number, multiple_t
 
         # 6. Save objective value, runtime, gap, etc.
         summary["objective_value"] = model.ObjVal
-        summary["runtime_sec"] = model.Runtime
+        summary["bound"] = model.ObjBound
         summary["gap"] = model.MIPGap
+        summary["runtime_sec"] = model.Runtime
+
 
         # also return a dictionary with the working hours of each nurse
         work_time_by_nurse = {}

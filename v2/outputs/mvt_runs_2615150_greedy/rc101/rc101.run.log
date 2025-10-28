@@ -1,0 +1,5 @@
+[2025-09-24T18:58:42.208106] Starting instance rc101
+[2025-09-24T18:58:42.208121] Allocated time_limit=171880.0s from overall budget
+[2025-09-24T18:58:42.208141] Loading file: /project2/ssuen_1733/rc101.xlsx exists=False
+[2025-09-24T18:58:42.578925] Calling solver with time_limit=171879.997532, seed=20
+[2025-09-25T06:32:30.258191] Finished rc101. Saved: /project2/ssuen_1733/mvt_runs_2615150/rc101/rc101_summary.pkl

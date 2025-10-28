@@ -1,1 +1,0 @@
-Workdir: /scratch1/miaojing/mvt_runs_2352126\nTimeLimit: 36000.0\nThreads: 64\nInstances: ['c101', 'c201', 'r101', 'rc101']\n

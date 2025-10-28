@@ -293,3 +293,31 @@ class Context:
                                 msg=f"Day {d}: only {len(PM_covered_events)} events covered with PM depot coverage; expected {self.m}"))
 
         return FeasReport(ok=(len(vios) == 0), violations=vios)
+    
+    # test if two solutions are the same
+    def compare_solutions(self, sol1, sol2) -> bool:
+        routes1 = {(r.day_idx, r.nurse): r for r in sol1.iter_routes()}
+        routes2 = {(r.day_idx, r.nurse): r for r in sol2.iter_routes()}
+
+        if set(routes1.keys()) != set(routes2.keys()):
+            print("Different route keys:", set(routes1.keys()) ^ set(routes2.keys()))
+            return False
+
+        for key in routes1.keys():
+            r1 = routes1[key]
+            r2 = routes2[key]
+            if r1.nodes != r2.nodes:
+                print("Different nodes:", r1.nodes, r2.nodes)
+                return False
+            starts1 = getattr(r1, "start", [])
+            starts2 = getattr(r2, "start", [])
+            if starts1 != starts2:
+                print("Different starts:", starts1, starts2)
+                return False
+            departs1 = getattr(r1, "depart", [])
+            departs2 = getattr(r2, "depart", [])
+            if departs1 != departs2:
+                print("Different departs:", departs1, departs2)
+                return False
+
+        return True

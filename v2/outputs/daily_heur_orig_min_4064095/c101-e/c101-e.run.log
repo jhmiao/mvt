@@ -1,0 +1,5 @@
+[2025-10-07T08:02:02.903702] Starting instance c101-e
+[2025-10-07T08:02:02.903709] Using per-instance time_limit=600.0
+[2025-10-07T08:02:02.903725] Loading file: /project2/ssuen_1733/c101-e.xlsx exists=False
+[2025-10-07T08:02:03.151203] Calling solver with time_limit=600.0, seed=20
+[2025-10-07T08:06:29.705581] Finished c101-e. Saved: /project2/ssuen_1733/mvt_runs_4064095/c101-e/c101-e_summary.pkl

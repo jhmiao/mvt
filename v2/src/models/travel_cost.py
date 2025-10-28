@@ -2,8 +2,9 @@
 from typing import Literal
 from typing import TYPE_CHECKING
 
-if TYPE_CHECKING:
-    from .problem_data import ProblemData  # only for type hints; no runtime import
+
+from .problem_data import ProblemData  # only for type hints; no runtime import
+from .solution import Route, Solution
 
 class TravelCost:
     """
@@ -59,3 +60,19 @@ class TravelCost:
 
         # fall back (e.g., HOME->HOME or depot->depot): 0
         return 0
+    
+    def total_cost(self, sol: Solution) -> int:
+        """
+        Compute total travel cost for every nurse in the given solution.
+        """
+        total = 0
+        for w in range(self.pd.n):
+            for route in sol.iter_routes():
+                if route.nurse != w:
+                    continue
+                nodes = route.nodes
+                for idx in range(len(nodes) - 1):
+                    i = nodes[idx]
+                    j = nodes[idx + 1]
+                    total += self.cost(w, i, j)
+        return total

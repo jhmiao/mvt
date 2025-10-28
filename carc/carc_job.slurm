@@ -12,15 +12,17 @@
 
 #SBATCH --mem=0
 
-#SBATCH --time=1:30:00
+#SBATCH --time=48:00:00
 
 #SBATCH --job-name=gurobi_all_parallel
 
-#SBATCH --output=/scratch1/miaojing/output/gurobi_all_parallel-%j.out
+#SBATCH --output=/project2/ssuen_1733/output/gurobi_all_parallel-%j.out
 
 #SBATCH --mail-type=END,FAIL
 
 #SBATCH --mail-user=miaojing@usc.edu
+
+#SBATCH --array=0-3
 
 
 module purge
@@ -29,8 +31,8 @@ module load gurobi
 source "$(conda info --base)/etc/profile.d/conda.sh"
 
 # paths
-mkdir -p /scratch1/$USER/output
-WORKDIR=${SCRATCH:-/scratch1/$USER}/mvt_runs_${SLURM_JOB_ID}
+mkdir -p /project2/$USER/output
+WORKDIR=${PROJECT:-/project2/$USER}/mvt_runs_${SLURM_JOB_ID}
 mkdir -p "$WORKDIR"
 
 
@@ -39,6 +41,16 @@ which conda
 "$ENV_PY" -V
 "$ENV_PY" -c "import pandas, numpy, gurobipy; print('pandas', pandas.__version__, 'numpy', numpy.__version__, 'gurobi', gurobipy.gurobi.version())"
 
+INSTANCES=(c101 c201 r101 rc101)
+INSTANCE=${INSTANCES[$SLURM_ARRAY_TASK_ID]}
+
 cd "$SLURM_SUBMIT_DIR"
-"$ENV_PY" run_carc.py --time-limit 3600 --workdir "$WORKDIR" --seed 19 --cap 25
+"$ENV_PY" run_daily_heur.py \
+  --overall-seconds 2000 \
+  --workdir "$WORKDIR" \
+  --seed 20 \
+  --grb-seed 20 \
+  --threads ${SLURM_CPUS_PER_TASK:-1} \
+  --cap 25 \
+  --instances $INSTANCE
 

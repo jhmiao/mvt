@@ -9,49 +9,240 @@ if project_root not in sys.path:
 # print(project_root)
 
 from src.models.context import Context
-from src.io.data_loader import load_problem_data
+from src.io.data_loader import load_problem_data, load_problem_data_sample
 from src.solver.continuous import continuous_algorithm, continuous_warm_start
+from src.solver.continuous_no_depot import continuous_algorithm_no_depot
+from src.solver.continuous_no_depot_discount import continuous_algorithm_no_depot_ratio
+from src.solver.continuous_lazy import continuous_algorithm_lazy
 from src.solver.extract import routes_from_active_x_t
-# from src.models.travel_cost import TravelCost
-from src.heuristics.lns_gurobi import LNSCfg, lns_with_gurobi, build_full_model
-from src.heuristics.daily_greedy import continuous_algorithm_heuristic
+from src.models.travel_cost import TravelCost
+# from src.heuristics.lns_gurobi import LNSCfg, lns_with_gurobi, build_full_model
+from src.heuristics.new_lns import lns_day, build_full_model
+from src.heuristics.daily_greedy import continuous_algorithm_heuristic, compute_day_complexity
+from src.solver.continuous_penalty import continuous_algorithm_penalty, continuous_algorithm_adaptive_penalty
+from src.heuristics.add_depot import depot_delta_cost, solve_depot, add_depot_to_solution, debug_day_nurses
 
 
 def main():
-    pd = load_problem_data('data/raw/rc101/rc101_data.xlsx', type='continuous')
 
-    # run full solver for a long time and save the result
-    # summary0 = continuous_warm_start(pd, work_limit=1000, seed_number=0, pruning=1, max_hour=25 * np.ones(pd.n))  
-    # with open('outputs/rc101_summary.pkl', 'wb') as f:
-    #     pickle.dump(summary0, f)
-    # file_path2 = 'outputs/c101_lns_summary.pkl'
+    # ======== Exact optimziation experiements with (subsetted) real data ========
+    # loop through different combinations of nr, nl, m, and n_tw
+    # for nr in [5,10,15,20,25]:
+    # # for nr in [20]:
+    #     nl = int(nr / 5 * 7)
+    #     m = int(nr / 5 * 12)
+    #     n = nr + nl
+    #     for n_tw in [1,2,3]:
+    #         pd = load_problem_data_sample('data/raw/real_data.xlsx', nr=nr, nl=nl, m=m, n_tw=n_tw)
+    #         summary = continuous_algorithm(pd, work_limit=1000, seed_number=0, pruning=1, max_hour=25 * np.ones(pd.n))
+    #         with open(f'outputs/real_nr{nr}_nl{nl}_m{m}_ntw{n_tw}_summary.pkl', 'wb') as f:
+    #             pickle.dump(summary, f)
 
-    # with open(file_path2, "rb") as f:
-    #     summary0 = pickle.load(f)
+    # ======== Experiments on solomon location distribution data ========
+    # loop through different problem types
+    case = 'c201'
+    for type in ['c','d', 'e']:
+    # for type in ['e']:
+        pd = load_problem_data(f'data/raw/{case}-tw/{case}-{type}.xlsx', type='continuous')
+        # print(compute_day_complexity(pd))
+
+        # # set day_order to be descending based on the second term of complexity
+        # day_complexity = compute_day_complexity(pd)
+        # day_order = sorted(range(pd.day), key=lambda d: day_complexity[d][2] + day_complexity[d][3], reverse=True)
+        # print("Day order:", day_order)
+        
+        # # set day_weights be the fourth term of complexity
+        # day_weights = [day_complexity[d][4] for d in range(pd.day)]
+        # # normalize to sum to 1
+        # total_weight = sum(day_weights)
+        # if total_weight > 0:
+        #     day_weights = [w / total_weight for w in day_weights]
+        # print("Day weights:", day_weights)
+        
+        # summary = continuous_algorithm(pd, work_limit=1000, seed_number=0, pruning=1, max_hour=25 * np.ones(pd.n))
+        # summary = continuous_algorithm(pd, work_limit=1000, seed_number=0, pruning=1)
+        # summary = continuous_algorithm_heuristic(pd, work_limit=1000, seed_number=0, pruning=1, custom_day_order=day_order, day_weights=day_weights)
+        
+        # with open(f'outputs/informs-two-stage/c101_{type}_fullM_summary.pkl', 'wb') as f:
+        #     pickle.dump(summary, f)
+
+        # read pkl from 'outputs/c201_penalty_summary.pkl'
+        case_name = f'{case}-{type}'
+        with open(f'outputs/full_4037848/{case_name}/{case_name}_summary.pkl', 'rb') as f:
+        # with open(f'outputs/informs-two-stage/c101_{type}_fullM_summary.pkl', 'rb') as f:
+            summary = pickle.load(f)
+
+        active_x = summary["active_x"]          # list of (i,j,d,w)
+        active_t = summary["active_t"]          # dict {(i,d): t}
+        objective_value = summary["objective_value"]
+        gap = summary["gap"]
+        sol = routes_from_active_x_t(active_x, active_t, pd)
+        # for route in sol.iter_routes():
+        #     print(route)
+
+        travel = TravelCost(pd)
+        # get phase-1 travel cost
+        total_travel_cost = travel.total_cost(sol)
+        print(f"Objective value from solver: {objective_value}")
+        print(f"Total travel cost: {total_travel_cost}")
+
+        delta_cost = depot_delta_cost(pd, sol)
+        # print(delta_cost)
+        # debug_day_nurses(delta_cost, 2, [25, 26])
+        AM_solution = solve_depot(pd, delta_cost, mode="AM")
+        PM_solution = solve_depot(pd, delta_cost, mode="PM")
+        # new_sol = solve_depot(pd, delta_cost)
+        # print(f"Delta cost AM: {AM_solution}")
+        # print(f"Delta cost PM: {PM_solution}")
+
+
+    #     # print(f"Original gap (no depot): {gap}")
+        ctx = Context(pd)
+        rep = ctx.check_solution(sol)
+        print("Initial feasible?", rep.ok)
+        # print("Initial details:", rep.violations)
+
+        new_sol1 = add_depot_to_solution(pd, sol, AM_solution, mode="AM")
+        new_sol2 = add_depot_to_solution(pd, new_sol1, PM_solution, mode="PM")
+        new_travel_cost = travel.total_cost(new_sol2)
+        print(f"New total travel cost (with depot): {new_travel_cost}")
+        # for route in new_sol.iter_routes():
+        #     print(route)
+
+        ctx = Context(pd)
+        rep = ctx.check_solution(new_sol2)
+        print("Final feasible?", rep.ok)
+        # print("Final details:", rep.violations)
+        # print("Final obj:", new_sol.objective_value)
+
+        # start LNS from new_sol
+        # LNS iterations
+        no_improv = 0
+        for it in range(2):
+            improved = False
+            for d in range(5):
+                # Choose which days to free
+                if no_improv >= 5:
+                    # Free two consecutive days (wrap around)
+                    d_next = (d + 1) % 5
+                    print(f"No improvement in 5 rounds → freeing days {d} and {d_next}")
+                    free_days = [d, d_next]
+                    active_x, active_t, new_sol = lns_day(
+                        sol, active_x, active_t, pd, ctx,
+                        day_idx=free_days,    # <-- pass list of days to lns_day()
+                        worklimit=800
+                    )
+                else:
+                    free_days = [d]
+                    active_x, active_t, new_sol = lns_day(
+                        sol, active_x, active_t, pd, ctx,
+                        day_idx=d,
+                        worklimit=200
+                    )
+
+
+                print(f"Completed LNS for day(s): {free_days}")
+                obj_new = travel.total_cost(new_sol)
+                print("Objective after LNS:", obj_new)
+                rep = ctx.check_solution(new_sol)
+                print("Feasible?", rep.ok)
+
+                # depot modification
+                new_delta_cost = depot_delta_cost(pd, new_sol)
+                # print(delta_cost)
+                # debug_day_nurses(delta_cost, 2, [25, 26])
+                AM_solution = solve_depot(pd, new_delta_cost, mode="AM")
+                PM_solution = solve_depot(pd, new_delta_cost, mode="PM")
+                new_sol1 = add_depot_to_solution(pd, new_sol, AM_solution, mode="AM")
+                new_sol2 = add_depot_to_solution(pd, new_sol1, PM_solution, mode="PM")
+                new_travel_cost = travel.total_cost(new_sol2)
+                print(f"New total travel cost (with depot): {new_travel_cost}")
+
+
+                # Check improvement
+                if new_travel_cost < travel.total_cost(sol) - 1e-4:
+                    sol = new_sol2
+                    # update active_x
+                    active_x = {}
+                    for route in sol.iter_routes():
+                        # get consecutive pairs of visits in the route
+                        d = route.day_idx
+                        w = route.nurse
+                        nodes = route.nodes
+                        for idx in range(len(nodes) - 1):
+                            i = nodes[idx]
+                            j = nodes[idx + 1]
+                            # cast i and j to m if they are 100 + w
+                            if i >= 100:
+                                i = pd.m
+                            if j >= 100:
+                                j = pd.m
+                            # set x(i,j,d,w) = 1
+                            active_x[(i, j, d, w)] = 1.0
+
+                    improved = True
+                    no_improv = 0
+                    print(f"Iteration {it}, improved on day {d}: obj={obj_new:.2f}")
+                else:
+                    no_improv += 1
+
+            if not improved:
+                print(f"No improvement in iteration {it}. Consecutive no-improvement count = {no_improv}")
+
+
+        # compare solutions
+        # if ctx.compare_solutions(sol, new_sol2):
+        #     print("Solutions are identical.")
+        # else:
+        #     print("Solutions differ.")
+        
+
+            
+
+    # ======== solver full solution ========
+    # # run full solver for a long time and save the result
+    # # summary0 = continuous_algorithm(pd, work_limit=1000, seed_number=0, pruning=1, max_hour=25 * np.ones(pd.n))  
+    # # ctx = Context(pd)
+    # # active_x0 = summary0["active_x"]          # list of (i,j,d,w)
+    # # active_t0 = summary0["active_t"] 
+    # # initial_sol = routes_from_active_x_t(active_x0, active_t0, pd)
+
+    # # rep0 = ctx.check_solution(initial_sol)
+    # # print("Initial feasible?", rep0.ok)
+    # # with open('outputs/rc101_summary.pkl', 'wb') as f:
+    # #     pickle.dump(summary0, f)
+    # # file_path2 = 'outputs/c101_lns_summary.pkl'
+
+    # # with open(file_path2, "rb") as f:
+    # #     summary0 = pickle.load(f)
+
+    
 
     # --- get an initial solution by running your full solver once
-    # summary0 = continuous_algorithm(pd, work_limit=100, seed_number=0, pruning=1, max_hour=25 * np.ones(pd.n))  
+    # summary0 = continuous_algorithm(pd, work_limit=1000, seed_number=0, pruning=1, max_hour=25 * np.ones(pd.n))
+    # # with open(f'outputs/c201_full-{type}.pkl', 'wb') as f:
+    # #     pickle.dump(summary0, f)
     # active_x0 = summary0["active_x"]          # list of (i,j,d,w)
     # active_t0 = summary0["active_t"]          # dict {(i,d): t}
     # initial_sol = routes_from_active_x_t(active_x0, active_t0, pd)
-    # --- feasibility check
-    ctx = Context(pd)
+    # # --- feasibility check
+    # ctx = Context(pd)
     # rep0 = ctx.check_solution(initial_sol)
     # print("Initial feasible?", rep0.ok)
 
-    # --- run daily greedy heuristic
-    summary_heuristic = continuous_algorithm_heuristic(pd, work_limit=3000, seed_number=0, event_limit=None, pruning=2, min_hour=None)
-    # save summary
-    with open('outputs/rc101_greedy_summary-2.pkl', 'wb') as f:
-        pickle.dump(summary_heuristic, f)
+    # # --- run daily greedy heuristic
+    # summary_heuristic = continuous_algorithm_heuristic(pd, work_limit=1000, seed_number=0, event_limit=None, pruning=2, min_hour=None)
+    # # save summary
+    # with open(f'outputs/r101_greedy-{type}.pkl', 'wb') as f:
+    #     pickle.dump(summary_heuristic, f)
 
-    active_xh = summary_heuristic["active_x"]          # list of (i,j,d,w)
-    active_th = summary_heuristic["active_t"]          # dict {(i,d): t}
-    sol_heuristic = routes_from_active_x_t(active_xh, active_th, pd)
-    reph = ctx.check_solution(sol_heuristic)
-    print("Heuristic feasible?", reph.ok)
-    # print("Heuristic details:", reph.violations)
-    print("Heuristic obj:", summary_heuristic["objective_value"])
+    # active_xh = summary_heuristic["active_x"]          # list of (i,j,d,w)
+    # active_th = summary_heuristic["active_t"]          # dict {(i,d): t}
+    # sol_heuristic = routes_from_active_x_t(active_xh, active_th, pd)
+    # reph = ctx.check_solution(sol_heuristic)
+    # print("Heuristic feasible?", reph.ok)
+    # # print("Heuristic details:", reph.violations)
+    # print("Heuristic obj:", summary_heuristic["objective_value"])
 
     # --- run LNS with sub-MIP repair
 

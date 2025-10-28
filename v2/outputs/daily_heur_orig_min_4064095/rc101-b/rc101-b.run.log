@@ -1,0 +1,5 @@
+[2025-10-07T08:57:16.657282] Starting instance rc101-b
+[2025-10-07T08:57:16.657296] Using per-instance time_limit=600.0
+[2025-10-07T08:57:16.657338] Loading file: /project2/ssuen_1733/rc101-b.xlsx exists=False
+[2025-10-07T08:57:16.895276] Calling solver with time_limit=600.0, seed=20
+[2025-10-07T09:03:01.503316] Finished rc101-b. Saved: /project2/ssuen_1733/mvt_runs_4064095/rc101-b/rc101-b_summary.pkl

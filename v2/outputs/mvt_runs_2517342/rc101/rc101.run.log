@@ -1,0 +1,6 @@
+[2025-09-22T11:02:19.501015] Starting instance rc101
+[2025-09-22T11:02:19.501028] Allocated time_limit=171880.0s from overall budget
+[2025-09-22T11:02:19.501047] Loading file: /scratch1/miaojing/rc101.xlsx exists=True
+[2025-09-22T11:02:19.501375] sha256=f433f68be2bf2016
+[2025-09-22T11:02:19.848461] Calling solver with time_limit=171879.985277, seed=20
+[2025-09-24T10:47:43.959159] Finished rc101. Saved: /scratch1/miaojing/mvt_runs_2517342/rc101/rc101_summary.pkl

@@ -1,0 +1,7 @@
+Workdir: /project2/ssuen_1733/mvt_runs_4064094
+Overall seconds: None
+Per-instance time_limit arg: 600.0
+Buffer seconds: 120.0
+Threads: requested=64 effective=64
+Seed: algo=20 grb=20
+Instances: ['c201-e']

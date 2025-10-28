@@ -48,6 +48,17 @@ class Solution:
         if hasattr(self.day_routes[(d, w)], "mark_dirty"):
             self.day_routes[(d, w)].mark_dirty(0)
 
+    def set_arrival_start_depart(self, d: int, w: int,
+                                 nodes: List[int],
+                                 arrival: List[int],
+                                 start: List[int],
+                                 depart: List[int]) -> None:
+        self.day_routes[(d, w)] = Route(day_idx=d, nurse=w, nodes=list(nodes),
+                                        arrival=arrival, start=start, depart=depart)
+        # if Route has mark_dirty, call it (safe even if not present)
+        if hasattr(self.day_routes[(d, w)], "mark_dirty"):
+            self.day_routes[(d, w)].mark_dirty(0)
+
     def replace_subpath(self, d: int, w: int, start: int, end: int, new_subpath: List[int]) -> None:
         r = self.day_routes[(d, w)]
         r.nodes = r.nodes[:start] + list(new_subpath) + r.nodes[end:]

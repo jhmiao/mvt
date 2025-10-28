@@ -1,23 +1,19 @@
 from data_loader import load_problem_data
-# from solution_io import ProblemData, load_solution_from_pickle, total_travel_minutes
-# from algorithms import continuous_algorithm
-# from algorithms.discrete import discrete_algorithm, discrete_algorithm_daily
 from algorithms.continuous import continuous_algorithm
-# from algorithms.heuristic1 import continuous_algorithm_heuristic
-# from algorithms.heuristic2 import greedy_event_clustering, heuristic_combine
+from algorithms.daily_greedy import daily_greedy_heuristic
 # from algorithms.helpers import get_sorted_travel_time_cumsum
 import numpy as np
 import pickle
 
 # time_limit = 5000 # in seconds
-work_limit = 100000
+work_limit = 1000
 
 seed = 19
 
 def main():
 
     # continuous algorithm
-    data_continuous = load_problem_data('c101.xlsx', type='continuous')
+    data_continuous = load_problem_data('c101-e.xlsx', type='continuous')
     cap = 25
     max_hour_list = np.ones(data_continuous.n) * cap
 
@@ -39,8 +35,8 @@ def main():
     # heuristic_combine(data_continuous, 480)
 
 
-    summary_continuous = continuous_algorithm(data_continuous, work_limit, seed, event_limit=None, pruning=1, min_hour=None, max_hour=max_hour_list)
-    print(summary_continuous)
+    # summary_continuous = continuous_algorithm(data_continuous, work_limit, seed, event_limit=None, pruning=1, min_hour=None, max_hour=max_hour_list)
+    # print(summary_continuous)
     # out_path1 = f'/Users/jinghongmiao/Code/mvt-code/result-250819/ca_r20_l30_m50_wl{work_limit}_max{cap}_{seed}.pkl'
     # Save as pickle
     # with open(out_path1, "wb") as f:
@@ -48,7 +44,9 @@ def main():
     # print(f"Continuous algorithm result saved to {out_path1}")
 
     # heuristic algorithm
-    # summary_heuristic = continuous_algorithm_heuristic(data_continuous, work_limit, seed, event_limit=None, pruning=2, min_hour=None)
+    # summary_heuristic = daily_greedy_heuristic(data_continuous, work_limit, seed, event_limit=None, pruning=2, update_max_hour=True, min_hour=None)
+    summary_heuristic = daily_greedy_heuristic(data_continuous, work_limit, seed, event_limit=None, pruning=2, update_max_hour=True, min_hour=None)
+    print(summary_heuristic['objective_value'])
     # out_path2 = f'/Users/jinghongmiao/Code/mvt-code/result-250812/h_r20_l30_m50_wl{work_limit}_max{cap}_{seed}.pkl'
     # # Save as pickle
     # with open(out_path2, "wb") as f:

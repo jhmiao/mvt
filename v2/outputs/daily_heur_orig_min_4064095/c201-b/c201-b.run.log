@@ -1,0 +1,5 @@
+[2025-10-07T08:10:45.569368] Starting instance c201-b
+[2025-10-07T08:10:45.569374] Using per-instance time_limit=600.0
+[2025-10-07T08:10:45.569391] Loading file: /project2/ssuen_1733/c201-b.xlsx exists=False
+[2025-10-07T08:10:45.817460] Calling solver with time_limit=600.0, seed=20
+[2025-10-07T08:14:30.544261] Finished c201-b. Saved: /project2/ssuen_1733/mvt_runs_4064095/c201-b/c201-b_summary.pkl

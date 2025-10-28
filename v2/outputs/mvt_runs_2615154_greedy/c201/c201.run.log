@@ -1,0 +1,5 @@
+[2025-09-24T18:47:47.176158] Starting instance c201
+[2025-09-24T18:47:47.176171] Allocated time_limit=171880.0s from overall budget
+[2025-09-24T18:47:47.176191] Loading file: /project2/ssuen_1733/c201.xlsx exists=False
+[2025-09-24T18:47:47.504662] Calling solver with time_limit=171879.997065, seed=20
+[2025-09-24T19:11:32.393979] Finished c201. Saved: /project2/ssuen_1733/mvt_runs_2615154/c201/c201_summary.pkl
