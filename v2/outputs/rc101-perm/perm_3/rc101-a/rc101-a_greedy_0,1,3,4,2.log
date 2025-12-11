@@ -1,3 +1,3 @@
-[2025-10-28T02:34:36.264586] Starting rc101-a with day_order=[0, 1, 3, 4, 2]
-[2025-10-28T02:34:36.610769] Running daily_greedy_heuristic(work_limit=1000.0)
-[2025-10-28T03:10:04.235833] Saved: /project2/ssuen_1733/mvt_runs_4581365_3/perm_3/rc101-a/rc101-a_greedy_0,1,3,4,2.pkl
+[2025-10-30T13:23:24.791861] Starting rc101-a with day_order=[0, 1, 3, 4, 2]
+[2025-10-30T13:23:25.043178] Running daily_greedy_heuristic(work_limit=1000.0)
+[2025-10-30T13:31:45.885065] Saved: /project2/ssuen_1733/mvt_runs_4607447_3/perm_3/rc101-a/rc101-a_greedy_0,1,3,4,2.pkl

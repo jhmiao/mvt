@@ -16,7 +16,6 @@ from src.io.data_loader import load_problem_data
 import pandas as pd
 
 
-
 def depot_delta_cost(problem_data, sol):
     """
     Given problem data and a solution (possibly with or without depot), evaluate the delta cost to add depot nodes by first constructing solution without depot nodes, then computing delta costs.
@@ -160,8 +159,12 @@ def solve_depot(problem_data, day_dict, mode="AM"):
     #                 name=f"uniq_route_d{d}_grp_{abs(hash(key)) % 10000}"
     #             )
 
+    # start time
+    start_time = time.time()
     # --- Optimize
     model.optimize()
+    end_time = time.time()
+    print(f"Depot {mode} assignment time: {end_time - start_time:.4f} seconds")
 
     # --- Collect results
     depot_solution = {d: {} for d in day_dict}

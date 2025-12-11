@@ -59,17 +59,17 @@ class Solution:
         if hasattr(self.day_routes[(d, w)], "mark_dirty"):
             self.day_routes[(d, w)].mark_dirty(0)
 
-    def replace_subpath(self, d: int, w: int, start: int, end: int, new_subpath: List[int]) -> None:
-        r = self.day_routes[(d, w)]
-        r.nodes = r.nodes[:start] + list(new_subpath) + r.nodes[end:]
-        if hasattr(r, "mark_dirty"):
-            r.mark_dirty(start)
+    # def replace_subpath(self, d: int, w: int, start: int, end: int, new_subpath: List[int]) -> None:
+    #     r = self.day_routes[(d, w)]
+    #     r.nodes = r.nodes[:start] + list(new_subpath) + r.nodes[end:]
+    #     if hasattr(r, "mark_dirty"):
+    #         r.mark_dirty(start)
 
-    def swap_positions(self, d: int, w: int, i: int, j: int) -> None:
-        r = self.day_routes[(d, w)]
-        r.nodes[i], r.nodes[j] = r.nodes[j], r.nodes[i]
-        if hasattr(r, "mark_dirty"):
-            r.mark_dirty(min(i, j))
+    # def swap_positions(self, d: int, w: int, i: int, j: int) -> None:
+    #     r = self.day_routes[(d, w)]
+    #     r.nodes[i], r.nodes[j] = r.nodes[j], r.nodes[i]
+    #     if hasattr(r, "mark_dirty"):
+    #         r.mark_dirty(min(i, j))
 
     # -------- accessors --------
     def get_route(self, d: int, w: int) -> Optional["Route"]:

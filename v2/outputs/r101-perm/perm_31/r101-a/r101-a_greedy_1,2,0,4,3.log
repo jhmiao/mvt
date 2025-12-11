@@ -1,0 +1,3 @@
+[2025-10-30T17:24:45.932811] Starting r101-a with day_order=[1, 2, 0, 4, 3]
+[2025-10-30T17:24:46.205491] Running daily_greedy_heuristic(work_limit=1000.0)
+[2025-10-30T17:31:58.356052] Saved: /project2/ssuen_1733/mvt_runs_4607447_2/perm_31/r101-a/r101-a_greedy_1,2,0,4,3.pkl

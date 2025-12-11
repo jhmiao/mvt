@@ -191,7 +191,7 @@ def _extract_active_var(model, x, s, t, alpha, beta):
     return active_x, active_t, active_s, active_alpha, active_beta
 
 
-def lns_day(inc_sol, active_x, active_t, pd, ctx, day_idx, worklimit=1000, threads=8, verbose=True):
+def lns_day(inc_sol, active_x, active_t, pd, ctx, day_idx, worklimit=1000, threads=8, verbose=False):
     """
     Local Neighborhood Search (LNS) for one or multiple days.
 

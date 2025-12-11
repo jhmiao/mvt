@@ -29,21 +29,25 @@ from src.solver.extract import routes_from_active_x_t
 #             print("-----")
 #         except Exception as e:
 #             print(f"Error - {e}")
-# for base in base_cases:
-#     for suf in suffixes:
-#         case_name = f"{base}{suf}"
-#         # Build file path for summary and problem data
-#         summary_path = f"/Users/jinghongmiao/Code/mvt-code/v2/outputs/full-20/{case_name}_summary.pkl"
-#         data_path = f"data/raw/{base}/{base}_data.xlsx"
-#         try:
-#             pd = load_problem_data(data_path, type='continuous')
-#             print(case_name)
-#             with open(summary_path, "rb") as f:
-#                 summary = pickle.load(f)
-#             print(f"{case_name}: Objective value = {summary.get('objective_value')}")
-#             print(f"{case_name}: Gap = {summary.get('gap')}")
-#         except Exception as e:
-#             print(f"{case_name}: Error - {e}")
+
+
+base_cases = ["c101", "c201", "r101", "rc101"]
+suffixes = ["-a", "-b", "-c", "-d", "-e"]
+for base in base_cases:
+    for suf in suffixes:
+        case_name = f"{base}{suf}"
+        # Build file path for summary and problem data
+        summary_path = f"/Users/jinghongmiao/Code/mvt-code/v2/outputs/full-20/{case_name}_summary.pkl"
+        data_path = f"data/raw/{base}/{base}_data.xlsx"
+        try:
+            pd = load_problem_data(data_path, type='continuous')
+            print(case_name)
+            with open(summary_path, "rb") as f:
+                summary = pickle.load(f)
+            print(f"{case_name}: Objective value = {summary.get('objective_value')}")
+            print(f"{case_name}: Gap = {summary.get('gap')}")
+        except Exception as e:
+            print(f"{case_name}: Error - {e}")
 
 # summary_path = f"/Users/jinghongmiao/Code/mvt-code/v2/outputs/c101-a_greedy_0,1,2,3,4.pkl"
 # pd = load_problem_data('data/raw/c101-tw/c101-a.xlsx', type='continuous')
@@ -105,29 +109,39 @@ from src.solver.extract import routes_from_active_x_t
 # print("Work time by nurse:", summary["work_time_by_nurse"])
 # print("Objective value:", summary["objective_value"])
 
-summary_path0 = f"/Users/jinghongmiao/Code/mvt-code/v2/outputs/rc101-perm/"
-pd = load_problem_data('data/raw/rc101-tw/rc101-a.xlsx', type='continuous')
+# summary_path0 = f"/Users/jinghongmiao/Code/mvt-code/v2/outputs/rc101-perm/"
+# # pd = load_problem_data('data/raw/rc101-tw/rc101-a.xlsx', type='continuous')
 
-# go through files in the directory until reaching .pkl files
-# go deeper into subdirectories if needed
-# ...existing code...
-import os
+# # go through files in the directory until reaching .pkl files
+# # go deeper into subdirectories if needed
+# import os
 
-pkl_found = False
-for root, dirs, files in os.walk(summary_path0):
-    for file in files:
-        if file.endswith(".pkl"):
-            pkl_found = True
-            full_path = os.path.join(root, file)
-            print(os.path.relpath(full_path, summary_path0))
-            try:
-                with open(full_path, "rb") as f:
-                    summary = pickle.load(f)
-                print(f"Objective value = {summary.get('objective_value')}")
-                # print(f"Gap = {summary.get('gap')}")
-            except Exception as e:
-                print(f"Error reading {full_path}: {e}")
+# pkl_found = False
+# results = []  # collect (perm_string, objective)
+# for root, dirs, files in os.walk(summary_path0):
+#     for file in files:
+#         if file.endswith(".pkl"):
+#             pkl_found = True
+#             full_path = os.path.join(root, file)
+#             print(os.path.relpath(full_path, summary_path0))
+#             # only print the section after _ and before .pkl
+#             perm_string = full_path.split("_")[-1].split(".pkl")[0]
+#             print(perm_string)
+#             try:
+#                 with open(full_path, "rb") as f:
+#                     summary = pickle.load(f)
+#                 obj = summary.get('objective_value')
+#                 print(f"Objective value = {obj}")
+#                 results.append((perm_string, obj))
+#             except Exception as e:
+#                 print(f"Error reading {full_path}: {e}")
 
-if not pkl_found:
-    print(f"No .pkl files found under {summary_path0}")
-# ...existing code...
+# if not pkl_found:
+#     print(f"No .pkl files found under {summary_path0}")
+
+# # save results to CSV if any
+# if results:
+#     out_csv = os.path.join(summary_path0, "rc101-perm_objectives.csv")
+#     df_results = pd.DataFrame(results, columns=["perm_string", "objective"])
+#     df_results.to_csv(out_csv, index=False)
+#     print(f"Wrote {len(results)} records to {out_csv}")

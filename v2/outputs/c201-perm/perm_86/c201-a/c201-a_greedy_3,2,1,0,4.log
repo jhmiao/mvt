@@ -1,0 +1,3 @@
+[2025-10-30T22:37:17.740693] Starting c201-a with day_order=[3, 2, 1, 0, 4]
+[2025-10-30T22:37:17.998491] Running daily_greedy_heuristic(work_limit=1000.0)
+[2025-10-30T22:45:07.109361] Saved: /project2/ssuen_1733/mvt_runs_4607447_1/perm_86/c201-a/c201-a_greedy_3,2,1,0,4.pkl

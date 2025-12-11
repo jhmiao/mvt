@@ -52,9 +52,9 @@ def load_problem_data(file_path, type) -> ProblemData:
 
         nurse_type = pd.read_excel(file_path, sheet_name='Nurse_Type', index_col=0).to_numpy().flatten()[:n]
 
-        print(f"shape of C_travel: {C_event.shape}")
-        print(f"shape of C_home: {C_home.shape}")
-        print(f"shape of C_depot: {C_depot.shape}")
+        # print(f"shape of C_travel: {C_event.shape}")
+        # print(f"shape of C_home: {C_home.shape}")
+        # print(f"shape of C_depot: {C_depot.shape}")
 
         # Read the C_dur array
         C_dur = pd.read_excel(file_path, sheet_name='C_dur', index_col=0).to_numpy().flatten()[:m]
@@ -65,9 +65,9 @@ def load_problem_data(file_path, type) -> ProblemData:
         # Read the minimum nurses required matrix
         min_nurse = pd.read_excel(file_path, sheet_name='Min_Nurse', index_col=0).to_numpy()[:m, :]
 
-        print(f"shape of C_dur: {C_dur.shape}")
-        print(f"shape of time_window: {time_window.shape}")
-        print(f"shape of min_nurse: {min_nurse.shape}")
+        # print(f"shape of C_dur: {C_dur.shape}")
+        # print(f"shape of time_window: {time_window.shape}")
+        # print(f"shape of min_nurse: {min_nurse.shape}")
         # print(time_window)
 
         # calculate the expected average working hours for each nurse
@@ -89,15 +89,17 @@ def load_problem_data(file_path, type) -> ProblemData:
             # assuming latest job ends at 7pm
             for i in range(m):
                 for d in range(day):
-                    time_window[i, d, 1] = min(1140 - C_dur[i], time_window[i, d, 1])
+                    # time_window[i, d, 1] = min(1140 - C_dur[i], time_window[i, d, 1])
+                    time_window[i, d, 1] = max(1050 - C_dur[i], time_window[i, d, 0])
+
                     
         
         elif type == 'discrete':
             # replace non-zero time windows with 1
             time_window[time_window != 0] = 1
         
-        print(f"RN average working hours: {avg_RN_hours}")
-        print(f"LVN average working hours: {avg_LVN_hours} \n\n")
+        # print(f"RN average working hours: {avg_RN_hours}")
+        # print(f"LVN average working hours: {avg_LVN_hours} \n\n")
 
         return ProblemData(C_event, C_home, C_depot_e, C_depot_h, C_dur, time_window, min_nurse, nurse_type, nr, nl, n, m, day)
 
@@ -179,9 +181,9 @@ def load_problem_data_sample(file_path, nr, nl, m, n_tw, seed = 42) -> ProblemDa
         nurse_type_lvn = pd.read_excel(file_path, sheet_name='Nurse_Type', index_col=0).to_numpy().flatten()[nr_full:nr_full+nl]
         nurse_type = np.concatenate([nurse_type_rn, nurse_type_lvn])
 
-        print(f"shape of C_travel: {C_event.shape}")
-        print(f"shape of C_home: {C_home.shape}")
-        print(f"shape of C_depot: {C_depot.shape}")
+        # print(f"shape of C_travel: {C_event.shape}")
+        # print(f"shape of C_home: {C_home.shape}")
+        # print(f"shape of C_depot: {C_depot.shape}")
 
 
         # Read the time_window matrix
@@ -200,9 +202,9 @@ def load_problem_data_sample(file_path, nr, nl, m, n_tw, seed = 42) -> ProblemDa
         # Read the minimum nurses required matrix
         min_nurse = pd.read_excel(file_path, sheet_name='Min_Nurse', index_col=0).to_numpy()[m_indices, :]
 
-        print(f"shape of C_dur: {C_dur.shape}")
-        print(f"shape of time_window: {time_window.shape}")
-        print(f"shape of min_nurse: {min_nurse.shape}")
+        # print(f"shape of C_dur: {C_dur.shape}")
+        # print(f"shape of time_window: {time_window.shape}")
+        # print(f"shape of min_nurse: {min_nurse.shape}")
         # print(time_window)
 
         # calculate the expected average working hours for each nurse
@@ -231,8 +233,8 @@ def load_problem_data_sample(file_path, nr, nl, m, n_tw, seed = 42) -> ProblemDa
             # replace non-zero time windows with 1
             time_window[time_window != 0] = 1
         
-        print(f"RN average working hours: {avg_RN_hours}")
-        print(f"LVN average working hours: {avg_LVN_hours} \n\n")
+        # print(f"RN average working hours: {avg_RN_hours}")
+        # print(f"LVN average working hours: {avg_LVN_hours} \n\n")
 
         return ProblemData(C_event, C_home, C_depot_e, C_depot_h, C_dur, time_window, min_nurse, nurse_type, nr, nl, n, m, day)
 
