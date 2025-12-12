@@ -61,5 +61,4 @@ def add_fairness_objective(model: gp.Model, problem_data: ProblemData):
     # max_workload = model.addVar(name="max_workload")
     # model.addConstrs((workload[i] <= max_workload for i in range(problem_data.total_nurse)), name="Fairness_Constraints")
     # model.setObjective(max_workload, GRB.MINIMIZE)
-
-    pass  # Replace with actual implementation
+    pass

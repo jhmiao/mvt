@@ -1,5 +1,8 @@
 from __future__ import annotations
+
 from dataclasses import dataclass
+from typing import Optional
+
 
 @dataclass
 class SolverConfig:
@@ -8,5 +11,7 @@ class SolverConfig:
     fairness_objective: bool = False
     half_hour_starts: bool = False
     enforce_max_hours: bool = False
-    work_limit: int = 3600
-    seed : int = 42
+    work_limit: Optional[float] = None  # Gurobi work units (leave None to disable)
+    time_limit: Optional[float] = None  # seconds (leave None to disable)
+    seed: int = 42
+    gurobi_outputflag: int = 1

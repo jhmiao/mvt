@@ -1,3 +1,4 @@
+from xml.parsers.expat import model
 import numpy as np
 import gurobipy as gp
 from gurobipy import GRB
@@ -61,14 +62,18 @@ def build_model(problem_data: ProblemData, config: SolverConfig) -> gp.Model:
     
     # Objective
     if config.fairness_objective:
-        from .objectives import add_fairness_objective
-        add_fairness_objective(model, problem_data)
+        from .objectives import add_baseline_objectives
+        add_baseline_objectives(model, problem_data, x, s, t, alpha, beta)
     else:
         from .objectives import add_baseline_objectives
         add_baseline_objectives(model, problem_data, x, s, t, alpha, beta)
 
     # Set solver parameters from config
-    model.Params.WorkLimit = config.work_limit
+    if config.work_limit is not None:
+        model.Params.WorkLimit = config.work_limit
+    if config.time_limit is not None:
+        model.Params.TimeLimit = config.time_limit
     model.Params.Seed = config.seed
+    model.Params.OutputFlag = config.gurobi_outputflag
 
     return model
