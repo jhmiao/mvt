@@ -170,7 +170,7 @@ def main(file_name: str, type: str) -> Path:
     """
     base_dir = Path(__file__).resolve().parents[2]  # .../mvt-code/v3
     raw_dir = base_dir / "data" / "raw"
-    clean_dir = base_dir / "data" / "clean"
+    clean_dir = base_dir / "data" / "cleaned"
 
     df = read_solomon_file(raw_dir, file_name)
     df = assign_event_types(df)
