@@ -12,7 +12,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output-root", type=Path, default=None, help="Output directory (default: <project-root>/outputs)")
     parser.add_argument("--instance", type=str, default="c101", help="Instance name (e.g., c101, c201, r101, r201)")
     parser.add_argument("--event-type", type=str, default="Even", help="Event type (Even, Skewed1, Skewed2, Random1, Random2)")
-    parser.add_argument("--work-limit", type=float, default=50, help="Gurobi WorkLimit (None to disable)")
+    parser.add_argument("--work-limit", type=float, default=None, help="Gurobi WorkLimit (None to disable)")
     parser.add_argument("--time-limit", type=float, default=None, help="Gurobi TimeLimit in seconds (None to disable)")
     parser.add_argument("--gurobi-output", type=int, default=1, help="Gurobi OutputFlag (0=quiet, 1=verbose)")
     return parser.parse_args()

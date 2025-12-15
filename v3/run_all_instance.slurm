@@ -30,8 +30,8 @@ OUTPUT_ROOT=/project2/ssuen_1733/output/v3
 mkdir -p "$OUTPUT_ROOT"
 
 # Optional: per-job working directory
-WORKDIR=/project2/ssuen_1733/mvt_runs_${SLURM_JOB_ID}_${SLURM_ARRAY_TASK_ID}
-mkdir -p "$WORKDIR"
+# WORKDIR=/project2/ssuen_1733/mvt_runs_${SLURM_JOB_ID}_${SLURM_ARRAY_TASK_ID}
+# mkdir -p "$WORKDIR"
 
 # -------------------------
 # Python environment
@@ -78,8 +78,8 @@ EVENT_TYPE=${EVENT_TYPE_OVERRIDE:-$EVENT_TYPE}
 cd "$PROJECT_ROOT"
 echo "[$(date)] Starting run_single_instance on $(hostname) for ${INSTANCE}_${EVENT_TYPE}"
 
-WORK_LIMIT="${WORK_LIMIT:-150}"   # set empty to disable
-TIME_LIMIT="${TIME_LIMIT:-}"      # seconds; leave empty to disable
+WORK_LIMIT="${WORK_LIMIT:-}"   # set empty to disable
+TIME_LIMIT="${TIME_LIMIT:-120}"      # seconds; leave empty to disable
 GUROBI_OUTPUT="${GUROBI_OUTPUT:-0}"
 
 EXTRA_ARGS=()
