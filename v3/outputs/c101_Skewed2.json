@@ -1,0 +1,20 @@
+{
+  "daily_solutions": [
+    {
+      "day": null,
+      "assignments": {},
+      "leaders": {},
+      "start_times": {},
+      "objective_value": Infinity,
+      "lower_bound": 5265.0,
+      "status": "16",
+      "extra": {
+        "message": "No feasible solution found"
+      }
+    }
+  ],
+  "objective_value": Infinity,
+  "lower_bound": 5265.0,
+  "status": "16",
+  "metrics": null
+}

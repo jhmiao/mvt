@@ -26,6 +26,26 @@ def _status_to_str(status_code: int) -> str:
     return status_lookup.get(status_code, str(status_code))
 
 
+def _empty_solution(status: str, objective_value: float, lower_bound: Optional[float], message: str) -> MergedSolution:
+    """Return a placeholder merged solution when no feasible solution exists."""
+    placeholder = Solution(
+        day=None,
+        assignments={},
+        leaders={},
+        start_times={},
+        objective_value=objective_value,
+        lower_bound=lower_bound,
+        status=status,
+        extra={"message": message},
+    )
+    return MergedSolution(
+        daily_solutions=[placeholder],
+        objective_value=objective_value,
+        lower_bound=lower_bound,
+        status=status,
+    )
+
+
 def extract_solution(model: gp.Model, problem_data: Optional[ProblemData] = None) -> MergedSolution:
     """
     Extract model variables into a MergedSolution using the Solution dataclass.
@@ -35,6 +55,9 @@ def extract_solution(model: gp.Model, problem_data: Optional[ProblemData] = None
       - t[i,d]     : start time of event i on day d
       - alpha[i,d,w] / beta[i,d,w] : pick-up / drop-off leader flags
     """
+    status_code = model.Status
+    status = _status_to_str(status_code)
+
     try:
         objective_value = float(model.ObjVal)
     except gp.GurobiError:
@@ -45,7 +68,14 @@ def extract_solution(model: gp.Model, problem_data: Optional[ProblemData] = None
     except gp.GurobiError:
         lower_bound = None
 
-    status = _status_to_str(model.Status)
+    sol_count = None
+    try:
+        sol_count = model.SolCount
+    except gp.GurobiError:
+        sol_count = None
+
+    if sol_count == 0 or status_code in {GRB.INFEASIBLE, GRB.INF_OR_UNBD, GRB.UNBOUNDED}:
+        return _empty_solution(status, objective_value, lower_bound, "No feasible solution found")
 
     t_vars: Dict[str, float] = {}
     x_vars: Dict[str, float] = {}

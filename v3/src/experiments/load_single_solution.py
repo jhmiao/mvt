@@ -25,7 +25,7 @@ def load_solution(instance: str, event_type: str, outputs_dir: Optional[Path] = 
 
 def main():
     instance = sys.argv[1] if len(sys.argv) > 1 else "c101"
-    event_type = sys.argv[2] if len(sys.argv) > 2 else "Even"
+    event_type = sys.argv[2] if len(sys.argv) > 2 else "Skewed2"
 
     sol = load_solution(instance, event_type)
     print(f"Loaded solution for {instance}_{event_type}:")
