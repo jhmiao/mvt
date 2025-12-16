@@ -8,6 +8,7 @@ if str(PROJECT_ROOT) not in sys.path:
 
 from src.heuristics.construction import generate_schedules
 from src.heuristics.assignment import assign_nurses_with_depot
+from src.heuristics.selection import select_top_k
 from src.heuristics.config import HeuristicConfig
 from src.io.data_loader import load_problem_data
 
@@ -19,7 +20,7 @@ def main():
     problem = load_problem_data(data_path)
 
     config = HeuristicConfig(
-        num_samples=10,
+        num_samples=5000,
         seed=0,
         gurobi_outputflag=0
     )
@@ -28,10 +29,12 @@ def main():
 
     for d in range(problem.total_day):
         print(f"Day {d}:")
+        day_solutions = []
         for idx, day_schedule in enumerate(schedules[d]):
             solution = assign_nurses_with_depot(problem, day_schedule, d, config)
-            print(f"    Solution: {solution}")
-        break
+            day_solutions.append(solution)
 
+        candidates = select_top_k(day_solutions, k=1)
+        print(candidates)
 if __name__ == "__main__":
     main()

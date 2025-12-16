@@ -166,7 +166,7 @@ def assign_nurses_with_depot(
             assignments={},
             leaders={},
             start_times={},
-            objective_value=float("nan"),
+            objective_value=float("inf"),
             lower_bound=lower_bound,
             status=status_str,
             extra={"message": "Infeasible nurse assignment"},
