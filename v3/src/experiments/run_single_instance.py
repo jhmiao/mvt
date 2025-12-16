@@ -42,6 +42,7 @@ def main():
     config = SolverConfig(
         solve_by_day=False,
         fairness_objective=True,
+        enforce_hour_balance=True,
         use_warmstart=False,
         half_hour_starts=True,
         gurobi_outputflag=args.gurobi_output,

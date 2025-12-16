@@ -11,6 +11,7 @@ class SolverConfig:
     fairness_objective: bool = False
     half_hour_starts: bool = False
     enforce_max_hours: bool = False
+    enforce_hour_balance: bool = True
     work_limit: Optional[float] = None  # Gurobi work units (leave None to disable)
     time_limit: Optional[float] = None  # seconds (leave None to disable)
     seed: int = 42

@@ -7,9 +7,9 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=32
 #SBATCH --mem=32G
-#SBATCH --time=00:10:00
-#SBATCH --job-name=v3_all
-#SBATCH --output=/project2/ssuen_1733/output/v3_all-%A_%a.out
+#SBATCH --time=1-00:05:00
+#SBATCH --job-name=v3_balance_hours
+#SBATCH --output=/project2/ssuen_1733/output/v3-balance-hours-%A_%a.out
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=miaojing@usc.edu
 
@@ -25,7 +25,7 @@ source "$(conda info --base)/etc/profile.d/conda.sh"
 # Paths
 # -------------------------
 PROJECT_ROOT=/project2/ssuen_1733/mvt/v3
-OUTPUT_ROOT=/project2/ssuen_1733/output/v3
+OUTPUT_ROOT=/project2/ssuen_1733/output/v3-balance-hours
 
 mkdir -p "$OUTPUT_ROOT"
 
@@ -79,8 +79,8 @@ cd "$PROJECT_ROOT"
 echo "[$(date)] Starting run_single_instance on $(hostname) for ${INSTANCE}_${EVENT_TYPE}"
 
 WORK_LIMIT="${WORK_LIMIT:-}"   # set empty to disable
-TIME_LIMIT="${TIME_LIMIT:-120}"      # seconds; leave empty to disable
-GUROBI_OUTPUT="${GUROBI_OUTPUT:-0}"
+TIME_LIMIT="${TIME_LIMIT:-86400}"      # seconds; leave empty to disable
+GUROBI_OUTPUT="${GUROBI_OUTPUT:-1}"  # 0=quiet, 1=verbose
 
 EXTRA_ARGS=()
 if [ -n "$TIME_LIMIT" ]; then

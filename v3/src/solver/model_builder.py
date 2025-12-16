@@ -60,6 +60,10 @@ def build_model(problem_data: ProblemData, config: SolverConfig) -> gp.Model:
         from .constraints import add_max_hour_constraints
         add_max_hour_constraints(model, problem_data, x)
     
+    if config.enforce_hour_balance:
+        from .constraints import add_hour_balance_constraints
+        add_hour_balance_constraints(model, problem_data, x)
+    
     # Objective
     if config.fairness_objective:
         from .objectives import add_baseline_objectives

@@ -20,7 +20,7 @@ def main():
     problem = load_problem_data(data_path)
 
     config = HeuristicConfig(
-        num_samples=5000,
+        num_samples=10000,
         seed=0,
         gurobi_outputflag=0
     )
@@ -31,6 +31,8 @@ def main():
         print(f"Day {d}:")
         day_solutions = []
         for idx, day_schedule in enumerate(schedules[d]):
+            # print(schedules[d])
+            # break
             solution = assign_nurses_with_depot(problem, day_schedule, d, config)
             day_solutions.append(solution)
 

@@ -200,5 +200,6 @@ def assign_nurses_with_depot(
         objective_value=float(m.objVal) if m.SolCount else float("nan"),
         lower_bound=lower_bound,
         status=status_str,
-        extra={"chosen_trips": chosen},
+        extra={"feasible_arcs": feasible_arcs,
+               "chosen_trips": chosen},
     )

@@ -184,3 +184,53 @@ def add_max_hour_constraints(model: gp.Model, problem_data: ProblemData, x):
             gp.quicksum(C_dur[j] * gp.quicksum(x[i, j, d, w] for i in range(m+3) for d in range(days)) for j in range(m)) <= max_hours[w] * 60,
             name=f"max_working_hours_w{w}"
         )
+
+def add_hour_balance_constraints(model: gp.Model, problem_data: ProblemData, x):
+    """
+    Add working hour balance constraints to the Gurobi model.
+
+    Parameters:
+    model (gp.Model): The Gurobi optimization model.
+    problem_data (ProblemData): The data required to build the optimization model.
+    x: Decision variable for nurse routes. x[i,j,d,w] = 1 if nurse w goes from event i to j on day d. i = m for home, i = m+1 for depot_am, i = m+2 for depot_pm.
+    avg_hours: Average working hours per nurse.
+
+    Returns:
+    None
+    """
+
+    C_dur = problem_data.event_durations
+    min_nurses = problem_data.min_nurses
+    nr = problem_data.total_rn
+    nl = problem_data.total_lvn
+    # calculate average hours for RNs and LVNs separately
+    total_RN_minutes = np.sum(C_dur * min_nurses[:, 0])
+    total_LVN_minutes = np.sum(C_dur * min_nurses[:, 1])
+
+    # Compute average working hours
+    avg_RN_minutes = total_RN_minutes / nr if nr > 0 else 0
+    avg_LVN_minutes = total_LVN_minutes / nl if nl > 0 else 0
+
+    n = problem_data.total_nurse
+    m = problem_data.total_event
+    days = problem_data.total_day
+
+    for w in range(nr):
+        model.addConstr(
+            gp.quicksum(C_dur[j] * gp.quicksum(x[i, j, d, w] for i in range(m+3) for d in range(days)) for j in range(m)) >= avg_RN_minutes * 0.8,
+            name=f"min_balanced_hours_RN_w{w}"
+        )
+        model.addConstr(
+            gp.quicksum(C_dur[j] * gp.quicksum(x[i, j, d, w] for i in range(m+3) for d in range(days)) for j in range(m)) <= avg_RN_minutes * 1.2,
+            name=f"max_balanced_hours_RN_w{w}"
+        )
+    
+    for w in range(nr, n):
+        model.addConstr(
+            gp.quicksum(C_dur[j] * gp.quicksum(x[i, j, d, w] for i in range(m+3) for d in range(days)) for j in range(m)) >= avg_LVN_minutes * 0.8,
+            name=f"min_balanced_hours_LVN_w{w}"
+        )
+        model.addConstr(
+            gp.quicksum(C_dur[j] * gp.quicksum(x[i, j, d, w] for i in range(m+3) for d in range(days)) for j in range(m)) <= avg_LVN_minutes * 1.2,
+            name=f"max_balanced_hours_LVN_w{w}"
+        )
