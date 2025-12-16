@@ -365,4 +365,3 @@ def assign_nurses_with_depot(data: ProblemData, nurse_type, chosen_schedules, fe
     # return all_assignments
     return objective_value
 
-def assign_nurses_with_depot_day(data: ProblemData, nurse_type, day, day_chosen_schedules, day_feasible_arcs):
