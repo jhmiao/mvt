@@ -44,7 +44,7 @@ def main():
         fairness_objective=True,
         enforce_hour_balance=True,
         use_warmstart=False,
-        half_hour_starts=True,
+        half_hour_starts=False,
         gurobi_outputflag=args.gurobi_output,
         work_limit=args.work_limit,
         time_limit=args.time_limit,
