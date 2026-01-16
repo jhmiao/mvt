@@ -47,12 +47,10 @@ class RoutePoolConfig:
     # two-event generation strategy
     # if True: sample pairs (fast for large days); if False: enumerate all pairs then cap
     sample_two_event_pairs: bool = True
-    two_event_pair_samples: int = 20000           # number of random pairs to test per day
+    two_event_pair_samples: int = 40000           # number of random pairs to test per day
 
-    # depot flag behavior (keep simple now)
-    # If depot_ok is determined solely by "this route type is depot-compliant",
-    # you can set this True to mark all non-idle routes as depot_ok=1.
-    # Otherwise leave False and fill in your real logic later.
+    # depot flag behavior (simple version)
+    # enforce depot on every route for simplicity
     force_depot_ok_for_working_routes: bool = True
 
 
@@ -90,9 +88,10 @@ def build_route_pool(
         for visits in skels:
             if visits in internal_cost_cache:
                 continue
-            internal_cost_cache[visits] = compute_internal_travel_cost(problem, visits, cfg)
+            
             work_cache[visits] = compute_work_minutes(problem, visits)
             depot_ok_cache[visits] = compute_depot_ok(problem, visits, cfg)
+            internal_cost_cache[visits] = compute_internal_travel_cost(problem, visits, depot_ok_cache[visits])
 
     # 3) Instantiate for each nurse-day: add home legs to internal cost
     pool: Dict[Tuple[int, int], List[Route]] = {}
@@ -264,19 +263,19 @@ def compute_work_minutes(problem: ProblemData, visits: Tuple[EventCopy, ...]) ->
     return sum(problem.event_durations[v[0]] for v in visits)
 
 
-def compute_internal_travel_cost(problem: ProblemData, visits: Tuple[EventCopy, ...], cfg: RoutePoolConfig) -> float:
+def compute_internal_travel_cost(problem: ProblemData, visits: Tuple[EventCopy, ...], depot_ok: int) -> float:
     """
     Internal travel excludes home legs.
     For now: sum of event->event travel between consecutive visits.
     If you later include depot between events, incorporate it here.
     """
-    if len(visits) <= 1:
+    if len(visits) < 1:
         return 0.0
     total = 0.0
     for a, b in zip(visits[:-1], visits[1:]):
         total += float(problem.event_event_costs[a[0]][b[0]])
 
-    if cfg.force_depot_ok_for_working_routes:
+    if depot_ok:
         # add costs: depot -> first event + last event -> depot
         first_i = visits[0][0]
         last_i = visits[-1][0]
