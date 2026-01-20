@@ -31,6 +31,11 @@ def main() -> None:
     from src.io.data_loader import load_problem_data  # noqa: E402
     from src.solver.route.rmp_runner import solve_rmp_routes  # noqa: E402
     from src.solver.route.pool_builder import RoutePoolConfig  # noqa: E402
+    from src.solutions.extract_route_rmp_result import extract_route_rmp_result  # noqa: E402
+    from src.solutions.io_route_rmp import (  # noqa: E402
+        build_route_rmp_output_path,
+        save_route_rmp_json,
+    )
 
     data_path = Path(args.file)
     if not data_path.exists():
@@ -49,6 +54,11 @@ def main() -> None:
         outputflag=args.gurobi_output,
     )
 
+    route_result = extract_route_rmp_result(result)
+    output_dir = project_root / "outputs"
+    output_path = build_route_rmp_output_path(data_path, output_dir)
+    save_route_rmp_json(route_result, output_path)
+
     print(
         "RMP status=", result.status,
         "runtime=", result.runtime,
@@ -56,7 +66,10 @@ def main() -> None:
         "bound=", result.obj_bound,
         "gap=", result.mip_gap,
         "nodes=", result.node_count,
+        "events=", len(route_result.event_schedule),
+        "routes=", len(route_result.selected_routes),
     )
+    print("Saved route RMP result to", output_path)
 
 
 if __name__ == "__main__":

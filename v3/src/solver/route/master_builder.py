@@ -42,7 +42,7 @@ class RouteMasterContext:
 
     # decision vars
     y: Dict[EventCopy, gp.Var]                    # schedule copy chosen
-    z: Dict[Tuple[int, int, int], gp.Var]         # (w,d,k) route selection
+    z: Dict[Tuple[int, int, int], gp.Var]         # (w,d,r) route selection
 
     # sparse A-indices
     rn_cover: Dict[EventCopy, List[Tuple[int, int, int]]]
@@ -65,7 +65,7 @@ def build_master_model(
 
     Assumes:
       - pool[(w,d)] exists for all w,d
-      - each pool[(w,d)] includes an idle route if you want sum_k z=1
+      - each pool[(w,d)] includes an idle route if you want sum_r r=1
       - Route.visits contains only EventCopy tuples (i,d,tau)
       - Route.cost/work/depot_ok are precomputed
     """
@@ -180,9 +180,6 @@ def _build_cover_indices(
     rn_cover = defaultdict(list)
     lvn_cover = defaultdict(list)
     depot_cover = defaultdict(list)
-
-    # rn_ids = set(problem.rn_ids) if hasattr(problem, "rn_ids") else set(range(problem.total_rn))  # adjust
-    # If you don’t have rn_ids, prefer storing nurse_type[w] in problem.
 
     rn_ids = set(range(problem.total_rn))
     for (w, d), routes in pool.items():

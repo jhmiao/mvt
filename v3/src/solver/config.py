@@ -6,6 +6,7 @@ from typing import Optional
 
 @dataclass
 class SolverConfig:
+    backend: str = "arc"  # "arc" | "route_pool" | "cg"
     solve_by_day: bool = False
     use_warmstart: bool = False
     fairness_objective: bool = False
@@ -16,3 +17,6 @@ class SolverConfig:
     time_limit: Optional[float] = None  # seconds (leave None to disable)
     seed: int = 42
     gurobi_outputflag: int = 1
+
+    # route-pool knobs
+    routes_per_nurse: int = 500
