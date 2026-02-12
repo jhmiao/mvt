@@ -35,7 +35,7 @@ def build_model(problem_data: ProblemData, config: SolverConfig) -> gp.Model:
     days = problem_data.total_day
 
     # build discrete time blocks
-    blocks_per_day, days, B_d, B_jd, B_j = build_discrete_blocks(time_windows, block_len_min=30)
+    blocks_per_day, days, B_d, B_jd, B_j = build_discrete_blocks(time_windows)
 
 
 
@@ -52,102 +52,74 @@ def build_model(problem_data: ProblemData, config: SolverConfig) -> gp.Model:
     NODES_ORIG = list(I) + [HOME, DEPOT]
     HOME_DEPOT = [HOME, DEPOT]
 
-    # debugging
+    # # debugging
     # print("Blocks per day:")
     # print(B_d)
     # print("Feasible blocks per event:")
-    # for j in I:
+    # for j in list(I) + ["H", "D"]:
     #     print(f"Event {j}: {B_j[j]}")
+
+    # # also print B_jd
+    # print("Feasible blocks per event-day:")
+    # for j in list(I) + ["H", "D"]:
+    #     for d in D:
+    #         print(f"Event {j}, Day {d}: {B_jd.get((j,d), [])}")
 
     # Build allowed keys
     x_keys = gp.tuplelist(
         (w, i, j, b)
         for w in W
         for i in NODES_ORIG
-        for j in I
-        for b in B_j[j]          # <-- only feasible blocks for that destination event
-        if i != j                # optional: drop self-loop if both are events
+        for j in NODES_ORIG
+        for b in B_j[j]          # <-- only feasible blocks for that destination event / home / depot
+        if i != j                # drop self-loop
     )
 
     x = model.addVars(x_keys, vtype=GRB.BINARY, name="x")
-    y = model.addVars(
-        W, NODES_ORIG, HOME_DEPOT, range(days),
-        vtype=GRB.BINARY,
-        name="y"
-    )
-    # new termination-by-block variable (only meaningful for j in I)
-    y_end_keys = gp.tuplelist(
-        (w, j, loc, b)
-        for w in W
-        for j in I
-        for loc in HOME_DEPOT
-        for b in B_j[j]
-    )
-    y_end = model.addVars(y_end_keys, vtype=GRB.BINARY, name="y_end")
 
-    # link to day-level y: y[w,j,loc,d] = sum_{b in day d feasible for j} y_end[w,j,loc,b]
-    model.addConstrs(
-        (y[w, j, loc, d] ==
-        gp.quicksum(y_end[w, j, loc, b] for b in B_jd[(j, d)] if (w, j, loc, b) in y_end)
-        for w in W for j in I for loc in HOME_DEPOT for d in range(days)),
-        name="link_yend_to_y"
+    s_keys = gp.tuplelist(
+        (i, b)
+        for i in I
+        for b in B_j[i]
     )
-
-    s = {}
-    for i in I:
-        for b in B_j[i]:
-            s[i, b] = model.addVar(vtype=GRB.BINARY, name=f"s[{i},{b}]")
-    s = gp.tupledict(s)
+    
+    s = model.addVars(s_keys, vtype=GRB.BINARY, name="s")
 
     # 4) alpha_{id}^w : nurse w picks up at depot for event i on day d
-    alpha = model.addVars(
-        W, I, D,
-        vtype=GRB.BINARY,
-        name="alpha"
+    # alpha_keys: only allow alpha[w,i,d] if B_jd[(i,d)] is nonempty (i.e. event i could be scheduled on day d)
+    alpha_beta_keys = gp.tuplelist(
+        (w, i, d)
+        for w in W
+        for i in I
+        for d in D
+        if (i, d) in B_jd and B_jd[(i, d)]
     )
+    
+    alpha = model.addVars(alpha_beta_keys, vtype=GRB.BINARY, name="alpha")
 
     # 5) beta_{id}^w : nurse w drops off at depot for event i on day d
-    beta = model.addVars(
-        W, I, D,
-        vtype=GRB.BINARY,
-        name="beta"
-    )
+    beta = model.addVars(alpha_beta_keys, vtype=GRB.BINARY, name="beta")
 
     # Objective
     def is_event(node):
         return isinstance(node, int)  # since your events are indexed 0..m-1
 
-    # ----- x-part (arrive at event j) -----
     obj_x = gp.quicksum(
         (
-            C_event[i, j] if is_event(i) else
-            C_home[w, j]  if i == HOME else
-            C_depot_e[j]  # i == DEPOT
+            C_event[i, j] if is_event(i) and is_event(j) else
+            C_home[w, j]  if i == HOME and is_event(j) else
+            C_home[w, i]  if is_event(i) and j == HOME else
+            C_depot_e[j]  if i == DEPOT and is_event(j) else
+            C_depot_e[i]  if is_event(i) and j == DEPOT else
+            C_depot_h[w]  if (i == HOME and j == DEPOT) or (i == DEPOT and j == HOME) else
+            0  # default cost for any arcs we didn't explicitly define (e.g. home to home)
         ) * x[w, i, j, b]
         for (w, i, j, b) in x.keys()   # safe when x is sparse
     )
 
-    # ----- y-part (arrive at home/depot) -----
-    terms_y = []
-    for (w, i, loc, d) in y.keys():
-        # Skip meaningless arcs if they exist (recommended to not create them in the first place)
-        if i == loc:
-            continue
 
-        if is_event(i) and loc == HOME:
-            cij = C_home[w, i]        # event -> home (assumed symmetric)
-        elif is_event(i) and loc == DEPOT:
-            cij = C_depot_e[i]        # event -> depot
-        elif (i == HOME and loc == DEPOT) or (i == DEPOT and loc == HOME):
-            cij = C_depot_h[w]        # home <-> depot
-        else:
-            continue
 
-        terms_y.append(cij * y[w, i, loc, d])
-
-    obj_y = gp.quicksum(terms_y)
-
-    model.setObjective(obj_x + obj_y, GRB.MINIMIZE)
+    model.setObjective(obj_x, GRB.MINIMIZE)
 
 
     # Constraints
@@ -181,55 +153,45 @@ def build_model(problem_data: ProblemData, config: SolverConfig) -> gp.Model:
             name=f"min_LVN_j{j}"
         )
 
-    # each event is visited at most once by each nurse
-    for w in W:
-        for j in I:
-            model.addConstr(
-                gp.quicksum(
-                    x[w,i,j,b]
-                    for i in NODES_ORIG
-                    for b in B_j[j]
-                    if (w,i,j,b) in x
-                ) <= 1,
-                name=f"visit_once_w{w}_j{j}"
-            )
-    # prune self-loops: no x[i,i,b]
-    for w in W:
-        for j in I:
-            for b in B_j[j]:
-                if (w, j, j, b) in x:
-                    model.addConstr(
-                        x[w, j, j, b] == 0,
-                        name=f"no_self_loop_w{w}_j{j}_b{b}"
-                    )
-    # prune self-loops: no y[loc,loc,d]
-    for w in W:
-        for loc in HOME_DEPOT:
-            for d in D:
-                if (w, loc, loc, d) in y:
-                    model.addConstr(
-                        y[w, loc, loc, d] == 0,
-                        name=f"no_self_loop_y_w{w}_loc{loc}_d{d}"
-                    )
+    # # each event is visited at most once by each nurse
+    # for w in W:
+    #     for j in I:
+    #         model.addConstr(
+    #             gp.quicksum(
+    #                 x[w,i,j,b]
+    #                 for i in NODES_ORIG
+    #                 for b in B_j[j]
+    #                 if (w,i,j,b) in x
+    #             ) <= 1,
+    #             name=f"visit_once_w{w}_j{j}"
+    #         )
+
+    # # prune self-loops: no x[i,i,b] -- handled via x_keys construction
+    # for w in W:
+    #     for j in I:
+    #         for b in B_j[j]:
+    #             if (w, j, j, b) in x:
+    #                 model.addConstr(
+    #                     x[w, j, j, b] == 0,
+    #                     name=f"no_self_loop_w{w}_j{j}_b{b}"
+    #                 )
+
+    # # prune self-loops: no y[loc,loc,d] -- handled via y_keys construction
+    # for w in W:
+    #     for loc in HOME_DEPOT:
+    #         for d in D:
+    #             if (w, loc, loc, d) in y:
+    #                 model.addConstr(
+    #                     y[w, loc, loc, d] == 0,
+    #                     name=f"no_self_loop_y_w{w}_loc{loc}_d{d}"
+    #                 )
+
     # Depot
-    model.addConstrs(
-        (gp.quicksum(alpha[w, j, d] for w in W for d in D) == 1 for j in I),
-        name="pick_up_leader"
-    )
+    model.addConstrs((gp.quicksum(alpha[w, j, d] for w in W for d in D if (w, j, d) in alpha) == 1 for j in I), name="pick_up_leader")
 
-    model.addConstrs(
-        (gp.quicksum(beta[w, j, d] for w in W for d in D) == 1 for j in I),
-        name="drop_off_leader"
-    )
+    model.addConstrs((gp.quicksum(beta[w, j, d] for w in W for d in D if (w, j, d) in beta) == 1 for j in I), name="drop_off_leader")
 
-
-
-    # Assumes:
-    #   alpha[w,j,d], beta[w,j,d]   (as created earlier: model.addVars(W, I, D, ...))
-    #   x[w,i,j,b] exists only for feasible (w,i,j,b)
-    #   B_d[d] = list of global blocks belonging to day d
-    #   NODES_ORIG = list(I) + ["H","D"]
-
+    # alpha/beta implies visit: if nurse w picks up/drops off at depot for event j on day d, then they must have a flow into j on day d (i.e. they must visit j that day)
     for w in W:
         for j in I:
             for d in D:
@@ -240,29 +202,53 @@ def build_model(problem_data: ProblemData, config: SolverConfig) -> gp.Model:
                     if (w, i, j, b) in x   # important if x is sparse (only feasible keys)
                 )
 
-                model.addConstr(alpha[w, j, d] <= inflow_wjd, name=f"alpha_implies_visit_w{w}_j{j}_d{d}")
-                model.addConstr(beta[w, j, d]  <= inflow_wjd, name=f"beta_implies_visit_w{w}_j{j}_d{d}")
+                if (w, j, d) in alpha:
+                    model.addConstr(alpha[w, j, d] <= inflow_wjd, name=f"alpha_implies_visit_w{w}_j{j}_d{d}")
+                if (w, j, d) in beta:
+                    model.addConstr(beta[w, j, d]  <= inflow_wjd, name=f"beta_implies_visit_w{w}_j{j}_d{d}")
 
     # alpha/beta implies depot trips
+    # model.addConstrs(
+    #     (alpha[w, i, d] <= gp.quicksum(
+    #             x[w, DEPOT, j, b]   # morning depot->event flow
+    #             for j in I
+    #             for b in B_jd.get((j, d), [])
+    #             if (w, DEPOT, j, b) in x   # needed if x is sparse / only feasible keys
+    #         )
+    #     for (w, i, d) in alpha.keys()),
+    #     name="alpha_implies_HD"
+    # )
     model.addConstrs(
-        (alpha[w, i, d] <= y[w, HOME, DEPOT, d]
-        for w in W for i in I for d in D),
-        name="alpha_implies_HD"
+        (
+            alpha[w, j, d]
+            <= (
+                x[w, HOME, DEPOT, min(B_jd[(DEPOT, d)])]
+                if B_jd[(DEPOT, d)] and (w, HOME, DEPOT, min(B_jd[(DEPOT, d)])) in x
+                else 0
+            )
+            for (w, j, d) in alpha.keys()
+        ),
+        name="alpha_implies_morning_HD"
     )
 
     model.addConstrs(
-        (beta[w, i, d] <= y[w, DEPOT, HOME, d]
-        for w in W for i in I for d in D),
+        (
+            beta[w, i, d] 
+            <= (
+                x[w, DEPOT, HOME, max(B_jd[("H", d)])]
+                if B_jd[("H", d)] and (w, DEPOT, HOME, max(B_jd[("H", d)])) in x
+                else 0
+            )
+        for (w, i, d) in beta.keys()),
         name="beta_implies_DH"
     )
 
-    # home flow at most 1
+    # (1) home flow at most 1
     model.addConstrs(
         (
-            y[w, HOME, DEPOT, d]
-            + gp.quicksum(
+            gp.quicksum(
                 x[w, HOME, j, b]
-                for j in I
+                for j in NODES_ORIG
                 for b in B_d[d]
                 if (w, HOME, j, b) in x   # important if x is sparse (only feasible keys)
             )
@@ -272,72 +258,168 @@ def build_model(problem_data: ProblemData, config: SolverConfig) -> gp.Model:
         name="home_flow_at_most_one"
     )
 
-    # (1) depot pick-up linking: y_HD equals exactly one depot->event departure that day
-    model.addConstrs(
-        (
-            y[w, HOME, DEPOT, d]
-            == gp.quicksum(
-                x[w, DEPOT, j, b]
-                for j in I
-                for b in B_d[d]
-                if (w, DEPOT, j, b) in x   # needed if x is sparse / only feasible keys
-            )
-            for w in W for d in D
-        ),
-        name="depot_pickup_link"
-    )
+    # event inflow = outflow, and time feasibility: for each event j, day d, nurse w, if nurse arrives at j on day d, they must either leave to home/depot that day or go to another event on the same day that they can feasibly reach after performing j's service.
 
-    # (2) depot drop-off linking: y_DH equals exactly one event->depot arrival that day
-    # Here the arc into DEPOT is a y-variable: y[w, i, DEPOT, d]
-    model.addConstrs(
-        (
-            y[w, DEPOT, HOME, d]
-            == gp.quicksum(
-                y[w, i, DEPOT, d]
-                for i in I
-            )
-            for w in W for d in D
-        ),
-        name="depot_dropoff_link"
-    )
-    def time_offset_blocks(j, l):
-        """Blocks needed for service at j plus travel j->l (minutes -> blocks, rounded up)."""
-        return tau(C_dur[j] + C_event[j][l])  # adjust indexing if c_travel is dict[(j,l)]
+    def time_offset_blocks(j, k, w):
+        """Blocks needed for service at j plus travel j->k (minutes -> blocks, rounded up)."""
+        if k in I:
+            return tau(C_dur[j] + C_event[j][k])
+        elif k == HOME:
+            return tau(C_dur[j] + C_home[w][j]) 
+        elif k == DEPOT:
+            return tau(C_dur[j] + C_depot_e[j])
+        else:
+            return 0 
 
+    def service_time(i):
+        return C_dur[i] if i in I else 0
+
+    def travel_time(i, j, w):
+        if i in I and j in I:
+            return C_event[i][j]
+        elif i == HOME and j in I:
+            return C_home[w][j]
+        elif i == DEPOT and j in I:
+            return C_depot_e[j]
+        elif i in I and j == HOME:
+            return C_home[w][i]
+        elif i in I and j == DEPOT:
+            return C_depot_e[i]
+        elif (i == HOME and j == DEPOT) or (i == DEPOT and j == HOME):
+            return C_depot_h[w]
+        else:
+            return 0
+
+    # (4) outflow exists only when time-feasible inflow exists
     for w in W:
         for j in I:
-            # only enforce for b where x could represent arrival to j
-            for b in B_j[j]:
-                d = delta(b)
+            for k in NODES_ORIG:
+                for b in B_j[k]:
+                    if (w, j, k, b) not in x:
+                        continue
+                    d = delta(b)
 
+                    inflow = gp.quicksum(
+                        x[w, i, j, bp]
+                        for i in NODES_ORIG
+                        for bp in B_jd.get((j, d), [])
+                        if (w, i, j, bp) in x
+                        if bp <= b - tau(service_time(j) + travel_time(j, k, w))
+                    )
+                    model.addConstr(
+                        x[w, j, k, b] <= inflow,
+                        name=f"outflow_requires_inflow_w{w}_j{j}_k{k}_b{b}"
+                    )
+
+    # (5) event inflow = outflow (per day)
+    for w in W:
+        for j in I:   # apply to events and depot (but not home)
+            # if j == HOME:
+            #     continue
+            for d in D:
                 inflow = gp.quicksum(
                     x[w, i, j, b]
                     for i in NODES_ORIG
+                    for b in B_jd.get((j, d), [])
                     if (w, i, j, b) in x
                 )
-
-                # termination to home/depot on that day (time suppressed)
-                term = y_end[w, j, HOME, b] + y_end[w, j, DEPOT, b]
-
-                # feasible next-event departures from j within the same day
-                out_to_events = gp.quicksum(
-                    x[w, j, l, bp]
-                    for l in I
-                    for bp in B_jd[(l,d)]
-                    if bp >= b + time_offset_blocks(j, l)
-                    if (w, j, l, bp) in x
+                outflow = gp.quicksum(
+                    x[w, j, k, bp]
+                    for k in NODES_ORIG
+                    for bp in B_jd.get((k, d), [])
+                    if (w, j, k, bp) in x
                 )
-
                 model.addConstr(
-                    inflow == term + out_to_events,
-                    name=f"flow_time_w{w}_j{j}_b{b}"
+                    inflow == outflow,
+                    name=f"event_flow_balance_w{w}_j{j}_d{d}"
                 )
-    model.addConstrs(
-        (gp.quicksum(y_end[w,j,loc,b] for loc in HOME_DEPOT for b in B_j[j] if (w,j,loc,b) in y_end) <= 1
-        for w in W for j in I),
-        name="end_at_most_once_per_event"
-    )
+    # depot inflow = outflow (per day)
+    for w in W:
+        for d in D:
+            bd = B_jd.get((DEPOT, d), [])
+            if not bd:
+                continue  # no depot blocks for this day
 
+            b_early = min(bd)
+
+            # Only add if the morning home->depot arc exists; otherwise you'd force outflow=0
+            if (w, HOME, DEPOT, b_early) not in x:
+                continue
+
+            inflow = x[w, HOME, DEPOT, b_early]
+
+            outflow = gp.quicksum(
+                x[w, DEPOT, j, bp]
+                for j in I
+                for bp in B_jd.get((j, d), [])
+                if (w, DEPOT, j, bp) in x
+            )
+
+            model.addConstr(
+                inflow == outflow,
+                name=f"morning_depot_flow_balance_w{w}_d{d}"
+            )
+
+    for w in W:
+        for d in D:
+            bd = B_jd.get((HOME, d), [])
+            if not bd:
+                continue  # no home blocks for this day
+
+            b_home_late = max(bd)
+
+            # Only add if the evening depot->home arc exists; otherwise you'd force inflow=0
+            if (w, DEPOT, HOME, b_home_late) not in x:
+                continue
+            
+            outflow = x[w, DEPOT, HOME, b_home_late]
+
+            b_depot_late = max(B_jd.get((DEPOT, d), []))
+
+            inflow = gp.quicksum(
+                x[w, j, DEPOT, b_depot_late]
+                for j in I
+                if (w, j, DEPOT, b_depot_late) in x
+            )
+
+
+            model.addConstr(
+                inflow == outflow,
+                name=f"evening_depot_flow_balance_w{w}_d{d}"
+            )
+
+    # for w in W:
+    #     for j in I:
+    #         # only enforce for b where x could represent arrival to j
+    #         for b in B_j[j]:
+    #             d = delta(b)
+
+    #             inflow = gp.quicksum(
+    #                 x[w, i, j, b]
+    #                 for i in NODES_ORIG
+    #                 if (w, i, j, b) in x
+    #             )
+
+    #             # feasible next-event departures from j within the same day
+    #             outflow = gp.quicksum(
+    #                 x[w, j, k, bp]
+    #                 for k in NODES_ORIG
+    #                 for bp in B_jd[(k,d)]
+    #                 if bp >= b + time_offset_blocks(j, k, w)
+    #                 if (w, j, k, bp) in x
+    #             )
+
+    #             model.addConstr(
+    #                 inflow <= outflow,
+    #                 name=f"flow_time_w{w}_j{j}_b{b}"
+    #             )
+    
+    # link x and y: for all w, d, j in HOME/DEPOT: if nurse goes from i to loc and enters loc in block b (x), then y[w,i,loc,d] = 1 for that day
+    # model.addConstrs(
+    #     (y[w, i, loc, d] ==
+    #     gp.quicksum(x[w, i, loc, b] for b in B_d[d] if (w, i, loc, b) in x))
+    #     for w in W for i in NODES_ORIG for loc in HOME_DEPOT for d in D if any((w, i, loc, b) in x for b in B_d[d])
+    # )
 
     if config.enforce_hour_balance:
         # Same averaging logic as your continuous version (minutes of service required)
@@ -378,7 +460,18 @@ def build_model(problem_data: ProblemData, config: SolverConfig) -> gp.Model:
 
 import math
 
-def build_discrete_blocks(time_windows, block_len_min=30):
+BLOCK_LEN = 30          # minutes
+BLOCKS_PER_DAY = 48     # 24*60 / 30
+
+def delta(b):
+    """Return day index (0-based) of global block b."""
+    return b // BLOCKS_PER_DAY
+
+def tau(t):
+    """Return number of 30-min blocks needed for time t (minutes), rounded up."""
+    return math.ceil(t / BLOCK_LEN)
+
+def build_discrete_blocks(time_windows):
     """
     time_windows[i][d] = (lb, ub) in minutes from 0..1440 within that day.
     We assume event start times must lie on block boundaries (k * block_len_min).
@@ -392,7 +485,9 @@ def build_discrete_blocks(time_windows, block_len_min=30):
     """
     m = len(time_windows)
     days = len(time_windows[0])
-    blocks_per_day = 1440 // block_len_min  # 48 for 30-min blocks
+    # blocks_per_day = 1440 // block_len_min  # 48 for 30-min blocks
+    blocks_per_day = BLOCKS_PER_DAY  # use constant for consistency
+    block_len_min = BLOCK_LEN
 
     # Day blocks: global indexing b = d*blocks_per_day + k
     B_d = {
@@ -401,7 +496,10 @@ def build_discrete_blocks(time_windows, block_len_min=30):
     }
 
     B_jd = {}
-    B_j = {j: [] for j in range(m)}
+    B_j = {j: [] for j in range(m)} 
+    # add "H" and "D" as special events with their own feasible blocks
+    B_j["H"] = []  # home
+    B_j["D"] = []  # depot
 
     for j in range(m):
         for d in range(days):
@@ -442,20 +540,24 @@ def build_discrete_blocks(time_windows, block_len_min=30):
             feasible_global = [d * blocks_per_day + k for k in range(k_min, k_max + 1)]
             B_jd[(j, d)] = feasible_global
             B_j[j].extend(feasible_global)
+    
+    for j in ["H", "D"]:
+        # For the 2 special "events" (morning / evening home, morning / evening depot)
+        # for each day, allow 0,46 for home, 6,40 for depot (these are just proxies that guarantees feasibility)
+        # these are just proxies that guarantees feasibility
+        for d in range(days):
+            if j == "H":  # home
+                B_jd[("H", d)] = [d * blocks_per_day + 0, d * blocks_per_day + 46]
+            elif j == "D":  # depot
+                B_jd[("D", d)] = [d * blocks_per_day + 6, d * blocks_per_day + 40]
+            # elif j == m+2:  # evening depot
+            #     B_jd[(j, d)] = [d * blocks_per_day + 40]
+            # elif j == m+3:  # evening home
+            #     B_jd[(j, d)] = [d * blocks_per_day + 46]
+            B_j[j].extend(B_jd[(j, d)])
 
     # Sort + unique (in case windows overlap oddly)
-    for j in range(m):
+    for j in list(range(m)) + ["H", "D"]:
         B_j[j] = sorted(set(B_j[j]))
 
     return blocks_per_day, days, B_d, B_jd, B_j
-
-BLOCK_LEN = 30          # minutes
-BLOCKS_PER_DAY = 48     # 24*60 / 30
-
-def delta(b):
-    """Return day index (0-based) of global block b."""
-    return b // BLOCKS_PER_DAY
-
-def tau(t):
-    """Return number of 30-min blocks needed for time t (minutes), rounded up."""
-    return math.ceil(t / BLOCK_LEN)

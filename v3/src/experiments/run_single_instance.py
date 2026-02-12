@@ -37,14 +37,15 @@ def main():
     if not data_path.exists():
         raise FileNotFoundError(f"Data file not found: {data_path}")
 
-    problem = load_problem_data(data_path)
+    problem = load_problem_data(data_path, sample_k=10, sample_seed=45)
+
 
     config = SolverConfig(
         solve_by_day=False,
-        fairness_objective=True,
-        enforce_hour_balance=True,
+        fairness_objective=False,
+        enforce_hour_balance=False,
         use_warmstart=False,
-        half_hour_starts=False,
+        half_hour_starts=True,
         gurobi_outputflag=args.gurobi_output,
         work_limit=args.work_limit,
         time_limit=args.time_limit,
@@ -59,3 +60,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# Example command to run:
+# python v3/src/experiments/run_single_instance.py --instance c101 --event-type Random1
