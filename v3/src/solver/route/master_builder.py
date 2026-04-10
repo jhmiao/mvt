@@ -144,7 +144,9 @@ def _add_y_vars(model: gp.Model, copy_index: CopyIndex) -> Dict[EventCopy, gp.Va
     y: Dict[EventCopy, gp.Var] = {}
     for v in copy_index.copies:
         i, d, tau = v
-        y[v] = model.addVar(vtype=GRB.BINARY, name=f"y[i{i},d{d},t{tau}]")
+        # y[v] = model.addVar(vtype=GRB.BINARY, name=f"y[i{i},d{d},t{tau}]")
+        y[v] = model.addVar(lb=0.0, ub=1.0, vtype=gp.GRB.CONTINUOUS, name=f"y[i{i},d{d},t{tau}]")
+
     return y
 
 
@@ -153,7 +155,8 @@ def _add_z_vars(model: gp.Model, pool: Dict[Tuple[int, int], List[Route]]) -> Di
     z: Dict[Tuple[int, int, int], gp.Var] = {}
     for (w, d), routes in pool.items():
         for k in range(len(routes)):
-            z[(w, d, k)] = model.addVar(vtype=GRB.BINARY, name=f"z[w{w},d{d},k{k}]")
+            # z[(w, d, k)] = model.addVar(vtype=GRB.BINARY, name=f"z[w{w},d{d},k{k}]")
+            z[(w, d, k)] = model.addVar(lb=0.0, ub=1.0, vtype=gp.GRB.CONTINUOUS, name=f"z[w{w},d{d},k{k}]")
     return z
 
 
@@ -294,17 +297,37 @@ def _add_fairness_constraints(
 
     Implement either hard bounds (0.8-1.2) or soft deviations.
     """
-    # TODO: wire to your data structures
-    # Example hard bounds:
-    # rn_ids = set(problem.rn_ids)
-    # avg_rn = problem.avg_rn_minutes
-    # for w in rn_ids:
-    #     work_w = gp.quicksum(pool[(w,d)][k].work * z[(w,d,k)]
-    #                          for d in range(problem.total_day)
-    #                          for k in range(len(pool[(w,d)])))
-    #     model.addConstr(work_w >= 0.8 * avg_rn, name=f"rn_min_work[w{w}]")
-    #     model.addConstr(work_w <= 1.2 * avg_rn, name=f"rn_max_work[w{w}]")
-    pass
+    total_day = problem.total_day
+    total_rn = problem.total_rn
+    total_lvn = problem.total_lvn
+    total_nurse = problem.total_nurse
+
+    if config.enforce_hour_balance:
+        total_rn_minutes = float((problem.event_durations * problem.min_nurses[:, 0]).sum()) if total_rn > 0 else 0.0
+        total_lvn_minutes = float((problem.event_durations * problem.min_nurses[:, 1]).sum()) if total_lvn > 0 else 0.0
+        avg_rn_minutes = total_rn_minutes / total_rn if total_rn > 0 else 0.0
+        avg_lvn_minutes = total_lvn_minutes / total_lvn if total_lvn > 0 else 0.0
+
+    if config.enforce_max_hours:
+        max_hours = problem.max_hours
+
+    for w in range(total_nurse):
+        work_w = gp.quicksum(
+            r.work * z[(w, d, k)]
+            for d in range(total_day)
+            for k, r in enumerate(pool[(w, d)])
+        )
+
+        # if config.enforce_max_hours:
+        #     model.addConstr(work_w <= max_hours[w] * 60, name=f"max_working_hours_w{w}")
+
+        if config.enforce_hour_balance:
+            if w < total_rn:
+                model.addConstr(work_w >= 0.8 * avg_rn_minutes, name=f"min_balanced_hours_RN_w{w}")
+                model.addConstr(work_w <= 1.2 * avg_rn_minutes, name=f"max_balanced_hours_RN_w{w}")
+            else:
+                model.addConstr(work_w >= 0.8 * avg_lvn_minutes, name=f"min_balanced_hours_LVN_w{w}")
+                model.addConstr(work_w <= 1.2 * avg_lvn_minutes, name=f"max_balanced_hours_LVN_w{w}")
 
 
 # -----------------------------

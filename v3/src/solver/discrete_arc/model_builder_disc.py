@@ -137,21 +137,22 @@ def build_model(problem_data: ProblemData, config: SolverConfig) -> gp.Model:
 
     # Staffing constraints: for each event j, enough RNs and LVNs arrive at j (once each).
     for j in I:
-        model.addConstr(
-            gp.quicksum(
-                gp.quicksum(x[w, i, j, b] for i in NODES_ORIG for b in B_j[j] if (w, i, j, b) in x)
-                for w in RN
-            ) >= min_nurses[j][0],
-            name=f"min_RN_j{j}"
-        )
+        for b in B_j[j]:
+            model.addConstr(
+                gp.quicksum(
+                    gp.quicksum(x[w, i, j, b] for i in NODES_ORIG if (w, i, j, b) in x)
+                    for w in RN
+                ) >= min_nurses[j][0] * s[j, b],   # if event j is scheduled in block b, require min RNs; if not scheduled, no RN requirement
+                name=f"min_RN_j{j}_b{b}"
+            )
 
-        model.addConstr(
-            gp.quicksum(
-                gp.quicksum(x[w, i, j, b] for i in NODES_ORIG for b in B_j[j] if (w, i, j, b) in x)
-                for w in LVN
-            ) >= min_nurses[j][1],
-            name=f"min_LVN_j{j}"
-        )
+            model.addConstr(
+                gp.quicksum(
+                    gp.quicksum(x[w, i, j, b] for i in NODES_ORIG if (w, i, j, b) in x)
+                    for w in LVN
+                ) >= min_nurses[j][1] * s[j, b],
+                name=f"min_LVN_j{j}_b{b}"
+            )
 
     # # each event is visited at most once by each nurse
     # for w in W:
@@ -187,9 +188,28 @@ def build_model(problem_data: ProblemData, config: SolverConfig) -> gp.Model:
     #                 )
 
     # Depot
-    model.addConstrs((gp.quicksum(alpha[w, j, d] for w in W for d in D if (w, j, d) in alpha) == 1 for j in I), name="pick_up_leader")
+    # model.addConstrs((gp.quicksum(alpha[w, j, d] for w in W if (w, j, d) in alpha) == gp.quicksum(s[j, b] for b in B_jd[j]) for j in I for d in D), name="pick_up_leader")
 
-    model.addConstrs((gp.quicksum(beta[w, j, d] for w in W for d in D if (w, j, d) in beta) == 1 for j in I), name="drop_off_leader")
+    # model.addConstrs((gp.quicksum(beta[w, j, d] for w in W if (w, j, d) in beta) == gp.quicksum(s[j, b] for b in B_jd[j]) for j in I for d in D), name="drop_off_leader")
+    model.addConstrs(
+        (
+            gp.quicksum(alpha[w, j, d] for w in W if (w, j, d) in alpha)
+            ==
+            gp.quicksum(s[j, b] for b in B_jd.get((j, d), []))
+            for j in I for d in D
+        ),
+        name="pick_up_leader"
+    )
+
+    model.addConstrs(
+        (
+            gp.quicksum(beta[w, j, d] for w in W if (w, j, d) in beta)
+            ==
+            gp.quicksum(s[j, b] for b in B_jd.get((j, d), []))
+            for j in I for d in D
+        ),
+        name="drop_off_leader"
+    )
 
     # alpha/beta implies visit: if nurse w picks up/drops off at depot for event j on day d, then they must have a flow into j on day d (i.e. they must visit j that day)
     for w in W:
@@ -239,7 +259,8 @@ def build_model(problem_data: ProblemData, config: SolverConfig) -> gp.Model:
                 if B_jd[("H", d)] and (w, DEPOT, HOME, max(B_jd[("H", d)])) in x
                 else 0
             )
-        for (w, i, d) in beta.keys()),
+            for (w, i, d) in beta.keys()
+        ),
         name="beta_implies_DH"
     )
 
@@ -438,14 +459,14 @@ def build_model(problem_data: ProblemData, config: SolverConfig) -> gp.Model:
         # RN nurses: w = 0..nr-1
         for w in RN:
             total_minutes_w = gp.quicksum(C_dur[j] * visit_expr(w, j) for j in range(m))
-            model.addConstr(total_minutes_w >= 0.8 * avg_RN_minutes, name=f"min_balanced_hours_RN_w{w}")
-            model.addConstr(total_minutes_w <= 1.2 * avg_RN_minutes, name=f"max_balanced_hours_RN_w{w}")
+            # model.addConstr(total_minutes_w >= 0.8 * avg_RN_minutes, name=f"min_balanced_hours_RN_w{w}")
+            model.addConstr(total_minutes_w <= 1.5 * avg_RN_minutes, name=f"max_balanced_hours_RN_w{w}")
 
         # LVN nurses: w = nr..n-1
         for w in LVN:
             total_minutes_w = gp.quicksum(C_dur[j] * visit_expr(w, j) for j in range(m))
-            model.addConstr(total_minutes_w >= 0.8 * avg_LVN_minutes, name=f"min_balanced_hours_LVN_w{w}")
-            model.addConstr(total_minutes_w <= 1.2 * avg_LVN_minutes, name=f"max_balanced_hours_LVN_w{w}")
+            # model.addConstr(total_minutes_w >= 0.8 * avg_LVN_minutes, name=f"min_balanced_hours_LVN_w{w}")
+            model.addConstr(total_minutes_w <= 1.5 * avg_LVN_minutes, name=f"max_balanced_hours_LVN_w{w}")
 
 
     # Set solver parameters from config

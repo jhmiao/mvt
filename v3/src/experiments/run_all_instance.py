@@ -73,7 +73,8 @@ def main():
 
     config = SolverConfig(
         solve_by_day=False,
-        fairness_objective=True,
+        include_weekly_fairness_penalty_hours=True,
+        include_weekly_fairness_penalty_leaders=False,
         use_warmstart=False,
         half_hour_starts=True,
         gurobi_outputflag=args.gurobi_output,

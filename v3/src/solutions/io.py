@@ -117,6 +117,23 @@ def save_solution_json(solution: MergedSolution, path: Path) -> None:
         json.dump(payload, f, indent=2)
 
 
+def save_solution_synopsis_json(solution: MergedSolution, path: Path) -> None:
+    """Save compact per-run synopsis metrics as JSON."""
+    path = Path(path)
+    suffix = path.suffix or ".json"
+    if not path.stem.endswith("_synopsis"):
+        path = path.with_name(f"{path.stem}_synopsis{suffix}")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    synopsis: Dict[str, Any] = {
+        "status": solution.status,
+        "objective_value": solution.objective_value,
+        "lower_bound": solution.lower_bound,
+        "metrics": solution.metrics or {},
+    }
+    with path.open("w", encoding="utf-8") as f:
+        json.dump(synopsis, f, indent=2)
+
+
 def load_solution_json(path: Path) -> MergedSolution:
     """Load solution from a JSON file."""
     with Path(path).open("r", encoding="utf-8") as f:

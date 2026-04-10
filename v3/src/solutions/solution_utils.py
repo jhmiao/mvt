@@ -46,6 +46,83 @@ def _empty_solution(status: str, objective_value: float, lower_bound: Optional[f
     )
 
 
+def _parse_indices(var_name: str) -> Tuple[int, ...]:
+    inside = var_name[var_name.find("[") + 1 : var_name.find("]")]
+    return tuple(int(p) for p in inside.split(","))
+
+
+def _compute_solution_synopsis(
+    objective_value: float,
+    problem_data: Optional[ProblemData],
+    x_vars: Dict[str, float],
+    alpha_vars: Dict[str, float],
+) -> Optional[Dict[str, Any]]:
+    if problem_data is None:
+        return None
+
+    n = problem_data.total_nurse
+    m = problem_data.total_event
+
+    C_event = problem_data.event_event_costs
+    C_home = problem_data.home_event_costs
+    C_depot_e = problem_data.event_depot_costs
+    C_depot_h = problem_data.home_depot_costs
+    C_dur = problem_data.event_durations
+
+    travel_cost_total = 0.0
+    travel_cost_by_nurse = [0.0 for _ in range(n)]
+    working_minutes_by_nurse = [0.0 for _ in range(n)]
+
+    for name, val in x_vars.items():
+        i, j, _d, w = _parse_indices(name)
+        if w < 0 or w >= n:
+            continue
+
+        arc_cost = 0.0
+        if i < m and j < m:
+            arc_cost = float(C_event[i, j])
+        elif i == m and j < m:
+            arc_cost = float(C_home[w, j])
+        elif i < m and j == m:
+            arc_cost = float(C_home[w, i])
+        elif i == m + 1 and j < m:
+            arc_cost = float(C_depot_e[j])
+        elif i < m and j == m + 2:
+            arc_cost = float(C_depot_e[i])
+        elif i == m and j == m + 1:
+            arc_cost = float(C_depot_h[w])
+        elif i == m + 2 and j == m:
+            arc_cost = float(C_depot_h[w])
+
+        contrib = arc_cost * float(val)
+        travel_cost_total += contrib
+        travel_cost_by_nurse[w] += contrib
+
+        if j < m:
+            working_minutes_by_nurse[w] += float(C_dur[j]) * float(val)
+
+    leader_count_by_nurse = [0.0 for _ in range(n)]
+    for name, val in alpha_vars.items():
+        _i, _d, w = _parse_indices(name)
+        if 0 <= w < n:
+            leader_count_by_nurse[w] += float(val)
+
+    if math.isnan(objective_value):
+        penalty_cost_total = math.nan
+    else:
+        penalty_cost_total = float(objective_value) - float(travel_cost_total)
+
+    working_hours_by_nurse = [mins / 60.0 for mins in working_minutes_by_nurse]
+
+    return {
+        "travel_cost_total": float(travel_cost_total),
+        "penalty_cost_total": float(penalty_cost_total),
+        "working_hours_by_nurse": [float(v) for v in working_hours_by_nurse],
+        "travel_cost_by_nurse": [float(v) for v in travel_cost_by_nurse],
+        "leader_count_by_nurse": [float(v) for v in leader_count_by_nurse],
+    }
+
+
 def extract_solution(model: gp.Model, problem_data: Optional[ProblemData] = None) -> MergedSolution:
     """
     Extract model variables into a MergedSolution using the Solution dataclass.
@@ -99,12 +176,8 @@ def extract_solution(model: gp.Model, problem_data: Optional[ProblemData] = None
         elif name.startswith("beta["):
             beta_vars[name] = val
 
-    def parse_indices(var_name: str) -> Tuple[int, ...]:
-        inside = var_name[var_name.find("[") + 1 : var_name.find("]")]
-        return tuple(int(p) for p in inside.split(","))
-
     # Infer event count from schedule variables to distinguish event nodes from home/depot.
-    event_indices = [parse_indices(name)[0] for name in s_vars]
+    event_indices = [_parse_indices(name)[0] for name in s_vars]
     event_count = max(event_indices) + 1 if event_indices else None
     # If problem_data provided (especially for day solves), include mapping info.
     original_event_ids = None
@@ -128,17 +201,17 @@ def extract_solution(model: gp.Model, problem_data: Optional[ProblemData] = None
     )
 
     for name, val in s_vars.items():
-        i, d = parse_indices(name)
+        i, d = _parse_indices(name)
         day_info = day_data[d]
         if val >= 0.5:
             day_info["scheduled"].add(i)
 
     for name, val in t_vars.items():
-        i, d = parse_indices(name)
+        i, d = _parse_indices(name)
         day_data[d]["start_times"][i] = val
 
     for name, val in x_vars.items():
-        i, j, d, w = parse_indices(name)
+        i, j, d, w = _parse_indices(name)
         day_info = day_data[d]
         day_info["routes"][w].append((i, j))
         if event_count is not None:
@@ -148,13 +221,13 @@ def extract_solution(model: gp.Model, problem_data: Optional[ProblemData] = None
                 day_info["assignments"][j].add(w)
 
     for name, val in alpha_vars.items():
-        i, d, w = parse_indices(name)
+        i, d, w = _parse_indices(name)
         if val < 0.5:
             continue
         day_data[d]["leaders"][i]["pickup"] = w
 
     for name, val in beta_vars.items():
-        i, d, w = parse_indices(name)
+        i, d, w = _parse_indices(name)
         if val < 0.5:
             continue
         day_data[d]["leaders"][i]["dropoff"] = w
@@ -202,11 +275,19 @@ def extract_solution(model: gp.Model, problem_data: Optional[ProblemData] = None
                 )
             )
 
+    synopsis = _compute_solution_synopsis(
+        objective_value=objective_value,
+        problem_data=problem_data,
+        x_vars=x_vars,
+        alpha_vars=alpha_vars,
+    )
+
     return MergedSolution(
         daily_solutions=daily_solutions,
         objective_value=objective_value,
         lower_bound=lower_bound,
         status=status,
+        metrics=synopsis,
     )
 
 
@@ -308,9 +389,43 @@ def merge_day_solutions(
     merged_status = "MERGED" if len(statuses) == 1 else "MERGED_" + "_".join(sorted(statuses))
     merged_lower_bound = sum(lower_bounds) if lower_bounds else None
 
+    synopsis_metrics: Optional[Dict[str, Any]] = None
+    if full_problem_data is not None:
+        n = full_problem_data.total_nurse
+        travel_cost_total = 0.0
+        travel_cost_by_nurse = [0.0 for _ in range(n)]
+        working_hours_by_nurse = [0.0 for _ in range(n)]
+        leader_count_by_nurse = [0.0 for _ in range(n)]
+
+        for sol in day_solutions:
+            metrics = sol.metrics or {}
+            travel_cost_total += float(metrics.get("travel_cost_total", 0.0))
+
+            for w, v in enumerate(metrics.get("travel_cost_by_nurse", [])):
+                if w < n:
+                    travel_cost_by_nurse[w] += float(v)
+            for w, v in enumerate(metrics.get("working_hours_by_nurse", [])):
+                if w < n:
+                    working_hours_by_nurse[w] += float(v)
+            for w, v in enumerate(metrics.get("leader_count_by_nurse", [])):
+                if w < n:
+                    leader_count_by_nurse[w] += float(v)
+
+        penalty_cost_total = (
+            math.nan if math.isnan(objective_total) else float(objective_total) - float(travel_cost_total)
+        )
+        synopsis_metrics = {
+            "travel_cost_total": float(travel_cost_total),
+            "penalty_cost_total": float(penalty_cost_total),
+            "working_hours_by_nurse": [float(v) for v in working_hours_by_nurse],
+            "travel_cost_by_nurse": [float(v) for v in travel_cost_by_nurse],
+            "leader_count_by_nurse": [float(v) for v in leader_count_by_nurse],
+        }
+
     return MergedSolution(
         daily_solutions=combined_daily,
         objective_value=objective_total,
         lower_bound=merged_lower_bound,
         status=merged_status,
+        metrics=synopsis_metrics,
     )

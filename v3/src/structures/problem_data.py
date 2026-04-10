@@ -18,14 +18,23 @@ class ProblemData:
     total_nurse: int
     total_event: int
     total_day: int
+    baseline_hours_rn: np.ndarray = None
+    baseline_hours_lvn: np.ndarray = None
     max_hours: np.ndarray = None
     day_index: int = -1  # Optional, indicates which day this instance corresponds to
     original_event_ids: np.ndarray = None  # Optional, maps events in this instance to original problem
 
     def __post_init__(self):
         # Initialize default max_hours if not provided
+        if self.baseline_hours_rn is None:
+            # sum up over all events: event_durations * min_nurses(RN) for that event
+            self.baseline_hours_rn = np.sum(self.event_durations[:, np.newaxis] * self.min_nurses[:, 0]) / 60.0  # convert to hours
+
+        if self.baseline_hours_lvn is None:
+            self.baseline_hours_lvn = np.sum(self.event_durations[:, np.newaxis] * self.min_nurses[:, 1]) / 60.0  # convert to hours
+
         if self.max_hours is None:
-            self.max_hours = 25 * np.ones(self.total_nurse)
+            self.max_hours = np.array(25 * np.ones(self.total_nurse))  # default max hours per nurse
 
     def split_by_day(self):
         """Split time windows by day."""
@@ -37,6 +46,7 @@ class ProblemData:
         C_depot_h = self.home_depot_costs
         C_dur = self.event_durations
         min_nurse = self.min_nurses
+        max_hours = self.max_hours
         m = self.total_event
 
         for d in range(self.total_day):
@@ -64,7 +74,8 @@ class ProblemData:
                 total_event=len(events_today),
                 total_day=1,
                 day_index=d,
-                original_event_ids=events_today
+                original_event_ids=events_today,
+                max_hours=self.max_hours
             )
             day_instances.append(day_instance)
         return day_instances

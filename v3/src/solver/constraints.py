@@ -53,6 +53,7 @@ def add_base_constraints(model: gp.Model, problem_data: ProblemData,
         for i in range(m):
             model.addConstr(t[i,d] >= time_window[i][d][0] * s[i,d], name=f"tw_lb_i{i}_d{d}")
             model.addConstr(t[i,d] <= time_window[i][d][1] * s[i,d], name=f"tw_ub_i{i}_d{d}")
+            model.addConstr(s[i,d] <= time_window[i][d][0], name=f"tw_lb_s_i{i}_d{d}")
     for i in range(m):
         for d in range(days):
             for w in range(n):
@@ -64,6 +65,22 @@ def add_base_constraints(model: gp.Model, problem_data: ProblemData,
         for j in range(m):
             if i != j:
                 model.addConstrs(t[j,d] >= t[i,d] + C_dur[i] + C_event[i,j] - M * (1 - x[i,j,d,w]) for w in range(n) for d in range(days))
+    
+    # set all x[i,j,d,w]=0 for i,j where C_dur[i]+C_dur[i]+C_event[i,j] > 8 * 60
+    model.addConstrs(
+        (
+            x[i, j, d, w] == 0
+            for i in range(m)
+            for j in range(m)
+            for d in range(days)
+            for w in range(n)
+            if C_dur[i] + C_dur[j] + C_event[i, j] > 8 * 60
+        ),
+        name="prune_long_route",
+    )
+
+
+
     
     # staffing
     for j in range(m):
@@ -112,6 +129,12 @@ def add_base_constraints(model: gp.Model, problem_data: ProblemData,
     model.addConstrs(
         (gp.quicksum(beta[j, d, w] for w in range(n) for d in range(days)) == 1 for j in range(m)),
         name="drop_off_leader"
+    )
+
+    # make leader the same person: alpha[j,d,w] = beta[j,d,w] for all j,d,w
+    model.addConstrs(
+        (alpha[j, d, w] == beta[j, d, w] for j in range(m) for d in range(days) for w in range(n)),
+        name="same_leader_alpha_beta"
     )
 
     # team leader goes to the event
@@ -221,7 +244,7 @@ def add_hour_balance_constraints(model: gp.Model, problem_data: ProblemData, x):
             name=f"min_balanced_hours_RN_w{w}"
         )
         model.addConstr(
-            gp.quicksum(C_dur[j] * gp.quicksum(x[i, j, d, w] for i in range(m+3) for d in range(days)) for j in range(m)) <= avg_RN_minutes * 1.2,
+            gp.quicksum(C_dur[j] * gp.quicksum(x[i, j, d, w] for i in range(m+3) for d in range(days)) for j in range(m)) <= avg_RN_minutes * 1.5,
             name=f"max_balanced_hours_RN_w{w}"
         )
     
@@ -231,6 +254,6 @@ def add_hour_balance_constraints(model: gp.Model, problem_data: ProblemData, x):
             name=f"min_balanced_hours_LVN_w{w}"
         )
         model.addConstr(
-            gp.quicksum(C_dur[j] * gp.quicksum(x[i, j, d, w] for i in range(m+3) for d in range(days)) for j in range(m)) <= avg_LVN_minutes * 1.2,
+            gp.quicksum(C_dur[j] * gp.quicksum(x[i, j, d, w] for i in range(m+3) for d in range(days)) for j in range(m)) <= avg_LVN_minutes * 1.5,
             name=f"max_balanced_hours_LVN_w{w}"
         )

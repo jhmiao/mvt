@@ -51,6 +51,21 @@ def build_model(problem_data: ProblemData, config: SolverConfig) -> gp.Model:
     # Constraints
     add_base_constraints(model, problem_data, x, s, t, alpha, beta)
 
+    if config.fixed_event_days is not None:
+        if len(config.fixed_event_days) != m:
+            raise ValueError(
+                f"fixed_event_days length {len(config.fixed_event_days)} does not match total_event {m}"
+            )
+        for i, fixed_d in enumerate(config.fixed_event_days):
+            if fixed_d is None or int(fixed_d) < 0:
+                continue
+            d = int(fixed_d)
+            if d >= days:
+                raise ValueError(
+                    f"fixed_event_days[{i}]={d} out of range for total_day={days}"
+                )
+            model.addConstr(s[i, d] == 1, name=f"heuristic_fix_s_i{i}_d{d}")
+
     if config.half_hour_starts:
         # Add discrete time constraints
         from .constraints import add_discrete_time_constraints
@@ -65,12 +80,21 @@ def build_model(problem_data: ProblemData, config: SolverConfig) -> gp.Model:
         add_hour_balance_constraints(model, problem_data, x)
     
     # Objective
-    if config.fairness_objective:
-        from .objectives import add_baseline_objectives
-        add_baseline_objectives(model, problem_data, x, s, t, alpha, beta)
-    else:
-        from .objectives import add_baseline_objectives
-        add_baseline_objectives(model, problem_data, x, s, t, alpha, beta)
+    from .objectives import add_baseline_objectives
+    add_baseline_objectives(
+        model,
+        problem_data,
+        x,
+        s,
+        t,
+        alpha,
+        beta,
+        include_weekly_fairness_penalty_hours=bool(config.include_weekly_fairness_penalty_hours),
+        include_weekly_fairness_penalty_leaders=bool(config.include_weekly_fairness_penalty_leaders),
+        include_running_fairness_penalty=bool(config.include_running_fairness_penalty),
+        fairness_penalty_weight=config.fairness_penalty_weight,
+        cumulative_state_path=config.cumulative_state_path,
+    )
 
     # Set solver parameters from config
     if config.work_limit is not None:

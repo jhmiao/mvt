@@ -95,6 +95,8 @@ def solve_rmp_routes(
         time_limit=time_limit,
         work_limit=work_limit,
         threads=threads,
+        enforce_hour_balance=getattr(pool_cfg, "enforce_hour_balance", True),
+        enforce_max_hours=getattr(pool_cfg, "enforce_max_hours", False),
         enforce_depot=getattr(pool_cfg, "force_depot_ok_for_working_routes", False),
     )
     model, ctx = build_master_model(problem, copy_index, pool, dummy_solver_config)
@@ -103,7 +105,7 @@ def solve_rmp_routes(
     _apply_gurobi_params(model, time_limit, work_limit, seed, outputflag, threads)
 
     # -------------------------
-    # TODO (Column Generation):
+    # maybe TODO (Column Generation):
     # -------------------------
     # - Change RMP to LP (y,z continuous in [0,1]) to obtain valid duals:
     #     * either build vars as CONTINUOUS initially, or
@@ -221,6 +223,8 @@ def _dummy_solver_config(
     time_limit: Optional[float],
     work_limit: Optional[float],
     threads: Optional[int],
+    enforce_hour_balance: bool,
+    enforce_max_hours: bool,
     enforce_depot: bool,
 ) -> _DummySolverConfig:
     return _DummySolverConfig(
@@ -230,5 +234,7 @@ def _dummy_solver_config(
         time_limit=time_limit,
         work_limit=work_limit,
         threads=threads,
+        enforce_hour_balance=enforce_hour_balance,
+        enforce_max_hours=enforce_max_hours,
         enforce_depot=enforce_depot,
     )

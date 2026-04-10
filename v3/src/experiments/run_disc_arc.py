@@ -38,11 +38,13 @@ def main() -> None:
     if not data_path.exists():
         raise FileNotFoundError(f"Data file not found: {data_path}")
 
-    problem = load_problem_data(data_path, sample_k=10, sample_seed=45)
+    problem = load_problem_data(data_path, sample_k=20, sample_seed=45)
+    # problem = load_problem_data(data_path)
 
     config = SolverConfig(
         solve_by_day=False,
-        fairness_objective=True,
+        include_weekly_fairness_penalty_hours=True,
+        include_weekly_fairness_penalty_leaders=False,
         enforce_hour_balance=False,
         use_warmstart=False,
         half_hour_starts=False,
@@ -66,4 +68,4 @@ if __name__ == "__main__":
     main()
 
 # Example command to run:
-# python v3/src/experiments/run_disc_arc.py --instance-path v3/data/cleaned/c101_Random2.xlsx --time-limit 600 --gurobi-output 1
+# python v3/src/experiments/run_disc_arc.py --instance-path v3/data/cleaned/c101_Even_x2.xlsx --time-limit 30 --gurobi-output 1
