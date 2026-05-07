@@ -4,9 +4,9 @@
 #SBATCH --partition=main
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=32
+#SBATCH --cpus-per-task=12
 #SBATCH --mem=32G
-#SBATCH --time=00:10:00
+#SBATCH --time=02:00:00
 #SBATCH --job-name=v3_single
 #SBATCH --output=/project2/ssuen_1733/output/v3_single-%j.out
 #SBATCH --mail-type=END,FAIL
@@ -111,19 +111,18 @@ for LEADERS_FAIRNESS_TYPE in count day; do
     --leaders-fairness-type "$LEADERS_FAIRNESS_TYPE" \
     --workload-penalty-weight "$WORKLOAD_PENALTY_WEIGHT" \
     --leaders-penalty-weight "$LEADERS_PENALTY_WEIGHT"
-
-  # Weekly workload fairness only.
-  run_4week v3/src/experiments/run_4week_instance.py \
-    --instances "${INSTANCES[@]}" \
-    --run-name "$RUN_NAME" \
-    --time-limit "$TIME_LIMIT" \
-    --warm-start-dir "$WARM_START_DIR" \
-    --warm-start-after "$WARM_START_AFTER" \
-    --gurobi-output "$GUROBI_OUTPUT" \
-    --include-weekly-fairness-penalty-hours \
-    --leaders-fairness-type "$LEADERS_FAIRNESS_TYPE" \
-    --workload-penalty-weight "$WORKLOAD_PENALTY_WEIGHT" \
-    --leaders-penalty-weight "$LEADERS_PENALTY_WEIGHT"
 done
+
+# Weekly workload fairness only. Leader fairness type is irrelevant here.
+run_4week v3/src/experiments/run_4week_instance.py \
+  --instances "${INSTANCES[@]}" \
+  --run-name "$RUN_NAME" \
+  --time-limit "$TIME_LIMIT" \
+  --warm-start-dir "$WARM_START_DIR" \
+  --warm-start-after "$WARM_START_AFTER" \
+  --gurobi-output "$GUROBI_OUTPUT" \
+  --include-weekly-fairness-penalty-hours \
+  --workload-penalty-weight "$WORKLOAD_PENALTY_WEIGHT" \
+  --leaders-penalty-weight "$LEADERS_PENALTY_WEIGHT"
 
 echo "[$(date)] Finished 4-week experiments"

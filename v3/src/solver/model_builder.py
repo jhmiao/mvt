@@ -52,6 +52,9 @@ def build_model(problem_data: ProblemData, config: SolverConfig) -> gp.Model:
     if config.include_depot:
         from .constraints import add_depot_constraints
         add_depot_constraints(model, problem_data, x, alpha, beta)
+    else:
+        from .constraints import add_no_depot_constraints
+        add_no_depot_constraints(model, problem_data, x, alpha, beta)
 
     if config.fixed_event_days is not None:
         if len(config.fixed_event_days) != m:

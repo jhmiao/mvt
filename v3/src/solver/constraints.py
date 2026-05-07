@@ -216,6 +216,43 @@ def add_depot_constraints(model: gp.Model, problem_data: ProblemData, x, alpha, 
     )
 
 
+def add_no_depot_constraints(model: gp.Model, problem_data: ProblemData, x, alpha, beta):
+    """Disable all depot arcs and leader variables for a no-depot solve."""
+    m = problem_data.total_event
+    n = problem_data.total_nurse
+    days = problem_data.total_day
+    depot_nodes = (m + 1, m + 2)
+
+    model.addConstrs(
+        (
+            x[i, j, d, w] == 0
+            for i in range(m + 3)
+            for j in depot_nodes
+            for d in range(days)
+            for w in range(n)
+        ),
+        name="no_depot_inflow",
+    )
+    model.addConstrs(
+        (
+            x[i, j, d, w] == 0
+            for i in depot_nodes
+            for j in range(m + 3)
+            for d in range(days)
+            for w in range(n)
+        ),
+        name="no_depot_outflow",
+    )
+    model.addConstrs(
+        (alpha[i, d, w] == 0 for i in range(m) for d in range(days) for w in range(n)),
+        name="no_depot_alpha",
+    )
+    model.addConstrs(
+        (beta[i, d, w] == 0 for i in range(m) for d in range(days) for w in range(n)),
+        name="no_depot_beta",
+    )
+
+
 
 def add_discrete_time_constraints(model: gp.Model, problem_data: ProblemData, t):
     """
