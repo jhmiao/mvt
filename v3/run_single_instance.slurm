@@ -23,8 +23,9 @@ source "$(conda info --base)/etc/profile.d/conda.sh"
 # -------------------------
 # Paths
 # -------------------------
-PROJECT_ROOT=/project2/ssuen_1733/mvt/v3
-OUTPUT_ROOT=/project2/ssuen_1733/output/v3
+REPO_ROOT=/project2/ssuen_1733/mvt
+PROJECT_ROOT="$REPO_ROOT/v3"
+OUTPUT_ROOT="$PROJECT_ROOT/outputs/weeks"
 
 mkdir -p "$OUTPUT_ROOT"
 
@@ -50,30 +51,79 @@ EOF
 # -------------------------
 # Run
 # -------------------------
-cd "$PROJECT_ROOT"
-echo "[$(date)] Starting run_single_instance on $(hostname)"
+cd "$REPO_ROOT"
+echo "[$(date)] Starting 4-week experiments on $(hostname)"
 
-# Select instance/type; override via env vars if desired
-INSTANCE="${INSTANCE:-c101}"
-EVENT_TYPE="${EVENT_TYPE:-Even}"
-WORK_LIMIT="${WORK_LIMIT:-}"   # set empty to disable
-TIME_LIMIT="${TIME_LIMIT:-120}"      # seconds; leave empty to disable
+INSTANCES=(
+  c101_Even_5p0std_seed42
+  c101_Even_5p0std_seed43
+  c101_Even_5p0std_seed44
+  c101_Even_5p0std_seed45
+)
+
+RUN_NAME=c101_even_4week
+TIME_LIMIT=300
+WARM_START_AFTER=30
+WARM_START_DIR=v3/outputs/weeks/c101_even_4week
+WORKLOAD_PENALTY_WEIGHT=1
+LEADERS_PENALTY_WEIGHT=10
 GUROBI_OUTPUT="${GUROBI_OUTPUT:-0}"
 
-EXTRA_ARGS=()
-if [ -n "$TIME_LIMIT" ]; then
-  EXTRA_ARGS+=(--time-limit "$TIME_LIMIT")
-fi
-if [ -n "$WORK_LIMIT" ]; then
-  EXTRA_ARGS+=(--work-limit "$WORK_LIMIT")
-fi
+run_4week() {
+  echo "[$(date)] Running: $*"
+  "$ENV_PY" "$@"
+}
 
-"$ENV_PY" -m src.experiments.run_single_instance \
-  --project-root "$PROJECT_ROOT" \
-  --output-root "$OUTPUT_ROOT" \
-  --instance "$INSTANCE" \
-  --event-type "$EVENT_TYPE" \
-  --gurobi-output "$GUROBI_OUTPUT" \
-  "${EXTRA_ARGS[@]}"
+# Baseline run. This saves the per-week variable files used as warm starts.
+run_4week v3/src/experiments/run_4week_instance.py \
+  --instances "${INSTANCES[@]}" \
+  --run-name "$RUN_NAME" \
+  --time-limit "$TIME_LIMIT" \
+  --warm-start-dir "$WARM_START_DIR" \
+  --warm-start-after "$WARM_START_AFTER" \
+  --gurobi-output "$GUROBI_OUTPUT"
 
-echo "[$(date)] Finished run_single_instance"
+for LEADERS_FAIRNESS_TYPE in count day; do
+  # Weekly workload fairness + weekly leader fairness.
+  run_4week v3/src/experiments/run_4week_instance.py \
+    --instances "${INSTANCES[@]}" \
+    --run-name "$RUN_NAME" \
+    --time-limit "$TIME_LIMIT" \
+    --warm-start-dir "$WARM_START_DIR" \
+    --warm-start-after "$WARM_START_AFTER" \
+    --gurobi-output "$GUROBI_OUTPUT" \
+    --include-weekly-fairness-penalty-hours \
+    --include-weekly-fairness-penalty-leaders \
+    --leaders-fairness-type "$LEADERS_FAIRNESS_TYPE" \
+    --workload-penalty-weight "$WORKLOAD_PENALTY_WEIGHT" \
+    --leaders-penalty-weight "$LEADERS_PENALTY_WEIGHT"
+
+  # Weekly workload fairness + running leader fairness.
+  run_4week v3/src/experiments/run_4week_instance.py \
+    --instances "${INSTANCES[@]}" \
+    --run-name "$RUN_NAME" \
+    --time-limit "$TIME_LIMIT" \
+    --warm-start-dir "$WARM_START_DIR" \
+    --warm-start-after "$WARM_START_AFTER" \
+    --gurobi-output "$GUROBI_OUTPUT" \
+    --include-weekly-fairness-penalty-hours \
+    --include-running-fairness-penalty \
+    --leaders-fairness-type "$LEADERS_FAIRNESS_TYPE" \
+    --workload-penalty-weight "$WORKLOAD_PENALTY_WEIGHT" \
+    --leaders-penalty-weight "$LEADERS_PENALTY_WEIGHT"
+
+  # Weekly workload fairness only.
+  run_4week v3/src/experiments/run_4week_instance.py \
+    --instances "${INSTANCES[@]}" \
+    --run-name "$RUN_NAME" \
+    --time-limit "$TIME_LIMIT" \
+    --warm-start-dir "$WARM_START_DIR" \
+    --warm-start-after "$WARM_START_AFTER" \
+    --gurobi-output "$GUROBI_OUTPUT" \
+    --include-weekly-fairness-penalty-hours \
+    --leaders-fairness-type "$LEADERS_FAIRNESS_TYPE" \
+    --workload-penalty-weight "$WORKLOAD_PENALTY_WEIGHT" \
+    --leaders-penalty-weight "$LEADERS_PENALTY_WEIGHT"
+done
+
+echo "[$(date)] Finished 4-week experiments"
