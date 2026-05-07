@@ -1,0 +1,61 @@
+\begin{thebibliography}{10}
+
+\bibitem{goalprog2020}
+A goal programming approach to nurse scheduling.
+\newblock {\em Mathematical Problems in Engineering}, 2020.
+
+\bibitem{fikar2017review}
+Christian Fikar and Patrick Hirsch.
+\newblock Home health care routing and scheduling: A review.
+\newblock {\em Computers \& Operations Research}, 2017.
+
+\bibitem{gerlach2025fairness}
+M.~Gerlach.
+\newblock Exploring nurse perspectives on ai-based shift scheduling for fairness.
+\newblock {\em Healthcare}, 2025.
+
+\bibitem{khodabandeh2021biobjective}
+P.~Khodabandeh.
+\newblock A bi-objective home health care routing and scheduling problem.
+\newblock {\em International Journal of Environmental Research and Public Health}, 2021.
+
+\bibitem{kordi2023multiobjective}
+G.~Kordi.
+\newblock Multi-objective home health care routing.
+\newblock {\em Operational Research in Healthcare}, 2023.
+
+\bibitem{krityakierne2022npr}
+T.~Krityakierne.
+\newblock Nurse-patient relationship in multi-period home health care.
+\newblock {\em PLOS ONE}, 2022.
+
+\bibitem{ma2025hhcrsp}
+Xiaomeng et~al. Ma.
+\newblock Multi-objective home health care routing and scheduling problem.
+\newblock {\em Computers \& Operations Research}, 2025.
+
+\bibitem{parreno2024phhcrsp}
+Carlos Parre{\~n}o-Torres.
+\newblock Solving the palliative home health care routing and scheduling problem with an integer linear programming model.
+\newblock {\em Expert Systems with Applications}, 2024.
+
+\bibitem{torres2026multiobjective}
+A.F. Torres-Ramos.
+\newblock A multi-objective approach for nurse scheduling.
+\newblock {\em Expert Systems with Applications}, 2026.
+
+\bibitem{wolbeckfairness}
+L.A. Wolbeck.
+\newblock Fairness aspects in personnel scheduling.
+
+\bibitem{yasmine2024workload}
+A.~Yasmine.
+\newblock Workload balancing for the nurse scheduling problem.
+\newblock {\em Socio-Economic Planning Sciences}, 2024.
+
+\bibitem{zhao2024weekly}
+A.~Zhao.
+\newblock Weekly home healthcare routing and scheduling.
+\newblock {\em Healthcare Optimization}, 2024.
+
+\end{thebibliography}

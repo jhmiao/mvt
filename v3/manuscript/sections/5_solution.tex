@@ -1,0 +1,16 @@
+\section{Solution Approach}
+
+\subsection{Solving the Base Model}
+To solve the base model at a realistic scale and under time constraints, we introduce the following additional constraint.
+
+\paragraph{Events start at full or half hour.} Under a realistic operational setting, vaccination events only starts at half-hour or full-hours. Hence, we add these constraints.
+\begin{align}
+    t_{id} = 30 \cdot b_{id}, \quad b_{id} \in \mathbb{N} \quad \forall \ i\in\mathcal{I}, d\in\mathcal{D}
+\end{align}
+
+\paragraph{Events has one feasible day.} In the real operational setting, the venue requesting a vaccination event will pick the one day that they prefer the most. This essentially fixes $s_{id}$ and makes the weekly problem decomposable by day. 
+
+\subsection{Solving the Fairness Model}
+Note that the problem is decomposable by day except $H_{\max}, H_{\min}, L_w$. 
+
+

@@ -1,0 +1,11 @@
+event_id,fixed_day,reason,final_score
+0,1,rule2_largest_gap,1.0
+1,4,rule2_largest_gap,1.0
+2,4,rule1_exact_one,1.0
+3,0,rule1_exact_one,1.0
+4,0,rule2_largest_gap,1.0
+5,2,rule2_largest_gap,1.0
+6,2,rule2_largest_gap,1.0
+7,2,rule1_exact_one,1.0
+8,2,rule2_largest_gap,1.0
+9,1,rule2_largest_gap,1.0

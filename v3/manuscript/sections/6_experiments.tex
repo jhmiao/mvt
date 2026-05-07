@@ -1,0 +1,45 @@
+\section{Computational Experiments}
+
+\section{Fairness Experiments}
+
+The goal of these experiments is to compare model performance under different fairness criteria. 
+Our baseline model ($M0$) considers no explicit fairness terms and simply minimizes the total travel cost.
+
+The second model ($M1$) incorporates \emph{myopic fairness}. In addition to minimizing travel cost, it includes penalty terms that encourage fairness within a single week.
+
+The third model ($M2$) considers \emph{cumulative fairness}. Instead of evaluating fairness only within the current week, it also accounts for fairness accumulated over previous weeks.
+
+Conceptually, the goal is to test the following hypothesis: if we allow a small increase in total travel cost and evaluate fairness over a longer time horizon, the resulting schedules are significantly more balanced across nurses. In particular, we want to see whether the cumulative fairness approach outperforms the myopic model in the long run.
+
+\subsection{Experimental Design}
+
+We use the Solomon dataset as the base instance, with evenly distributed time windows (10 events per day). Nurse home locations and the depot location are fixed.
+
+For each simulated week, event locations are randomized by adding noise to the original Solomon coordinates. This simulates the realistic situation where events tend to cluster around certain geographic centers but vary from week to week.
+
+Event time windows, service durations, and nurse requirements will also be randomized within reasonable ranges.
+
+In later experiments, we will also test different spatial distributions of events (e.g., more clustered vs.\ more dispersed instances).
+
+\subsection{Fairness Objectives}
+
+Based on feedback from nurses and our understanding of the operational setting, we may consider the following fairness metrics:
+
+\begin{itemize}
+    \item \textbf{Total working hours} (more hours correspond to more pay)
+    \item \textbf{Total travel time}
+    % \item \textbf{Travel-to-work ratio} (important because nurses are not paid for travel time)
+    \item \textbf{Number of times assigned as leader} (nurses generally prefer not to be the leader)
+    % \item \textbf{Secondary metric:} assignment to the best or worst possible events, etc.
+\end{itemize}
+
+The cumulative model ($M2$) incorporates fairness measures accumulated across previous weeks, allowing the model to compensate for past imbalances when generating future schedules.
+
+Specifically, the objective functions are as follows:
+\begin{align*}
+    (M0) & \quad \text{total travel cost} \\
+    (M1) & \quad \text{total travel cost} + \lambda * (\text{max hours assigned - min hours assigned})\\
+    (M2) & \quad \text{total travel cost} + \lambda_w * \text{Penalty}_w * \text{Hours}_w\\
+    (M3) & \quad \text{total travel cost} + \lambda_w * \text{Penalty}_w * \text{Hours}_w + \mu_w \cdot \text{leader count $w$}\\
+\end{align*}
+

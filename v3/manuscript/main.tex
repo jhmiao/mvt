@@ -1,0 +1,48 @@
+\documentclass[11pt]{article}
+
+% Load packages and custom commands
+\input{preamble}
+
+\title{Mobile Vaccination Team Weekly Scheduling and Routing with Long-Term Fairness Considerations}
+\author{Jinghong Miao}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We consider the problem of multi-day scheduling and routing with multi-type, multi-nurse coordination, with depot constraints and with nurse starting and ending each day at their homes. We address the gap in existing vehicle routing problem and workforce scheduling literature that 1) ignores nurses traveling from homes, and 2) ignores multi-period fairness. Our method uses a mixed-integer linear programming formulation for the weekly integrated problem along with both myopic and cumulative fairness modeling. We solve this problem using decomposition methods and heuristics. Our results show that with a small increase in travel cost we can achieve a large fairness improvement in both myopic and cumulative. In summary, our contribution is in developing a model for weekly routing and scheduling for home-based nurses with fairness consideration, and developing an fast algorithm suitable for this problem at a realistic scale. This provides a practical framework for the operation of mobile vaccination teams. 
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+% Sections
+% \input{sections/introduction}
+% \input{sections/problem_formulation}
+% \input{sections/methodology}
+% \input{sections/experiments}
+% \input{sections/results}
+% \input{sections/conclusion}
+
+
+\input{sections/1_introduction}
+\input{sections/2_lit_review}
+\input{sections/3_problem_description}
+\input{sections/4_formulation}
+\input{sections/5_solution}
+\input{sections/6_experiments}
+
+\input{tables/example_table}
+% Bibliography
+
+
+\bibliographystyle{plain}   % or journal style
+\bibliography{references}
+
+% Appendix
+\appendix
+% \input{appendix/appendixA}
+
+\end{document}

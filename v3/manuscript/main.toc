@@ -1,0 +1,36 @@
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {section}{\numberline {2}Literature Review}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Vehicle Routing with Workforce Considerations}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Multi-Period Routing and Scheduling}{3}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Fairness in Workforce Scheduling and Routing}{3}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Research Gap and Contribution}{4}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Problem Description}{4}{section.3}%
+\contentsline {section}{\numberline {4}Problem Formulation}{4}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Base Model M0}{4}{subsection.4.1}%
+\contentsline {paragraph}{Model Overview}{4}{section*.2}%
+\contentsline {paragraph}{Sets}{5}{section*.3}%
+\contentsline {paragraph}{Parameters}{5}{section*.4}%
+\contentsline {paragraph}{Decision Variables}{5}{section*.5}%
+\contentsline {paragraph}{Objective Function}{5}{section*.6}%
+\contentsline {paragraph}{Constraints}{5}{section*.7}%
+\contentsline {subparagraph}{Event Assignment Constraints}{5}{section*.8}%
+\contentsline {subparagraph}{Routing Flow Constraints}{6}{section*.9}%
+\contentsline {subparagraph}{Time Feasibility Constraints}{6}{section*.10}%
+\contentsline {subparagraph}{Staffing Constraints}{6}{section*.11}%
+\contentsline {subparagraph}{Depot Constraints}{6}{section*.12}%
+\contentsline {paragraph}{Discussion}{6}{section*.13}%
+\contentsline {subsection}{\numberline {4.2}Fairness Model}{6}{subsection.4.2}%
+\contentsline {paragraph}{Auxiliary Quantities}{7}{section*.14}%
+\contentsline {paragraph}{Model M1 (Workload Fairness)}{7}{section*.15}%
+\contentsline {subsubsection}{\numberline {4.2.1}Long-term Fairness Model}{7}{subsubsection.4.2.1}%
+\contentsline {paragraph}{Model M2 (Long-Term Fairness with Leadership)}{7}{section*.16}%
+\contentsline {subsection}{\numberline {4.3}Discussion}{8}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Solution Approach}{8}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Solving the Base Model}{8}{subsection.5.1}%
+\contentsline {paragraph}{Events start at full or half hour.}{8}{section*.17}%
+\contentsline {paragraph}{Events has one feasible day.}{8}{section*.18}%
+\contentsline {subsection}{\numberline {5.2}Solving the Fairness Model}{8}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Computational Experiments}{8}{section.6}%
+\contentsline {section}{\numberline {7}Fairness Experiments}{8}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Experimental Design}{8}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Fairness Objectives}{9}{subsection.7.2}%

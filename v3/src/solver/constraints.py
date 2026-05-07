@@ -109,6 +109,61 @@ def add_base_constraints(model: gp.Model, problem_data: ProblemData,
         name="home_outflow"
     )
 
+    # # depot inflow = outflow
+    # model.addConstrs(
+    #     (x[m, m+1, d, w] == gp.quicksum(x[m+1, j, d, w] for j in range(m)) for d in range(days) for w in range(n)),
+    #     name="morning_depot_flow"
+    # )
+
+    # model.addConstrs(
+    #     (x[m+2, m, d, w] == gp.quicksum(x[j, m+2, d, w] for j in range(m)) for d in range(days) for w in range(n)),
+    #     name="evening_depot_flow"
+    # )
+    
+    # # team leader: exactly one pick up and one drop off leader for each event
+    # model.addConstrs(
+    #     (gp.quicksum(alpha[j, d, w] for w in range(n) for d in range(days)) == 1 for j in range(m)),
+    #     name="pick_up_leader"
+    # )
+
+    # model.addConstrs(
+    #     (gp.quicksum(beta[j, d, w] for w in range(n) for d in range(days)) == 1 for j in range(m)),
+    #     name="drop_off_leader"
+    # )
+
+    # # make leader the same person: alpha[j,d,w] = beta[j,d,w] for all j,d,w
+    # model.addConstrs(
+    #     (alpha[j, d, w] == beta[j, d, w] for j in range(m) for d in range(days) for w in range(n)),
+    #     name="same_leader_alpha_beta"
+    # )
+
+    # # team leader goes to the event
+    # model.addConstrs(
+    #     (alpha[j, d, w] <= gp.quicksum(x[i, j, d, w] for i in range(m+3)) for j in range(m) for d in range(days) for w in range(n)),
+    #     name="pick_up_leader_event"
+    # )
+
+    # model.addConstrs(
+    #     (beta[j, d, w] <= gp.quicksum(x[i, j, d, w] for i in range(m+3)) for j in range(m) for d in range(days) for w in range(n)),
+    #     name="drop_off_leader_event"
+    # )
+
+    # # pick up leader goes from home to depot to their first event
+    # # drop off leader goes from their last event to depot to home
+    # model.addConstrs(
+    #     (gp.quicksum(alpha[j, d, w] for j in range(m)) <= 5 * x[m, m+1, d, w] for d in range(days) for w in range(n)),
+    #     name="pick_up_leader_home_depot"
+    # )
+
+    # model.addConstrs(
+    #     (gp.quicksum(beta[j, d, w] for j in range(m)) <= 5 * x[m+2, m, d, w] for d in range(days) for w in range(n)),
+    #     name="drop_off_leader_depot_home"
+    # )
+
+def add_depot_constraints(model: gp.Model, problem_data: ProblemData, x, alpha, beta):
+    m = problem_data.total_event
+    n = problem_data.total_nurse
+    days = problem_data.total_day
     # depot inflow = outflow
     model.addConstrs(
         (x[m, m+1, d, w] == gp.quicksum(x[m+1, j, d, w] for j in range(m)) for d in range(days) for w in range(n)),
@@ -159,6 +214,7 @@ def add_base_constraints(model: gp.Model, problem_data: ProblemData,
         (gp.quicksum(beta[j, d, w] for j in range(m)) <= 5 * x[m+2, m, d, w] for d in range(days) for w in range(n)),
         name="drop_off_leader_depot_home"
     )
+
 
 
 def add_discrete_time_constraints(model: gp.Model, problem_data: ProblemData, t):

@@ -1,0 +1,3407 @@
+{
+  "status": 2,
+  "runtime": 0.45783305168151855,
+  "obj_val": 16949.845790209787,
+  "obj_bound": 16949.845790209787,
+  "mip_gap": null,
+  "node_count": 0,
+  "event_schedule": [
+    {
+      "event": 0,
+      "day": 0,
+      "time_slot": 19
+    },
+    {
+      "event": 7,
+      "day": 0,
+      "time_slot": 30
+    },
+    {
+      "event": 8,
+      "day": 2,
+      "time_slot": 29
+    },
+    {
+      "event": 10,
+      "day": 2,
+      "time_slot": 19
+    },
+    {
+      "event": 11,
+      "day": 1,
+      "time_slot": 19
+    },
+    {
+      "event": 13,
+      "day": 1,
+      "time_slot": 23
+    },
+    {
+      "event": 15,
+      "day": 0,
+      "time_slot": 19
+    },
+    {
+      "event": 16,
+      "day": 2,
+      "time_slot": 30
+    },
+    {
+      "event": 20,
+      "day": 3,
+      "time_slot": 19
+    },
+    {
+      "event": 27,
+      "day": 3,
+      "time_slot": 32
+    },
+    {
+      "event": 28,
+      "day": 0,
+      "time_slot": 26
+    },
+    {
+      "event": 29,
+      "day": 2,
+      "time_slot": 26
+    },
+    {
+      "event": 33,
+      "day": 3,
+      "time_slot": 19
+    },
+    {
+      "event": 34,
+      "day": 3,
+      "time_slot": 24
+    },
+    {
+      "event": 35,
+      "day": 4,
+      "time_slot": 19
+    },
+    {
+      "event": 36,
+      "day": 3,
+      "time_slot": 24
+    },
+    {
+      "event": 37,
+      "day": 3,
+      "time_slot": 27
+    },
+    {
+      "event": 41,
+      "day": 3,
+      "time_slot": 28
+    },
+    {
+      "event": 45,
+      "day": 0,
+      "time_slot": 30
+    }
+  ],
+  "selected_routes": [
+    {
+      "nurse": 1,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 2,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 3,
+      "day": 0,
+      "route_index": 20,
+      "visits": [
+        {
+          "event": 19,
+          "day": 0,
+          "time_slot": 21
+        }
+      ],
+      "cost": 100.0,
+      "work": 360,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 4,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 5,
+      "day": 0,
+      "route_index": 24,
+      "visits": [
+        {
+          "event": 0,
+          "day": 0,
+          "time_slot": 19
+        },
+        {
+          "event": 7,
+          "day": 0,
+          "time_slot": 30
+        }
+      ],
+      "cost": 152.0,
+      "work": 450,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 6,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 7,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 8,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 9,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 10,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 11,
+      "day": 0,
+      "route_index": 64,
+      "visits": [
+        {
+          "event": 19,
+          "day": 0,
+          "time_slot": 19
+        }
+      ],
+      "cost": 98.0,
+      "work": 360,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 12,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 13,
+      "day": 0,
+      "route_index": 81,
+      "visits": [
+        {
+          "event": 15,
+          "day": 0,
+          "time_slot": 19
+        },
+        {
+          "event": 28,
+          "day": 0,
+          "time_slot": 26
+        }
+      ],
+      "cost": 128.0,
+      "work": 450,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 14,
+      "day": 0,
+      "route_index": 11,
+      "visits": [
+        {
+          "event": 0,
+          "day": 0,
+          "time_slot": 19
+        },
+        {
+          "event": 7,
+          "day": 0,
+          "time_slot": 30
+        }
+      ],
+      "cost": 156.0,
+      "work": 450,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 15,
+      "day": 0,
+      "route_index": 19,
+      "visits": [
+        {
+          "event": 0,
+          "day": 0,
+          "time_slot": 19
+        },
+        {
+          "event": 7,
+          "day": 0,
+          "time_slot": 30
+        }
+      ],
+      "cost": 158.0,
+      "work": 450,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 16,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 17,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 18,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 19,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 20,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 21,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 22,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 23,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 24,
+      "day": 0,
+      "route_index": 30,
+      "visits": [
+        {
+          "event": 19,
+          "day": 0,
+          "time_slot": 19
+        }
+      ],
+      "cost": 100.0,
+      "work": 360,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 25,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 26,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 27,
+      "day": 0,
+      "route_index": 115,
+      "visits": [
+        {
+          "event": 19,
+          "day": 0,
+          "time_slot": 21
+        }
+      ],
+      "cost": 96.0,
+      "work": 360,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 28,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 29,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 30,
+      "day": 0,
+      "route_index": 101,
+      "visits": [
+        {
+          "event": 28,
+          "day": 0,
+          "time_slot": 19
+        },
+        {
+          "event": 15,
+          "day": 0,
+          "time_slot": 29
+        }
+      ],
+      "cost": 178.0,
+      "work": 450,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 32,
+      "day": 0,
+      "route_index": 82,
+      "visits": [
+        {
+          "event": 15,
+          "day": 0,
+          "time_slot": 19
+        },
+        {
+          "event": 28,
+          "day": 0,
+          "time_slot": 26
+        }
+      ],
+      "cost": 172.0,
+      "work": 450,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 33,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 34,
+      "day": 0,
+      "route_index": 112,
+      "visits": [
+        {
+          "event": 0,
+          "day": 0,
+          "time_slot": 19
+        },
+        {
+          "event": 45,
+          "day": 0,
+          "time_slot": 30
+        }
+      ],
+      "cost": 173.0,
+      "work": 450,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 35,
+      "day": 0,
+      "route_index": 56,
+      "visits": [
+        {
+          "event": 15,
+          "day": 0,
+          "time_slot": 19
+        },
+        {
+          "event": 28,
+          "day": 0,
+          "time_slot": 26
+        }
+      ],
+      "cost": 166.0,
+      "work": 450,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 36,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 37,
+      "day": 0,
+      "route_index": 159,
+      "visits": [
+        {
+          "event": 0,
+          "day": 0,
+          "time_slot": 19
+        },
+        {
+          "event": 7,
+          "day": 0,
+          "time_slot": 30
+        }
+      ],
+      "cost": 182.0,
+      "work": 450,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 38,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 39,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 40,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 41,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 42,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 43,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 44,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 45,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 46,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 47,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 48,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 49,
+      "day": 0,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 0,
+      "day": 1,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 2,
+      "day": 1,
+      "route_index": 402,
+      "visits": [
+        {
+          "event": 43,
+          "day": 1,
+          "time_slot": 22
+        },
+        {
+          "event": 48,
+          "day": 1,
+          "time_slot": 29
+        }
+      ],
+      "cost": 123.0,
+      "work": 330,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 3,
+      "day": 1,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 4,
+      "day": 1,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 5,
+      "day": 1,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 6,
+      "day": 1,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 7,
+      "day": 1,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 11,
+      "day": 1,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 12,
+      "day": 1,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 13,
+      "day": 1,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 14,
+      "day": 1,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 15,
+      "day": 1,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 16,
+      "day": 1,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 17,
+      "day": 1,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 18,
+      "day": 1,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 19,
+      "day": 1,
+      "route_index": 483,
+      "visits": [
+        {
+          "event": 18,
+          "day": 1,
+          "time_slot": 20
+        },
+        {
+          "event": 38,
+          "day": 1,
+          "time_slot": 34
+        }
+      ],
+      "cost": 118.0,
+      "work": 390,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 20,
+      "day": 1,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 21,
+      "day": 1,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 22,
+      "day": 1,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 23,
+      "day": 1,
+      "route_index": 29,
+      "visits": [
+        {
+          "event": 38,
+          "day": 1,
+          "time_slot": 19
+        },
+        {
+          "event": 18,
+          "day": 1,
+          "time_slot": 23
+        }
+      ],
+      "cost": 124.0,
+      "work": 390,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 27,
+      "day": 1,
+      "route_index": 328,
+      "visits": [
+        {
+          "event": 47,
+          "day": 1,
+          "time_slot": 22
+        },
+        {
+          "event": 48,
+          "day": 1,
+          "time_slot": 29
+        }
+      ],
+      "cost": 115.0,
+      "work": 330,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 29,
+      "day": 1,
+      "route_index": 81,
+      "visits": [
+        {
+          "event": 47,
+          "day": 1,
+          "time_slot": 19
+        },
+        {
+          "event": 48,
+          "day": 1,
+          "time_slot": 30
+        }
+      ],
+      "cost": 113.0,
+      "work": 330,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 30,
+      "day": 1,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 31,
+      "day": 1,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 32,
+      "day": 1,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 33,
+      "day": 1,
+      "route_index": 13,
+      "visits": [
+        {
+          "event": 43,
+          "day": 1,
+          "time_slot": 22
+        },
+        {
+          "event": 48,
+          "day": 1,
+          "time_slot": 29
+        }
+      ],
+      "cost": 121.0,
+      "work": 330,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 34,
+      "day": 1,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 35,
+      "day": 1,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 36,
+      "day": 1,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 37,
+      "day": 1,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 38,
+      "day": 1,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 39,
+      "day": 1,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 40,
+      "day": 1,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 42,
+      "day": 1,
+      "route_index": 371,
+      "visits": [
+        {
+          "event": 13,
+          "day": 1,
+          "time_slot": 22
+        }
+      ],
+      "cost": 74.0,
+      "work": 360,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 43,
+      "day": 1,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 44,
+      "day": 1,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 45,
+      "day": 1,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 47,
+      "day": 1,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 48,
+      "day": 1,
+      "route_index": 195,
+      "visits": [
+        {
+          "event": 18,
+          "day": 1,
+          "time_slot": 20
+        },
+        {
+          "event": 38,
+          "day": 1,
+          "time_slot": 34
+        }
+      ],
+      "cost": 146.0,
+      "work": 390,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 49,
+      "day": 1,
+      "route_index": 493,
+      "visits": [
+        {
+          "event": 11,
+          "day": 1,
+          "time_slot": 19
+        },
+        {
+          "event": 13,
+          "day": 1,
+          "time_slot": 23
+        }
+      ],
+      "cost": 106.0,
+      "work": 420,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 0,
+      "day": 2,
+      "route_index": 81,
+      "visits": [
+        {
+          "event": 21,
+          "day": 2,
+          "time_slot": 21
+        },
+        {
+          "event": 8,
+          "day": 2,
+          "time_slot": 29
+        }
+      ],
+      "cost": 160.0,
+      "work": 360,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 1,
+      "day": 2,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 4,
+      "day": 2,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 5,
+      "day": 2,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 6,
+      "day": 2,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 7,
+      "day": 2,
+      "route_index": 356,
+      "visits": [
+        {
+          "event": 10,
+          "day": 2,
+          "time_slot": 19
+        },
+        {
+          "event": 16,
+          "day": 2,
+          "time_slot": 30
+        }
+      ],
+      "cost": 159.0,
+      "work": 450,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 12,
+      "day": 2,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 13,
+      "day": 2,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 14,
+      "day": 2,
+      "route_index": 164,
+      "visits": [
+        {
+          "event": 10,
+          "day": 2,
+          "time_slot": 19
+        },
+        {
+          "event": 16,
+          "day": 2,
+          "time_slot": 30
+        }
+      ],
+      "cost": 165.0,
+      "work": 450,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 15,
+      "day": 2,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 16,
+      "day": 2,
+      "route_index": 486,
+      "visits": [
+        {
+          "event": 24,
+          "day": 2,
+          "time_slot": 19
+        },
+        {
+          "event": 29,
+          "day": 2,
+          "time_slot": 26
+        }
+      ],
+      "cost": 130.0,
+      "work": 450,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 17,
+      "day": 2,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 19,
+      "day": 2,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 20,
+      "day": 2,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 21,
+      "day": 2,
+      "route_index": 288,
+      "visits": [
+        {
+          "event": 24,
+          "day": 2,
+          "time_slot": 19
+        },
+        {
+          "event": 29,
+          "day": 2,
+          "time_slot": 26
+        }
+      ],
+      "cost": 138.0,
+      "work": 450,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 22,
+      "day": 2,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 23,
+      "day": 2,
+      "route_index": 278,
+      "visits": [
+        {
+          "event": 6,
+          "day": 2,
+          "time_slot": 19
+        },
+        {
+          "event": 8,
+          "day": 2,
+          "time_slot": 29
+        }
+      ],
+      "cost": 122.0,
+      "work": 360,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 24,
+      "day": 2,
+      "route_index": 493,
+      "visits": [
+        {
+          "event": 49,
+          "day": 2,
+          "time_slot": 20
+        },
+        {
+          "event": 10,
+          "day": 2,
+          "time_slot": 25
+        }
+      ],
+      "cost": 148.0,
+      "work": 360,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 25,
+      "day": 2,
+      "route_index": 150,
+      "visits": [
+        {
+          "event": 32,
+          "day": 2,
+          "time_slot": 20
+        },
+        {
+          "event": 39,
+          "day": 2,
+          "time_slot": 25
+        }
+      ],
+      "cost": 122.0,
+      "work": 300,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 26,
+      "day": 2,
+      "route_index": 162,
+      "visits": [
+        {
+          "event": 10,
+          "day": 2,
+          "time_slot": 20
+        }
+      ],
+      "cost": 102.0,
+      "work": 300,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 27,
+      "day": 2,
+      "route_index": 486,
+      "visits": [
+        {
+          "event": 39,
+          "day": 2,
+          "time_slot": 23
+        },
+        {
+          "event": 32,
+          "day": 2,
+          "time_slot": 31
+        }
+      ],
+      "cost": 126.0,
+      "work": 300,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 28,
+      "day": 2,
+      "route_index": 232,
+      "visits": [
+        {
+          "event": 21,
+          "day": 2,
+          "time_slot": 19
+        },
+        {
+          "event": 17,
+          "day": 2,
+          "time_slot": 27
+        }
+      ],
+      "cost": 127.0,
+      "work": 360,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 29,
+      "day": 2,
+      "route_index": 481,
+      "visits": [
+        {
+          "event": 24,
+          "day": 2,
+          "time_slot": 23
+        },
+        {
+          "event": 32,
+          "day": 2,
+          "time_slot": 30
+        }
+      ],
+      "cost": 123.0,
+      "work": 300,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 30,
+      "day": 2,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 31,
+      "day": 2,
+      "route_index": 324,
+      "visits": [
+        {
+          "event": 10,
+          "day": 2,
+          "time_slot": 19
+        },
+        {
+          "event": 16,
+          "day": 2,
+          "time_slot": 30
+        }
+      ],
+      "cost": 203.0,
+      "work": 450,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 32,
+      "day": 2,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 34,
+      "day": 2,
+      "route_index": 154,
+      "visits": [
+        {
+          "event": 24,
+          "day": 2,
+          "time_slot": 19
+        },
+        {
+          "event": 29,
+          "day": 2,
+          "time_slot": 26
+        }
+      ],
+      "cost": 152.0,
+      "work": 450,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 35,
+      "day": 2,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 36,
+      "day": 2,
+      "route_index": 75,
+      "visits": [
+        {
+          "event": 10,
+          "day": 2,
+          "time_slot": 19
+        },
+        {
+          "event": 16,
+          "day": 2,
+          "time_slot": 30
+        }
+      ],
+      "cost": 191.0,
+      "work": 450,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 37,
+      "day": 2,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 38,
+      "day": 2,
+      "route_index": 316,
+      "visits": [
+        {
+          "event": 10,
+          "day": 2,
+          "time_slot": 19
+        },
+        {
+          "event": 16,
+          "day": 2,
+          "time_slot": 30
+        }
+      ],
+      "cost": 183.0,
+      "work": 450,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 39,
+      "day": 2,
+      "route_index": 227,
+      "visits": [
+        {
+          "event": 10,
+          "day": 2,
+          "time_slot": 19
+        },
+        {
+          "event": 49,
+          "day": 2,
+          "time_slot": 32
+        }
+      ],
+      "cost": 182.0,
+      "work": 360,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 40,
+      "day": 2,
+      "route_index": 105,
+      "visits": [
+        {
+          "event": 24,
+          "day": 2,
+          "time_slot": 20
+        },
+        {
+          "event": 21,
+          "day": 2,
+          "time_slot": 29
+        }
+      ],
+      "cost": 146.0,
+      "work": 360,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 41,
+      "day": 2,
+      "route_index": 391,
+      "visits": [
+        {
+          "event": 10,
+          "day": 2,
+          "time_slot": 20
+        },
+        {
+          "event": 49,
+          "day": 2,
+          "time_slot": 32
+        }
+      ],
+      "cost": 152.0,
+      "work": 360,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 42,
+      "day": 2,
+      "route_index": 250,
+      "visits": [
+        {
+          "event": 6,
+          "day": 2,
+          "time_slot": 21
+        },
+        {
+          "event": 8,
+          "day": 2,
+          "time_slot": 29
+        }
+      ],
+      "cost": 122.0,
+      "work": 360,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 43,
+      "day": 2,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 44,
+      "day": 2,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 45,
+      "day": 2,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 46,
+      "day": 2,
+      "route_index": 366,
+      "visits": [
+        {
+          "event": 49,
+          "day": 2,
+          "time_slot": 20
+        },
+        {
+          "event": 10,
+          "day": 2,
+          "time_slot": 24
+        }
+      ],
+      "cost": 184.0,
+      "work": 360,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 47,
+      "day": 2,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 48,
+      "day": 2,
+      "route_index": 296,
+      "visits": [
+        {
+          "event": 21,
+          "day": 2,
+          "time_slot": 21
+        },
+        {
+          "event": 17,
+          "day": 2,
+          "time_slot": 29
+        }
+      ],
+      "cost": 153.0,
+      "work": 360,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 49,
+      "day": 2,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 1,
+      "day": 3,
+      "route_index": 172,
+      "visits": [
+        {
+          "event": 36,
+          "day": 3,
+          "time_slot": 19
+        },
+        {
+          "event": 27,
+          "day": 3,
+          "time_slot": 32
+        }
+      ],
+      "cost": 113.0,
+      "work": 420,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 2,
+      "day": 3,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 3,
+      "day": 3,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 4,
+      "day": 3,
+      "route_index": 210,
+      "visits": [
+        {
+          "event": 31,
+          "day": 3,
+          "time_slot": 20
+        }
+      ],
+      "cost": 102.0,
+      "work": 420,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 5,
+      "day": 3,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 6,
+      "day": 3,
+      "route_index": 223,
+      "visits": [
+        {
+          "event": 33,
+          "day": 3,
+          "time_slot": 19
+        },
+        {
+          "event": 34,
+          "day": 3,
+          "time_slot": 24
+        }
+      ],
+      "cost": 146.0,
+      "work": 450,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 7,
+      "day": 3,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 9,
+      "day": 3,
+      "route_index": 350,
+      "visits": [
+        {
+          "event": 36,
+          "day": 3,
+          "time_slot": 20
+        }
+      ],
+      "cost": 94.0,
+      "work": 330,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 10,
+      "day": 3,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 11,
+      "day": 3,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 12,
+      "day": 3,
+      "route_index": 115,
+      "visits": [
+        {
+          "event": 20,
+          "day": 3,
+          "time_slot": 19
+        },
+        {
+          "event": 37,
+          "day": 3,
+          "time_slot": 27
+        }
+      ],
+      "cost": 141.0,
+      "work": 420,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 13,
+      "day": 3,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 14,
+      "day": 3,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 15,
+      "day": 3,
+      "route_index": 40,
+      "visits": [
+        {
+          "event": 33,
+          "day": 3,
+          "time_slot": 19
+        },
+        {
+          "event": 34,
+          "day": 3,
+          "time_slot": 24
+        }
+      ],
+      "cost": 158.0,
+      "work": 450,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 16,
+      "day": 3,
+      "route_index": 160,
+      "visits": [
+        {
+          "event": 33,
+          "day": 3,
+          "time_slot": 19
+        },
+        {
+          "event": 36,
+          "day": 3,
+          "time_slot": 24
+        }
+      ],
+      "cost": 163.0,
+      "work": 450,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 17,
+      "day": 3,
+      "route_index": 285,
+      "visits": [
+        {
+          "event": 31,
+          "day": 3,
+          "time_slot": 19
+        }
+      ],
+      "cost": 84.0,
+      "work": 420,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 18,
+      "day": 3,
+      "route_index": 408,
+      "visits": [
+        {
+          "event": 44,
+          "day": 3,
+          "time_slot": 21
+        }
+      ],
+      "cost": 94.0,
+      "work": 390,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 20,
+      "day": 3,
+      "route_index": 295,
+      "visits": [
+        {
+          "event": 27,
+          "day": 3,
+          "time_slot": 20
+        },
+        {
+          "event": 36,
+          "day": 3,
+          "time_slot": 24
+        }
+      ],
+      "cost": 163.0,
+      "work": 420,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 21,
+      "day": 3,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 22,
+      "day": 3,
+      "route_index": 386,
+      "visits": [
+        {
+          "event": 33,
+          "day": 3,
+          "time_slot": 19
+        },
+        {
+          "event": 34,
+          "day": 3,
+          "time_slot": 24
+        }
+      ],
+      "cost": 170.0,
+      "work": 450,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 23,
+      "day": 3,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 24,
+      "day": 3,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 26,
+      "day": 3,
+      "route_index": 24,
+      "visits": [
+        {
+          "event": 3,
+          "day": 3,
+          "time_slot": 20
+        },
+        {
+          "event": 5,
+          "day": 3,
+          "time_slot": 30
+        }
+      ],
+      "cost": 61.0,
+      "work": 300,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 27,
+      "day": 3,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 28,
+      "day": 3,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 30,
+      "day": 3,
+      "route_index": 303,
+      "visits": [
+        {
+          "event": 33,
+          "day": 3,
+          "time_slot": 19
+        },
+        {
+          "event": 34,
+          "day": 3,
+          "time_slot": 24
+        }
+      ],
+      "cost": 196.0,
+      "work": 450,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 31,
+      "day": 3,
+      "route_index": 217,
+      "visits": [
+        {
+          "event": 33,
+          "day": 3,
+          "time_slot": 19
+        },
+        {
+          "event": 34,
+          "day": 3,
+          "time_slot": 24
+        }
+      ],
+      "cost": 194.0,
+      "work": 450,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 32,
+      "day": 3,
+      "route_index": 156,
+      "visits": [
+        {
+          "event": 33,
+          "day": 3,
+          "time_slot": 19
+        },
+        {
+          "event": 36,
+          "day": 3,
+          "time_slot": 24
+        }
+      ],
+      "cost": 191.0,
+      "work": 450,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 33,
+      "day": 3,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 34,
+      "day": 3,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 35,
+      "day": 3,
+      "route_index": 125,
+      "visits": [
+        {
+          "event": 33,
+          "day": 3,
+          "time_slot": 19
+        },
+        {
+          "event": 34,
+          "day": 3,
+          "time_slot": 24
+        }
+      ],
+      "cost": 184.0,
+      "work": 450,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 36,
+      "day": 3,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 37,
+      "day": 3,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 38,
+      "day": 3,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 39,
+      "day": 3,
+      "route_index": 172,
+      "visits": [
+        {
+          "event": 44,
+          "day": 3,
+          "time_slot": 21
+        }
+      ],
+      "cost": 128.0,
+      "work": 390,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 40,
+      "day": 3,
+      "route_index": 223,
+      "visits": [
+        {
+          "event": 44,
+          "day": 3,
+          "time_slot": 21
+        }
+      ],
+      "cost": 110.0,
+      "work": 390,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 41,
+      "day": 3,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 42,
+      "day": 3,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 43,
+      "day": 3,
+      "route_index": 306,
+      "visits": [
+        {
+          "event": 36,
+          "day": 3,
+          "time_slot": 19
+        },
+        {
+          "event": 27,
+          "day": 3,
+          "time_slot": 32
+        }
+      ],
+      "cost": 161.0,
+      "work": 420,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 46,
+      "day": 3,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 47,
+      "day": 3,
+      "route_index": 81,
+      "visits": [
+        {
+          "event": 36,
+          "day": 3,
+          "time_slot": 20
+        },
+        {
+          "event": 27,
+          "day": 3,
+          "time_slot": 32
+        }
+      ],
+      "cost": 153.0,
+      "work": 420,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 48,
+      "day": 3,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 49,
+      "day": 3,
+      "route_index": 470,
+      "visits": [
+        {
+          "event": 3,
+          "day": 3,
+          "time_slot": 19
+        },
+        {
+          "event": 37,
+          "day": 3,
+          "time_slot": 27
+        }
+      ],
+      "cost": 149.0,
+      "work": 420,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 0,
+      "day": 4,
+      "route_index": 217,
+      "visits": [
+        {
+          "event": 40,
+          "day": 4,
+          "time_slot": 19
+        },
+        {
+          "event": 35,
+          "day": 4,
+          "time_slot": 28
+        }
+      ],
+      "cost": 113.0,
+      "work": 360,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 1,
+      "day": 4,
+      "route_index": 337,
+      "visits": [
+        {
+          "event": 22,
+          "day": 4,
+          "time_slot": 20
+        },
+        {
+          "event": 12,
+          "day": 4,
+          "time_slot": 27
+        }
+      ],
+      "cost": 98.0,
+      "work": 390,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 2,
+      "day": 4,
+      "route_index": 194,
+      "visits": [
+        {
+          "event": 26,
+          "day": 4,
+          "time_slot": 23
+        }
+      ],
+      "cost": 76.0,
+      "work": 330,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 3,
+      "day": 4,
+      "route_index": 338,
+      "visits": [
+        {
+          "event": 35,
+          "day": 4,
+          "time_slot": 19
+        },
+        {
+          "event": 40,
+          "day": 4,
+          "time_slot": 26
+        }
+      ],
+      "cost": 113.0,
+      "work": 360,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 4,
+      "day": 4,
+      "route_index": 51,
+      "visits": [
+        {
+          "event": 4,
+          "day": 4,
+          "time_slot": 21
+        },
+        {
+          "event": 12,
+          "day": 4,
+          "time_slot": 27
+        }
+      ],
+      "cost": 111.0,
+      "work": 390,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 7,
+      "day": 4,
+      "route_index": 354,
+      "visits": [
+        {
+          "event": 22,
+          "day": 4,
+          "time_slot": 20
+        },
+        {
+          "event": 30,
+          "day": 4,
+          "time_slot": 26
+        }
+      ],
+      "cost": 125.0,
+      "work": 390,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 8,
+      "day": 4,
+      "route_index": 332,
+      "visits": [
+        {
+          "event": 1,
+          "day": 4,
+          "time_slot": 20
+        }
+      ],
+      "cost": 50.0,
+      "work": 300,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 10,
+      "day": 4,
+      "route_index": 43,
+      "visits": [
+        {
+          "event": 26,
+          "day": 4,
+          "time_slot": 20
+        }
+      ],
+      "cost": 74.0,
+      "work": 330,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 11,
+      "day": 4,
+      "route_index": 120,
+      "visits": [
+        {
+          "event": 46,
+          "day": 4,
+          "time_slot": 19
+        }
+      ],
+      "cost": 86.0,
+      "work": 360,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 12,
+      "day": 4,
+      "route_index": 480,
+      "visits": [
+        {
+          "event": 9,
+          "day": 4,
+          "time_slot": 21
+        }
+      ],
+      "cost": 120.0,
+      "work": 360,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 13,
+      "day": 4,
+      "route_index": 384,
+      "visits": [
+        {
+          "event": 12,
+          "day": 4,
+          "time_slot": 19
+        },
+        {
+          "event": 4,
+          "day": 4,
+          "time_slot": 30
+        }
+      ],
+      "cost": 117.0,
+      "work": 390,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 14,
+      "day": 4,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 15,
+      "day": 4,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 16,
+      "day": 4,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 17,
+      "day": 4,
+      "route_index": 213,
+      "visits": [
+        {
+          "event": 22,
+          "day": 4,
+          "time_slot": 21
+        },
+        {
+          "event": 30,
+          "day": 4,
+          "time_slot": 27
+        }
+      ],
+      "cost": 97.0,
+      "work": 390,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 18,
+      "day": 4,
+      "route_index": 303,
+      "visits": [
+        {
+          "event": 9,
+          "day": 4,
+          "time_slot": 22
+        }
+      ],
+      "cost": 116.0,
+      "work": 360,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 19,
+      "day": 4,
+      "route_index": 266,
+      "visits": [
+        {
+          "event": 46,
+          "day": 4,
+          "time_slot": 23
+        }
+      ],
+      "cost": 90.0,
+      "work": 360,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 20,
+      "day": 4,
+      "route_index": 440,
+      "visits": [
+        {
+          "event": 22,
+          "day": 4,
+          "time_slot": 20
+        },
+        {
+          "event": 12,
+          "day": 4,
+          "time_slot": 27
+        }
+      ],
+      "cost": 148.0,
+      "work": 390,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 21,
+      "day": 4,
+      "route_index": 184,
+      "visits": [
+        {
+          "event": 1,
+          "day": 4,
+          "time_slot": 19
+        },
+        {
+          "event": 2,
+          "day": 4,
+          "time_slot": 31
+        }
+      ],
+      "cost": 128.0,
+      "work": 420,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 23,
+      "day": 4,
+      "route_index": 291,
+      "visits": [
+        {
+          "event": 9,
+          "day": 4,
+          "time_slot": 23
+        }
+      ],
+      "cost": 124.0,
+      "work": 360,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 24,
+      "day": 4,
+      "route_index": 399,
+      "visits": [
+        {
+          "event": 26,
+          "day": 4,
+          "time_slot": 23
+        }
+      ],
+      "cost": 80.0,
+      "work": 330,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 25,
+      "day": 4,
+      "route_index": 281,
+      "visits": [
+        {
+          "event": 1,
+          "day": 4,
+          "time_slot": 22
+        }
+      ],
+      "cost": 58.0,
+      "work": 300,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 26,
+      "day": 4,
+      "route_index": 260,
+      "visits": [
+        {
+          "event": 1,
+          "day": 4,
+          "time_slot": 23
+        }
+      ],
+      "cost": 54.0,
+      "work": 300,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 27,
+      "day": 4,
+      "route_index": 195,
+      "visits": [
+        {
+          "event": 1,
+          "day": 4,
+          "time_slot": 25
+        }
+      ],
+      "cost": 62.0,
+      "work": 300,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 28,
+      "day": 4,
+      "route_index": 320,
+      "visits": [
+        {
+          "event": 26,
+          "day": 4,
+          "time_slot": 20
+        }
+      ],
+      "cost": 84.0,
+      "work": 330,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 29,
+      "day": 4,
+      "route_index": 453,
+      "visits": [
+        {
+          "event": 1,
+          "day": 4,
+          "time_slot": 19
+        }
+      ],
+      "cost": 60.0,
+      "work": 300,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 30,
+      "day": 4,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 31,
+      "day": 4,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 32,
+      "day": 4,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 33,
+      "day": 4,
+      "route_index": 248,
+      "visits": [
+        {
+          "event": 1,
+          "day": 4,
+          "time_slot": 20
+        }
+      ],
+      "cost": 60.0,
+      "work": 300,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 34,
+      "day": 4,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 35,
+      "day": 4,
+      "route_index": 0,
+      "visits": [],
+      "cost": 0.0,
+      "work": 0,
+      "depot_ok": 0,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 36,
+      "day": 4,
+      "route_index": 445,
+      "visits": [
+        {
+          "event": 1,
+          "day": 4,
+          "time_slot": 19
+        },
+        {
+          "event": 2,
+          "day": 4,
+          "time_slot": 30
+        }
+      ],
+      "cost": 140.0,
+      "work": 420,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 37,
+      "day": 4,
+      "route_index": 260,
+      "visits": [
+        {
+          "event": 30,
+          "day": 4,
+          "time_slot": 19
+        },
+        {
+          "event": 35,
+          "day": 4,
+          "time_slot": 28
+        }
+      ],
+      "cost": 183.0,
+      "work": 420,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 38,
+      "day": 4,
+      "route_index": 215,
+      "visits": [
+        {
+          "event": 40,
+          "day": 4,
+          "time_slot": 19
+        },
+        {
+          "event": 30,
+          "day": 4,
+          "time_slot": 26
+        }
+      ],
+      "cost": 166.0,
+      "work": 420,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 39,
+      "day": 4,
+      "route_index": 377,
+      "visits": [
+        {
+          "event": 46,
+          "day": 4,
+          "time_slot": 23
+        }
+      ],
+      "cost": 122.0,
+      "work": 360,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 40,
+      "day": 4,
+      "route_index": 237,
+      "visits": [
+        {
+          "event": 46,
+          "day": 4,
+          "time_slot": 19
+        }
+      ],
+      "cost": 104.0,
+      "work": 360,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 42,
+      "day": 4,
+      "route_index": 214,
+      "visits": [
+        {
+          "event": 9,
+          "day": 4,
+          "time_slot": 22
+        }
+      ],
+      "cost": 124.0,
+      "work": 360,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 43,
+      "day": 4,
+      "route_index": 59,
+      "visits": [
+        {
+          "event": 12,
+          "day": 4,
+          "time_slot": 19
+        },
+        {
+          "event": 25,
+          "day": 4,
+          "time_slot": 30
+        }
+      ],
+      "cost": 137.0,
+      "work": 390,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 46,
+      "day": 4,
+      "route_index": 296,
+      "visits": [
+        {
+          "event": 35,
+          "day": 4,
+          "time_slot": 19
+        },
+        {
+          "event": 40,
+          "day": 4,
+          "time_slot": 26
+        }
+      ],
+      "cost": 149.0,
+      "work": 360,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 48,
+      "day": 4,
+      "route_index": 51,
+      "visits": [
+        {
+          "event": 9,
+          "day": 4,
+          "time_slot": 21
+        }
+      ],
+      "cost": 146.0,
+      "work": 360,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    },
+    {
+      "nurse": 49,
+      "day": 4,
+      "route_index": 13,
+      "visits": [
+        {
+          "event": 22,
+          "day": 4,
+          "time_slot": 21
+        },
+        {
+          "event": 12,
+          "day": 4,
+          "time_slot": 27
+        }
+      ],
+      "cost": 134.0,
+      "work": 390,
+      "depot_ok": 1,
+      "travel": 0.0,
+      "waiting": 0
+    }
+  ],
+  "extra": null
+}

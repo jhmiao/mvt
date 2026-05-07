@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Optional
+from typing import Literal, Optional
 
 
 @dataclass
@@ -10,10 +10,13 @@ class SolverConfig:
     backend: str = "arc"  # "arc" | "route_pool" | "cg"
     solve_by_day: bool = False
     use_warmstart: bool = False
+    include_depot: bool = True
     include_weekly_fairness_penalty_hours: bool = False
     include_weekly_fairness_penalty_leaders: bool = False
     include_running_fairness_penalty: bool = False
-    fairness_penalty_weight: float = 1.0
+    workload_penalty_weight: float = 1.0
+    leaders_penalty_weight: float = 10.0
+    leaders_fairness_type: Literal["count", "day"] = "count"
     half_hour_starts: bool = True
     enforce_max_hours: bool = False
     enforce_hour_balance: bool = False

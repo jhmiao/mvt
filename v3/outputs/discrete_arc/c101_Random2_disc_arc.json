@@ -1,0 +1,584 @@
+{
+  "status": "OPTIMAL",
+  "objective": 1144.0,
+  "assignments": {
+    "0": [
+      {
+        "from": "H",
+        "to": 9,
+        "block": 163,
+        "day": 3
+      },
+      {
+        "from": 9,
+        "to": "H",
+        "block": 190,
+        "day": 3
+      }
+    ],
+    "8": [
+      {
+        "from": "H",
+        "to": "D",
+        "block": 6,
+        "day": 0
+      },
+      {
+        "from": "D",
+        "to": 2,
+        "block": 19,
+        "day": 0
+      },
+      {
+        "from": 2,
+        "to": 0,
+        "block": 29,
+        "day": 0
+      },
+      {
+        "from": 0,
+        "to": 8,
+        "block": 34,
+        "day": 0
+      },
+      {
+        "from": 8,
+        "to": "D",
+        "block": 40,
+        "day": 0
+      },
+      {
+        "from": "D",
+        "to": "H",
+        "block": 46,
+        "day": 0
+      },
+      {
+        "from": "H",
+        "to": "D",
+        "block": 150,
+        "day": 3
+      },
+      {
+        "from": "D",
+        "to": 7,
+        "block": 163,
+        "day": 3
+      },
+      {
+        "from": 7,
+        "to": 5,
+        "block": 174,
+        "day": 3
+      },
+      {
+        "from": 5,
+        "to": "D",
+        "block": 184,
+        "day": 3
+      },
+      {
+        "from": "D",
+        "to": "H",
+        "block": 190,
+        "day": 3
+      }
+    ],
+    "9": [
+      {
+        "from": "H",
+        "to": "D",
+        "block": 150,
+        "day": 3
+      },
+      {
+        "from": "D",
+        "to": 9,
+        "block": 163,
+        "day": 3
+      },
+      {
+        "from": 9,
+        "to": "D",
+        "block": 184,
+        "day": 3
+      },
+      {
+        "from": "D",
+        "to": "H",
+        "block": 190,
+        "day": 3
+      }
+    ],
+    "17": [
+      {
+        "from": "H",
+        "to": 6,
+        "block": 115,
+        "day": 2
+      },
+      {
+        "from": 6,
+        "to": 1,
+        "block": 122,
+        "day": 2
+      },
+      {
+        "from": 1,
+        "to": "H",
+        "block": 142,
+        "day": 2
+      },
+      {
+        "from": "H",
+        "to": 5,
+        "block": 174,
+        "day": 3
+      },
+      {
+        "from": 5,
+        "to": "H",
+        "block": 190,
+        "day": 3
+      }
+    ],
+    "18": [
+      {
+        "from": "H",
+        "to": 4,
+        "block": 19,
+        "day": 0
+      },
+      {
+        "from": 4,
+        "to": 8,
+        "block": 34,
+        "day": 0
+      },
+      {
+        "from": 8,
+        "to": "D",
+        "block": 40,
+        "day": 0
+      },
+      {
+        "from": "D",
+        "to": "H",
+        "block": 46,
+        "day": 0
+      },
+      {
+        "from": "H",
+        "to": 6,
+        "block": 115,
+        "day": 2
+      },
+      {
+        "from": 6,
+        "to": 1,
+        "block": 122,
+        "day": 2
+      },
+      {
+        "from": 1,
+        "to": "H",
+        "block": 142,
+        "day": 2
+      },
+      {
+        "from": "H",
+        "to": 3,
+        "block": 163,
+        "day": 3
+      },
+      {
+        "from": 3,
+        "to": 5,
+        "block": 174,
+        "day": 3
+      },
+      {
+        "from": 5,
+        "to": "H",
+        "block": 190,
+        "day": 3
+      }
+    ],
+    "19": [
+      {
+        "from": "H",
+        "to": 4,
+        "block": 19,
+        "day": 0
+      },
+      {
+        "from": 4,
+        "to": "H",
+        "block": 46,
+        "day": 0
+      },
+      {
+        "from": "H",
+        "to": 1,
+        "block": 122,
+        "day": 2
+      },
+      {
+        "from": 1,
+        "to": "H",
+        "block": 142,
+        "day": 2
+      }
+    ],
+    "20": [
+      {
+        "from": "H",
+        "to": 6,
+        "block": 115,
+        "day": 2
+      },
+      {
+        "from": 6,
+        "to": "H",
+        "block": 142,
+        "day": 2
+      },
+      {
+        "from": "H",
+        "to": 5,
+        "block": 174,
+        "day": 3
+      },
+      {
+        "from": 5,
+        "to": "H",
+        "block": 190,
+        "day": 3
+      }
+    ],
+    "21": [
+      {
+        "from": "H",
+        "to": 5,
+        "block": 174,
+        "day": 3
+      },
+      {
+        "from": 5,
+        "to": "H",
+        "block": 190,
+        "day": 3
+      }
+    ],
+    "22": [
+      {
+        "from": "H",
+        "to": 5,
+        "block": 174,
+        "day": 3
+      },
+      {
+        "from": 5,
+        "to": "H",
+        "block": 190,
+        "day": 3
+      }
+    ],
+    "23": [
+      {
+        "from": "H",
+        "to": 6,
+        "block": 115,
+        "day": 2
+      },
+      {
+        "from": 6,
+        "to": 1,
+        "block": 122,
+        "day": 2
+      },
+      {
+        "from": 1,
+        "to": "H",
+        "block": 142,
+        "day": 2
+      },
+      {
+        "from": "H",
+        "to": 7,
+        "block": 163,
+        "day": 3
+      },
+      {
+        "from": 7,
+        "to": "H",
+        "block": 190,
+        "day": 3
+      }
+    ],
+    "24": [
+      {
+        "from": "H",
+        "to": 7,
+        "block": 163,
+        "day": 3
+      },
+      {
+        "from": 7,
+        "to": "H",
+        "block": 190,
+        "day": 3
+      }
+    ],
+    "25": [
+      {
+        "from": "H",
+        "to": 8,
+        "block": 34,
+        "day": 0
+      },
+      {
+        "from": 8,
+        "to": "H",
+        "block": 46,
+        "day": 0
+      }
+    ],
+    "26": [
+      {
+        "from": "H",
+        "to": "D",
+        "block": 6,
+        "day": 0
+      },
+      {
+        "from": "D",
+        "to": 4,
+        "block": 19,
+        "day": 0
+      },
+      {
+        "from": 4,
+        "to": 8,
+        "block": 34,
+        "day": 0
+      },
+      {
+        "from": 8,
+        "to": "H",
+        "block": 46,
+        "day": 0
+      },
+      {
+        "from": "H",
+        "to": "D",
+        "block": 102,
+        "day": 2
+      },
+      {
+        "from": "D",
+        "to": 6,
+        "block": 115,
+        "day": 2
+      },
+      {
+        "from": 6,
+        "to": 1,
+        "block": 122,
+        "day": 2
+      },
+      {
+        "from": 1,
+        "to": "D",
+        "block": 136,
+        "day": 2
+      },
+      {
+        "from": "D",
+        "to": "H",
+        "block": 142,
+        "day": 2
+      },
+      {
+        "from": "H",
+        "to": "D",
+        "block": 150,
+        "day": 3
+      },
+      {
+        "from": "D",
+        "to": 3,
+        "block": 163,
+        "day": 3
+      },
+      {
+        "from": 3,
+        "to": "D",
+        "block": 184,
+        "day": 3
+      },
+      {
+        "from": "D",
+        "to": "H",
+        "block": 190,
+        "day": 3
+      }
+    ],
+    "27": [
+      {
+        "from": "H",
+        "to": 1,
+        "block": 122,
+        "day": 2
+      },
+      {
+        "from": 1,
+        "to": "H",
+        "block": 142,
+        "day": 2
+      }
+    ],
+    "28": [
+      {
+        "from": "H",
+        "to": 2,
+        "block": 19,
+        "day": 0
+      },
+      {
+        "from": 2,
+        "to": 0,
+        "block": 29,
+        "day": 0
+      },
+      {
+        "from": 0,
+        "to": "H",
+        "block": 46,
+        "day": 0
+      },
+      {
+        "from": "H",
+        "to": 1,
+        "block": 122,
+        "day": 2
+      },
+      {
+        "from": 1,
+        "to": "H",
+        "block": 142,
+        "day": 2
+      },
+      {
+        "from": "H",
+        "to": 3,
+        "block": 163,
+        "day": 3
+      },
+      {
+        "from": 3,
+        "to": 5,
+        "block": 174,
+        "day": 3
+      },
+      {
+        "from": 5,
+        "to": "H",
+        "block": 190,
+        "day": 3
+      }
+    ],
+    "29": [
+      {
+        "from": "H",
+        "to": 2,
+        "block": 19,
+        "day": 0
+      },
+      {
+        "from": 2,
+        "to": 0,
+        "block": 29,
+        "day": 0
+      },
+      {
+        "from": 0,
+        "to": 8,
+        "block": 34,
+        "day": 0
+      },
+      {
+        "from": 8,
+        "to": "H",
+        "block": 46,
+        "day": 0
+      },
+      {
+        "from": "H",
+        "to": 1,
+        "block": 122,
+        "day": 2
+      },
+      {
+        "from": 1,
+        "to": "H",
+        "block": 142,
+        "day": 2
+      },
+      {
+        "from": "H",
+        "to": 7,
+        "block": 163,
+        "day": 3
+      },
+      {
+        "from": 7,
+        "to": "H",
+        "block": 190,
+        "day": 3
+      }
+    ],
+    "39": [
+      {
+        "from": "H",
+        "to": 9,
+        "block": 163,
+        "day": 3
+      },
+      {
+        "from": 9,
+        "to": "H",
+        "block": 190,
+        "day": 3
+      }
+    ],
+    "40": [
+      {
+        "from": "H",
+        "to": 9,
+        "block": 163,
+        "day": 3
+      },
+      {
+        "from": 9,
+        "to": "H",
+        "block": 190,
+        "day": 3
+      }
+    ],
+    "42": [
+      {
+        "from": "H",
+        "to": 9,
+        "block": 163,
+        "day": 3
+      },
+      {
+        "from": 9,
+        "to": "H",
+        "block": 190,
+        "day": 3
+      }
+    ]
+  }
+}

@@ -1,4 +1,3 @@
-from xml.parsers.expat import model
 import numpy as np
 import gurobipy as gp
 from gurobipy import GRB
@@ -50,6 +49,9 @@ def build_model(problem_data: ProblemData, config: SolverConfig) -> gp.Model:
 
     # Constraints
     add_base_constraints(model, problem_data, x, s, t, alpha, beta)
+    if config.include_depot:
+        from .constraints import add_depot_constraints
+        add_depot_constraints(model, problem_data, x, alpha, beta)
 
     if config.fixed_event_days is not None:
         if len(config.fixed_event_days) != m:
@@ -92,7 +94,9 @@ def build_model(problem_data: ProblemData, config: SolverConfig) -> gp.Model:
         include_weekly_fairness_penalty_hours=bool(config.include_weekly_fairness_penalty_hours),
         include_weekly_fairness_penalty_leaders=bool(config.include_weekly_fairness_penalty_leaders),
         include_running_fairness_penalty=bool(config.include_running_fairness_penalty),
-        fairness_penalty_weight=config.fairness_penalty_weight,
+        workload_penalty_weight=config.workload_penalty_weight,
+        leaders_penalty_weight=config.leaders_penalty_weight,
+        leaders_fairness_type=config.leaders_fairness_type,
         cumulative_state_path=config.cumulative_state_path,
     )
 

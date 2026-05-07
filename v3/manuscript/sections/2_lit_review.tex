@@ -1,0 +1,34 @@
+\section{Literature Review}
+
+\subsection{Vehicle Routing with Workforce Considerations}
+
+The Home Health Care Routing and Scheduling Problem (HHCRSP) is a prominent extension of the classical vehicle routing problem that integrates routing decisions with workforce assignment and scheduling. In this setting, nurses or caregivers must be assigned to geographically distributed service locations while respecting time windows, skill requirements, and labor constraints. As a result, HHCRSP combines elements of routing, scheduling, and personnel assignment, making it significantly more complex than standard vehicle routing problems \cite{fikar2017review,parreno2024phhcrsp}.
+
+A wide range of objectives have been considered in the HHCRSP literature, including minimizing travel cost, improving service quality, and ensuring workforce feasibility. In particular, many studies incorporate workforce-related considerations such as skill matching, synchronization of multiple caregivers, and workload balancing \cite{ma2025hhcrsp,khodabandeh2021biobjective}. Multi-objective formulations are commonly adopted, where travel efficiency is optimized jointly with workforce-related criteria \cite{kordi2023multiobjective}.
+
+Despite these advances, most HHCRSP models are inherently patient-centric, often incorporating continuity-of-care requirements that favor assigning the same caregiver to the same patient across multiple visits. In contrast, our problem focuses on assigning nurses to community vaccination events, where such continuity requirements are absent. Instead, the problem emphasizes flexible temporal assignment within a day and coordination of multiple nurses per event, which differentiates it from traditional HHCRSP formulations.
+
+\subsection{Multi-Period Routing and Scheduling}
+
+
+Multi-period extensions of HHCRSP consider planning decisions across multiple days or weeks. These problems are typically addressed using either integrated multi-period formulations or decomposition approaches that separate weekly assignment from daily routing decisions \cite{zhao2024weekly}. Such models capture temporal dependencies and allow for more realistic workforce planning.
+
+However, the focus of multi-period routing and scheduling has largely been on operational efficiency and feasibility, such as ensuring coverage and minimizing costs over time. When temporal consistency is considered, it is typically motivated by patient-related objectives, such as maintaining nurse-patient relationships \cite{krityakierne2022npr}. 
+
+In contrast, the literature has paid limited attention to worker-centric fairness across periods. In particular, there is little work on how responsibilities or burdens should be distributed among workers over time. This gap is especially relevant in settings such as vaccination operations, where repeated assignments can lead to inequities in workload or responsibilities if not properly managed.
+
+\subsection{Fairness in Workforce Scheduling and Routing}
+
+Fairness has been extensively studied in the nurse scheduling (rostering) literature, where it is recognized as a key factor affecting staff satisfaction, retention, and well-being \cite{yasmine2024workload,gerlach2025fairness}. The most common notion of fairness in this context is workload balance, which aims to distribute working hours, shifts, or tasks evenly across nurses. This is typically modeled using objectives such as minimizing the difference between maximum and minimum workload, minimizing variance, or enforcing bounds on individual workloads \cite{torres2026multiobjective}.
+
+In addition to workload balance, fairness in nurse scheduling often involves the equitable distribution of undesirable assignments, such as night shifts or weekend duties, as well as the consideration of individual preferences \cite{wolbeckfairness}. These aspects are usually incorporated as soft constraints or secondary objectives within multi-objective optimization frameworks \cite{goalprog2020}.
+
+In contrast, fairness considerations in routing problems are more limited. Existing studies primarily focus on balancing workload or travel time among workers, often by minimizing the maximum workload or equalizing route lengths \cite{kordi2023multiobjective}. While such approaches capture a notion of equity within a single planning horizon, they do not address how fairness should evolve over time.
+
+\subsection{Research Gap and Contribution}
+
+The existing literature highlights several important gaps. First, fairness in routing and scheduling is predominantly defined in terms of workload balance within a single planning period. Second, multi-period models rarely incorporate worker-centric fairness, focusing instead on operational efficiency or patient-related objectives. Third, there is little attention to role-based fairness, where different types of responsibilities (e.g., leadership or coordination roles) may impose unequal burdens on workers.
+
+This paper addresses these gaps by introducing two complementary notions of fairness in a weekly nurse routing and scheduling problem for community vaccination operations. The first is within-week workload fairness, which ensures a balanced distribution of working hours across nurses. The second is a novel notion of cumulative leadership fairness, which tracks and balances leadership assignments over time. Unlike traditional workload-based fairness, leadership fairness captures differences in responsibility rather than task quantity, and explicitly accounts for fairness accumulation across multiple planning periods.
+
+By integrating routing, scheduling, and dynamic fairness considerations into a unified deterministic mixed-integer programming framework, this work contributes to the emerging literature on workforce-centric fairness in operational decision-making.

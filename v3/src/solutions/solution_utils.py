@@ -72,6 +72,7 @@ def _compute_solution_synopsis(
     travel_cost_total = 0.0
     travel_cost_by_nurse = [0.0 for _ in range(n)]
     working_minutes_by_nurse = [0.0 for _ in range(n)]
+    leader_days_by_nurse = [0.0 for _ in range(n)]
 
     for name, val in x_vars.items():
         i, j, _d, w = _parse_indices(name)
@@ -100,6 +101,8 @@ def _compute_solution_synopsis(
 
         if j < m:
             working_minutes_by_nurse[w] += float(C_dur[j]) * float(val)
+        elif i == m and j == m + 1:
+            leader_days_by_nurse[w] += float(val)
 
     leader_count_by_nurse = [0.0 for _ in range(n)]
     for name, val in alpha_vars.items():
@@ -120,6 +123,7 @@ def _compute_solution_synopsis(
         "working_hours_by_nurse": [float(v) for v in working_hours_by_nurse],
         "travel_cost_by_nurse": [float(v) for v in travel_cost_by_nurse],
         "leader_count_by_nurse": [float(v) for v in leader_count_by_nurse],
+        "leader_days_by_nurse": [float(v) for v in leader_days_by_nurse],
     }
 
 
@@ -396,6 +400,7 @@ def merge_day_solutions(
         travel_cost_by_nurse = [0.0 for _ in range(n)]
         working_hours_by_nurse = [0.0 for _ in range(n)]
         leader_count_by_nurse = [0.0 for _ in range(n)]
+        leader_days_by_nurse = [0.0 for _ in range(n)]
 
         for sol in day_solutions:
             metrics = sol.metrics or {}
@@ -410,6 +415,9 @@ def merge_day_solutions(
             for w, v in enumerate(metrics.get("leader_count_by_nurse", [])):
                 if w < n:
                     leader_count_by_nurse[w] += float(v)
+            for w, v in enumerate(metrics.get("leader_days_by_nurse", [])):
+                if w < n:
+                    leader_days_by_nurse[w] += float(v)
 
         penalty_cost_total = (
             math.nan if math.isnan(objective_total) else float(objective_total) - float(travel_cost_total)
@@ -420,6 +428,7 @@ def merge_day_solutions(
             "working_hours_by_nurse": [float(v) for v in working_hours_by_nurse],
             "travel_cost_by_nurse": [float(v) for v in travel_cost_by_nurse],
             "leader_count_by_nurse": [float(v) for v in leader_count_by_nurse],
+            "leader_days_by_nurse": [float(v) for v in leader_days_by_nurse],
         }
 
     return MergedSolution(

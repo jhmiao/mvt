@@ -16,10 +16,22 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--time-limit", type=float, default=None, help="Gurobi TimeLimit in seconds (None to disable)")
     parser.add_argument("--gurobi-output", type=int, default=1, help="Gurobi OutputFlag (0=quiet, 1=verbose)")
     parser.add_argument(
-        "--fairness-penalty-weight",
+        "--workload-penalty-weight",
         type=float,
         default=1.0,
-        help="Weight for fairness penalty term (max_workload - min_workload).",
+        help="Weight for workload fairness penalty term.",
+    )
+    parser.add_argument(
+        "--leaders-penalty-weight",
+        type=float,
+        default=10.0,
+        help="Weight for leadership fairness penalty term.",
+    )
+    parser.add_argument(
+        "--leaders-fairness-type",
+        choices=("count", "day"),
+        default="count",
+        help="Leader fairness metric: total leader assignments or leader days.",
     )
     return parser.parse_args()
 
@@ -43,7 +55,8 @@ def main():
         save_solution_synopsis_json,
     )
 
-    data_path = project_root / "data" / "cleaned" / "weeks" / f"{args.instance}_{args.event_type}.xlsx"
+    # data_path = project_root / "data" / "cleaned" / "weeks" / f"{args.instance}_{args.event_type}.xlsx"
+    data_path = project_root / "data" / "cleaned" / f"{args.instance}_{args.event_type}.xlsx"
     if not data_path.exists():
         raise FileNotFoundError(f"Data file not found: {data_path}")
 
@@ -54,10 +67,13 @@ def main():
 
     config = SolverConfig(
         solve_by_day=False,
-        include_weekly_fairness_penalty_hours=True,
+        include_depot=False,
+        include_weekly_fairness_penalty_hours=False,
         include_weekly_fairness_penalty_leaders=False,
-        include_running_fairness_penalty=True,
-        fairness_penalty_weight=args.fairness_penalty_weight,
+        include_running_fairness_penalty=False,
+        workload_penalty_weight=args.workload_penalty_weight,
+        leaders_penalty_weight=args.leaders_penalty_weight,
+        leaders_fairness_type=args.leaders_fairness_type,
         enforce_hour_balance=False,
         use_warmstart=False,
         half_hour_starts=True,
@@ -67,7 +83,9 @@ def main():
     )
 
     solution = solve(problem, config)
-    base = output_root / f"{args.instance}_{args.event_type}_penalty{args.fairness_penalty_weight}"
+    # base = output_root / f"{args.instance}_{args.event_type}_wpen{args.workload_penalty_weight}_lpen{args.leaders_penalty_weight}"
+    base = output_root / f"{args.instance}_{args.event_type}_nodepot"
+
     # save_solution_pickle(solution, base.with_suffix(".pkl"))
     # save_solution_json(solution, base.with_suffix(".json"))
     save_solution_synopsis_json(solution, base.with_name(f"{base.name}_synopsis").with_suffix(".json"))
@@ -82,4 +100,4 @@ if __name__ == "__main__":
     main()
 
 # Example command to run:
-# python v3/src/experiments/run_single_instance.py --instance c101 --event-type Even_5p0std_seed43 --fairness-penalty-weight 1 --time-limit 120
+# python v3/src/experiments/run_single_instance.py --instance c101 --event-type Even_5p0std_seed43 --workload-penalty-weight 1 --leaders-penalty-weight 10 --time-limit 120

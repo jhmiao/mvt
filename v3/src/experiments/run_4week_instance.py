@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 from pathlib import Path
 
@@ -22,26 +23,58 @@ def parse_args() -> argparse.Namespace:
         default="4week_run",
         help="Prefix used for cumulative state and output files.",
     )
+    parser.add_argument("--sample-k", type=int, default=None, help="Optional number of events to sample from each instance.")
+    parser.add_argument("--sample-seed", type=int, default=None, help="Optional random seed for instance sampling.")
     parser.add_argument("--work-limit", type=float, default=None, help="Gurobi WorkLimit (None to disable)")
     parser.add_argument("--time-limit", type=float, default=None, help="Gurobi TimeLimit in seconds (None to disable)")
     parser.add_argument("--gurobi-output", type=int, default=1, help="Gurobi OutputFlag (0=quiet, 1=verbose)")
     parser.add_argument(
+        "--warm-start-dir",
+        type=Path,
+        default=None,
+        help="Directory containing saved <base_name>_variables.json files for warm starts.",
+    )
+    parser.add_argument(
+        "--warm-start-after",
+        type=float,
+        default=30.0,
+        help="Try a saved warm start if no feasible incumbent is found within this many seconds.",
+    )
+    parser.add_argument(
+        "--include-weekly-fairness-penalty-hours",
+        action="store_true",
+        default=False,
+        help="Enable weekly fairness penalty on hours.",
+    )
+    parser.add_argument(
+        "--include-weekly-fairness-penalty-leaders",
+        action="store_true",
+        default=False,
+        help="Enable weekly fairness penalty on leaders.",
+    )
+    parser.add_argument(
         "--include-running-fairness-penalty",
-        action=argparse.BooleanOptionalAction,
+        action="store_true",
         default=False,
         help="Enable running fairness penalty.",
     )
     parser.add_argument(
-        "--include-fairness-penalty",
-        action=argparse.BooleanOptionalAction,
-        default=False,
-        help="Enable myopic fairness penalty.",
-    )
-    parser.add_argument(
-        "--fairness-penalty-weight",
+        "--workload-penalty-weight",
         type=float,
         default=1.0,
-        help="Weight for fairness penalty term.",
+        help="Weight for workload fairness penalty term.",
+    )
+    parser.add_argument(
+        "--leaders-penalty-weight",
+        type=float,
+        default=10.0,
+        help="Weight for leadership fairness penalty term.",
+    )
+    parser.add_argument(
+        "--leaders-fairness-type",
+        choices=("count", "day"),
+        default="count",
+        help="Leader fairness metric: total leader assignments or leader days.",
     )
     return parser.parse_args()
 
@@ -55,13 +88,135 @@ def _resolve_instance_path(project_root: Path, instance_name: str) -> Path:
     return project_root / "data" / "cleaned" / "weeks" / candidate.name
 
 
-def _build_run_output_dir(output_root: Path, run_name: str, include_running: bool, include_fairness: bool) -> Path:
+def _build_run_output_dir(
+    output_root: Path,
+    run_name: str,
+    include_weekly_hours: bool,
+    include_weekly_leaders: bool,
+    include_running: bool,
+) -> Path:
     folder_parts = [run_name]
+    if include_weekly_hours:
+        folder_parts.append("weekly_hours")
+    if include_weekly_leaders:
+        folder_parts.append("weekly_leaders")
     if include_running:
         folder_parts.append("running")
-    if include_fairness:
-        folder_parts.append("myopic")
     return output_root / "_".join(folder_parts)
+
+
+def _load_week_problem(instance_path: Path, sample_k: int | None, sample_seed: int | None):
+    from src.io.data_loader import load_problem_data
+
+    problem = load_problem_data(instance_path, sample_k=sample_k, sample_seed=sample_seed)
+    if sample_k is not None:
+        print(f"Loaded {instance_path.name} with sampled events {problem.original_event_ids}")
+    return problem
+
+
+def _save_solved_variables(model, path: Path) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    sol_count = int(getattr(model, "SolCount", 0))
+    payload = {
+        "status": int(getattr(model, "Status", -1)),
+        "objective_value": None,
+        "sol_count": sol_count,
+        "variables": {},
+    }
+
+    if sol_count > 0:
+        try:
+            payload["objective_value"] = float(model.ObjVal)
+        except Exception:
+            payload["objective_value"] = None
+
+        decision_prefixes = ("x[", "s[", "t[", "alpha[", "beta[")
+        payload["variables"] = {
+            var.VarName: float(var.X)
+            for var in model.getVars()
+            if var.VarName.startswith(decision_prefixes)
+            and abs(float(var.X)) > 1e-6
+        }
+
+    with path.open("w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=2)
+
+
+def _apply_saved_warm_start(model, path: Path) -> int:
+    if not path.exists():
+        print(f"Warm start skipped; variables file not found: {path}")
+        return 0
+
+    with path.open("r", encoding="utf-8") as f:
+        payload = json.load(f)
+
+    saved_variables = payload.get("variables", {})
+    if not isinstance(saved_variables, dict):
+        raise ValueError(f"Invalid warm start variable payload in {path}")
+
+    applied = 0
+    for var in model.getVars():
+        value = saved_variables.get(var.VarName)
+        if value is None:
+            continue
+        var.Start = float(value)
+        applied += 1
+    print(f"Applied {applied} warm-start values from {path}")
+    return applied
+
+
+def _resolve_warm_start_path(
+    warm_start_dir: Path,
+    exact_path: Path,
+    run_name: str,
+    week_idx: int,
+    instance_stem: str,
+) -> Path:
+    if exact_path.exists():
+        return exact_path
+
+    patterns = [
+        f"{run_name}_week{week_idx}_{instance_stem}_wpen*_lpen*_variables.json",
+        f"{run_name}_week{week_idx}_{instance_stem}_penalty*_variables.json",
+    ]
+    candidates = []
+    for pattern in patterns:
+        candidates.extend(warm_start_dir.glob(pattern))
+    candidates = sorted(set(candidates), key=lambda p: p.stat().st_mtime, reverse=True)
+    if candidates:
+        print(f"Warm start exact file not found: {exact_path}")
+        print(f"Using matching warm start file instead: {candidates[0]}")
+        return candidates[0]
+
+    return exact_path
+
+
+def _optimize_with_saved_warm_start(model, warm_start_path: Path, trigger_seconds: float, final_time_limit: float | None):
+    if trigger_seconds is None or trigger_seconds <= 0:
+        model.optimize()
+        return model
+
+    model.Params.TimeLimit = float(trigger_seconds)
+    model.optimize()
+    has_incumbent = int(getattr(model, "SolCount", 0)) > 0
+    if not has_incumbent:
+        _apply_saved_warm_start(model, warm_start_path)
+
+    remaining_time_limit = None
+    if final_time_limit is not None:
+        remaining_time_limit = max(float(final_time_limit) - float(trigger_seconds), 0.0)
+        if remaining_time_limit <= 0:
+            return model
+        model.Params.TimeLimit = remaining_time_limit
+    else:
+        from gurobipy import GRB
+
+        model.Params.TimeLimit = GRB.INFINITY
+
+    if not has_incumbent:
+        model.reset()
+    model.optimize()
+    return model
 
 
 def main():
@@ -72,10 +227,12 @@ def main():
     run_output_dir = _build_run_output_dir(
         output_root,
         args.run_name,
+        args.include_weekly_fairness_penalty_hours,
+        args.include_weekly_fairness_penalty_leaders,
         args.include_running_fairness_penalty,
-        args.include_fairness_penalty,
     )
     run_output_dir.mkdir(parents=True, exist_ok=True)
+    warm_start_dir = (args.warm_start_dir or run_output_dir).resolve()
 
     if str(project_root) not in sys.path:
         sys.path.append(str(project_root))
@@ -86,22 +243,23 @@ def main():
         save_cumulative_state,
         update_cumulative_state_from_metrics,
     )
-    from src.io.data_loader import load_problem_data  # noqa: E402
     from src.solver.config import SolverConfig  # noqa: E402
-    from src.solver.solver_runner import solve  # noqa: E402
+    from src.solver.model_builder import build_model  # noqa: E402
+    from src.solver.solver_runner import optimize_model  # noqa: E402
     from src.solutions.io import save_solution_synopsis_json  # noqa: E402
+    from src.solutions.solution_utils import extract_solution  # noqa: E402
 
     instance_paths = [_resolve_instance_path(project_root, name) for name in args.instances]
     for instance_path in instance_paths:
         if not instance_path.exists():
             raise FileNotFoundError(f"Data file not found: {instance_path}")
 
-    first_problem = load_problem_data(instance_paths[0])
+    first_problem = _load_week_problem(instance_paths[0], args.sample_k, args.sample_seed)
     cumulative_path = run_output_dir / f"{args.run_name}_cumulative.json"
     initialize_cumulative_state(cumulative_path, first_problem.total_nurse)
 
     for week_idx, instance_path in enumerate(instance_paths, start=1):
-        problem = first_problem if week_idx == 1 else load_problem_data(instance_path)
+        problem = first_problem if week_idx == 1 else _load_week_problem(instance_path, args.sample_k, args.sample_seed)
         if problem.total_nurse != first_problem.total_nurse:
             raise ValueError(
                 f"Nurse count changed at week {week_idx}: expected {first_problem.total_nurse}, found {problem.total_nurse}"
@@ -109,10 +267,12 @@ def main():
 
         config = SolverConfig(
             solve_by_day=False,
-            include_weekly_fairness_penalty_hours=args.include_fairness_penalty,
-            include_weekly_fairness_penalty_leaders=args.include_fairness_penalty,
+            include_weekly_fairness_penalty_hours=args.include_weekly_fairness_penalty_hours,
+            include_weekly_fairness_penalty_leaders=args.include_weekly_fairness_penalty_leaders,
             include_running_fairness_penalty=args.include_running_fairness_penalty,
-            fairness_penalty_weight=args.fairness_penalty_weight,
+            workload_penalty_weight=args.workload_penalty_weight,
+            leaders_penalty_weight=args.leaders_penalty_weight,
+            leaders_fairness_type=args.leaders_fairness_type,
             enforce_hour_balance=False,
             use_warmstart=False,
             half_hour_starts=True,
@@ -122,9 +282,38 @@ def main():
             cumulative_state_path=cumulative_path,
         )
 
-        solution = solve(problem, config)
-        base_name = f"{args.run_name}_week{week_idx}_{instance_path.stem}_penalty{args.fairness_penalty_weight}"
+        base_name = (
+            f"{args.run_name}_week{week_idx}_{instance_path.stem}"
+            f"_wpen{args.workload_penalty_weight}_lpen{args.leaders_penalty_weight}"
+        )
+        model = build_model(problem, config)
+        exact_warm_start_path = warm_start_dir / f"{base_name}_variables.json"
+        warm_start_path = _resolve_warm_start_path(
+            warm_start_dir=warm_start_dir,
+            exact_path=exact_warm_start_path,
+            run_name=args.run_name,
+            week_idx=week_idx,
+            instance_stem=instance_path.stem,
+        )
+        if args.warm_start_dir is None:
+            optimize_model(model)
+        else:
+            _optimize_with_saved_warm_start(
+                model,
+                warm_start_path=warm_start_path,
+                trigger_seconds=args.warm_start_after,
+                final_time_limit=args.time_limit,
+            )
+        solution = extract_solution(model, problem)
         save_solution_synopsis_json(solution, run_output_dir / f"{base_name}.json")
+        variables_path = run_output_dir / f"{base_name}_variables.json"
+        _save_solved_variables(model, variables_path)
+
+        if solution.metrics is None:
+            raise RuntimeError(
+                f"Week {week_idx} did not produce a feasible solution; "
+                f"saved synopsis and variables to {run_output_dir}, but cumulative state was not updated."
+            )
 
         state = load_cumulative_state(cumulative_path, nurse_count=problem.total_nurse)
         updated_state = update_cumulative_state_from_metrics(state, solution.metrics)
@@ -132,7 +321,8 @@ def main():
 
         print(
             f"Week {week_idx}: solved {instance_path.name} -> "
-            f"{run_output_dir / f'{base_name}_synopsis.json'}; cumulative state updated at {cumulative_path}"
+            f"{run_output_dir / f'{base_name}_synopsis.json'}; variables saved at {variables_path}; "
+            f"cumulative state updated at {cumulative_path}"
         )
 
 
@@ -141,9 +331,11 @@ if __name__ == "__main__":
 
 
 # python v3/src/experiments/run_4week_instance.py \
-#   --instances c201_Even_5p0std_seed42 c201_Even_5p0std_seed43 c201_Even_5p0std_seed44 c201_Even_5p0std_seed45 \
-#   --run-name c201_even_4week \
-#   --time-limit 120 \
-#   --fairness-penalty-weight 1
-#   --include-fairness-penalty
-#   --include-running-fairness-penalty
+#   --instances c101_Even_5p0std_seed42 c101_Even_5p0std_seed43 c101_Even_5p0std_seed44 c101_Even_5p0std_seed45 \
+#   --run-name c101_even_4week \
+#   --time-limit 60 \
+#   --include-weekly-fairness-penalty-hours \
+#   --include-running-fairness-penalty \
+#   --leaders-fairness-type day \
+#   --workload-penalty-weight 1 \
+#   --leaders-penalty-weight 10

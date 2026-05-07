@@ -12,6 +12,7 @@ def initialize_cumulative_state(path: Path, nurse_count: int) -> dict[str, list[
         "nurse_id": list(range(nurse_count)),
         "cumu_hours": [0.0] * nurse_count,
         "cumu_leaders": [0.0] * nurse_count,
+        "cumu_leader_days": [0.0] * nurse_count,
     }
     save_cumulative_state(path, state)
     return state
@@ -63,6 +64,7 @@ def update_cumulative_state_from_metrics(
 
     hours = [float(v) for v in metrics.get("working_hours_by_nurse", [])]
     leaders = [float(v) for v in metrics.get("leader_count_by_nurse", [])]
+    leader_days = [float(v) for v in metrics.get("leader_days_by_nurse", [])]
     nurse_count = len(state["nurse_id"])
     if len(hours) != nurse_count:
         raise ValueError(
@@ -72,11 +74,18 @@ def update_cumulative_state_from_metrics(
         raise ValueError(
             f"leader_count_by_nurse length {len(leaders)} does not match cumulative nurse count {nurse_count}"
         )
+    if len(leader_days) != nurse_count:
+        raise ValueError(
+            f"leader_days_by_nurse length {len(leader_days)} does not match cumulative nurse count {nurse_count}"
+        )
 
     return {
         "nurse_id": list(state["nurse_id"]),
         "cumu_hours": [float(prev) + hours[idx] for idx, prev in enumerate(state["cumu_hours"])],
         "cumu_leaders": [float(prev) + leaders[idx] for idx, prev in enumerate(state["cumu_leaders"])],
+        "cumu_leader_days": [
+            float(prev) + leader_days[idx] for idx, prev in enumerate(state["cumu_leader_days"])
+        ],
     }
 
 
@@ -84,14 +93,16 @@ def _normalize_state(payload: dict[str, Any]) -> dict[str, list[float]]:
     nurse_ids = [int(v) for v in payload.get("nurse_id", [])]
     cumu_hours = [float(v) for v in payload.get("cumu_hours", [])]
     cumu_leaders = [float(v) for v in payload.get("cumu_leaders", [])]
+    cumu_leader_days = [float(v) for v in payload.get("cumu_leader_days", [0.0] * len(nurse_ids))]
 
-    if not (len(nurse_ids) == len(cumu_hours) == len(cumu_leaders)):
+    if not (len(nurse_ids) == len(cumu_hours) == len(cumu_leaders) == len(cumu_leader_days)):
         raise ValueError("cumulative state arrays must have identical lengths")
 
     return {
         "nurse_id": nurse_ids,
         "cumu_hours": cumu_hours,
         "cumu_leaders": cumu_leaders,
+        "cumu_leader_days": cumu_leader_days,
     }
 
 
@@ -127,4 +138,11 @@ def _load_cumulative_state_from_excel(path: Path) -> dict[str, list[float]]:
         columns={"Index": "nurse_id", "Cumulative": "cumu_hours"}
     )
     merged["cumu_leaders"] = leaders_df["Cumulative"]
+    try:
+        leader_days_df = pd.read_excel(path, sheet_name="leader_days_by_nurse")
+        if "Cumulative" not in leader_days_df.columns:
+            raise ValueError(f"Missing expected columns in {path} sheet leader_days_by_nurse")
+        merged["cumu_leader_days"] = leader_days_df["Cumulative"]
+    except ValueError:
+        merged["cumu_leader_days"] = 0.0
     return _normalize_state(merged.to_dict(orient="list"))
