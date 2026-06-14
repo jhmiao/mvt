@@ -56,6 +56,7 @@ def _compute_solution_synopsis(
     problem_data: Optional[ProblemData],
     x_vars: Dict[str, float],
     alpha_vars: Dict[str, float],
+    beta_vars: Optional[Dict[str, float]] = None,
 ) -> Optional[Dict[str, Any]]:
     if problem_data is None:
         return None
@@ -72,7 +73,6 @@ def _compute_solution_synopsis(
     travel_cost_total = 0.0
     travel_cost_by_nurse = [0.0 for _ in range(n)]
     working_minutes_by_nurse = [0.0 for _ in range(n)]
-    leader_days_by_nurse = [0.0 for _ in range(n)]
 
     for name, val in x_vars.items():
         i, j, _d, w = _parse_indices(name)
@@ -101,14 +101,24 @@ def _compute_solution_synopsis(
 
         if j < m:
             working_minutes_by_nurse[w] += float(C_dur[j]) * float(val)
-        elif i == m and j == m + 1:
-            leader_days_by_nurse[w] += float(val)
 
+    beta_vars = beta_vars or {}
     leader_count_by_nurse = [0.0 for _ in range(n)]
-    for name, val in alpha_vars.items():
-        _i, _d, w = _parse_indices(name)
-        if 0 <= w < n:
-            leader_count_by_nurse[w] += float(val)
+    leader_days_seen = [set() for _ in range(n)]
+    leader_keys_seen = set()
+    for leader_vars in (alpha_vars, beta_vars):
+        for name, val in leader_vars.items():
+            i, d, w = _parse_indices(name)
+            if val < 0.5 or not (0 <= w < n):
+                continue
+            leader_key = (i, d, w)
+            if leader_key in leader_keys_seen:
+                continue
+            leader_keys_seen.add(leader_key)
+            leader_count_by_nurse[w] += 1.0
+            leader_days_seen[w].add(d)
+
+    leader_days_by_nurse = [float(len(days_seen)) for days_seen in leader_days_seen]
 
     if math.isnan(objective_value):
         penalty_cost_total = math.nan
@@ -284,6 +294,7 @@ def extract_solution(model: gp.Model, problem_data: Optional[ProblemData] = None
         problem_data=problem_data,
         x_vars=x_vars,
         alpha_vars=alpha_vars,
+        beta_vars=beta_vars,
     )
 
     return MergedSolution(

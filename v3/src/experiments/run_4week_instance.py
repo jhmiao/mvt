@@ -38,7 +38,10 @@ def parse_args() -> argparse.Namespace:
         "--warm-start-after",
         type=float,
         default=30.0,
-        help="Try a saved warm start if no feasible incumbent is found within this many seconds.",
+        help=(
+            "Try a saved warm start if no feasible incumbent is found within this many seconds, "
+            "or this many work units when --work-limit is used without --time-limit."
+        ),
     )
     parser.add_argument(
         "--include-weekly-fairness-penalty-hours",
@@ -73,7 +76,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--leaders-fairness-type",
         choices=("count", "day"),
-        default="count",
+        default="day",
         help="Leader fairness metric: total leader assignments or leader days.",
     )
     return parser.parse_args()
@@ -110,6 +113,26 @@ def _build_run_output_dir(
 
 def _format_weight_label(value: float) -> str:
     return str(float(value)).replace("-", "m").replace(".", "p")
+
+
+def _build_base_name(
+    run_name: str,
+    week_idx: int,
+    instance_stem: str,
+    include_weekly_hours: bool,
+    include_weekly_leaders: bool,
+    include_running: bool,
+    workload_penalty_weight: float,
+    leaders_penalty_weight: float,
+) -> str:
+    base_name = f"{run_name}_week{week_idx}_{instance_stem}"
+    is_baseline = not (include_weekly_hours or include_weekly_leaders or include_running)
+    if is_baseline:
+        return base_name
+
+    workload_weight_label = _format_weight_label(workload_penalty_weight)
+    leaders_weight_label = _format_weight_label(leaders_penalty_weight)
+    return f"{base_name}_wpen{workload_weight_label}_lpen{leaders_weight_label}"
 
 
 def _load_week_problem(instance_path: Path, sample_k: int | None, sample_seed: int | None):
@@ -182,9 +205,14 @@ def _resolve_warm_start_path(
     if exact_path.exists():
         return exact_path
 
+    baseline_path = warm_start_dir / f"{run_name}_week{week_idx}_{instance_stem}_variables.json"
+    if baseline_path.exists():
+        print(f"Warm start exact file not found: {exact_path}")
+        print(f"Using baseline warm start file instead: {baseline_path}")
+        return baseline_path
+
     patterns = [
-        f"{run_name}_week{week_idx}_{instance_stem}_wpen*_lpen*_variables.json",
-        f"{run_name}_week{week_idx}_{instance_stem}_penalty*_variables.json",
+        f"{run_name}_week{week_idx}_{instance_stem}_*_variables.json",
     ]
     candidates = []
     for pattern in patterns:
@@ -198,20 +226,35 @@ def _resolve_warm_start_path(
     return exact_path
 
 
-def _optimize_with_saved_warm_start(model, warm_start_path: Path, trigger_seconds: float, final_time_limit: float | None):
-    if trigger_seconds is None or trigger_seconds <= 0:
+def _optimize_with_saved_warm_start(
+    model,
+    warm_start_path: Path,
+    trigger_budget: float,
+    final_time_limit: float | None,
+    final_work_limit: float | None,
+):
+    if trigger_budget is None or trigger_budget <= 0:
         model.optimize()
         return model
 
-    model.Params.TimeLimit = float(trigger_seconds)
+    use_work_limit = final_work_limit is not None and final_time_limit is None
+    if use_work_limit:
+        model.Params.WorkLimit = float(trigger_budget)
+    else:
+        model.Params.TimeLimit = float(trigger_budget)
+
     model.optimize()
     has_incumbent = int(getattr(model, "SolCount", 0)) > 0
     if not has_incumbent:
         _apply_saved_warm_start(model, warm_start_path)
 
-    remaining_time_limit = None
-    if final_time_limit is not None:
-        remaining_time_limit = max(float(final_time_limit) - float(trigger_seconds), 0.0)
+    if use_work_limit:
+        remaining_work_limit = max(float(final_work_limit) - float(trigger_budget), 0.0)
+        if remaining_work_limit <= 0:
+            return model
+        model.Params.WorkLimit = remaining_work_limit
+    elif final_time_limit is not None:
+        remaining_time_limit = max(float(final_time_limit) - float(trigger_budget), 0.0)
         if remaining_time_limit <= 0:
             return model
         model.Params.TimeLimit = remaining_time_limit
@@ -290,11 +333,15 @@ def main():
             cumulative_state_path=cumulative_path,
         )
 
-        workload_weight_label = _format_weight_label(args.workload_penalty_weight)
-        leaders_weight_label = _format_weight_label(args.leaders_penalty_weight)
-        base_name = (
-            f"{args.run_name}_week{week_idx}_{instance_path.stem}"
-            f"_wpen{workload_weight_label}_lpen{leaders_weight_label}"
+        base_name = _build_base_name(
+            run_name=args.run_name,
+            week_idx=week_idx,
+            instance_stem=instance_path.stem,
+            include_weekly_hours=args.include_weekly_fairness_penalty_hours,
+            include_weekly_leaders=args.include_weekly_fairness_penalty_leaders,
+            include_running=args.include_running_fairness_penalty,
+            workload_penalty_weight=args.workload_penalty_weight,
+            leaders_penalty_weight=args.leaders_penalty_weight,
         )
         model = build_model(problem, config)
         exact_warm_start_path = warm_start_dir / f"{base_name}_variables.json"
@@ -311,8 +358,9 @@ def main():
             _optimize_with_saved_warm_start(
                 model,
                 warm_start_path=warm_start_path,
-                trigger_seconds=args.warm_start_after,
+                trigger_budget=args.warm_start_after,
                 final_time_limit=args.time_limit,
+                final_work_limit=args.work_limit,
             )
         solution = extract_solution(model, problem)
         save_solution_synopsis_json(solution, run_output_dir / f"{base_name}.json")
@@ -340,12 +388,3 @@ if __name__ == "__main__":
     main()
 
 
-# python v3/src/experiments/run_4week_instance.py \
-#   --instances c101_Even_5p0std_seed42 c101_Even_5p0std_seed43 c101_Even_5p0std_seed44 c101_Even_5p0std_seed45 \
-#   --run-name c101_even_4week \
-#   --time-limit 60 \
-#   --include-weekly-fairness-penalty-hours \
-#   --include-running-fairness-penalty \
-#   --leaders-fairness-type day \
-#   --workload-penalty-weight 1 \
-#   --leaders-penalty-weight 10
