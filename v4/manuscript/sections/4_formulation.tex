@@ -1,0 +1,147 @@
+\section{Problem Formulation}
+
+\subsection{Base Model M0}
+
+\paragraph{Model Overview}
+We consider a multi-day scheduling and routing problem for mobile vaccination teams. A set of nurses must be assigned to events over a planning horizon of multiple days. Each event requires a specified number of nurses with potentially different skill types (RN or LVN), and each nurse starts and ends their route at their home location. The objective is to minimize total travel time while satisfying operational constraints. 
+
+\paragraph{Sets}
+\begin{itemize}
+    \item $\mathcal{I}$: set of events
+    \item $\mathcal{H}$: set of homes
+    \item $\mathcal{L}$: set of locations, including events, homes, and depots
+    \item $\mathcal{W}$: set of nurses. $\mathcal{W}^{RN}$ denotes the set of RNs, and $\mathcal{W}^{LVN}$ denotes the set of LVNs
+    \item $\mathcal{D}$: set of days
+    % add more sets as needed
+\end{itemize}
+
+\paragraph{Parameters}
+\begin{itemize}
+    \item $c_{ij}$: travel time between locations $i$ and $j$
+    \item $c_i$: duration of event $i$
+    \item $N_i^{RN}, N_i^{LVN}$: minimum number of RNs and LVNs needed for event $i$
+    \item $l_{id}, u_{id}$: the earliest and latest feasible starting time for event $i$ on day $d$
+\end{itemize}
+
+\paragraph{Decision Variables}
+\begin{itemize}
+    \item $x_{ijd}^{w} \in \{0,1\}$: equals 1 if nurse $w$ travels from $i$ to $j$ on day $d$
+    \item $s_{id} \in \{0,1\}$: equals 1 if event $i$ is scheduled on day $d$
+    \item $t_{id}$: start time of event $i$ on day $d$
+    \item $\alpha_{id}^w$: equals 1 if nurse $w$ is assigned to be the leader for event $i$ on day $d$
+\end{itemize}
+
+\paragraph{Objective Function}
+\begin{equation}
+\min \quad \sum_{i,j \in \mathcal{L}} c_{i,j} \sum_{w \in \mathcal{W},d \in \mathcal{D}} x_{ijd}^{w}
+\label{obj:base}
+\end{equation}
+
+The objective minimizes the total travel time incurred by all nurses.
+
+\paragraph{Constraints}
+
+\subparagraph{Event Assignment Constraints}
+\begin{align}
+\sum_{d \in \mathcal{D}} s_{id} &= 1 \quad \forall \ i
+\end{align}
+Each event must be assigned according to the planning requirements.
+
+\subparagraph{Routing Flow Constraints}
+\begin{align}
+\sum_{j\in \mathcal{L}} x_{ijd}^w &\leq s_{id} \quad \forall \ w \in \mathcal{W}, i\in\mathcal{I}, d\in\mathcal{D} \\
+\sum_{i\in\mathcal{L}} x_{ijd}^w &= \sum_{k\in\mathcal{L}} x_{jkd}^w \quad \forall \ w \in \mathcal{W}, j\in\mathcal{I}, d\in\mathcal{D}\\
+\sum_{j\in \mathcal{L}} x_{ijd}^w &\leq 1 \quad \forall \ i \in \mathcal{H}
+\end{align}
+These constraints ensure flow conservation for each nurse.
+
+\subparagraph{Time Feasibility Constraints}
+\begin{align}
+    l_{id} \cdot s_{id} &\leq t_{id} \leq u_{id} \cdot s_{id} \quad \forall \ i \in \mathcal{I}, d \in \mathcal{D}\\
+    t_{jd} &\geq t_{id} + c_i + c_{ij} - M (1-x_{ijd}^w) \quad \forall i, j \in \mathcal{I}, d \in \mathcal{D}, w \in \mathcal{W}
+\end{align}
+These constraints enforce temporal consistency along each route. $M$ denotes a number sufficiently large as in the big-M method.
+
+\subparagraph{Staffing Constraints}
+\begin{align}
+    \sum_{w \in \mathcal{W}^{RN}, i \in \mathcal{L},d\in\mathcal{D}} x_{ijd}^w  &\geq N_j^{RN} \quad \forall j \in \mathcal{I}\\
+    \sum_{w \in \mathcal{W}^{LVN}, i \in \mathcal{L},d\in\mathcal{D}} x_{ijd}^w  &\geq N_j^{LVN} \quad \forall j \in \mathcal{I}
+\end{align}
+Each event must be staffed with the required number and type of nurses.
+
+\subparagraph{Depot Constraints}
+\begin{align}
+        \sum_{w\in\mathcal{W}, d \in \mathcal{D}} \alpha_{id}^w &= 1 \quad \forall \ i\in\mathcal{I}\\
+        \alpha_{id}^w &\leq \sum_{j\in\mathcal{L}} x_{ijd}^w \quad i\in\mathcal{I}, w\in\mathcal{W}, d\in\mathcal{D}\\
+        \alpha_{id}^w &\leq x_{HDd}^w \quad \forall \ i \in\mathcal{I}, w\in\mathcal{W}\\
+\end{align}
+These constraints capture depot-related requirements and other operational rules.
+
+
+
+\paragraph{Discussion}
+The base model captures the integrated scheduling and routing decisions for mobile vaccination teams over multiple days. It serves as the benchmark model focusing solely on operational efficiency, without incorporating fairness considerations. In the following sections, we extend this formulation to account for fairness across nurses over time.
+
+
+\subsection{Fairness Model}
+To account for fairness in work time, we try to avoid schedules that make some nurse work too much and some too little. 
+
+\paragraph{Auxiliary Quantities}
+The total travel cost is given by:
+\begin{equation}
+C^{\text{travel}} = \sum_{i,j \in \mathcal{L}} c_{ij} 
+\left(\sum_{w \in \mathcal{W}, d \in \mathcal{D}} x_{ijd}^{w} \right)
+\end{equation}
+
+Let the total working hours assigned to nurse $w$ be:
+\begin{equation}
+H_w = \text{(total working time of nurse $w$ over the planning horizon)}
+\end{equation}
+
+Let the total number of leadership assignments for nurse $w$ be:
+\begin{equation}
+L_w = \text{(total number of leader roles assigned to nurse $w$)}
+\end{equation}
+
+In the following models, we modify the objective function and add additional constraints for the auxiliary quantities.
+
+\paragraph{Model M1 (Workload Fairness)}
+
+\begin{align}
+\min \quad & C^{\text{travel}} + \lambda \left(H_{\max} - H_{\min}\right) \\
+\text{s.t.} \quad 
+& H_{\max} \ge H_w \quad \forall w \in \mathcal{W}, \\
+& H_{\min} \le H_w \quad \forall w \in \mathcal{W}.
+\end{align}
+
+
+
+
+
+\subsubsection{Long-term Fairness Model}
+In the long-term model, we consider not only the workload and leadership in the current week, but also for previous weeks. We construct a cumulative fairness penalty term to penalize repeated assignment of leaders to the same person over the weeks. Fairness in a longer time span is important because it allows for some imbalance within the week but aims to ensure fairness in the long run.
+
+\paragraph{Model M2 (Long-Term Fairness with Leadership)}
+For each week $T$, solve the problem
+\begin{equation}
+\min \quad 
+C^{\text{travel}} 
++ \lambda (H^T_{\max}- H^T_{\min})
++ \mu (L^{:T}_{\max}- L^{:T}_{\min})
+\end{equation}
+where 
+\begin{itemize}
+    \item $\lambda, \mu$ are scaling parameters
+    \item $L_w^T = \eta_1 \cdot (\text{\# events led by } w \text{ in week } T)
++ \eta_2 \cdot (\text{\# leader-days of } w \text{ in week } T)$, and let $L_w^{:T}$ denote the sum of $L_w^t$ up to and including week $T$. 
+	\item $H_w^T$ is the total working time assigned to nurse $w$ in week $T$,
+	\item $H_{\max}^T=\max_w H_w^T$ and $H_{\min}^T=\min_w H_w^T$,
+
+	\item $L_{\max}^{:T}=\max_w L_w^{:T}$ and $L_{\min}^{:T}=\min_w L_w^{:T}$
+\end{itemize}
+
+Work hours are naturally evaluated over short operational cycles because staff experience workload week by week; leadership assignments are less frequent, more discrete, and path-dependent, so cumulative imbalance is the more relevant fairness notion.
+
+
+\subsection{Discussion}
+modeling choices: fairness metric (variance / max-min / Gini-like), trade-off parameter. Plot pareto front with varying $\lambda$.

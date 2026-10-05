@@ -298,11 +298,38 @@ def _add_leader_fairness_metric(
         )
         return leader_count, "leader_count"
 
+    leader_day = model.addVars(days, n, vtype=GRB.BINARY, name=f"{prefix}_leader_day")
+    model.addConstrs(
+        (
+            leader_day[d, w] >= alpha[j, d, w]
+            for j in range(m)
+            for d in range(days)
+            for w in range(n)
+        ),
+        name=f"{prefix}_leader_day_has_alpha_lb",
+    )
+    model.addConstrs(
+        (
+            leader_day[d, w] <= 1
+            for d in range(days)
+            for w in range(n)
+        ),
+        name=f"{prefix}_leader_day_has_alpha_ub",
+    )
+    model.addConstrs(
+        (
+            leader_day[d, w] <= gp.quicksum(alpha[j, d, w] for j in range(m))
+            for d in range(days)
+            for w in range(n)
+        ),
+        name=f"{prefix}_leader_day_has_alpha_link_ub",
+    )
+
     leader_days = model.addVars(n, vtype=GRB.CONTINUOUS, lb=0.0, name=f"{prefix}_leader_days")
     model.addConstrs(
         (
             leader_days[w]
-            == gp.quicksum(x[m, m + 1, d, w] for d in range(days))
+            == gp.quicksum(leader_day[d, w] for d in range(days))
             for w in range(n)
         ),
         name=f"{prefix}_leader_days_def",
