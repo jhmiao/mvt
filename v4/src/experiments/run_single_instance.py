@@ -1,0 +1,129 @@
+from __future__ import annotations
+
+import argparse
+import sys
+from pathlib import Path
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Solve a single instance.")
+    default_project = Path(__file__).resolve().parents[2]
+    parser.add_argument("--project-root", type=Path, default=default_project, help="Project root path")
+    parser.add_argument("--output-root", type=Path, default=None, help="Output directory (default: <project-root>/outputs)")
+    parser.add_argument("--file", type=Path, default=None, help="Exact cleaned weekly .xlsx file to solve.")
+    parser.add_argument("--instance", type=str, default="c101", help="Instance name (e.g., c101, c201, r101, r201)")
+    parser.add_argument("--event-type", type=str, default="Even", help="Event type (Even, Skewed1, Skewed2, Random1, Random2)")
+    parser.add_argument("--work-limit", type=float, default=None, help="Gurobi WorkLimit (None to disable)")
+    parser.add_argument("--time-limit", type=float, default=None, help="Gurobi TimeLimit in seconds (None to disable)")
+    parser.add_argument("--gurobi-output", type=int, default=1, help="Gurobi OutputFlag (0=quiet, 1=verbose)")
+    parser.add_argument(
+        "--workload-penalty-weight",
+        type=float,
+        default=1.0,
+        help="Weight for workload fairness penalty term.",
+    )
+    parser.add_argument(
+        "--leaders-penalty-weight",
+        type=float,
+        default=400.0,
+        help="Weight for leadership fairness penalty term.",
+    )
+    parser.add_argument(
+        "--leaders-fairness-type",
+        choices=("count", "day"),
+        default="day",
+        help="Leader fairness metric: total leader assignments or leader days.",
+    )
+    parser.add_argument(
+        "--workload-penalty-aggregation",
+        choices=("range", "mean_absolute_deviation"),
+        default="mean_absolute_deviation",
+        help="Workload dispersion formula; default matches the fast route heuristic.",
+    )
+    parser.add_argument(
+        "--leaders-penalty-aggregation",
+        choices=("range", "mean_absolute_deviation"),
+        default="mean_absolute_deviation",
+        help="Leadership dispersion formula; default matches the fast route heuristic.",
+    )
+    return parser.parse_args()
+
+
+def main():
+    args = parse_args()
+    project_root = args.project_root.resolve()
+    output_root = (args.output_root or (project_root / "outputs" / "weeks")).resolve()
+    output_root.mkdir(parents=True, exist_ok=True)
+
+    if str(project_root) not in sys.path:
+        sys.path.append(str(project_root))
+
+    # Delayed imports so project_root is on sys.path
+    from src.io.data_loader import load_problem_data  # noqa: E402
+    from src.solver.config import SolverConfig  # noqa: E402
+    from src.solver.solver_runner import solve  # noqa: E402
+    from src.solutions.io import (  # noqa: E402
+        save_solution_json,
+        save_solution_pickle,
+        save_solution_synopsis_json,
+    )
+
+    data_path = (
+        args.file.resolve()
+        if args.file is not None
+        else project_root / "data" / "cleaned" / "weeks" / f"{args.instance}_{args.event_type}.xlsx"
+    )
+    # data_path = project_root / "data" / "cleaned" / f"{args.instance}_{args.event_type}.xlsx"
+    if not data_path.exists():
+        raise FileNotFoundError(f"Data file not found: {data_path}")
+
+    problem = load_problem_data(data_path, sample_k=15, sample_seed=45)
+    # print(f"Loaded problem with events {problem.original_event_ids}")
+    # problem = load_problem_data(data_path)
+
+
+    config = SolverConfig(
+        solve_by_day=False,
+        include_depot=True,
+        include_weekly_fairness_penalty_hours=True,
+        include_weekly_fairness_penalty_leaders=True,
+        include_running_fairness_penalty=False,
+        workload_penalty_weight=args.workload_penalty_weight,
+        leaders_penalty_weight=args.leaders_penalty_weight,
+        leaders_fairness_type=args.leaders_fairness_type,
+        workload_fairness_penalty_aggregation=args.workload_penalty_aggregation,
+        leaders_fairness_penalty_aggregation=args.leaders_penalty_aggregation,
+        enforce_hour_balance=False,
+        use_warmstart=False,
+        half_hour_starts=True,
+        gurobi_outputflag=args.gurobi_output,
+        work_limit=args.work_limit,
+        time_limit=args.time_limit,
+    )
+
+    solution = solve(problem, config)
+    # base = output_root / f"{args.instance}_{args.event_type}_wpen{args.workload_penalty_weight}_lpen{args.leaders_penalty_weight}"
+    base = output_root / data_path.stem
+
+    # save_solution_pickle(solution, base.with_suffix(".pkl"))
+    save_solution_json(solution, base.with_suffix(".json"))
+    save_solution_synopsis_json(solution, base.with_name(f"{base.name}_synopsis").with_suffix(".json"))
+    print(
+        f"Solved {data_path.stem} -> "
+        f"{base.with_suffix('.pkl')} / {base.with_suffix('.json')} / "
+        f"{base.with_name(f'{base.name}_running_synopsis').with_suffix('.json')}"
+    )
+
+
+if __name__ == "__main__":
+    main()
+
+# Example matching the default fast-route fairness objective and time budget:
+# PYTHONPATH=v4 myenv/bin/python v4/src/experiments/run_single_instance.py \
+#   --file v3/data/cleaned/weeks/c101_Random1_5p0std_seed42.xlsx \
+#   --time-limit 300 \
+#   --workload-penalty-weight 1 \
+#   --leaders-penalty-weight 400 \
+#   --leaders-fairness-type day \
+#   --workload-penalty-aggregation mean_absolute_deviation \
+#   --leaders-penalty-aggregation mean_absolute_deviation

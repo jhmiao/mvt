@@ -1,0 +1,31 @@
+Using Python:
+Python 3.10.18
+Checking core dependencies:
+numpy: 2.2.6
+gurobi: (12, 0, 3)
+[Mon Sep 28 09:17:19 PDT 2026] Starting run_single_instance on a01-03.hpc.usc.edu for rc101_Random1
+Set parameter TokenServer to value "hpc-licenses.hpcc.usc.edu"
+Traceback (most recent call last):
+  File "/home1/miaojing/.conda/envs/mvt/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home1/miaojing/.conda/envs/mvt/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/project2/ssuen_1733/mvt/v4/src/experiments/run_single_instance.py", line 119, in <module>
+    main()
+  File "/project2/ssuen_1733/mvt/v4/src/experiments/run_single_instance.py", line 104, in main
+    solution = solve(problem, config)
+  File "/project2/ssuen_1733/mvt/v4/src/solver/solver_runner.py", line 16, in solve
+    return solve_full(problem_data, solver_config)
+  File "/project2/ssuen_1733/mvt/v4/src/solver/solver_runner.py", line 20, in solve_full
+    model = build_model(problem_data, solver_config)
+  File "/project2/ssuen_1733/mvt/v4/src/solver/model_builder.py", line 51, in build_model
+    add_base_constraints(model, problem_data, x, s, t, alpha, beta)
+  File "/project2/ssuen_1733/mvt/v4/src/solver/constraints.py", line 56, in add_base_constraints
+    model.addConstr(s[i,d] <= time_window[i][d][0], name=f"tw_lb_s_i{i}_d{d}")
+  File "src/gurobipy/_model.pyx", line 3994, in gurobipy._model.Model.addConstr
+  File "src/gurobipy/linexpr.pxi", line 500, in gurobipy._core.LinExpr.__sub__
+  File "src/gurobipy/linexpr.pxi", line 475, in gurobipy._core.LinExpr.__add__
+  File "src/gurobipy/linexpr.pxi", line 204, in gurobipy._core.LinExpr.add
+  File "src/gurobipy/linexpr.pxi", line 225, in gurobipy._core.LinExpr.addConstant
+gurobipy._exception.GurobiError: Constant is Nan
+[Mon Sep 28 09:17:24 PDT 2026] Finished run_single_instance for rc101_Random1

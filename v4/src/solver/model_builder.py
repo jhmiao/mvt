@@ -1,0 +1,119 @@
+import numpy as np
+import gurobipy as gp
+from gurobipy import GRB
+from src.structures.problem_data import ProblemData
+from src.solver.config import SolverConfig
+from .constraints import add_base_constraints, add_leader_irredundancy_constraints
+
+
+def build_model(problem_data: ProblemData, config: SolverConfig) -> gp.Model:
+    """
+    Build and return a Gurobi optimization model based on the provided problem data and configuration.
+
+    Parameters:
+    problem_data (ProblemData): Travel costs, event durations, time windows, nurse requirements, etc.
+    config (SolverConfig): Configuration settings for the solver.
+
+    Returns:
+    gp.Model: A Gurobi optimization model.
+    """
+    model = gp.Model("Nurse_Scheduling_Routing_Problem")
+
+    C_event = problem_data.event_event_costs
+    C_home = problem_data.home_event_costs
+    C_depot_e = problem_data.event_depot_costs
+    C_depot_h = problem_data.home_depot_costs
+    C_depot = np.concatenate([C_depot_e, C_depot_h])
+    C_dur = problem_data.event_durations
+    time_windows = problem_data.time_windows
+    min_nurses = problem_data.min_nurses
+    nr = problem_data.total_rn
+    nl = problem_data.total_lvn
+    n = problem_data.total_nurse
+    m = problem_data.total_event
+    days = problem_data.total_day
+
+    # Variables
+
+    # x_ijdw = 1 if nurse w goes from event i to j on day d, 0 otherwise
+    # i, j == m for home, i, j == m+1 for depot_am, i, j == m+2 for depot_pm
+    x = model.addVars(m+3, m+3, days, n, vtype=GRB.BINARY, name="x") 
+    # s_id = 1 if event i is scheduled on day d, 0 otherwise
+    s = model.addVars(m, days, vtype=GRB.BINARY, name="s")
+    # t_id time when event i starts on day d
+    t = model.addVars(m, days, vtype=GRB.INTEGER, name="t")
+    # alpha_idw = 1 if nurse w is the pick-up leader for event i on day d, 0 otherwise
+    # beta_idw = 1 if nurse w is the drop-off leader for event i on day d, 0 otherwise
+    alpha = model.addVars(m, days, n, vtype=GRB.BINARY, name="alpha")
+    beta = model.addVars(m, days, n, vtype=GRB.BINARY, name="beta")
+
+    # Constraints
+    add_base_constraints(model, problem_data, x, s, t, alpha, beta)
+    if config.include_depot:
+        from .constraints import add_depot_constraints
+        add_depot_constraints(model, problem_data, x, alpha, beta)
+        # model._leader_irredundancy_vars = add_leader_irredundancy_constraints(
+        #     model, problem_data, x, s
+        # )
+    else:
+        from .constraints import add_no_depot_constraints
+        add_no_depot_constraints(model, problem_data, x, alpha, beta)
+
+    if config.fixed_event_days is not None:
+        if len(config.fixed_event_days) != m:
+            raise ValueError(
+                f"fixed_event_days length {len(config.fixed_event_days)} does not match total_event {m}"
+            )
+        for i, fixed_d in enumerate(config.fixed_event_days):
+            if fixed_d is None or int(fixed_d) < 0:
+                continue
+            d = int(fixed_d)
+            if d >= days:
+                raise ValueError(
+                    f"fixed_event_days[{i}]={d} out of range for total_day={days}"
+                )
+            model.addConstr(s[i, d] == 1, name=f"heuristic_fix_s_i{i}_d{d}")
+
+    if config.half_hour_starts:
+        # Add discrete time constraints
+        from .constraints import add_discrete_time_constraints
+        add_discrete_time_constraints(model, problem_data, t)
+
+    if config.enforce_max_hours:
+        from .constraints import add_max_hour_constraints
+        add_max_hour_constraints(model, problem_data, x)
+    
+    if config.enforce_hour_balance:
+        from .constraints import add_hour_balance_constraints
+        add_hour_balance_constraints(model, problem_data, x)
+    
+    # Objective
+    from .objectives import add_baseline_objectives
+    add_baseline_objectives(
+        model,
+        problem_data,
+        x,
+        s,
+        t,
+        alpha,
+        beta,
+        include_weekly_fairness_penalty_hours=bool(config.include_weekly_fairness_penalty_hours),
+        include_weekly_fairness_penalty_leaders=bool(config.include_weekly_fairness_penalty_leaders),
+        include_running_fairness_penalty=bool(config.include_running_fairness_penalty),
+        workload_penalty_weight=config.workload_penalty_weight,
+        leaders_penalty_weight=config.leaders_penalty_weight,
+        leaders_fairness_type=config.leaders_fairness_type,
+        workload_fairness_penalty_aggregation=config.workload_fairness_penalty_aggregation,
+        leaders_fairness_penalty_aggregation=config.leaders_fairness_penalty_aggregation,
+        cumulative_state_path=config.cumulative_state_path,
+    )
+
+    # Set solver parameters from config
+    if config.work_limit is not None:
+        model.Params.WorkLimit = config.work_limit
+    if config.time_limit is not None:
+        model.Params.TimeLimit = config.time_limit
+    model.Params.Seed = config.seed
+    model.Params.OutputFlag = config.gurobi_outputflag
+
+    return model
